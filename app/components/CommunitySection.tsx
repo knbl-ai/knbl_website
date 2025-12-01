@@ -43,7 +43,7 @@ export default function CommunitySection() {
                 <p className="text-neutral-300 text-sm">50 min</p>
                 <h3 className="text-4xl font-medium text-white">KNBL Masters</h3>
                 <p className="text-neutral-200 text-lg leading-normal">
-                  Meet the minds shaping tomorrow's marketing. Real talks, shared knowledge, and ideas that move brands forward.
+                  Meet the minds shaping tomorrow&apos;s marketing. Real talks, shared knowledge, and ideas that move brands forward.
                 </p>
               </div>
 

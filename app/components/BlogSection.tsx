@@ -71,7 +71,7 @@ export default function BlogSection() {
                 {/* Image Placeholder */}
                 <div className="relative h-64 bg-gradient-to-br from-primary-600 to-primary-900 rounded-2xl overflow-hidden">
                   <div className="absolute top-4 left-4">
-                    <Tag variant={blog.category.toLowerCase() as any}>{blog.category}</Tag>
+                    <Tag variant={blog.category.toLowerCase() as 'ai' | 'data' | 'culture'}>{blog.category}</Tag>
                   </div>
                 </div>
 
