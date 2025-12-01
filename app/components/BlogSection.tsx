@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Tag from '@/components/ui/Tag';
 import Button from '@/components/ui/Button';
 
@@ -10,18 +11,21 @@ const blogs = [
     excerpt: 'From automated storytelling to adaptive design systems - explore how artificial intelligence is reshaping the creative process.',
     date: 'Oct 14, 2025',
     category: 'AI',
+    image: '/images/blog/blog-ai.webp',
   },
   {
     title: 'The End of "One-Size-Fits-All" Marketing',
     excerpt: 'Why brands that personalize their message around real human behavior are winning - and how to start doing it right.',
     date: 'Sep 28, 2025',
     category: 'Data',
+    image: '/images/blog/blog-data.webp',
   },
   {
     title: 'When Trends Become Strategy',
     excerpt: "Understanding cultural signals is more than following hype - it's how smart brands build lasting relevance.",
     date: 'Aug 19, 2025',
     category: 'Culture',
+    image: '/images/blog/blog-culture.webp',
   },
 ];
 
@@ -68,9 +72,16 @@ export default function BlogSection() {
               className="bg-indigo-50 rounded-3xl p-4 cursor-pointer group"
             >
               <div className="space-y-6">
-                {/* Image Placeholder */}
-                <div className="relative h-64 bg-gradient-to-br from-primary-600 to-primary-900 rounded-2xl overflow-hidden">
-                  <div className="absolute top-4 left-4">
+                {/* Image */}
+                <div className="relative h-64 rounded-2xl overflow-hidden">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute top-4 left-4 z-10">
                     <Tag variant={blog.category.toLowerCase() as 'ai' | 'data' | 'culture'}>{blog.category}</Tag>
                   </div>
                 </div>

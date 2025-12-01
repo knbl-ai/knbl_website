@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function CommunitySection() {
   return (
@@ -35,7 +36,15 @@ export default function CommunitySection() {
         viewport={{ once: true }}
         className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[90%] max-w-6xl"
       >
-        <div className="relative h-[600px] bg-gradient-to-br from-primary-900 to-primary-700 rounded-3xl overflow-hidden">
+        <div className="relative h-[600px] rounded-3xl overflow-hidden">
+          {/* Background Video Preview Image */}
+          <Image
+            src="/images/community/knbl-masters-video.webp"
+            alt="KNBL Masters"
+            fill
+            className="object-cover"
+            sizes="90vw"
+          />
           {/* Glassmorphism Card */}
           <div className="absolute bottom-6 left-6 max-w-lg">
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-12 space-y-6">

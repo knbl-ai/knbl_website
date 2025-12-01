@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 export default function ProjectsGrid() {
@@ -37,11 +38,15 @@ export default function ProjectsGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-4 h-[400px] bg-gradient-to-br from-primary-600 to-primary-900 rounded-3xl overflow-hidden cursor-pointer"
+              className="md:col-span-4 h-[400px] rounded-3xl overflow-hidden cursor-pointer relative"
             >
-              <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                Project 1
-              </div>
+              <Image
+                src="/images/projects/project-1.webp"
+                alt="Project 1"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </motion.div>
 
             <div className="md:col-span-8 space-y-4">
@@ -51,11 +56,15 @@ export default function ProjectsGrid() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
                 whileHover={{ scale: 1.02 }}
-                className="h-[190px] bg-gradient-to-br from-indigo-400 to-primary-600 rounded-3xl overflow-hidden cursor-pointer"
+                className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
               >
-                <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                  Project 2
-                </div>
+                <Image
+                  src="/images/projects/project-2.webp"
+                  alt="Project 2"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                />
               </motion.div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -65,11 +74,15 @@ export default function ProjectsGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
                   whileHover={{ scale: 1.02 }}
-                  className="h-[190px] bg-gradient-to-br from-primary-700 to-indigo-600 rounded-3xl overflow-hidden cursor-pointer"
+                  className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
                 >
-                  <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                    Project 3
-                  </div>
+                  <Image
+                    src="/images/projects/project-3.webp"
+                    alt="Project 3"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -77,11 +90,15 @@ export default function ProjectsGrid() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                   whileHover={{ scale: 1.02 }}
-                  className="h-[190px] bg-gradient-to-br from-primary-900 to-primary-700 rounded-3xl overflow-hidden cursor-pointer"
+                  className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
                 >
-                  <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                    Project 4
-                  </div>
+                  <Image
+                    src="/images/projects/project-4.webp"
+                    alt="Project 4"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </motion.div>
               </div>
             </div>
@@ -95,11 +112,15 @@ export default function ProjectsGrid() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
               whileHover={{ scale: 1.02 }}
-              className="h-[250px] bg-gradient-to-br from-indigo-500 to-primary-600 rounded-3xl overflow-hidden cursor-pointer"
+              className="h-[250px] rounded-3xl overflow-hidden cursor-pointer relative"
             >
-              <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                Project 5
-              </div>
+              <Image
+                src="/images/projects/project-5.webp"
+                alt="Project 5"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -107,11 +128,15 @@ export default function ProjectsGrid() {
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
               whileHover={{ scale: 1.02 }}
-              className="h-[250px] bg-gradient-to-br from-primary-600 to-primary-900 rounded-3xl overflow-hidden cursor-pointer"
+              className="h-[250px] rounded-3xl overflow-hidden cursor-pointer relative"
             >
-              <div className="w-full h-full flex items-center justify-center text-white text-2xl font-medium">
-                Project 6
-              </div>
+              <Image
+                src="/images/projects/project-6.webp"
+                alt="Project 6"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </motion.div>
           </div>
         </div>

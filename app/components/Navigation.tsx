@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const menuItems = [
   { label: 'Home', href: '#' },
@@ -20,9 +21,15 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
-            <svg width="108" height="30" viewBox="0 0 108 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" className="font-bold text-2xl" fill="currentColor">KNBL</text>
-            </svg>
+            <div className="relative w-[108px] h-[30px]">
+              <Image
+                src="/images/logo/knbl-logo.svg"
+                alt="KNBL"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           {/* Desktop Menu */}

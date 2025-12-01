@@ -1,0 +1,224 @@
+[
+  {
+    "category": "hero",
+    "filename": "floating-badge-1",
+    "status": "success",
+    "path": "public/images/hero/floating-badge-1.webp"
+  },
+  {
+    "category": "hero",
+    "filename": "floating-badge-2",
+    "status": "success",
+    "path": "public/images/hero/floating-badge-2.webp"
+  },
+  {
+    "category": "hero",
+    "filename": "floating-badge-3",
+    "status": "success",
+    "path": "public/images/hero/floating-badge-3.webp"
+  },
+  {
+    "category": "hero",
+    "filename": "blob-1",
+    "status": "success",
+    "path": "public/images/hero/blob-1.svg"
+  },
+  {
+    "category": "hero",
+    "filename": "blob-2",
+    "status": "success",
+    "path": "public/images/hero/blob-2.svg"
+  },
+  {
+    "category": "hero",
+    "filename": "blob-3",
+    "status": "success",
+    "path": "public/images/hero/blob-3.svg"
+  },
+  {
+    "category": "hero",
+    "filename": "vector-bg",
+    "status": "success",
+    "path": "public/images/hero/vector-bg.svg"
+  },
+  {
+    "category": "services",
+    "filename": "strategy-bg",
+    "status": "success",
+    "path": "public/images/services/strategy-bg.webp"
+  },
+  {
+    "category": "services",
+    "filename": "message-bg",
+    "status": "success",
+    "path": "public/images/services/message-bg.webp"
+  },
+  {
+    "category": "services",
+    "filename": "creative-bg",
+    "status": "success",
+    "path": "public/images/services/creative-bg.webp"
+  },
+  {
+    "category": "services",
+    "filename": "data-bg",
+    "status": "success",
+    "path": "public/images/services/data-bg.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-1",
+    "status": "success",
+    "path": "public/images/projects/project-1.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-2",
+    "status": "success",
+    "path": "public/images/projects/project-2.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-3",
+    "status": "success",
+    "path": "public/images/projects/project-3.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-4",
+    "status": "success",
+    "path": "public/images/projects/project-4.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-5",
+    "status": "success",
+    "path": "public/images/projects/project-5.webp"
+  },
+  {
+    "category": "projects",
+    "filename": "project-6",
+    "status": "success",
+    "path": "public/images/projects/project-6.webp"
+  },
+  {
+    "category": "blog",
+    "filename": "blog-ai",
+    "status": "success",
+    "path": "public/images/blog/blog-ai.webp"
+  },
+  {
+    "category": "blog",
+    "filename": "blog-data",
+    "status": "success",
+    "path": "public/images/blog/blog-data.webp"
+  },
+  {
+    "category": "blog",
+    "filename": "blog-culture",
+    "status": "success",
+    "path": "public/images/blog/blog-culture.webp"
+  },
+  {
+    "category": "brands",
+    "filename": "brand-logo-1",
+    "status": "success",
+    "path": "public/images/brands/brand-logo-1.svg"
+  },
+  {
+    "category": "brands",
+    "filename": "brand-logo-2",
+    "status": "success",
+    "path": "public/images/brands/brand-logo-2.svg"
+  },
+  {
+    "category": "brands",
+    "filename": "brand-logo-3",
+    "status": "success",
+    "path": "public/images/brands/brand-logo-3.svg"
+  },
+  {
+    "category": "brands",
+    "filename": "brand-logo-4",
+    "status": "success",
+    "path": "public/images/brands/brand-logo-4.svg"
+  },
+  {
+    "category": "brands",
+    "filename": "brand-logo-5",
+    "status": "success",
+    "path": "public/images/brands/brand-logo-5.svg"
+  },
+  {
+    "category": "community",
+    "filename": "knbl-masters-video",
+    "status": "success",
+    "path": "public/images/community/knbl-masters-video.webp"
+  },
+  {
+    "category": "icons",
+    "filename": "compass",
+    "status": "success",
+    "path": "public/images/icons/compass.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "lightbulb",
+    "status": "success",
+    "path": "public/images/icons/lightbulb.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "simulation",
+    "status": "success",
+    "path": "public/images/icons/simulation.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "arrow-down",
+    "status": "success",
+    "path": "public/images/icons/arrow-down.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "instagram",
+    "status": "success",
+    "path": "public/images/icons/instagram.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "tiktok",
+    "status": "success",
+    "path": "public/images/icons/tiktok.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "facebook",
+    "status": "success",
+    "path": "public/images/icons/facebook.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "linkedin",
+    "status": "success",
+    "path": "public/images/icons/linkedin.svg"
+  },
+  {
+    "category": "icons",
+    "filename": "youtube",
+    "status": "success",
+    "path": "public/images/icons/youtube.svg"
+  },
+  {
+    "category": "logo",
+    "filename": "knbl-logo",
+    "status": "success",
+    "path": "public/images/logo/knbl-logo.svg"
+  },
+  {
+    "category": "logo",
+    "filename": "knbl-footer-graphic",
+    "status": "success",
+    "path": "public/images/logo/knbl-footer-graphic.svg"
+  }
+]
