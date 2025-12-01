@@ -61,7 +61,7 @@ export default function BlogSection() {
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {blogs.map((blog: { title: string; excerpt: string; date: string; category: string }, index: number) => (
+          {blogs.map((blog: { title: string; excerpt: string; date: string; category: string; image: string }, index: number) => (
             <motion.article
               key={blog.title}
               initial={{ opacity: 0, y: 20 }}
