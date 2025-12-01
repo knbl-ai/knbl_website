@@ -15,7 +15,7 @@ export default function ProjectsGrid() {
             viewport={{ once: true }}
             className="text-5xl md:text-6xl font-medium max-w-2xl"
           >
-            The Brands We've{' '}
+            The Brands We&apos;ve{' '}
             <span className="text-primary-600">Grown.</span>
           </motion.h2>
 

@@ -19,7 +19,7 @@ export default function CommunitySection() {
             <span> is where marketing minds meet to learn, share, and grow together. </span>
             <span className="text-indigo-50">
               through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress.
-              it's a space built on collaboration, learning, and collective movement forward.
+              it&apos;s a space built on collaboration, learning, and collective movement forward.
             </span>
           </motion.p>
         </div>

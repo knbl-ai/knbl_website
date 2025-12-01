@@ -46,7 +46,7 @@ export default function HowWeDoIt() {
               transition={{ delay: 0.1 }}
               className="text-2xl text-neutral-300 leading-normal"
             >
-              At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.
+              At KNBL, strategy isn&apos;t just the first step - it&apos;s the thread that runs through everything we do.
               We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.
             </motion.p>
           </div>

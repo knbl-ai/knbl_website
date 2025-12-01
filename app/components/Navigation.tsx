@@ -50,7 +50,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium hover:bg-primary-700 transition-colors"
             >
-              Let's Talk
+              Let&apos;s Talk
             </motion.button>
           </div>
         </div>

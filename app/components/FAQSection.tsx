@@ -26,7 +26,14 @@ const faqs = [
   },
 ];
 
-function FAQCard({ question, answer, isOpen, onToggle }: any) {
+interface FAQCardProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
   return (
     <div className="bg-indigo-50 rounded-3xl p-8 md:p-12">
       <button
@@ -78,7 +85,7 @@ export default function FAQSection() {
             <h2 className="text-5xl md:text-6xl font-medium">
               Got questions?
               <br />
-              <span>We've got </span>
+              <span>We&apos;ve got </span>
               <span className="text-primary-600">answers.</span>
             </h2>
           </motion.div>

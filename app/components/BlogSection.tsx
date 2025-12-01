@@ -19,7 +19,7 @@ const blogs = [
   },
   {
     title: 'When Trends Become Strategy',
-    excerpt: 'Understanding cultural signals is more than following hype - it\'s how smart brands build lasting relevance.',
+    excerpt: "Understanding cultural signals is more than following hype - it's how smart brands build lasting relevance.",
     date: 'Aug 19, 2025',
     category: 'Culture',
   },
@@ -38,7 +38,7 @@ export default function BlogSection() {
             className="space-y-6 max-w-3xl"
           >
             <h2 className="text-5xl md:text-6xl font-medium">
-              <span className="text-primary-600">What's New</span>
+              <span className="text-primary-600">What&apos;s New</span>
               {' in Strategy, Creativity & Tech.'}
             </h2>
             <p className="text-2xl text-neutral-300">
@@ -57,7 +57,7 @@ export default function BlogSection() {
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {blogs.map((blog, index) => (
+          {blogs.map((blog: { title: string; excerpt: string; date: string; category: string }, index: number) => (
             <motion.article
               key={blog.title}
               initial={{ opacity: 0, y: 20 }}
