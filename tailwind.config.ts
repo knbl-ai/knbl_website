@@ -30,6 +30,15 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
       },
+      keyframes: {
+        shine: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+      },
+      animation: {
+        shine: 'shine 0.5s ease-in-out',
+      },
     },
   },
   plugins: [],
