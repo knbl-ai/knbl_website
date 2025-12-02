@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import React from 'react';
 
 interface InteractiveHoverButtonProps {
   children?: React.ReactNode;
@@ -14,26 +14,47 @@ export function InteractiveHoverButton({
   onClick,
 }: InteractiveHoverButtonProps) {
   return (
-    <motion.button
+    <button
       onClick={onClick}
-      className={`relative overflow-hidden group ${className}`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+      className={`relative overflow-hidden group transition-all duration-200 hover:scale-105 ${className}`}
+      style={{
+        background: 'linear-gradient(90deg, var(--bg-color, rgb(79, 57, 246)), var(--bg-color, rgb(79, 57, 246)))',
+      }}
     >
-      {/* Animated gradient shine effect */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-        initial={{ x: '-100%' }}
-        whileHover={{ x: '100%' }}
-        transition={{ duration: 0.5 }}
-        style={{ pointerEvents: 'none' }}
-      />
+      {/* Gradient shine effect on hover */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+          style={{
+            transform: 'translateX(-100%)',
+            animation: 'none',
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget;
+            el.style.animation = 'shine 0.5s ease-in-out';
+          }}
+        />
+      </div>
 
-      {/* Content */}
-      <span className="relative z-10 inline-flex items-center justify-center">
+      {/* Button content */}
+      <span className="relative z-10 flex items-center justify-center">
         {children}
       </span>
-    </motion.button>
+
+      <style jsx>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        button:hover > div > div {
+          animation: shine 0.5s ease-in-out;
+        }
+      `}</style>
+    </button>
   );
 }
