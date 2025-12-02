@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 interface InteractiveHoverButtonProps {
   children?: React.ReactNode;
@@ -13,15 +13,21 @@ export function InteractiveHoverButton({
   className = '',
   onClick,
 }: InteractiveHoverButtonProps) {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <button
       onClick={onClick}
-      className={`relative overflow-hidden group transition-all duration-200 hover:scale-105 ${className}`}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      className={`relative overflow-hidden transition-all duration-200 hover:scale-105 ${className}`}
     >
-      {/* Gradient shine effect on hover - uses Tailwind animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent group-hover:animate-shine" />
-      </div>
+      {/* Gradient shine effect - animates when hovering */}
+      <div
+        className={`absolute inset-0 overflow-hidden bg-gradient-to-r from-transparent via-white/50 to-transparent ${
+          isHovering ? 'animate-shine' : ''
+        }`}
+      />
 
       {/* Button content */}
       <span className="relative z-10 flex items-center justify-center">
