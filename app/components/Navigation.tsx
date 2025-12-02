@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 const menuItems = [
   { label: 'Home', href: '#' },
@@ -53,12 +54,11 @@ export default function Navigation() {
             ))}
 
             {/* Let's Talk Button */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
+            <InteractiveHoverButton
               className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium hover:bg-primary-700 transition-colors"
             >
               Let&apos;s Talk
-            </motion.button>
+            </InteractiveHoverButton>
           </div>
         </div>
       </div>

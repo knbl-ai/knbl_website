@@ -73,11 +73,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-medium leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight">
             <span className="block">Cut the noise.</span>
-            <span className="block">
-              <span className="text-primary-600">Be impossible</span>
-              {' '}
+            <span className="inline-block">
+              <span className="text-primary-600">Be impossible </span>
               <span>to ignore</span>
             </span>
           </h1>
@@ -86,7 +85,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl text-neutral-300 font-normal"
+            className="text-lg md:text-xl text-neutral-300 font-normal"
           >
             Creative marketing for ambitious brands
           </motion.p>
