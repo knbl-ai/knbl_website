@@ -22,37 +22,23 @@ export function InteractiveHoverButton({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       className={`relative overflow-hidden ${className}`}
-      whileHover="hover"
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      initial="initial"
-      animate="initial"
-      variants={{
-        initial: { opacity: 1 },
-        hover: { opacity: 1 },
-      }}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
-      {/* Animated gradient background */}
+      {/* Animated gradient shine effect */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
         initial={{ x: '-100%' }}
         animate={isHovering ? { x: '100%' } : { x: '-100%' }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
         style={{ pointerEvents: 'none' }}
       />
 
       {/* Content */}
-      <motion.div
-        className="relative z-10 flex items-center justify-center"
-        animate={{
-          textShadow: isHovering
-            ? '0 0 20px rgba(255,255,255,0.3)'
-            : '0 0 0px rgba(255,255,255,0)',
-        }}
-        transition={{ duration: 0.3 }}
-      >
+      <div className="relative z-10 flex items-center justify-center">
         {children}
-      </motion.div>
+      </div>
     </motion.button>
   );
 }
