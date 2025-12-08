@@ -6,7 +6,7 @@ import ScrollIndicator from '@/components/ui/ScrollIndicator';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-indigo-50/30 to-white pt-24">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white via-indigo-50/30 to-white pt-32">
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -74,21 +74,12 @@ export default function Hero() {
           className="space-y-8"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight">
-            <span className="block">Cut the noise.</span>
+            <span className="block">Outshine the noise.</span>
             <span className="inline-block">
-              <span className="text-primary-600">Be impossible </span>
-              <span>to ignore</span>
+              <span className="text-primary-600">We make brands </span>
+              <span>unforgettable</span>
             </span>
           </h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-neutral-300 font-normal"
-          >
-            Creative marketing for ambitious brands
-          </motion.p>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -107,65 +98,137 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute top-[15%] left-[15%] hidden lg:block"
+        className="absolute top-[25%] left-[15%] hidden lg:block"
       >
-        <div className="relative w-[138px] h-[138px]">
-          <Image
-            src="/images/hero/floating-badge-1.webp"
-            alt="20 years of experience"
-            fill
-            className="rounded-full object-cover"
-          />
-        </div>
-        <div className="absolute top-[55%] left-[15%] bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full">
+        <motion.div
+          animate={{
+            x: [0, 15, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="relative w-[180px] h-[180px]">
+            <Image
+              src="/images/hero/floating-badge-1.webp"
+              alt="20 years of experience"
+              fill
+              className="rounded-full object-cover"
+            />
+          </div>
+        </motion.div>
+        <motion.div
+          animate={{
+            x: [0, 12, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 5.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.3,
+          }}
+          className="absolute top-[60%] left-[15%] bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
+        >
           <p className="text-sm font-normal text-black">20 years of experience</p>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
-        className="absolute bottom-[15%] right-[12%] hidden lg:block"
+        className="absolute bottom-[18%] right-[12%] hidden lg:block"
       >
-        <div className="relative w-[138px] h-[138px]">
-          <Image
-            src="/images/hero/floating-badge-2.webp"
-            alt="50+ campaigns launched"
-            fill
-            className="rounded-full object-cover"
-          />
-        </div>
-        <div className="absolute bottom-[-30px] right-0 bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap">
+        <motion.div
+          animate={{
+            x: [0, -18, 0],
+            y: [0, 15, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="relative w-[200px] h-[200px]">
+            <Image
+              src="/images/hero/floating-badge-2.webp"
+              alt="50+ campaigns launched"
+              fill
+              className="rounded-full object-cover"
+            />
+          </div>
+        </motion.div>
+        <motion.div
+          animate={{
+            x: [0, -15, 0],
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 6.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.4,
+          }}
+          className="absolute bottom-[-30px] right-0 bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
+        >
           <p className="text-sm font-normal text-black">50+ campaigns launched</p>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute top-[10%] right-[10%] hidden lg:block"
+        className="absolute top-[18%] right-[10%] hidden lg:block"
       >
-        <div className="relative w-[138px] h-[138px]">
-          <Image
-            src="/images/hero/floating-badge-3.webp"
-            alt="Creative teams in TLV"
-            fill
-            className="rounded-full object-cover"
-          />
-        </div>
+        <motion.div
+          animate={{
+            x: [0, -20, 0],
+            y: [0, -10, 0],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="relative w-[160px] h-[160px]">
+            <Image
+              src="/images/hero/floating-badge-3.webp"
+              alt="Creative teams in TLV"
+              fill
+              className="rounded-full object-cover"
+            />
+          </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 1.3 }}
-        className="absolute bottom-[5%] left-[6%] hidden lg:block"
+        className="absolute bottom-[8%] left-[6%] hidden lg:block"
       >
-        <div className="bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full">
+        <motion.div
+          animate={{
+            x: [0, 18, 0],
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.2,
+          }}
+          className="bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
+        >
           <p className="text-sm font-normal text-black">Creative teams in TLV</p>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

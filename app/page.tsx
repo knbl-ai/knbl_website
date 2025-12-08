@@ -8,6 +8,7 @@ import BrandsSection from './components/BrandsSection';
 import BlogSection from './components/BlogSection';
 import CommunitySection from './components/CommunitySection';
 import FAQSection from './components/FAQSection';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 export default function HomePage() {
   return (
@@ -16,19 +17,9 @@ export default function HomePage() {
       <Hero />
 
       {/* About Section */}
-      <section className="py-44 px-4">
-        <div className="max-w-[680px] mx-auto text-center">
-          <p className="text-2xl leading-8 tracking-tight">
-            <span>we&apos;re </span>
-            <span className="uppercase">knbl</span>
-            <span> a </span>
-            <span className="font-medium">strategy-driven</span>
-            <span> collective built for what&apos;s next. we started in storytelling, where every brand moment had a voice and a purpose.</span>
-            {' '}
-            <span className="text-neutral-300">today, that voice meets technology, partnered by AI, guided by insight, and scaled with precision. our model connects every step.</span>
-          </p>
-        </div>
-      </section>
+      <TextReveal>
+        We are KNBL. Born in storytelling. Amplified by technology. We don&apos;t just craft the message; we build the engine behind it. By fusing strategy and content with in-house AI and code, we turn great stories into holistic, high-performance solutions.
+      </TextReveal>
 
       <ServicesGrid />
 

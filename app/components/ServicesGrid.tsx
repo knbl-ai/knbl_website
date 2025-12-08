@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const services = [
   {
@@ -9,30 +10,38 @@ const services = [
     description: 'We turn insights into direction.',
     gradient: 'from-primary-900 to-primary-600',
     image: '/images/services/strategy-bg.webp',
+    expandedContent: 'Deep market analysis, competitive positioning, brand architecture, and strategic roadmaps that guide every decision.',
   },
   {
     title: 'Message',
     description: 'We craft stories that resonate.',
     gradient: 'from-primary-700 to-primary-600',
     image: '/images/services/message-bg.webp',
-    rotate: true,
+    expandedContent: 'Brand narratives, content strategy, copywriting, and messaging frameworks that connect with your audience.',
   },
   {
     title: 'Creative',
     description: 'We bring ideas to life.',
     gradient: 'from-primary-600 to-primary-700',
     image: '/images/services/creative-bg.webp',
-    rotate: true,
+    expandedContent: 'Visual identity, design systems, campaigns, and experiences that capture attention and inspire action.',
   },
   {
     title: 'Data',
     description: 'We measure what matters.',
     gradient: 'from-primary-600 to-primary-900',
     image: '/images/services/data-bg.webp',
+    expandedContent: 'Analytics, performance tracking, insights reporting, and data-driven optimization for continuous improvement.',
   },
 ];
 
 export default function ServicesGrid() {
+  const [expandedIndex, setExpandedIndex] = useState<number>(0);
+
+  const handleCardClick = (index: number) => {
+    setExpandedIndex(index);
+  };
+
   return (
     <section id="services" className="bg-neutral-900 px-6 md:px-24 py-44">
       <div className="max-w-7xl mx-auto">
@@ -42,54 +51,96 @@ export default function ServicesGrid() {
           viewport={{ once: true }}
           className="text-5xl md:text-6xl font-medium text-white mb-16 max-w-3xl"
         >
-          How we make brands impossible{' '}
-          <span className="text-primary-600">to ignore.</span>
+          How we make brands{' '}
+          <span className="text-primary-600">unforgettable.</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className={`relative h-[600px] rounded-3xl overflow-hidden cursor-pointer group ${
-                service.rotate ? 'md:rotate-90' : ''
-              }`}
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                />
-              </div>
-
-              {/* Gradient Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-80`} />
-
-              {/* Content Container */}
-              <div className="relative h-full p-12 flex flex-col justify-between">
-                {/* Arrow Icon */}
-                <div className="w-14 h-14 bg-primary-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+        <div className="flex gap-6 h-[600px]">
+          {services.map((service, index) => {
+            const isExpanded = expandedIndex === index;
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                onClick={() => handleCardClick(index)}
+                layout
+                animate={{
+                  flex: isExpanded ? '1 1 60%' : '1 1 13.33%',
+                }}
+                className="relative rounded-3xl overflow-hidden cursor-pointer group"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                  />
                 </div>
 
-                {/* Content */}
-                <div className={`${service.rotate ? 'md:rotate-[-90deg]' : ''} space-y-3`}>
-                  <h3 className="text-5xl font-medium text-white">{service.title}</h3>
-                  <p className="text-primary-200 text-base">{service.description}</p>
+                {/* Gradient Overlay - only for contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                {/* Content Container */}
+                <div className="relative h-full p-8 flex flex-col justify-between">
+                  {/* Arrow Icon */}
+                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <motion.svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      animate={{ rotate: isExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                    </motion.svg>
+                  </div>
+
+                  {/* Content - Expanded */}
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="space-y-3"
+                    >
+                      <h3 className="text-5xl font-medium text-white">
+                        {service.title}
+                      </h3>
+                      <p className="text-white text-lg">{service.description}</p>
+                      <p className="text-white/90 text-base">
+                        {service.expandedContent}
+                      </p>
+                    </motion.div>
+                  )}
+
+                  {/* Content - Closed (Vertical) */}
+                  {!isExpanded && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                      style={{
+                        writingMode: 'vertical-rl',
+                        textOrientation: 'mixed',
+                      }}
+                    >
+                      <h3 className="text-4xl font-medium text-white whitespace-nowrap">
+                        {service.title}
+                      </h3>
+                    </motion.div>
+                  )}
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

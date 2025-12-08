@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'KNBL - Cut the noise. Be impossible to ignore',
+  title: 'KNBL - Outshine the noise. We make brands unforgettable',
   description: 'Creative marketing for ambitious brands. Strategy-driven creative collective that turns insights into impact.',
   keywords: ['creative agency', 'marketing', 'strategy', 'branding', 'design'],
 };

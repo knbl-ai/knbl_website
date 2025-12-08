@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Left Column - Description */}
           <div className="flex flex-col gap-6 max-w-md">
             <p className="text-neutral-400 text-base leading-normal">
-              KNBL is a strategy-driven creative collective that turns insights into impact. We combine strategy, storytelling, and technology to make brands impossible to ignore.
+              KNBL is a strategy-driven creative collective that turns insights into impact. We combine strategy, storytelling, and technology to make brands unforgettable.
             </p>
 
             {/* Social Links */}
