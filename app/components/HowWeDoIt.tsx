@@ -25,11 +25,11 @@ const steps = [
 
 export default function HowWeDoIt() {
   return (
-    <section className="py-44 px-6 md:px-24">
+    <section className="pt-20 pb-50 px-6 md:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Sticky Sidebar */}
-          <div className="lg:sticky lg:top-24 h-fit space-y-6">
+          <div className="lg:sticky lg:top-24 h-fit">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -39,16 +39,6 @@ export default function HowWeDoIt() {
               How we make it{' '}
               <span className="text-primary-600">happen.</span>
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-2xl text-neutral-300 leading-normal"
-            >
-              At KNBL, strategy isn&apos;t just the first step - it&apos;s the thread that runs through everything we do.
-              We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.
-            </motion.p>
           </div>
 
           {/* Steps */}

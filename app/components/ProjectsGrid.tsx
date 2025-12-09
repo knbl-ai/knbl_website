@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Button from '@/components/ui/Button';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 export default function ProjectsGrid() {
   return (
@@ -25,7 +25,9 @@ export default function ProjectsGrid() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Button>View All Projects</Button>
+            <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
+              View All Projects
+            </InteractiveHoverButton>
           </motion.div>
         </div>
 
