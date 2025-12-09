@@ -7,31 +7,31 @@ import { useState } from 'react';
 const services = [
   {
     title: 'Strategy',
-    description: 'We turn insights into direction.',
+    description: 'Decoded by data. Built for clarity',
     gradient: 'from-primary-900 to-primary-600',
     image: '/images/services/strategy-bg.webp',
-    expandedContent: 'Deep market analysis, competitive positioning, brand architecture, and strategic roadmaps that guide every decision.',
+    expandedContent: '',
   },
   {
-    title: 'Message',
-    description: 'We craft stories that resonate.',
+    title: 'Storytelling',
+    description: 'Human narratives. Sharp signals',
     gradient: 'from-primary-700 to-primary-600',
     image: '/images/services/message-bg.webp',
-    expandedContent: 'Brand narratives, content strategy, copywriting, and messaging frameworks that connect with your audience.',
+    expandedContent: '',
   },
   {
-    title: 'Creative',
-    description: 'We bring ideas to life.',
+    title: 'Creative & Tech',
+    description: 'Where bold ideas meets smart code',
     gradient: 'from-primary-600 to-primary-700',
     image: '/images/services/creative-bg.webp',
-    expandedContent: 'Visual identity, design systems, campaigns, and experiences that capture attention and inspire action.',
+    expandedContent: '',
   },
   {
-    title: 'Data',
-    description: 'We measure what matters.',
+    title: 'Media',
+    description: 'Cross-channel precision. Optimized at scale',
     gradient: 'from-primary-600 to-primary-900',
     image: '/images/services/data-bg.webp',
-    expandedContent: 'Analytics, performance tracking, insights reporting, and data-driven optimization for continuous improvement.',
+    expandedContent: '',
   },
 ];
 
@@ -43,17 +43,28 @@ export default function ServicesGrid() {
   };
 
   return (
-    <section id="services" className="bg-neutral-900 px-6 md:px-24 py-44">
+    <section id="services" className="bg-neutral-900 px-6 md:px-24 pt-20 pb-44">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-medium text-white mb-16 max-w-3xl"
-        >
-          How we make brands{' '}
-          <span className="text-primary-600">unforgettable.</span>
-        </motion.h2>
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-medium text-white mb-8 max-w-4xl"
+          >
+            From Insight <span className="text-primary-600">to Impact</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-2xl md:text-3xl text-neutral-300 font-light max-w-3xl mt-8"
+          >
+            Great results aren&apos;t accidental. They are engineered
+          </motion.p>
+        </div>
 
         <div className="flex gap-6 h-[600px]">
           {services.map((service, index) => {

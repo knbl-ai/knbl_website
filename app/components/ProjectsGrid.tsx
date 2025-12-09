@@ -14,12 +14,12 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, image: '/images/projects/project-1.webp', name: 'Project 1', alt: 'Project 1', delay: 0 },
-  { id: 2, image: '/images/projects/project-2.webp', name: 'Project 2', alt: 'Project 2', delay: 0.1 },
-  { id: 3, image: '/images/projects/project-3.webp', name: 'Project 3', alt: 'Project 3', delay: 0.2 },
-  { id: 4, image: '/images/projects/project-4.webp', name: 'Project 4', alt: 'Project 4', delay: 0.3 },
-  { id: 5, image: '/images/projects/project-5.webp', name: 'Project 5', alt: 'Project 5', delay: 0.4 },
-  { id: 6, image: '/images/projects/project-6.webp', name: 'Project 6', alt: 'Project 6', delay: 0.5 },
+  { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', alt: 'H&O', delay: 0 },
+  { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', alt: 'Electra', delay: 0.1 },
+  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', alt: 'Roladin', delay: 0.2 },
+  { id: 4, image: '/images/projects/project-4.webp', name: 'Eden', alt: 'Eden', delay: 0.3 },
+  { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', alt: 'Rafael', delay: 0.4 },
+  { id: 6, image: '/images/projects/project-6.webp', name: 'On', alt: 'On', delay: 0.5 },
 ];
 
 function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
@@ -91,7 +91,7 @@ export default function ProjectsGrid() {
             viewport={{ once: true }}
           >
             <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
-              View All Projects
+              See the Work
             </InteractiveHoverButton>
           </motion.div>
         </div>

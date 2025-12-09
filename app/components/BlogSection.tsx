@@ -42,11 +42,11 @@ export default function BlogSection() {
             className="space-y-6 max-w-3xl"
           >
             <h2 className="text-5xl md:text-6xl font-medium">
-              <span className="text-primary-600">What&apos;s New</span>
-              {' in Strategy, Creativity & Tech.'}
+              <span className="text-primary-600">Our signals</span>
+              {' in Strategy, Creative & Innovation'}
             </h2>
             <p className="text-2xl text-neutral-300">
-              In a noisy world, we look for signals - insights, patterns, and shifts shaping how brands think, create, and grow.
+              In a noisy world, we add clarity. Explore our latest articles, insights, and perspectives.
             </p>
           </motion.div>
 

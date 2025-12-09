@@ -25,7 +25,7 @@ export default function HomePage() {
 
       {/* Second About Section */}
       <TextReveal className="py-44 [&>div]:max-w-5xl">
-        we exist because brands don&apos;t need more noise. they need direction, focus, and a partner to turn vision into results.
+        We believe noise doesn&apos;t build brands. Focus, direction, and a smart engine do.
       </TextReveal>
 
       <HowWeDoIt />

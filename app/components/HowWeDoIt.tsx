@@ -1,24 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 const steps = [
   {
     number: '01',
-    title: 'Smart Strategy',
-    description: 'We help brands cut through complexity and find their true focus. Every great move begins with clarity - understanding who you are, who you\'re speaking to, and what truly drives action.',
+    title: 'Clarity',
+    description: 'We strip away the corporate fluff until only the core business truth remains. If it isn\'t simple, it isn\'t ready',
     icon: '🧭',
   },
   {
     number: '02',
-    title: 'Creative That Connects',
-    description: 'We turn strategy into stories that move people - not just through visuals or words, but through meaning. From brand identities to campaigns that shape conversations, our creative work is built to resonate and inspire.',
+    title: 'Creativity',
+    description: 'We are storytellers at heart. We craft bold narratives and design that stand on their own, then use our in-house tech to make sure they travel further. It\'s art, amplified',
     icon: '💡',
   },
   {
     number: '03',
-    title: 'Tech That Delivers',
-    description: 'We blend creativity and technology to make marketing smarter, faster, and easier to scale. From AI-driven content systems to automated media operations, we help brands work efficiently without losing their human touch.',
+    title: 'Obsessive Performance',
+    description: 'Beautiful work means nothing if it doesn\'t convert. We are relentless about ROI, designing every asset to move the needle and proving its worth in real-time.',
     icon: '⚙️',
   },
 ];
@@ -34,11 +35,15 @@ export default function HowWeDoIt() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-6xl font-medium"
+              className="text-5xl md:text-6xl font-medium mb-12"
             >
-              How we make it{' '}
-              <span className="text-primary-600">happen.</span>
+              The Way We{' '}
+              <span className="text-primary-600">Work.</span>
             </motion.h2>
+
+            <TextReveal className="py-0 [&>div]:max-w-none [&_p]:text-2xl md:[&_p]:text-3xl [&_p]:text-neutral-600 [&_p]:leading-relaxed">
+              Marketing is sometimes magic. But success is mechanics. We don&apos;t leave your growth to chance. We back every creative spark with a rigorous system, replacing guesswork with evidence and noise with clear signals.
+            </TextReveal>
           </div>
 
           {/* Steps */}

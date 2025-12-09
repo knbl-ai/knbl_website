@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'KNBL - Outshine the noise. We make brands unforgettable',
   description: 'Creative marketing for ambitious brands. Strategy-driven creative collective that turns insights into impact.',
   keywords: ['creative agency', 'marketing', 'strategy', 'branding', 'design'],
+  icons: {
+    icon: '/images/logo/knbl.png',
+  },
 };
 
 export default function RootLayout({
