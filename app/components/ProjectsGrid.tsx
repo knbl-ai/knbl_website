@@ -2,7 +2,72 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+
+interface Project {
+  id: number;
+  image: string;
+  name: string;
+  alt: string;
+  delay?: number;
+}
+
+const projects: Project[] = [
+  { id: 1, image: '/images/projects/project-1.webp', name: 'Project 1', alt: 'Project 1', delay: 0 },
+  { id: 2, image: '/images/projects/project-2.webp', name: 'Project 2', alt: 'Project 2', delay: 0.1 },
+  { id: 3, image: '/images/projects/project-3.webp', name: 'Project 3', alt: 'Project 3', delay: 0.2 },
+  { id: 4, image: '/images/projects/project-4.webp', name: 'Project 4', alt: 'Project 4', delay: 0.3 },
+  { id: 5, image: '/images/projects/project-5.webp', name: 'Project 5', alt: 'Project 5', delay: 0.4 },
+  { id: 6, image: '/images/projects/project-6.webp', name: 'Project 6', alt: 'Project 6', delay: 0.5 },
+];
+
+function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: project.delay }}
+      className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
+    >
+      <Image
+        src={project.image}
+        alt={project.alt}
+        fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+      {/* Purple overlay on hover */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileHover={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute bottom-0 left-0 right-0 bg-primary-600 p-4 flex items-center justify-between"
+      >
+        <span className="text-white font-semibold text-lg">{project.name}</span>
+        <motion.div
+          className="group/button bg-white rounded-full flex items-center cursor-pointer overflow-hidden h-12 px-3"
+          initial={false}
+          whileHover="hover"
+          animate="rest"
+        >
+          <motion.span
+            variants={{
+              rest: { width: 0, opacity: 0, marginRight: 0 },
+              hover: { width: 'auto', opacity: 1, marginRight: 8 }
+            }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="text-primary-600 font-semibold text-sm whitespace-nowrap overflow-hidden"
+          >
+            View Case
+          </motion.span>
+          <ArrowRight className="w-6 h-6 text-primary-600 flex-shrink-0" />
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function ProjectsGrid() {
   return (
@@ -35,111 +100,24 @@ export default function ProjectsGrid() {
         <div className="space-y-4">
           {/* Top Row */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="md:col-span-4 h-[400px] rounded-3xl overflow-hidden cursor-pointer relative"
-            >
-              <Image
-                src="/images/projects/project-1.webp"
-                alt="Project 1"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-            </motion.div>
+            <div className="md:col-span-4">
+              <ProjectCard project={projects[0]} height="h-[400px]" />
+            </div>
 
             <div className="md:col-span-8 space-y-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
-              >
-                <Image
-                  src="/images/projects/project-2.webp"
-                  alt="Project 2"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 66vw"
-                />
-              </motion.div>
+              <ProjectCard project={projects[1]} height="h-[190px]" />
 
               <div className="grid grid-cols-2 gap-4">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
-                >
-                  <Image
-                    src="/images/projects/project-3.webp"
-                    alt="Project 3"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="h-[190px] rounded-3xl overflow-hidden cursor-pointer relative"
-                >
-                  <Image
-                    src="/images/projects/project-4.webp"
-                    alt="Project 4"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </motion.div>
+                <ProjectCard project={projects[2]} height="h-[190px]" />
+                <ProjectCard project={projects[3]} height="h-[190px]" />
               </div>
             </div>
           </div>
 
           {/* Bottom Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              whileHover={{ scale: 1.02 }}
-              className="h-[250px] rounded-3xl overflow-hidden cursor-pointer relative"
-            >
-              <Image
-                src="/images/projects/project-5.webp"
-                alt="Project 5"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-              className="h-[250px] rounded-3xl overflow-hidden cursor-pointer relative"
-            >
-              <Image
-                src="/images/projects/project-6.webp"
-                alt="Project 6"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </motion.div>
+            <ProjectCard project={projects[4]} height="h-[250px]" />
+            <ProjectCard project={projects[5]} height="h-[250px]" />
           </div>
         </div>
       </div>

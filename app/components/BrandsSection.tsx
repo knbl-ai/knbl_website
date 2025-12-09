@@ -1,10 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const brands = [
-  'Microsoft', 'Adobe', 'Intel', 'Xiaomi', 'Samsung', 'Google',
-  'Meta', 'Netflix', 'Spotify', 'Apple', 'Amazon', 'Tesla',
+  { name: 'El', logo: '/images/partners/el.png' },
+  { name: 'Ho', logo: '/images/partners/ho.png' },
+  { name: 'Raf', logo: '/images/partners/raf.png' },
+  { name: 'Reuth', logo: '/images/partners/reuth.png' },
+  { name: 'Rol', logo: '/images/partners/rol.png' },
+  { name: 'Xi', logo: '/images/partners/xi.png' },
 ];
 
 export default function BrandsSection() {
@@ -26,46 +31,30 @@ export default function BrandsSection() {
           </p>
         </motion.div>
 
-        {/* Brands Grid - Row 1 */}
+        {/* Brands Grid - Single Row */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="grid grid-cols-3 md:grid-cols-6 gap-8 mb-12"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
         >
-          {brands.slice(0, 6).map((brand, index) => (
+          {brands.map((brand, index) => (
             <motion.div
-              key={brand}
+              key={brand.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.1 }}
-              className="flex items-center justify-center h-20 text-white/40 hover:text-white transition-colors cursor-pointer"
+              className="flex items-center justify-center h-20 cursor-pointer grayscale hover:grayscale-0 transition-all"
             >
-              <div className="text-xl font-medium">{brand}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Brands Grid - Row 2 */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-3 md:grid-cols-6 gap-8"
-        >
-          {brands.slice(6).map((brand, index) => (
-            <motion.div
-              key={brand}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.1 }}
-              className="flex items-center justify-center h-20 text-white/40 hover:text-white transition-colors cursor-pointer"
-            >
-              <div className="text-xl font-medium">{brand}</div>
+              <Image
+                src={brand.logo}
+                alt={brand.name}
+                width={156}
+                height={78}
+                className="object-contain"
+              />
             </motion.div>
           ))}
         </motion.div>
