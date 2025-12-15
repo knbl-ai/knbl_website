@@ -17,7 +17,7 @@ export default function Navigation() {
   const [activeItem, setActiveItem] = useState('Home');
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
+    <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="container mx-auto px-6 md:px-24 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}

@@ -41,7 +41,7 @@ export default function HowWeDoIt() {
               <span className="text-primary-600">Work.</span>
             </motion.h2>
 
-            <TextReveal className="py-0 [&>div]:max-w-none [&_p]:text-2xl md:[&_p]:text-3xl [&_p]:text-neutral-600 [&_p]:leading-relaxed">
+            <TextReveal className="py-0 [&>div]:max-w-none [&_p]:text-xl md:[&_p]:text-2xl [&_p]:text-neutral-600 [&_p]:leading-relaxed [&_p]:justify-start [&_p]:text-left">
               Marketing is sometimes magic. But success is mechanics. We don&apos;t leave your growth to chance. We back every creative spark with a rigorous system, replacing guesswork with evidence and noise with clear signals.
             </TextReveal>
           </div>
@@ -55,7 +55,7 @@ export default function HowWeDoIt() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="relative bg-primary-600 rounded-3xl p-10 md:p-14 overflow-hidden"
+                className="relative bg-primary-600 rounded-3xl p-10 md:p-14 overflow-hidden aspect-square flex flex-col justify-center"
               >
                 {/* Large Number Background */}
                 <div className="absolute top-0 left-6 text-[200px] font-extralight text-primary-700 leading-none">

@@ -11,9 +11,19 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute top-[65%] right-[-10%] w-[424px] h-[483px] opacity-60"
+          animate={{
+            opacity: 1,
+            scale: [1, 1.1, 1],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{
+            opacity: { duration: 1 },
+            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 9, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute top-[30%] right-[-15%] w-[1100px] h-[1100px] opacity-60"
           style={{ rotate: '242deg' }}
         >
           <Image
@@ -26,9 +36,19 @@ export default function Hero() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="absolute top-[70%] left-[-4%] w-[477px] h-[475px] opacity-60"
+          animate={{
+            opacity: 1,
+            scale: [1, 1.15, 1],
+            x: [0, -20, 0],
+            y: [0, 25, 0],
+          }}
+          transition={{
+            opacity: { duration: 1, delay: 0.2 },
+            scale: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: 12, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 11, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute top-[40%] left-[-15%] w-[1200px] h-[1200px] opacity-60"
           style={{ rotate: '314deg' }}
         >
           <Image
@@ -41,9 +61,17 @@ export default function Hero() {
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="absolute top-[63%] left-1/2 -translate-x-1/2 w-[588px] h-[587px] opacity-60"
+          animate={{
+            opacity: 1,
+            scale: [1, 1.1, 1],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            opacity: { duration: 1, delay: 0.4 },
+            scale: { duration: 9, repeat: Infinity, ease: "easeInOut" },
+            y: { duration: 13, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] opacity-60"
           style={{ rotate: '41deg' }}
         >
           <Image
@@ -73,10 +101,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.1]">
             <span className="block">Outshine the noise.</span>
             <span className="inline-block">
-              <span className="text-primary-600">We make brands </span>
+              <span className="text-[#5B4DFF]">We make brands </span>
               <span>unforgettable</span>
             </span>
           </h1>
@@ -111,7 +139,7 @@ export default function Hero() {
             ease: "easeInOut",
           }}
         >
-          <div className="relative w-[180px] h-[180px]">
+          <div className="relative w-[230px] h-[230px]">
             <Image
               src="/images/hero/floating-badge-1.webp"
               alt="20 years of experience"
@@ -230,6 +258,44 @@ export default function Hero() {
           <p className="text-sm font-normal text-black">Creative teams in TLV</p>
         </motion.div>
       </motion.div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          x: [0, 15, 0],
+          y: [0, -10, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.5 },
+          scale: { duration: 0.6, delay: 0.5 },
+          default: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }
+        }}
+        className="absolute top-[28%] left-[53%] w-8 h-8 bg-[#5B4DFF] rounded-full hidden lg:block"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          x: [0, -10, 0],
+          y: [0, 15, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.7 },
+          scale: { duration: 0.6, delay: 0.7 },
+          default: {
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }
+        }}
+        className="absolute bottom-[35%] left-[18%] w-5 h-5 bg-[#5B4DFF] rounded-full hidden lg:block"
+      />
     </section>
   );
 }
