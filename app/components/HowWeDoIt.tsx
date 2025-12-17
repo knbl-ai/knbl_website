@@ -2,27 +2,48 @@
 
 import { motion } from 'framer-motion';
 import { TextReveal } from '@/components/ui/text-reveal';
+import Lottie from 'lottie-react';
+import { useEffect, useState } from 'react';
 
 const steps = [
   {
     number: '01',
     title: 'Clarity',
     description: 'We strip away the corporate fluff until only the core business truth remains. If it isn\'t simple, it isn\'t ready',
-    icon: '🧭',
+    icon: '/images/ianimatedIcons/compass.json',
   },
   {
     number: '02',
     title: 'Creativity',
     description: 'We are storytellers at heart. We craft bold narratives and design that stand on their own, then use our in-house tech to make sure they travel further. It\'s art, amplified',
-    icon: '💡',
+    icon: '/images/ianimatedIcons/light-bulb.json',
   },
   {
     number: '03',
     title: 'Obsessive Performance',
     description: 'Beautiful work means nothing if it doesn\'t convert. We are relentless about ROI, designing every asset to move the needle and proving its worth in real-time.',
-    icon: '⚙️',
+    icon: '/images/ianimatedIcons/simulation.json',
   },
 ];
+
+const AnimatedIcon = ({ src }: { src: string }) => {
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    fetch(src)
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error('Failed to load lottie:', err));
+  }, [src]);
+
+  if (!animationData) return <div className="h-20 w-20" />;
+
+  return (
+    <div className="w-20 h-20">
+      <Lottie animationData={animationData} loop={true} />
+    </div>
+  );
+};
 
 export default function HowWeDoIt() {
   return (
@@ -55,7 +76,7 @@ export default function HowWeDoIt() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="relative bg-primary-600 rounded-3xl p-10 md:p-14 overflow-hidden aspect-square flex flex-col justify-center"
+                className="relative bg-primary-600 rounded-3xl p-10 md:p-14 overflow-hidden aspect-square flex flex-col justify-end"
               >
                 {/* Large Number Background */}
                 <div className="absolute top-0 left-6 text-[200px] font-extralight text-primary-700 leading-none">
@@ -64,7 +85,7 @@ export default function HowWeDoIt() {
 
                 {/* Content */}
                 <div className="relative z-10 space-y-4">
-                  <div className="text-6xl">{step.icon}</div>
+                  <AnimatedIcon src={step.icon} />
                   <h3 className="text-4xl font-medium text-white">{step.title}</h3>
                   <p className="text-xl text-white/90 leading-normal">{step.description}</p>
                 </div>
