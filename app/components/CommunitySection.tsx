@@ -12,7 +12,7 @@ export default function CommunitySection() {
   const [isNextHovered, setIsNextHovered] = useState(false);
 
   return (
-    <section className="relative bg-gradient-to-b from-white from-[5%] via-primary-600 via-[25%] to-primary-600">
+    <section className="relative bg-gradient-to-b from-white from-[5%] via-primary-600 via-[45%] to-primary-600">
       {/* Text Section */}
       <div className="pt-20 pb-12 px-6 md:px-24">
         <TextReveal className="py-0 [&>div]:max-w-4xl [&_p]:text-[24px] [&_p]:leading-relaxed">
@@ -97,7 +97,7 @@ export default function CommunitySection() {
                 </div>
 
                 {/* Navigation Arrows - Glass Container */}
-                <div className="absolute bottom-0 right-0 p-10 bg-primary-600 backdrop-blur-xl rounded-tl-[48px] flex gap-4 z-10">
+                <div className="absolute bottom-0 right-0 pt-9 pb-3 px-10 bg-primary-600 backdrop-blur-xl rounded-tl-[48px] flex gap-4 z-10">
                   {/* Previous Button */}
                   <motion.button
                     onMouseEnter={() => setIsPrevHovered(true)}

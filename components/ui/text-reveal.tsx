@@ -14,7 +14,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className, ...props 
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start 0.9", "start 0.25"],
+    offset: ["start 0.6", "start 0.2"],
   });
 
   if (typeof children !== "string") {
