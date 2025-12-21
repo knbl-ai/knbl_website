@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -50,7 +50,7 @@ export default function ServicesGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-medium text-white mb-8 max-w-4xl"
+            className="text-[56px] font-medium text-white mb-8 max-w-4xl tracking-[-0.03em]"
           >
             From Insight <span className="text-primary-600">to Impact</span>
           </motion.h2>
@@ -60,7 +60,7 @@ export default function ServicesGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl md:text-3xl text-neutral-300 font-light max-w-3xl mt-8"
+            className="text-[24px] text-neutral-300 font-light max-w-3xl mt-8"
           >
             Great results aren&apos;t accidental. They are engineered
           </motion.p>
@@ -75,7 +75,7 @@ export default function ServicesGrid() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ type: "spring", stiffness: 200, damping: 25, mass: 1 }}
                 onClick={() => handleCardClick(index)}
                 layout
                 animate={{
@@ -94,11 +94,19 @@ export default function ServicesGrid() {
                   />
                 </div>
 
-                {/* Gradient Overlay - only for contrast */}
+                {/* Gradient Overlay - Standard */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
+                {/* Gradient Overlay - Active Glow */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isExpanded ? 1 : 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0 bg-gradient-to-t from-[#5B4DFF]/90 via-[#5B4DFF]/20 to-transparent"
+                />
+
                 {/* Content Container */}
-                <div className="relative h-full p-8 flex flex-col justify-between">
+                <div className="relative h-full p-8 flex flex-col justify-between z-10">
                   {/* Arrow Icon */}
                   <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <motion.svg
@@ -113,40 +121,42 @@ export default function ServicesGrid() {
                     </motion.svg>
                   </div>
 
-                  {/* Content - Expanded */}
+                  {/* Expanded Content Area */}
                   {isExpanded && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="space-y-3"
-                    >
-                      <h3 className="text-5xl font-medium text-white">
+                    <div className="space-y-3">
+                      <motion.h3
+                        layoutId={`title-${service.title}`}
+                        className="text-5xl font-medium text-white origin-left"
+                        animate={{ rotate: 0 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                      >
                         {service.title}
-                      </h3>
-                      <p className="text-white text-lg">{service.description}</p>
-                      <p className="text-white/90 text-base">
-                        {service.expandedContent}
-                      </p>
-                    </motion.div>
+                      </motion.h3>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                      >
+                        <p className="text-white text-lg">{service.description}</p>
+                        <p className="text-white/90 text-base">
+                          {service.expandedContent}
+                        </p>
+                      </motion.div>
+                    </div>
                   )}
 
-                  {/* Content - Closed (Vertical) */}
+                  {/* Collapsed Title Overlay - Rendered when closed */}
                   {!isExpanded && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                      style={{
-                        writingMode: 'vertical-rl',
-                        textOrientation: 'mixed',
-                      }}
-                    >
-                      <h3 className="text-4xl font-medium text-white whitespace-nowrap">
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <motion.h3
+                        layoutId={`title-${service.title}`}
+                        className="text-4xl font-medium text-white whitespace-nowrap"
+                        animate={{ rotate: 90 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                      >
                         {service.title}
-                      </h3>
-                    </motion.div>
+                      </motion.h3>
+                    </div>
                   )}
                 </div>
               </motion.div>

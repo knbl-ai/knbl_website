@@ -17,16 +17,22 @@ export default function HomePage() {
       <Hero />
 
       {/* About Section */}
-      <TextReveal className="py-44">
+      <TextReveal id="about" className="py-44">
         We are KNBL. Born in storytelling. Amplified by technology. We don&apos;t just craft the message; we build the engine behind it. By fusing strategy and content with in-house AI and code, we turn great stories into holistic, high-performance solutions.
       </TextReveal>
 
       <ServicesGrid />
 
       {/* Second About Section */}
-      <TextReveal className="py-44 [&>div]:max-w-5xl">
-        We believe noise doesn&apos;t build brands. Focus, direction, and a smart engine do.
-      </TextReveal>
+      {/* Second About Section */}
+      <div className="py-44 flex flex-col items-center justify-center">
+        <TextReveal className="py-0 pb-2 [&>div]:max-w-5xl">
+          We believe noise doesn&apos;t build brands.
+        </TextReveal>
+        <TextReveal className="py-0 pt-2 [&>div]:max-w-5xl">
+          Focus, direction, and a smart engine do.
+        </TextReveal>
+      </div>
 
       <HowWeDoIt />
       <ProjectsGrid />

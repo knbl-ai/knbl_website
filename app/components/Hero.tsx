@@ -101,7 +101,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-medium leading-[1.1] tracking-[-0.04em]">
             <span className="block">Outshine the noise.</span>
             <span className="inline-block">
               <span className="text-[#5B4DFF]">We make brands </span>
@@ -115,9 +115,11 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-24"
+          className="mt-24 flex justify-center"
         >
-          <ScrollIndicator />
+          <ScrollIndicator onClick={() => {
+            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+          }} />
         </motion.div>
       </div>
 
@@ -130,11 +132,11 @@ export default function Hero() {
       >
         <motion.div
           animate={{
-            x: [0, 15, 0],
-            y: [0, -20, 0],
+            x: [0, 35, -20, 0],
+            y: [0, -45, 20, 0],
           }}
           transition={{
-            duration: 6,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -150,16 +152,16 @@ export default function Hero() {
         </motion.div>
         <motion.div
           animate={{
-            x: [0, 12, 0],
-            y: [0, -15, 0],
+            x: [0, -40, 45, 0],
+            y: [0, 30, -25, 0],
           }}
           transition={{
-            duration: 5.5,
+            duration: 15,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 0.3,
+            delay: 0.5,
           }}
-          className="absolute top-[60%] left-[15%] bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
+          className="absolute top-[85%] left-[15%] bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
         >
           <p className="text-sm font-normal text-black">20 years of experience</p>
         </motion.div>
@@ -173,11 +175,11 @@ export default function Hero() {
       >
         <motion.div
           animate={{
-            x: [0, -18, 0],
-            y: [0, 15, 0],
+            x: [0, -40, 25, 0],
+            y: [0, 30, -15, 0],
           }}
           transition={{
-            duration: 7,
+            duration: 14,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -193,14 +195,14 @@ export default function Hero() {
         </motion.div>
         <motion.div
           animate={{
-            x: [0, -15, 0],
-            y: [0, 12, 0],
+            x: [0, 30, -20, 0],
+            y: [0, -15, 25, 0],
           }}
           transition={{
-            duration: 6.5,
+            duration: 11,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 0.4,
+            delay: 0.2,
           }}
           className="absolute bottom-[-30px] right-0 bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
         >
@@ -216,11 +218,11 @@ export default function Hero() {
       >
         <motion.div
           animate={{
-            x: [0, -20, 0],
-            y: [0, -10, 0],
+            x: [0, -30, 15, 0],
+            y: [0, -40, 20, 0],
           }}
           transition={{
-            duration: 5,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -244,14 +246,14 @@ export default function Hero() {
       >
         <motion.div
           animate={{
-            x: [0, 18, 0],
-            y: [0, 10, 0],
+            x: [0, 40, -15, 0],
+            y: [0, 35, -10, 0],
           }}
           transition={{
-            duration: 6,
+            duration: 13,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 0.2,
+            delay: 0.4,
           }}
           className="bg-white/50 backdrop-blur-sm px-5 py-2 rounded-full whitespace-nowrap"
         >
@@ -263,14 +265,14 @@ export default function Hero() {
         animate={{
           opacity: 1,
           scale: 1,
-          x: [0, 15, 0],
-          y: [0, -10, 0],
+          x: [0, 25, -30, 0],
+          y: [0, -35, 15, 0],
         }}
         transition={{
           opacity: { duration: 0.6, delay: 0.5 },
           scale: { duration: 0.6, delay: 0.5 },
           default: {
-            duration: 4,
+            duration: 9,
             repeat: Infinity,
             ease: "easeInOut",
           }
@@ -282,14 +284,14 @@ export default function Hero() {
         animate={{
           opacity: 1,
           scale: 1,
-          x: [0, -10, 0],
-          y: [0, 15, 0],
+          x: [0, -25, 20, 0],
+          y: [0, 30, -15, 0],
         }}
         transition={{
           opacity: { duration: 0.6, delay: 0.7 },
           scale: { duration: 0.6, delay: 0.7 },
           default: {
-            duration: 5,
+            duration: 11,
             repeat: Infinity,
             ease: "easeInOut",
           }

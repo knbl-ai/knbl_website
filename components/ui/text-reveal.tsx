@@ -10,7 +10,7 @@ export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
   className?: string;
 }
 
-export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
+export const TextReveal: FC<TextRevealProps> = ({ children, className, ...props }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -24,7 +24,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const words = children.split(" ");
 
   return (
-    <div ref={targetRef} className={cn("relative z-0 pt-12 pb-0", className)}>
+    <div ref={targetRef} className={cn("relative z-0 pt-12 pb-0", className)} {...props}>
       <div className="mx-auto max-w-[680px] px-4">
         <p className="flex flex-wrap justify-center text-center text-2xl leading-8 tracking-tight">
           {words.map((word, i) => {

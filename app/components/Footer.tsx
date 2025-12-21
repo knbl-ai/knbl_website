@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
   const socialLinks = [
     {
@@ -61,7 +63,7 @@ export default function Footer() {
               {socialLinks.map((social) => (
                 <button
                   key={social.name}
-                  className="w-14 h-14 bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors"
+                  className="w-[52px] h-[52px] bg-primary-600 rounded-full flex items-center justify-center hover:bg-primary-700 transition-colors"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -107,15 +109,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pt-8 border-t border-neutral-900">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           {/* KNBL Logo */}
-          <div className="flex items-baseline">
-            <h2 className="text-[120px] md:text-[180px] font-bold leading-none tracking-tight">KNBL</h2>
-            <div className="w-8 h-8 md:w-12 md:h-12 bg-primary-600 rounded-full ml-2 md:ml-3"></div>
+          <div className="w-full max-w-[607px]">
+            <Image
+              src="/images/logo/knbl-footer-graphic.svg"
+              alt="KNBL Logo"
+              width={607}
+              height={166}
+              className="w-full h-auto"
+            />
           </div>
 
           {/* Copyright */}
-          <p className="text-neutral-400 text-sm md:text-base">© 2025 KNBL. All rights reserved.</p>
+          <p className="text-neutral-400 text-[12px]">© 2025 KNBL. All rights reserved.</p>
         </div>
       </div>
     </footer>

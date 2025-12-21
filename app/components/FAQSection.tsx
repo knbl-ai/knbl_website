@@ -35,21 +35,21 @@ interface FAQCardProps {
 
 function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
   return (
-    <div className="bg-indigo-50 rounded-3xl p-8 md:p-12">
+    <div className="bg-indigo-50 rounded-[32px] py-6 px-8">
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 text-left"
+        className="w-full flex items-center gap-6 text-left"
       >
-        <h3 className="text-xl font-medium">{question}</h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-11 h-11 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0"
+          className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0"
         >
           <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </motion.div>
+        <h3 className="text-[18px] font-medium text-black leading-tight">{question}</h3>
       </button>
 
       <AnimatePresence>
@@ -61,7 +61,13 @@ function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <p className="mt-6 text-neutral-400 leading-normal">{answer}</p>
+            <div className="flex gap-6">
+              {/* Spacer matching the icon width */}
+              <div className="w-10 flex-shrink-0" />
+              <p className="mt-4 text-[18px] text-neutral-500 leading-relaxed font-normal">
+                {answer}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
