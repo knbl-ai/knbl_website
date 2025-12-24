@@ -5,11 +5,65 @@ import Image from 'next/image';
 import { TextReveal } from '@/components/ui/text-reveal';
 import { useState } from 'react';
 
+const videos = [
+  {
+    id: 'lhzrwPA9wlQ',
+    title: 'KNBL Masters | Live Talk',
+    description: 'Ravit hosts Doverat Raphael & Mayan Malkin Aligal for a deep dive into marketing mastery.',
+    duration: '42 min'
+  },
+  {
+    id: 'a5DMCdCzJ58',
+    title: 'Marketing Strategy',
+    description: 'Building sustainable marketing strategies for long-term growth and impact.',
+    duration: '38 min'
+  },
+  {
+    id: 'GgzMXEOmGsU',
+    title: 'Brand Growth',
+    description: 'Exploring how brands can scale while maintaining their core identity and values.',
+    duration: '25 min'
+  },
+  {
+    id: 'JYJ5Xfarhww',
+    title: 'Digital Innovation',
+    description: 'The latest trends in digital marketing and how they are transforming the industry.',
+    duration: '35 min'
+  },
+  {
+    id: '3MKDTJsG30I',
+    title: 'Market Analysis',
+    description: 'Data-driven insights and analysis techniques for modern marketing professionals.',
+    duration: '48 min'
+  },
+  {
+    id: 'toRkgVwuerk',
+    title: 'KNBL Masters',
+    description: "Meet the minds shaping tomorrow's marketing. Real talks, shared knowledge, and ideas that move brands forward.",
+    duration: '50 min'
+  }
+];
+
 export default function CommunitySection() {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPrevHovered, setIsPrevHovered] = useState(false);
   const [isNextHovered, setIsNextHovered] = useState(false);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const currentVideo = videos[currentVideoIndex];
+
+  const handleNext = () => {
+    setCurrentVideoIndex((prev: number) => (prev + 1) % videos.length);
+    setIsPlaying(false);
+    setIsNextHovered(false);
+  };
+
+  const handlePrev = () => {
+    setCurrentVideoIndex((prev: number) => (prev - 1 + videos.length) % videos.length);
+    setIsPlaying(false);
+    setIsPrevHovered(false);
+  };
 
   return (
     <section className="relative bg-gradient-to-b from-white from-[5%] via-primary-600 via-[45%] to-primary-600">
@@ -33,8 +87,8 @@ export default function CommunitySection() {
             {isPlaying ? (
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/toRkgVwuerk?autoplay=1"
-                title="YouTube video player"
+                src={`https://www.youtube.com/embed/${currentVideo.id}?autoplay=1`}
+                title={currentVideo.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
@@ -42,8 +96,8 @@ export default function CommunitySection() {
               <>
                 {/* Background Video Preview Image */}
                 <Image
-                  src="https://img.youtube.com/vi/toRkgVwuerk/maxresdefault.jpg"
-                  alt="KNBL Masters"
+                  src={`https://img.youtube.com/vi/${currentVideo.id}/maxresdefault.jpg`}
+                  alt={currentVideo.title}
                   fill
                   className="object-cover"
                   sizes="90vw"
@@ -57,10 +111,10 @@ export default function CommunitySection() {
                 <div className="absolute bottom-6 left-6 max-w-lg">
                   <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 space-y-6">
                     <div className="space-y-2">
-                      <p className="text-neutral-300 text-sm">50 min</p>
-                      <h3 className="text-3xl md:text-4xl font-medium text-white tracking-tighter">KNBL Masters</h3>
+                      <p className="text-neutral-300 text-sm">{currentVideo.duration}</p>
+                      <h3 className="text-3xl md:text-4xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
                       <p className="text-neutral-200 text-base md:text-lg leading-normal">
-                        Meet the minds shaping tomorrow&apos;s marketing. Real talks, shared knowledge, and ideas that move brands forward.
+                        {currentVideo.description}
                       </p>
                     </div>
 
@@ -96,96 +150,100 @@ export default function CommunitySection() {
                   </div>
                 </div>
 
-                {/* Navigation Arrows - Glass Container */}
-                <div className="absolute bottom-0 right-0 pt-9 pb-3 px-10 bg-primary-600 backdrop-blur-xl rounded-tl-[48px] flex gap-4 z-10">
-                  {/* Previous Button */}
-                  <motion.button
-                    onMouseEnter={() => setIsPrevHovered(true)}
-                    onMouseLeave={() => setIsPrevHovered(false)}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
-                  >
-                    <div className="relative w-6 h-6 scale-x-[-1]">
-                      {/* Arrow 1 */}
-                      <motion.div
-                        animate={{ x: isPrevHovered ? -120 : 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                      {/* Arrow 2 */}
-                      <motion.div
-                        initial={{ x: 60 }}
-                        animate={{ x: isPrevHovered ? -60 : 60 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                      {/* Arrow 3 */}
-                      <motion.div
-                        initial={{ x: 120 }}
-                        animate={{ x: isPrevHovered ? 0 : 120 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                    </div>
-                  </motion.button>
-
-                  {/* Next Button */}
-                  <motion.button
-                    onMouseEnter={() => setIsNextHovered(true)}
-                    onMouseLeave={() => setIsNextHovered(false)}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
-                  >
-                    <div className="relative w-6 h-6">
-                      {/* Arrow 1 */}
-                      <motion.div
-                        animate={{ x: isNextHovered ? -120 : 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                      {/* Arrow 2 */}
-                      <motion.div
-                        initial={{ x: 60 }}
-                        animate={{ x: isNextHovered ? -60 : 60 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                      {/* Arrow 3 */}
-                      <motion.div
-                        initial={{ x: 120 }}
-                        animate={{ x: isNextHovered ? 0 : 120 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                      </motion.div>
-                    </div>
-                  </motion.button>
-                </div>
               </>
             )}
+
+            {/* Navigation Arrows - Glass Container */}
+            <div className={`absolute bottom-0 right-0 pt-9 pb-3 px-10 bg-primary-600 backdrop-blur-xl rounded-tl-[48px] flex gap-4 z-20 transition-all duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
+              {/* Previous Button */}
+              <motion.button
+                onMouseEnter={() => setIsPrevHovered(true)}
+                onMouseLeave={() => setIsPrevHovered(false)}
+                onClick={handlePrev}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
+              >
+                <div className="relative w-6 h-6 scale-x-[-1]">
+                  {/* Arrow 1 */}
+                  <motion.div
+                    animate={{ x: isPrevHovered ? -120 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                  {/* Arrow 2 */}
+                  <motion.div
+                    initial={{ x: 60 }}
+                    animate={{ x: isPrevHovered ? -60 : 60 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                  {/* Arrow 3 */}
+                  <motion.div
+                    initial={{ x: 120 }}
+                    animate={{ x: isPrevHovered ? 0 : 120 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                </div>
+              </motion.button>
+
+              {/* Next Button */}
+              <motion.button
+                onMouseEnter={() => setIsNextHovered(true)}
+                onMouseLeave={() => setIsNextHovered(false)}
+                onClick={handleNext}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
+              >
+                <div className="relative w-6 h-6">
+                  {/* Arrow 1 */}
+                  <motion.div
+                    animate={{ x: isNextHovered ? -120 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                  {/* Arrow 2 */}
+                  <motion.div
+                    initial={{ x: 60 }}
+                    animate={{ x: isNextHovered ? -60 : 60 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                  {/* Arrow 3 */}
+                  <motion.div
+                    initial={{ x: 120 }}
+                    animate={{ x: isNextHovered ? 0 : 120 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </motion.div>
+                </div>
+              </motion.button>
+            </div>
+
           </motion.div>
         </div>
       </div>
