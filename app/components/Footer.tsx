@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   const socialLinks = [
@@ -44,7 +45,13 @@ export default function Footer() {
     },
   ];
 
-  const exploreLinks = ['Home', 'About', 'Projects', 'FAQ', 'Contact'];
+  const exploreLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Work', href: '/work' },
+    { label: 'Agency', href: '/agency' },
+    { label: 'Insights', href: '/insights' },
+    { label: 'Contact', href: '/#contact' },
+  ];
   const legalLinks = ['Terms of use', 'Privacy policy', 'Cookies'];
 
   return (
@@ -79,13 +86,13 @@ export default function Footer() {
               <h3 className="text-white font-normal text-base">Explore</h3>
               <div className="flex flex-col gap-3">
                 {exploreLinks.map((link) => (
-                  <a
-                    key={link}
-                    href={`#${link.toLowerCase()}`}
+                  <Link
+                    key={link.label}
+                    href={link.href}
                     className="text-neutral-400 text-base font-medium hover:text-white transition-colors"
                   >
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 ))}
               </div>
             </div>

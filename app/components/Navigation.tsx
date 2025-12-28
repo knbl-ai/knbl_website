@@ -1,27 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 const menuItems = [
-  { label: 'Home', href: '#' },
-  { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
-  { label: 'Insights', href: '#insights' },
-  { label: 'Agency', href: '#agency' },
+  { label: 'Home', href: '/' },
+  { label: 'Work', href: '/work' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Agency', href: '/agency' },
 ];
 
 export default function Navigation() {
+  const pathname = usePathname();
   const [activeItem, setActiveItem] = useState('Home');
+
+  // Update active item based on current pathname
+  useEffect(() => {
+    const currentItem = menuItems.find((item) => {
+      if (item.href === '/') return pathname === '/';
+      if (item.href.startsWith('/#')) return pathname === '/';
+      return pathname.startsWith(item.href);
+    });
+    if (currentItem) {
+      setActiveItem(currentItem.label);
+    }
+  }, [pathname]);
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="container mx-auto px-6 md:px-24 py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link href="/" className="flex items-center">
             <div className="relative w-[108px] h-[30px]">
               <Image
                 src="/images/logo/knbl-logo.svg"
@@ -31,12 +46,12 @@ export default function Navigation() {
                 priority
               />
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 onClick={() => setActiveItem(item.label)}
@@ -50,7 +65,7 @@ export default function Navigation() {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-              </a>
+              </Link>
             ))}
 
             {/* Let's Talk Button */}
