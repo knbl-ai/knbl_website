@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import Tag from '@/components/ui/Tag';
 
 const blogs = [
@@ -12,6 +13,7 @@ const blogs = [
     date: 'Oct 14, 2025',
     category: 'AI',
     image: '/images/blog/blog-ai.webp',
+    slug: 'how-ai-is-redefining-brand-creativity',
   },
   {
     title: 'The End of "One-Size-Fits-All" Marketing',
@@ -19,6 +21,7 @@ const blogs = [
     date: 'Sep 28, 2025',
     category: 'Data',
     image: '/images/blog/blog-data.webp',
+    slug: 'the-rise-of-micro-communities',
   },
   {
     title: 'When Trends Become Strategy',
@@ -26,6 +29,7 @@ const blogs = [
     date: 'Aug 19, 2025',
     category: 'Culture',
     image: '/images/blog/blog-culture.webp',
+    slug: 'data-driven-storytelling',
   },
   // Row 2
   {
@@ -34,6 +38,7 @@ const blogs = [
     date: 'Jul 15, 2025',
     category: 'Content',
     image: '/images/blog/blog-ai.webp',
+    slug: 'how-ai-is-redefining-brand-creativity',
   },
   {
     title: 'Breaking Through the Noise',
@@ -41,6 +46,7 @@ const blogs = [
     date: 'Jun 22, 2025',
     category: 'Disruption',
     image: '/images/blog/blog-data.webp',
+    slug: 'the-rise-of-micro-communities',
   },
   {
     title: 'Innovation in Brand Strategy',
@@ -48,6 +54,7 @@ const blogs = [
     date: 'May 18, 2025',
     category: 'Innovation',
     image: '/images/blog/blog-culture.webp',
+    slug: 'data-driven-storytelling',
   },
   // Row 3
   {
@@ -56,6 +63,7 @@ const blogs = [
     date: 'Apr 10, 2025',
     category: 'Data',
     image: '/images/blog/blog-data.webp',
+    slug: 'how-ai-is-redefining-brand-creativity',
   },
   {
     title: 'Building Cultural Relevance',
@@ -63,6 +71,7 @@ const blogs = [
     date: 'Mar 05, 2025',
     category: 'Culture',
     image: '/images/blog/blog-culture.webp',
+    slug: 'the-rise-of-micro-communities',
   },
   {
     title: 'AI and the Creative Process',
@@ -70,6 +79,7 @@ const blogs = [
     date: 'Feb 12, 2025',
     category: 'AI',
     image: '/images/blog/blog-ai.webp',
+    slug: 'data-driven-storytelling',
   },
 ];
 
@@ -77,15 +87,16 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out"
-    >
+    <Link href={`/insights/${blog.slug}`}>
+      <motion.article
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.05 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out"
+      >
       <div className="space-y-6">
         {/* Image */}
         <div className="relative h-64 overflow-hidden rounded-[14px] group-hover:rounded-[24px] transition-all duration-500 ease-in-out">
@@ -148,7 +159,8 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
           </div>
         </div>
       </div>
-    </motion.article>
+      </motion.article>
+    </Link>
   );
 };
 

@@ -69,11 +69,13 @@ export default function Navigation() {
             ))}
 
             {/* Let's Talk Button */}
-            <InteractiveHoverButton
-              className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium"
-            >
-              Let&apos;s Talk
-            </InteractiveHoverButton>
+            <Link href="/contact">
+              <InteractiveHoverButton
+                className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium"
+              >
+                Let&apos;s Talk
+              </InteractiveHoverButton>
+            </Link>
           </div>
         </div>
       </div>

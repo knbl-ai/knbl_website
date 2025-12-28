@@ -8,13 +8,14 @@ import { cn } from "@/lib/utils";
 export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
   children: string;
   className?: string;
+  startEarly?: boolean;
 }
 
-export const TextReveal: FC<TextRevealProps> = ({ children, className, ...props }) => {
+export const TextReveal: FC<TextRevealProps> = ({ children, className, startEarly = false, ...props }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start 0.6", "start 0.2"],
+    offset: startEarly ? ["end 0.2", "start 0"] : ["start 0.6", "start 0.2"],
   });
 
   if (typeof children !== "string") {

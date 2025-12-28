@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 export default function AboutHero() {
   return (
@@ -25,15 +26,10 @@ export default function AboutHero() {
           </motion.h1>
         </div>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-neutral-300 text-xl md:text-2xl text-center max-w-3xl mx-auto leading-relaxed"
-        >
+        {/* Description with Text Reveal Animation */}
+        <TextReveal startEarly className="py-0 [&>div]:max-w-3xl [&>div]:mx-auto [&_p]:text-xl md:[&_p]:text-2xl [&_p]:text-neutral-300 [&_p]:leading-relaxed [&_p]:text-center [&_p]:justify-center">
           KNBL is a performance driven digital agency helping brands grow through strategy, creative content and data based marketing. We combine smart media, strong creative and fast execution to bring brands real results in real time.
-        </motion.p>
+        </TextReveal>
       </div>
     </section>
   );
