@@ -35,13 +35,11 @@ const projects: Record<string, {
       {
         title: 'Brand Collection 2025',
         type: 'video',
-        videoThumbnail: '/images/projects/project-1.webp',
         videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
       },
       {
         title: 'Family & Strength Campaign',
         type: 'video',
-        videoThumbnail: '/images/projects/project-2.webp',
         videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176453/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4',
       },
     ],
@@ -99,7 +97,6 @@ const projects: Record<string, {
       {
         title: 'Winter 2025',
         type: 'video',
-        videoThumbnail: '/images/projects/project-6.webp',
         videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
       },
     ],
@@ -265,9 +262,10 @@ function VideoPlayer({ url, thumbnail, title }: { url: string; thumbnail: string
     <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-100">
       <video
         ref={videoRef}
-        src={url}
+        src={`${url}#t=0.001`}
         className="w-full h-full object-cover"
         poster={thumbnail}
+        preload="metadata"
         onClick={togglePlay}
         onEnded={() => setIsPlaying(false)}
       />
