@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
@@ -9,63 +10,66 @@ interface Project {
   id: number;
   image: string;
   name: string;
+  slug: string;
   alt: string;
   delay?: number;
 }
 
 const projects: Project[] = [
-  { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', alt: 'H&O', delay: 0 },
-  { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', alt: 'Electra', delay: 0.1 },
-  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', alt: 'Roladin', delay: 0.2 },
-  { id: 4, image: '/images/projects/project-4.webp', name: 'Eden', alt: 'Eden', delay: 0.3 },
-  { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', alt: 'Rafael', delay: 0.4 },
-  { id: 6, image: '/images/projects/project-6.webp', name: 'On', alt: 'On', delay: 0.5 },
+  { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', slug: 'ho-brands', alt: 'H&O', delay: 0 },
+  { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', slug: 'nova-fashion', alt: 'Electra', delay: 0.1 },
+  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', slug: 'tech-startup', alt: 'Roladin', delay: 0.2 },
+  { id: 4, image: '/images/projects/project-4.webp', name: 'Eden', slug: 'eden', alt: 'Eden', delay: 0.3 },
+  { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', slug: 'rafael', alt: 'Rafael', delay: 0.4 },
+  { id: 6, image: '/images/projects/project-6.webp', name: "Carter's", slug: 'carters', alt: "Carter's", delay: 0.5 },
 ];
 
 function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: project.delay }}
-      className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
-    >
-      <Image
-        src={project.image}
-        alt={project.alt}
-        fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
-      />
-      {/* Purple overlay on hover */}
+    <Link href={`/work/${project.slug}`}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileHover={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className="absolute bottom-0 left-0 right-0 bg-primary-600 p-4 flex items-center justify-between"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: project.delay }}
+        className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
       >
-        <span className="text-white font-semibold text-lg">{project.name}</span>
+        <Image
+          src={project.image}
+          alt={project.alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        {/* Purple overlay on hover */}
         <motion.div
-          className="group/button bg-white rounded-full flex items-center cursor-pointer overflow-hidden h-12 px-3"
-          initial={false}
-          whileHover="hover"
-          animate="rest"
+          initial={{ opacity: 0, y: 20 }}
+          whileHover={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute bottom-0 left-0 right-0 bg-primary-600 p-4 flex items-center justify-between"
         >
-          <motion.span
-            variants={{
-              rest: { width: 0, opacity: 0, marginRight: 0 },
-              hover: { width: 'auto', opacity: 1, marginRight: 8 }
-            }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="text-primary-600 font-semibold text-sm whitespace-nowrap overflow-hidden"
+          <span className="text-white font-semibold text-lg">{project.name}</span>
+          <motion.div
+            className="group/button bg-white rounded-full flex items-center cursor-pointer overflow-hidden h-12 px-3"
+            initial={false}
+            whileHover="hover"
+            animate="rest"
           >
-            View Case
-          </motion.span>
-          <ArrowRight className="w-6 h-6 text-primary-600 flex-shrink-0" />
+            <motion.span
+              variants={{
+                rest: { width: 0, opacity: 0, marginRight: 0 },
+                hover: { width: 'auto', opacity: 1, marginRight: 8 }
+              }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="text-primary-600 font-semibold text-sm whitespace-nowrap overflow-hidden"
+            >
+              View Case
+            </motion.span>
+            <ArrowRight className="w-6 h-6 text-primary-600 flex-shrink-0" />
+          </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 }
 

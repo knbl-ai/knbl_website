@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { Play } from 'lucide-react';
@@ -24,7 +25,7 @@ const projects: Record<string, {
   'ho-brands': {
     title: 'H&O Brands Collection',
     logo: '/images/partners/ho.png',
-    description: 'We are proud to lead 360 advertising management for one of the biggest retailers in Israel: TV, Radio, Outdoor, BTL, POC, Digital, Social Media, Production',
+    description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience that spans from everyday essentials to high-fashion collections. Their commitment to accessibility and excellence has made them a household name, trusted for delivering superior value and a personalized sense of style to every customer who walks through their doors.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'tiktok', url: '#' },
@@ -32,32 +33,16 @@ const projects: Record<string, {
     ],
     galleries: [
       {
-        title: 'Summer 2025',
-        type: 'carousel',
-        images: [
-          '/images/projects/project-1.webp',
-          '/images/projects/project-2.webp',
-          '/images/projects/project-3.webp',
-          '/images/projects/project-4.webp',
-          '/images/projects/project-5.webp',
-        ],
-      },
-      {
-        title: 'Winter 2025',
+        title: 'Brand Collection 2025',
         type: 'video',
-        videoThumbnail: '/images/projects/project-6.webp',
-        videoUrl: '#',
+        videoThumbnail: '/images/projects/project-1.webp',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
       },
       {
-        title: 'Fall 2024',
-        type: 'carousel',
-        images: [
-          '/images/projects/project-3.webp',
-          '/images/projects/project-4.webp',
-          '/images/projects/project-5.webp',
-          '/images/projects/project-1.webp',
-          '/images/projects/project-2.webp',
-        ],
+        title: 'Family & Strength Campaign',
+        type: 'video',
+        videoThumbnail: '/images/projects/project-2.webp',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176453/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4',
       },
     ],
   },
@@ -98,6 +83,24 @@ const projects: Record<string, {
           '/images/projects/project-5.webp',
           '/images/projects/project-6.webp',
         ],
+      },
+    ],
+  },
+  'carters': {
+    title: "Carter's Brands Collection",
+    logo: '/images/partners/ho.png', // Using H&O logo as placeholder as per screenshot
+    description: "Carter's stands as the undisputed leader in children's apparel, combining a century-long heritage of quality with a modern understanding of what parents truly need. By focusing on the intersection of comfort, durability, and timeless design, they have moved beyond being just a clothing brand to becoming an essential part of childhood memories. Their commitment to innovation in fabric and fit ensures that every piece is built to withstand the rigors of play while keeping children cozy, making them the most trusted and beloved brand for families across the globe.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'tiktok', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    galleries: [
+      {
+        title: 'Winter 2025',
+        type: 'video',
+        videoThumbnail: '/images/projects/project-6.webp',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
       },
     ],
   },
@@ -171,7 +174,7 @@ export default function ProjectPage() {
               <h1 className="text-3xl md:text-[40px] font-medium tracking-[-0.03em] mb-7">
                 {project.title}
               </h1>
-              <p className="text-neutral-300 text-xl leading-relaxed mb-8 max-w-[600px]">
+              <p className="text-neutral-300 text-xl leading-relaxed mb-10 w-full">
                 {project.description}
               </p>
 
@@ -222,20 +225,12 @@ export default function ProjectPage() {
                 </div>
               )}
 
-              {gallery.type === 'video' && gallery.videoThumbnail && (
-                <div className="relative w-full h-[700px] rounded-3xl overflow-hidden">
-                  <Image
-                    src={gallery.videoThumbnail}
-                    alt={gallery.title}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                  />
-                  {/* Play Button */}
-                  <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                    <Play className="w-5 h-5 text-primary-600 ml-1" fill="currentColor" />
-                  </button>
-                </div>
+              {gallery.type === 'video' && gallery.videoUrl && (
+                <VideoPlayer
+                  url={gallery.videoUrl}
+                  thumbnail={gallery.videoThumbnail || ''}
+                  title={gallery.title}
+                />
               )}
 
               <p className="text-neutral-500 text-2xl tracking-[-0.01em]">
@@ -248,5 +243,48 @@ export default function ProjectPage() {
 
       <Footer />
     </main>
+  );
+}
+
+function VideoPlayer({ url, thumbnail, title }: { url: string; thumbnail: string; title: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  return (
+    <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-100">
+      <video
+        ref={videoRef}
+        src={url}
+        className="w-full h-full object-cover"
+        poster={thumbnail}
+        onClick={togglePlay}
+        onEnded={() => setIsPlaying(false)}
+      />
+
+      <AnimatePresence>
+        {!isPlaying && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={togglePlay}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform z-10 shadow-lg"
+          >
+            <Play className="w-6 h-6 text-primary-600 ml-1" fill="currentColor" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
