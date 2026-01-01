@@ -101,6 +101,23 @@ const projects: Record<string, {
       },
     ],
   },
+  'eden': {
+    title: "Eden Desserts Collection",
+    logo: '/images/partners/ho.png', // Using H&O logo as placeholder
+    description: "Eden Desserts is a premium confectionery brand that brings the art of fine pastry to every home. With a focus on high-quality ingredients and traditional techniques infused with modern creativity, Eden has redefined the landscape of Israeli desserts. Their collections are more than just sweets; they are a celebration of flavor, texture, and visual elegance, making every occasion a bit more magical. From signature cakes to delicate pastries, Eden continues to set the standard for excellence in the culinary world.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'tiktok', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    galleries: [
+      {
+        title: 'Feels Like Eden',
+        type: 'video',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%A2%D7%93%D7%9F_%D7%A7%D7%99%D7%A0%D7%95%D7%97%D7%99%D7%9D___%D7%A2%D7%93%D7%9F_%D7%A4%D7%99%D7%A0%D7%A1_-_FEELS_LIKE_EDEN_e46aqo.mp4',
+      },
+    ],
+  },
 };
 
 function SocialIcon({ type }: { type: 'instagram' | 'tiktok' | 'facebook' }) {
