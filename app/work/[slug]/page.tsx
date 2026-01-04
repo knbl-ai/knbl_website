@@ -44,23 +44,19 @@ const projects: Record<string, {
       },
     ],
   },
-  'nova-fashion': {
+  'electra': {
     title: 'Electra',
     logo: '/images/partners/el.png',
-    description: 'Complete brand refresh and digital marketing strategy for an emerging fashion brand targeting Gen Z consumers.',
+    description: "Electra is a leading force in Israel's industrial and consumer landscape, providing innovative solutions that power the nation's progress. With a heritage built on excellence and reliability, they continue to set the standard for quality across diverse sectors, from advanced infrastructure to cutting-edge home appliances. Their commitment to technological advancement and customer-centric design makes Electra a household name, trusted by millions for delivering superior performance and sustainable value.",
     socialLinks: [
       { type: 'instagram', url: '#' },
-      { type: 'tiktok', url: '#' },
+      { type: 'facebook', url: '#' },
     ],
     galleries: [
       {
-        title: 'Brand Launch Campaign',
-        type: 'carousel',
-        images: [
-          '/images/projects/project-2.webp',
-          '/images/projects/project-3.webp',
-          '/images/projects/project-4.webp',
-        ],
+        title: 'Electra Campaign 2025',
+        type: 'video',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4',
       },
     ],
   },
