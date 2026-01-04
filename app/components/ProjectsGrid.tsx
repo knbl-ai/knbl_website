@@ -18,7 +18,7 @@ interface Project {
 const projects: Project[] = [
   { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', slug: 'ho-brands', alt: 'H&O', delay: 0 },
   { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', slug: 'nova-fashion', alt: 'Electra', delay: 0.1 },
-  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', slug: 'tech-startup', alt: 'Roladin', delay: 0.2 },
+  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', slug: 'roladin', alt: 'Roladin', delay: 0.2 },
   { id: 4, image: '/images/projects/project-4.webp', name: 'Eden', slug: 'eden', alt: 'Eden', delay: 0.3 },
   { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', slug: 'rafael', alt: 'Rafael', delay: 0.4 },
   { id: 6, image: '/images/projects/project-6.webp', name: "Carter's", slug: 'carters', alt: "Carter's", delay: 0.5 },

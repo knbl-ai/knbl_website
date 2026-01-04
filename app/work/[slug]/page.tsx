@@ -64,23 +64,19 @@ const projects: Record<string, {
       },
     ],
   },
-  'tech-startup': {
+  'roladin': {
     title: 'Roladin',
     logo: '/images/partners/rol.png',
-    description: 'Full-funnel marketing strategy and execution for a B2B SaaS platform, including content marketing and paid acquisition.',
+    description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From its iconic holiday collections to its daily selection of artisanal breads and delicate desserts, Roladin has become a cultural landmark where tradition meets modern culinary excellence. With dozens of locations across the country, they continue to set the bar for quality and creativity in the world of fine baking.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
     galleries: [
       {
-        title: 'Product Launch',
-        type: 'carousel',
-        images: [
-          '/images/projects/project-4.webp',
-          '/images/projects/project-5.webp',
-          '/images/projects/project-6.webp',
-        ],
+        title: 'Sweet Moments Campaign',
+        type: 'video',
+        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175703/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4',
       },
     ],
   },
