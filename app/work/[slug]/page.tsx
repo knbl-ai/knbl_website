@@ -8,106 +8,152 @@ import { Play } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 
-// Projects data - in a real app this would come from a CMS or database
+// Projects data
 const projects: Record<string, {
   title: string;
   logo: string;
   description: string;
   socialLinks: { type: 'instagram' | 'tiktok' | 'facebook'; url: string }[];
-  galleries: {
+  videos: {
     title: string;
-    type: 'carousel' | 'video';
-    images?: string[];
-    videoThumbnail?: string;
-    videoUrl?: string;
+    url: string;
   }[];
 }> = {
   'ho-brands': {
-    title: 'H&O Brands Collection',
+    title: 'H&O',
     logo: '/images/partners/ho.png',
-    description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience that spans from everyday essentials to high-fashion collections. Their commitment to accessibility and excellence has made them a household name, trusted for delivering superior value and a personalized sense of style to every customer who walks through their doors.",
+    description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'tiktok', url: '#' },
       { type: 'facebook', url: '#' },
     ],
-    galleries: [
-      {
-        title: 'Brand Collection 2025',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
-      },
-      {
-        title: 'Family & Strength Campaign',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176453/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4',
-      },
+    videos: [
+      { title: 'Brand Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4' },
+      { title: 'Family Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176453/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4' },
+      { title: 'Collection Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617551/H_O_Brands_Collection_crsb8a.mp4' },
+      { title: 'Black Friday Commercial', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175045/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bgm8ew.mp4' },
+      { title: 'Jumbo Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175243/HnO_28sec_16x9_jumbo_lwvuzv.mp4' },
+      { title: 'Jeans New Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175274/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_tm0bbf.mp4' },
     ],
   },
-  'electra': {
-    title: 'Electra',
-    logo: '/images/partners/el.png',
-    description: "Electra is a leading force in Israel's industrial and consumer landscape, providing innovative solutions that power the nation's progress. With a heritage built on excellence and reliability, they continue to set the standard for quality across diverse sectors, from advanced infrastructure to cutting-edge home appliances. Their commitment to technological advancement and customer-centric design makes Electra a household name, trusted by millions for delivering superior performance and sustainable value.",
+  'rafael': {
+    title: 'Rafael',
+    logo: '/images/partners/rafael.png',
+    description: "Rafael Advanced Defense Systems is a pioneer in defense technologies, providing innovative solutions for security and protection. Their commitment to excellence and reliability has made them a global leader in the defense industry.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
-    galleries: [
-      {
-        title: 'Electra Campaign 2025',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4',
-      },
+    videos: [
+      { title: 'Financial Reports', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4' },
+      { title: 'Project Overview', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625366/1231_1_ixyoq3.mov' },
+      { title: 'Timeline & History', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625434/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.mp4' },
+      { title: 'Corporate Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180637/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v.mov' },
+      { title: 'Event Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180657/%D7%90%D7%99%D7%A8%D7%95%D7%A2_%D7%96%D7%95%D7%92%D7%95%D7%AA_%D7%A1%D7%95%D7%A4%D7%99_icmirh.mov' },
+    ],
+  },
+  'xiaomi': {
+    title: 'Xiaomi',
+    logo: '/images/partners/xiaomi.png',
+    description: "Xiaomi is a global leader in smart electronics and consumer technology, bringing innovation and accessibility to everyone through their cutting-edge AI-driven productions and sleek device launches.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'tiktok', url: '#' },
+    ],
+    videos: [
+      { title: 'Poco X7 Launch AI Production', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4' },
+      { title: 'Poco X7 Launch AI Production #2', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617054/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.mp4' },
+      { title: 'Poco X7 AI Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767274462/1723_POCO_X7_AI_3_VID_1920x1080_xuhfdj.mp4' },
+      { title: 'Xiaomi B Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767274318/11269-5_XIAOMI_B_yg4q7n.mp4' },
+      { title: 'Brand Story', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767275104/%D7%95%D7%99%D7%93%D7%90%D7%95_%D7%A9%D7%9C_WhatsApp__2024-06-03_%D7%91%D7%A9%D7%A2%D7%94_16.14.53_c9f00e72_o56ori.mp4' },
+      { title: 'TLV Edit', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767275107/TLV_EDIT_eoqnqi.mp4' },
     ],
   },
   'roladin': {
     title: 'Roladin',
-    logo: '/images/partners/rol.png',
-    description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From its iconic holiday collections to its daily selection of artisanal breads and delicate desserts, Roladin has become a cultural landmark where tradition meets modern culinary excellence. With dozens of locations across the country, they continue to set the bar for quality and creativity in the world of fine baking.",
+    logo: '/images/partners/roladin.jpg',
+    description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From iconic holiday collections to artisanal breads, they set the bar for quality and creativity.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
-    galleries: [
-      {
-        title: 'Sweet Moments Campaign',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175703/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4',
-      },
+    videos: [
+      { title: 'Movie 2', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4' },
+      { title: 'Project Summary', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175664/%D7%A8%D7%95%D7%97%D7%91_%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98_%D7%9E%D7%A1%D7%9B%D7%9D_-_ROLADIN_xo1p54.mp4' },
+      { title: 'Bakery Factory', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%9E%D7%A4%D7%A2%D7%9C%20%D7%9C%D7%97%D7%9D_1.mp4' },
+      { title: 'Branches Overview', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D.mp4' },
+      { title: 'Square Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175703/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4' },
     ],
   },
   'carters': {
-    title: "Carter's Brands Collection",
-    logo: '/images/partners/ho.png', // Using H&O logo as placeholder as per screenshot
-    description: "Carter's stands as the undisputed leader in children's apparel, combining a century-long heritage of quality with a modern understanding of what parents truly need. By focusing on the intersection of comfort, durability, and timeless design, they have moved beyond being just a clothing brand to becoming an essential part of childhood memories. Their commitment to innovation in fabric and fit ensures that every piece is built to withstand the rigors of play while keeping children cozy, making them the most trusted and beloved brand for families across the globe.",
+    title: "Carter's",
+    logo: '/images/partners/carters.png',
+    description: "Carter's is the most trusted name in baby and children's apparel, known for quality, comfort, and timeless designs that have made them a beloved part of childhood memories for families worldwide.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'tiktok', url: '#' },
-      { type: 'facebook', url: '#' },
     ],
-    galleries: [
-      {
-        title: 'Winter 2025',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
-      },
+    videos: [
+      { title: 'With You From The Start', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
     ],
   },
-  'eden': {
-    title: "Eden Desserts Collection",
-    logo: '/images/partners/ho.png', // Using H&O logo as placeholder
-    description: "Eden Desserts is a premium confectionery brand that brings the art of fine pastry to every home. With a focus on high-quality ingredients and traditional techniques infused with modern creativity, Eden has redefined the landscape of Israeli desserts. Their collections are more than just sweets; they are a celebration of flavor, texture, and visual elegance, making every occasion a bit more magical. From signature cakes to delicate pastries, Eden continues to set the standard for excellence in the culinary world.",
+  'electra': {
+    title: 'Electra',
+    logo: '/images/partners/electra.png',
+    description: "Electra Group is a leader in electrical systems, infrastructure, and consumer appliances, providing innovative solutions that power modern living and industrial progress across Israel.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Brand Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
+      { title: 'AI Sarona Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4' },
+      { title: 'Electra Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4' },
+    ],
+  },
+  'takeda': {
+    title: 'Takeda',
+    logo: '/images/partners/takeda.png',
+    description: "Takeda is a global pharmaceutical leader dedicated to bringing better health and a brighter future to people worldwide through advanced medical research and innovative healthcare solutions.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4' },
+      { title: 'Plasma Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175927/Plasma_video_hp7py2.mp4' },
+      { title: 'Corporate Short', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175955/45_wq8xba.mp4' },
+    ],
+  },
+  'aion': {
+    title: 'Aion',
+    logo: '/images/partners/aion.png',
+    description: "Aion is at the forefront of the electric vehicle revolution, combining cutting-edge technology with sustainable mobility to redefine the driving experience for the modern world.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'tiktok', url: '#' },
+    ],
+    videos: [
+      { title: 'Brand Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
+      { title: 'Parking Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176972/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
+      { title: 'HT Highlight', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176999/HT_ysxnx9.mp4' },
+      { title: 'Interior Drive', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767177020/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
+      { title: 'Driving Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176961/%D7%97%D7%95%D7%95%D7%99%D7%AA_%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%94%D7%9B%D7%99_%D7%A1%D7%95%D7%A4%D7%99_%D7%A9%D7%99%D7%A9_hab4an.mp4' },
+    ],
+  },
+  'reuth-hospital': {
+    title: 'Reuth Hospital',
+    logo: '/images/partners/reuth.png',
+    description: "Reuth Rehabilitation Hospital is a leading medical center in Israel, specializing in advanced rehabilitation and geriatric care, providing hope and healing to patients through expert medical attention.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
-    galleries: [
-      {
-        title: 'Feels Like Eden',
-        type: 'video',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%A2%D7%93%D7%9F_%D7%A7%D7%99%D7%A0%D7%95%D7%97%D7%99%D7%9D___%D7%A2%D7%93%D7%9F_%D7%A4%D7%99%D7%A0%D7%A1_-_FEELS_LIKE_EDEN_e46aqo.mp4',
-      },
+    videos: [
+      { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
+      { title: 'Patient Story', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%9C%D7%90%D7%AA%D7%92%D7%A8_%D7%90%D7%AA_%D7%94%D7%91%D7%9C%D7%AA%D7%99_%D7%90%D7%A4%D7%A9%D7%A8%D7%99-%D7%91%D7%99%D7%AA_%D7%97%D7%95%D7%9C%D7%99%D7%9D_%D7%A8%D7%A2%D7%95%D7%AA_cvxk0v.mp4' },
+      { title: 'Hospital Choir', url: 'https://storage.googleapis.com/knbl_website/4.12%20%D7%9E%D7%A7%D7%94%D7%9C%D7%94%20-%20%D7%91%D7%99%D7%AA%20%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
     ],
   },
 };
@@ -201,49 +247,52 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      {/* Galleries */}
+      {/* Videos Section */}
       <section className="pb-[120px] px-6 md:px-[120px]">
-        <div className="max-w-7xl mx-auto flex flex-col gap-16">
-          {project.galleries.map((gallery, galleryIndex) => (
-            <motion.div
-              key={galleryIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: galleryIndex * 0.1 }}
-              className="flex flex-col gap-6"
-            >
-              {gallery.type === 'carousel' && gallery.images && (
-                <div className="flex gap-6 h-[450px] overflow-x-auto scrollbar-hide pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                  {gallery.images.map((image, imageIndex) => (
-                    <div
-                      key={imageIndex}
-                      className="relative flex-shrink-0 w-[500px] h-full rounded-3xl overflow-hidden"
+        <div className="max-w-7xl mx-auto">
+          {project.videos.length > 0 && (
+            <div className="space-y-12">
+              {/* Featured Top Video */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col gap-6"
+              >
+                <VideoPlayer
+                  url={project.videos[0].url}
+                  thumbnail=""
+                  title={project.videos[0].title}
+                />
+                <p className="text-neutral-500 text-2xl tracking-[-0.01em]">
+                  {project.videos[0].title}
+                </p>
+              </motion.div>
+
+              {/* Other Videos Grid */}
+              {project.videos.length > 1 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  {project.videos.slice(1).map((video, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex flex-col gap-6"
                     >
-                      <Image
-                        src={image}
-                        alt={`${gallery.title} - Image ${imageIndex + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="500px"
+                      <VideoPlayer
+                        url={video.url}
+                        thumbnail=""
+                        title={video.title}
                       />
-                    </div>
+                      <p className="text-neutral-500 text-xl tracking-[-0.01em]">
+                        {video.title}
+                      </p>
+                    </motion.div>
                   ))}
                 </div>
               )}
-
-              {gallery.type === 'video' && gallery.videoUrl && (
-                <VideoPlayer
-                  url={gallery.videoUrl}
-                  thumbnail={gallery.videoThumbnail || ''}
-                  title={gallery.title}
-                />
-              )}
-
-              <p className="text-neutral-500 text-2xl tracking-[-0.01em]">
-                {gallery.title}
-              </p>
-            </motion.div>
-          ))}
+            </div>
+          )}
         </div>
       </section>
 

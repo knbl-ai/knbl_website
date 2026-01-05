@@ -16,23 +16,19 @@ interface Project {
 
 const projects: Project[] = [
   { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', alt: 'H&O', slug: 'ho-brands', delay: 0 },
-  { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', alt: 'Electra', slug: 'electra', delay: 0.1 },
-  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', alt: 'Roladin', slug: 'roladin', delay: 0.2 },
-  { id: 4, image: '/images/projects/project-4.webp', name: 'Eden', alt: 'Eden', slug: 'eden', delay: 0.3 },
-  { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', alt: 'Rafael', slug: 'rafael', delay: 0.4 },
-  { id: 6, image: '/images/projects/project-6.webp', name: "Carter's", alt: "Carter's", slug: 'carters', delay: 0.5 },
-  // Duplicate projects for the extended grid (in real app, these would be different projects)
-  { id: 7, image: '/images/projects/project-1.webp', name: 'H&O Summer', alt: 'H&O Summer', slug: 'ho-brands', delay: 0.6 },
-  { id: 8, image: '/images/projects/project-2.webp', name: 'Electra Pro', alt: 'Electra Pro', slug: 'electra', delay: 0.7 },
-  { id: 9, image: '/images/projects/project-3.webp', name: 'Roladin Holiday', alt: 'Roladin Holiday', slug: 'roladin', delay: 0.8 },
-  { id: 10, image: '/images/projects/project-4.webp', name: 'Eden Fresh', alt: 'Eden Fresh', slug: 'eden', delay: 0.9 },
-  { id: 11, image: '/images/projects/project-5.webp', name: 'Rafael Tech', alt: 'Rafael Tech', slug: 'rafael', delay: 1.0 },
-  { id: 12, image: '/images/projects/project-6.webp', name: "Carter's Active", alt: "Carter's Active", slug: 'carters', delay: 1.1 },
+  { id: 2, image: '/images/projects/project-5.webp', name: 'Rafael', alt: 'Rafael', slug: 'rafael', delay: 0.1 },
+  { id: 3, image: '/images/projects/xiaomi.jpg', name: 'Xiaomi', alt: 'Xiaomi', slug: 'xiaomi', delay: 0.2 },
+  { id: 4, image: '/images/projects/project-3.webp', name: 'Roladin', alt: 'Roladin', slug: 'roladin', delay: 0.3 },
+  { id: 5, image: '/images/projects/project-6.webp', name: "Carter's", alt: "Carter's", slug: 'carters', delay: 0.4 },
+  { id: 6, image: '/images/projects/project-2.webp', name: 'Electra', alt: 'Electra', slug: 'electra', delay: 0.5 },
+  { id: 7, image: '/images/projects/project-7.png', name: 'Takeda', alt: 'Takeda', slug: 'takeda', delay: 0.6 },
+  { id: 8, image: '/images/projects/project-8.png', name: 'Aion', alt: 'Aion', slug: 'aion', delay: 0.7 },
+  { id: 9, image: '/images/projects/project-9.png', name: 'Reuth Hospital', alt: 'Reuth Hospital', slug: 'reuth-hospital', delay: 0.8 },
 ];
 
 function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
   return (
-    <Link href={`/work/${project.slug}`}>
+    <Link href={`/work/${project.slug}`} className="block">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
@@ -85,13 +81,13 @@ export default function WorkProjectsGrid() {
       <div className="max-w-7xl mx-auto">
         {/* Projects Grid */}
         <div className="space-y-4">
-          {/* First Row */}
+          {/* First Row Block (4 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             <div className="md:col-span-4">
               <ProjectCard project={projects[0]} height="h-[516px]" />
             </div>
 
-            <div className="md:col-span-8 space-y-4">
+            <div className="md:col-span-8 flex flex-col gap-4">
               <ProjectCard project={projects[1]} height="h-[250px]" />
 
               <div className="grid grid-cols-2 gap-4">
@@ -101,32 +97,22 @@ export default function WorkProjectsGrid() {
             </div>
           </div>
 
-          {/* Second Row */}
+          {/* Second Row Block (2 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProjectCard project={projects[4]} height="h-[250px]" />
             <ProjectCard project={projects[5]} height="h-[250px]" />
           </div>
 
-          {/* Third Row - same pattern as first */}
+          {/* Third Row Block (The new 3 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="md:col-span-4">
-              <ProjectCard project={projects[6]} height="h-[516px]" />
-            </div>
-
-            <div className="md:col-span-8 space-y-4">
+            <div className="md:col-span-8 flex flex-col gap-4">
+              <ProjectCard project={projects[6]} height="h-[250px]" />
               <ProjectCard project={projects[7]} height="h-[250px]" />
-
-              <div className="grid grid-cols-2 gap-4">
-                <ProjectCard project={projects[8]} height="h-[250px]" />
-                <ProjectCard project={projects[9]} height="h-[250px]" />
-              </div>
             </div>
-          </div>
 
-          {/* Fourth Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ProjectCard project={projects[10]} height="h-[250px]" />
-            <ProjectCard project={projects[11]} height="h-[250px]" />
+            <div className="md:col-span-4">
+              <ProjectCard project={projects[8]} height="h-[516px]" />
+            </div>
           </div>
         </div>
       </div>
