@@ -10,20 +10,23 @@ const services = [
     description: 'Decoded by data. Built for clarity',
     gradient: 'from-primary-900 to-primary-600',
     image: '/images/services/strategy-bg.webp',
+    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767706935/3356_KNBLE_WEBSITE_VIDEO_1080x1080_STRATEGY_qg4bko.mp4',
     expandedContent: '',
   },
   {
-    title: 'Storytelling',
-    description: 'Human narratives. Sharp signals',
+    title: 'Storytelling & Creative',
+    description: 'Human narratives. Bold ideas.',
     gradient: 'from-primary-700 to-primary-600',
     image: '/images/services/message-bg.webp',
+    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767706934/3356_KNBLE_WEBSITE_VIDEO_1080x1080_CREATIVE_jmlqxy.mp4',
     expandedContent: '',
   },
   {
-    title: 'Creative & Tech',
-    description: 'Where bold ideas meets smart code',
+    title: 'Tech',
+    description: 'Smart code. High-performance engines.',
     gradient: 'from-primary-600 to-primary-700',
     image: '/images/services/creative-bg.webp',
+    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767706934/3356_KNBLE_WEBSITE_VIDEO_1080x1080_TECH_oudlad.mp4',
     expandedContent: '',
   },
   {
@@ -31,6 +34,7 @@ const services = [
     description: 'Cross-channel precision. Optimized at scale',
     gradient: 'from-primary-600 to-primary-900',
     image: '/images/services/data-bg.webp',
+    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767706936/3356_KNBLE_WEBSITE_VIDEO_1080x1080_MEDIA_1_q3xzme.mp4',
     expandedContent: '',
   },
 ];
@@ -83,15 +87,27 @@ export default function ServicesGrid() {
                 }}
                 className="relative rounded-3xl overflow-hidden cursor-pointer group"
               >
-                {/* Background Image */}
+                {/* Background (Image or Video) */}
                 <div className="absolute inset-0">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="100vw"
-                  />
+                  {service.video ? (
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                    >
+                      <source src={service.video} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                    />
+                  )}
                 </div>
 
                 {/* Gradient Overlay - Standard */}
