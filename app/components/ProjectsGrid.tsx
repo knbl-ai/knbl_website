@@ -28,48 +28,75 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    image: '/images/projects/project-2.webp',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4',
-    name: 'Electra',
-    slug: 'electra',
-    alt: 'Electra',
-    delay: 0.1
-  },
-  {
-    id: 3,
-    image: '/images/projects/project-3.webp',
-    videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
-    name: 'Roladin',
-    slug: 'roladin',
-    alt: 'Roladin',
-    delay: 0.2
-  },
-  {
-    id: 4,
-    image: '/images/projects/xiaomi.jpg',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
-    name: 'Xiaomi',
-    slug: 'xiaomi',
-    alt: 'Xiaomi',
-    delay: 0.3
-  },
-  {
-    id: 5,
     image: '/images/projects/project-5.webp',
     videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4',
     name: 'Rafael',
     slug: 'rafael',
     alt: 'Rafael',
-    delay: 0.4
+    delay: 0.1
   },
   {
-    id: 6,
+    id: 3,
+    image: '/images/projects/xiaomi.jpg',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
+    name: 'Xiaomi',
+    slug: 'xiaomi',
+    alt: 'Xiaomi',
+    delay: 0.2
+  },
+  {
+    id: 4,
+    image: '/images/projects/project-3.webp',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
+    name: 'Roladin',
+    slug: 'roladin',
+    alt: 'Roladin',
+    delay: 0.3
+  },
+  {
+    id: 5,
     image: '/images/projects/project-6.webp',
     videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
     name: "Carter's",
     slug: 'carters',
     alt: "Carter's",
+    delay: 0.4
+  },
+  {
+    id: 6,
+    image: '/images/projects/project-2.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4',
+    name: 'Electra',
+    slug: 'electra',
+    alt: 'Electra',
     delay: 0.5
+  },
+  {
+    id: 7,
+    image: '/images/projects/project-7.png',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4',
+    name: 'Takeda',
+    slug: 'takeda',
+    alt: 'Takeda',
+    delay: 0.6
+  },
+  {
+    id: 8,
+    image: '/images/projects/project-8.png',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4',
+    name: 'Aion',
+    slug: 'aion',
+    alt: 'Aion',
+    delay: 0.7
+  },
+  {
+    id: 9,
+    image: '/images/projects/project-9.png',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4',
+    name: 'Reuth Hospital',
+    slug: 'reuth-hospital',
+    alt: 'Reuth Hospital',
+    delay: 0.8
   },
 ];
 
@@ -135,42 +162,42 @@ export default function ProjectsGrid() {
             The Brands We&apos;ve{' '}
             <span className="text-primary-600">Grown.</span>
           </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/work">
-              <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
-                See the Work
-              </InteractiveHoverButton>
-            </Link>
-          </motion.div>
         </div>
 
         {/* Projects Grid */}
         <div className="space-y-4">
-          {/* Top Row */}
+          {/* First Row Block (4 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             <div className="md:col-span-4">
-              <ProjectCard project={projects[0]} height="h-[400px]" />
+              <ProjectCard project={projects[0]} height="h-[516px]" />
             </div>
 
-            <div className="md:col-span-8 space-y-4">
-              <ProjectCard project={projects[1]} height="h-[190px]" />
+            <div className="md:col-span-8 flex flex-col gap-4">
+              <ProjectCard project={projects[1]} height="h-[250px]" />
 
               <div className="grid grid-cols-2 gap-4">
-                <ProjectCard project={projects[2]} height="h-[190px]" />
-                <ProjectCard project={projects[3]} height="h-[190px]" />
+                <ProjectCard project={projects[2]} height="h-[250px]" />
+                <ProjectCard project={projects[3]} height="h-[250px]" />
               </div>
             </div>
           </div>
 
-          {/* Bottom Row */}
+          {/* Second Row Block (2 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProjectCard project={projects[4]} height="h-[250px]" />
             <ProjectCard project={projects[5]} height="h-[250px]" />
+          </div>
+
+          {/* Third Row Block (3 cards) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div className="md:col-span-8 flex flex-col gap-4">
+              <ProjectCard project={projects[6]} height="h-[250px]" />
+              <ProjectCard project={projects[7]} height="h-[250px]" />
+            </div>
+
+            <div className="md:col-span-4">
+              <ProjectCard project={projects[8]} height="h-[516px]" />
+            </div>
           </div>
         </div>
       </div>

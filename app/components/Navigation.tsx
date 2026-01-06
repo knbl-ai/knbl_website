@@ -9,7 +9,7 @@ import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button
 
 const menuItems = [
   { label: 'Home', href: '/' },
-  { label: 'Work', href: '/work' },
+  { label: 'Work', href: '/#work' },
   { label: 'Services', href: '/#services' },
   { label: 'Insights', href: '/insights' },
   { label: 'Agency', href: '/agency' },
