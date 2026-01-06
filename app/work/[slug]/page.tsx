@@ -107,7 +107,6 @@ const projects: Record<string, {
       { type: 'facebook', url: '#' },
     ],
     videos: [
-      { title: 'Brand Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
       { title: 'AI Sarona Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4' },
       { title: 'Electra Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4' },
     ],

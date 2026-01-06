@@ -1,13 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { VideoPreview } from '@/components/ui/VideoPreview';
 
 interface Project {
   id: number;
   image: string;
+  videoUrl: string;
   name: string;
   alt: string;
   slug: string;
@@ -15,15 +16,87 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', alt: 'H&O', slug: 'ho-brands', delay: 0 },
-  { id: 2, image: '/images/projects/project-5.webp', name: 'Rafael', alt: 'Rafael', slug: 'rafael', delay: 0.1 },
-  { id: 3, image: '/images/projects/xiaomi.jpg', name: 'Xiaomi', alt: 'Xiaomi', slug: 'xiaomi', delay: 0.2 },
-  { id: 4, image: '/images/projects/project-3.webp', name: 'Roladin', alt: 'Roladin', slug: 'roladin', delay: 0.3 },
-  { id: 5, image: '/images/projects/project-6.webp', name: "Carter's", alt: "Carter's", slug: 'carters', delay: 0.4 },
-  { id: 6, image: '/images/projects/project-2.webp', name: 'Electra', alt: 'Electra', slug: 'electra', delay: 0.5 },
-  { id: 7, image: '/images/projects/project-7.png', name: 'Takeda', alt: 'Takeda', slug: 'takeda', delay: 0.6 },
-  { id: 8, image: '/images/projects/project-8.png', name: 'Aion', alt: 'Aion', slug: 'aion', delay: 0.7 },
-  { id: 9, image: '/images/projects/project-9.png', name: 'Reuth Hospital', alt: 'Reuth Hospital', slug: 'reuth-hospital', delay: 0.8 },
+  {
+    id: 1,
+    image: '/images/projects/project-1.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
+    name: 'H&O',
+    alt: 'H&O',
+    slug: 'ho-brands',
+    delay: 0
+  },
+  {
+    id: 2,
+    image: '/images/projects/project-5.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4',
+    name: 'Rafael',
+    alt: 'Rafael',
+    slug: 'rafael',
+    delay: 0.1
+  },
+  {
+    id: 3,
+    image: '/images/projects/xiaomi.jpg',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
+    name: 'Xiaomi',
+    alt: 'Xiaomi',
+    slug: 'xiaomi',
+    delay: 0.2
+  },
+  {
+    id: 4,
+    image: '/images/projects/project-3.webp',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
+    name: 'Roladin',
+    alt: 'Roladin',
+    slug: 'roladin',
+    delay: 0.3
+  },
+  {
+    id: 5,
+    image: '/images/projects/project-6.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
+    name: "Carter's",
+    alt: "Carter's",
+    slug: 'carters',
+    delay: 0.4
+  },
+  {
+    id: 6,
+    image: '/images/projects/project-2.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4',
+    name: 'Electra',
+    alt: 'Electra',
+    slug: 'electra',
+    delay: 0.5
+  },
+  {
+    id: 7,
+    image: '/images/projects/project-7.png',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4',
+    name: 'Takeda',
+    alt: 'Takeda',
+    slug: 'takeda',
+    delay: 0.6
+  },
+  {
+    id: 8,
+    image: '/images/projects/project-8.png',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4',
+    name: 'Aion',
+    alt: 'Aion',
+    slug: 'aion',
+    delay: 0.7
+  },
+  {
+    id: 9,
+    image: '/images/projects/project-9.png',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4',
+    name: 'Reuth Hospital',
+    alt: 'Reuth Hospital',
+    slug: 'reuth-hospital',
+    delay: 0.8
+  },
 ];
 
 function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
@@ -36,12 +109,10 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
         transition={{ delay: project.delay }}
         className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
       >
-        <Image
-          src={project.image}
+        <VideoPreview
+          videoUrl={project.videoUrl}
+          posterUrl={project.image}
           alt={project.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Purple overlay on hover */}
         <motion.div

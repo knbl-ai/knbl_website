@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
+import { VideoPreview } from '@/components/ui/VideoPreview';
 import { ArrowRight } from 'lucide-react';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 interface Project {
   id: number;
   image: string;
+  videoUrl: string;
   name: string;
   slug: string;
   alt: string;
@@ -16,12 +17,60 @@ interface Project {
 }
 
 const projects: Project[] = [
-  { id: 1, image: '/images/projects/project-1.webp', name: 'H&O', slug: 'ho-brands', alt: 'H&O', delay: 0 },
-  { id: 2, image: '/images/projects/project-2.webp', name: 'Electra', slug: 'electra', alt: 'Electra', delay: 0.1 },
-  { id: 3, image: '/images/projects/project-3.webp', name: 'Roladin', slug: 'roladin', alt: 'Roladin', delay: 0.2 },
-  { id: 4, image: '/images/projects/xiaomi.jpg', name: 'Xiaomi', slug: 'xiaomi', alt: 'Xiaomi', delay: 0.3 },
-  { id: 5, image: '/images/projects/project-5.webp', name: 'Rafael', slug: 'rafael', alt: 'Rafael', delay: 0.4 },
-  { id: 6, image: '/images/projects/project-6.webp', name: "Carter's", slug: 'carters', alt: "Carter's", delay: 0.5 },
+  {
+    id: 1,
+    image: '/images/projects/project-1.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
+    name: 'H&O',
+    slug: 'ho-brands',
+    alt: 'H&O',
+    delay: 0
+  },
+  {
+    id: 2,
+    image: '/images/projects/project-2.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4',
+    name: 'Electra',
+    slug: 'electra',
+    alt: 'Electra',
+    delay: 0.1
+  },
+  {
+    id: 3,
+    image: '/images/projects/project-3.webp',
+    videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
+    name: 'Roladin',
+    slug: 'roladin',
+    alt: 'Roladin',
+    delay: 0.2
+  },
+  {
+    id: 4,
+    image: '/images/projects/xiaomi.jpg',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
+    name: 'Xiaomi',
+    slug: 'xiaomi',
+    alt: 'Xiaomi',
+    delay: 0.3
+  },
+  {
+    id: 5,
+    image: '/images/projects/project-5.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4',
+    name: 'Rafael',
+    slug: 'rafael',
+    alt: 'Rafael',
+    delay: 0.4
+  },
+  {
+    id: 6,
+    image: '/images/projects/project-6.webp',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
+    name: "Carter's",
+    slug: 'carters',
+    alt: "Carter's",
+    delay: 0.5
+  },
 ];
 
 function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
@@ -34,12 +83,10 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
         transition={{ delay: project.delay }}
         className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
       >
-        <Image
-          src={project.image}
+        <VideoPreview
+          videoUrl={project.videoUrl}
+          posterUrl={project.image}
           alt={project.alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
         />
         {/* Purple overlay on hover */}
         <motion.div
