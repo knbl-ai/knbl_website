@@ -9,7 +9,7 @@ const steps = [
   {
     number: '01',
     title: 'Clarity',
-    description: 'We strip away the corporate fluff until only the core business truth remains. If it isn\'t simple, it isn\'t ready',
+    description: 'We strip away the corporate fluff until only the core business truth remains always. If it isn\'t simple, it isn\'t ready',
     icon: '/images/ianimatedIcons/compass.json',
   },
   {
