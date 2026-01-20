@@ -51,19 +51,16 @@ export default function HowWeDoIt() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Sticky Sidebar */}
-          <div className="lg:sticky lg:top-24 h-fit">
+          <div className="lg:sticky lg:top-24 h-fit max-w-xl">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-[56px] font-medium mb-12 tracking-[-0.03em]"
+              className="text-4xl md:text-[56px] font-medium mb-8 tracking-tight leading-[1.1] text-black"
             >
-              The Way We{' '}
-              <span className="text-primary-600">Work.</span>
+              How we make <br />
+              it <span className="text-primary-600">happen.</span>
             </motion.h2>
 
-            <TextReveal className="py-0 [&>div]:max-w-none [&_p]:text-lg md:[&_p]:text-xl [&_p]:text-neutral-600 [&_p]:leading-relaxed [&_p]:justify-start [&_p]:text-left">
-              Marketing is sometimes magic. But success is mechanics. We don&apos;t leave your growth to chance. We back every creative spark with a rigorous system, replacing guesswork with evidence and noise with clear signals.
+            <TextReveal className="py-0 text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight text-neutral-500">
+              {`At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`}
             </TextReveal>
           </div>
 
@@ -76,18 +73,18 @@ export default function HowWeDoIt() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="relative bg-primary-600 rounded-[32px] p-10 md:p-14 overflow-hidden aspect-square flex flex-col justify-end"
+                className="relative bg-primary-600 rounded-[32px] p-10 md:p-14 overflow-hidden h-[510px] flex flex-col justify-end"
               >
                 {/* Large Number Background */}
-                <div className="absolute top-0 left-6 text-[200px] font-extralight text-primary-700 leading-none">
+                <div className="absolute top-[-24px] left-6 md:left-10 text-[200px] font-extralight text-primary-700 leading-none">
                   {step.number}
                 </div>
 
                 {/* Content */}
                 <div className="relative z-10 space-y-4">
                   <AnimatedIcon src={step.icon} />
-                  <h3 className="text-4xl font-medium text-white">{step.title}</h3>
-                  <p className="text-xl text-white/90 leading-normal">{step.description}</p>
+                  <h3 className="text-[40px] font-medium text-white">{step.title}</h3>
+                  <p className="text-[20px] text-white/90 leading-normal">{step.description}</p>
                 </div>
               </motion.div>
             ))}

@@ -8,7 +8,12 @@
   }
 
   body {
-    @apply text-black bg-white;
+    @apply text-black bg-white font-sans;
+    font-weight: 500;
+  }
+
+  * {
+    font-family: inherit;
   }
 }
 

@@ -11,36 +11,39 @@ import FAQSection from './components/FAQSection';
 import { TextReveal } from '@/components/ui/text-reveal';
 
 export default function HomePage() {
-  return (
-    <main className="min-h-screen">
-      <Navigation />
-      <Hero />
+    return (
+        <main className="min-h-screen">
+            <Navigation />
+            <Hero />
 
-      {/* About Section */}
-      <TextReveal id="about" className="py-44">
-        We are KNBL. Born in storytelling. Amplified by technology. We don&apos;t just craft the message; we build the engine behind it. By fusing strategy and content with in-house AI and code, we turn great stories into holistic, high-performance solutions.
-      </TextReveal>
+            <section id="about" className="flex flex-col items-center py-44">
+                <div className="max-w-[1200px] mx-auto text-center">
+                    <TextReveal className="justify-center text-center text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-3xl mx-auto">
+                        We&apos;re KNBL a strategy-driven collective built for what&apos;s next.
+                        We started in storytelling, where every brand moment had a
+                        voice and a purpose. Today, that voice meets technology,
+                        partnered by AI, guided by insight, and scaled with
+                        precision. Our model connects every step.
+                    </TextReveal>
+                </div>
+            </section>
 
-      <ServicesGrid />
+            <ServicesGrid />
 
-      {/* Second About Section */}
-      {/* Second About Section */}
-      <div className="py-44 flex flex-col items-center justify-center">
-        <TextReveal className="py-0 pb-2 [&>div]:max-w-5xl">
-          We believe noise doesn&apos;t build brands.
-        </TextReveal>
-        <TextReveal className="py-0 pt-2 [&>div]:max-w-5xl">
-          Focus, direction, and a smart engine do.
-        </TextReveal>
-      </div>
+            {/* Second About Section */}
+            <div className="py-44 flex flex-col items-center justify-center">
+                <TextReveal className="justify-center text-center text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-3xl mx-auto">
+                    We believe noise doesn&apos;t build brands. Focus, direction, and a smart engine do. We combine strategic clarity with high-precision execution to ensure every move our brands make is intentional and impactful.
+                </TextReveal>
+            </div>
 
-      <HowWeDoIt />
-      <ProjectsGrid />
-      <BrandsSection />
-      <BlogSection />
-      <CommunitySection />
-      <FAQSection />
-      <Footer />
-    </main>
-  );
+            <HowWeDoIt />
+            <ProjectsGrid />
+            <BrandsSection />
+            <BlogSection />
+            <CommunitySection />
+            <FAQSection />
+            <Footer />
+        </main>
+    );
 }

@@ -8,37 +8,37 @@ import { useState } from 'react';
 const videos = [
   {
     id: 'lhzrwPA9wlQ',
-    title: 'KNBL Masters | Live Talk',
-    description: 'Ravit hosts Doverat Raphael & Mayan Malkin Aligal for a deep dive into marketing mastery.',
+    title: 'From SEO to GEO',
+    description: 'Ravit from KNBL hosts Aviv from Limy.ai for a deep understanding of the search revolution.',
     duration: '42 min'
   },
   {
     id: 'a5DMCdCzJ58',
-    title: 'Marketing Strategy',
-    description: 'Building sustainable marketing strategies for long-term growth and impact.',
+    title: 'How does a brand become a category?',
+    description: 'A fascinating talk with Noa Bachar Aharoni, the CEO of Roladin',
     duration: '38 min'
   },
   {
     id: 'GgzMXEOmGsU',
-    title: 'Brand Growth',
-    description: 'Exploring how brands can scale while maintaining their core identity and values.',
+    title: 'How to “sell” a missile?',
+    description: 'Ravit from KNBL hosts Maayan Malkin Eligal, the spokesperson of Rafael Advanced Defense Systems',
     duration: '25 min'
   },
   {
     id: 'JYJ5Xfarhww',
-    title: 'Digital Innovation',
-    description: 'The latest trends in digital marketing and how they are transforming the industry.',
+    title: 'Killing the AI chaos for marketing managers',
+    description: 'The new order with the most important tools for top tier marketers',
     duration: '35 min'
   },
   {
     id: '3MKDTJsG30I',
-    title: 'Market Analysis',
-    description: 'Data-driven insights and analysis techniques for modern marketing professionals.',
+    title: 'GOOGLE AI',
+    description: 'Everything about Google AI with Elit Ben Bassat, Head of Cloud Marketing at Google',
     duration: '48 min'
   },
   {
     id: 'toRkgVwuerk',
-    title: 'KNBL Masters',
+    title: 'GOOGLE AI',
     description: "Meet the minds shaping tomorrow's marketing. Real talks, shared knowledge, and ideas that move brands forward.",
     duration: '50 min'
   }
@@ -66,59 +66,76 @@ export default function CommunitySection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-white from-[5%] via-primary-600 via-[45%] to-primary-600">
+    <section className="relative bg-primary-600 rounded-b-[48px] overflow-hidden">
+      {/* Background Gradient Overlay - Cut off earlier for solid bottom blend */}
+      <div className="absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b from-white via-[#A3B3FF] via-[20%] to-transparent pointer-events-none" />
+
       {/* Text Section */}
-      <div className="pt-20 pb-12 px-6 md:px-24">
-        <TextReveal className="py-0 [&>div]:max-w-4xl [&_p]:text-[24px] [&_p]:leading-relaxed">
-          community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. It&apos;s a space built on collaboration, learning, and collective movement forward.
+      <div className="relative pt-0 pb-32 px-6 md:px-24 z-10">
+        <TextReveal
+          initialColor="#FFFFFF"
+          startEarly={true}
+          className="py-0 text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-3xl text-center mx-auto"
+        >
+          {`Community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress.\nIt's a space built on collaboration, learning,\nand collective movement forward.`}
         </TextReveal>
       </div>
 
       {/* Video Card Section */}
-      <div className="pt-0 pb-32">
-        {/* Video Card - Centered */}
-        <div className="w-full max-w-[1320px] mx-auto px-6">
+      <div className="relative pt-0 pb-32 z-10">
+        <div className="w-full max-w-[1320px] mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative aspect-video w-full rounded-3xl overflow-hidden bg-black"
+            className="relative aspect-video w-full rounded-[32px] overflow-hidden bg-transparent"
+            style={{
+              maskImage: 'radial-gradient(circle at 100% 100%, transparent 47.9px, black 48px)',
+              WebkitMaskImage: 'radial-gradient(circle at 100% 100%, transparent 47.9px, black 48px)'
+            }}
           >
             {isPlaying ? (
               <iframe
-                className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${currentVideo.id}?autoplay=1`}
+                className="absolute inset-0 w-full h-full border-0 scale-[1.5] origin-center"
+                src={`https://www.youtube.com/embed/${currentVideo.id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&controls=1&showinfo=0`}
                 title={currentVideo.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
             ) : (
               <>
-                {/* Background Video Preview Image */}
                 <Image
                   src={`https://img.youtube.com/vi/${currentVideo.id}/maxresdefault.jpg`}
                   alt={currentVideo.title}
                   fill
-                  className="object-cover"
+                  className="object-cover scale-[1.12] object-top"
                   sizes="90vw"
                   unoptimized
                 />
 
-                {/* Overlay Gradient for readability */}
-                <div className="absolute inset-0 bg-black/20" />
-
-                {/* Glassmorphism Card */}
                 <div className="absolute bottom-6 left-6 max-w-lg">
-                  <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 space-y-6">
+                  <div className="bg-neutral-900/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 space-y-6 border border-white/10">
                     <div className="space-y-2">
-                      <p className="text-neutral-300 text-sm">{currentVideo.duration}</p>
                       <h3 className="text-3xl md:text-4xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
-                      <p className="text-neutral-200 text-base md:text-lg leading-normal">
-                        {currentVideo.description}
+                      <p className="text-base md:text-lg leading-normal" style={{ color: '#CFCFD3' }}>
+                        {currentVideo.description.split('Limy.ai').map((part, i, arr) => (
+                          <span key={i}>
+                            {part}
+                            {i < arr.length - 1 && (
+                              <a
+                                href="https://www.limy.ai/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white underline hover:text-primary-400 transition-colors cursor-pointer"
+                              >
+                                Limy.ai
+                              </a>
+                            )}
+                          </span>
+                        ))}
                       </p>
                     </div>
 
-                    {/* Play Button */}
                     <motion.button
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
@@ -126,125 +143,149 @@ export default function CommunitySection() {
                       animate={{ width: isHovered ? 170 : 60 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="relative bg-white rounded-full flex items-center justify-start cursor-pointer h-[60px] shadow-lg pl-[10px] overflow-hidden"
+                      className="relative bg-white rounded-full flex items-center justify-start cursor-pointer h-[60px] overflow-hidden"
                     >
-                      <svg
-                        className="w-10 h-10 text-primary-600 flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        style={{ marginLeft: '2px' }}
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                      <div className="w-[60px] h-[60px] flex items-center justify-center flex-shrink-0">
+                        <motion.div
+                          animate={{
+                            scale: isHovered ? 0.95 : 1,
+                            x: isHovered ? 1 : 0
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <svg
+                            className="w-[20px] h-[20px] text-primary-600"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                            style={{ marginLeft: '2px' }}
+                          >
+                            <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59661 21.6145C6.53435 22.7359 4 21.2452 4 18.9671L4 5.03292C4 2.75478 6.53435 1.26406 8.59661 2.38548L21.4086 9.35258Z" />
+                          </svg>
+                        </motion.div>
+                      </div>
                       <motion.span
                         animate={{
                           opacity: isHovered ? 1 : 0,
                           x: isHovered ? 0 : -10
                         }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="text-primary-600 font-semibold text-base whitespace-nowrap ml-3"
+                        className="text-primary-600 font-semibold text-base whitespace-nowrap ml-0"
                       >
                         Watch Now
                       </motion.span>
                     </motion.button>
                   </div>
                 </div>
-
               </>
             )}
-
-            {/* Navigation Arrows - Glass Container */}
-            <div className={`absolute bottom-0 right-0 pt-9 pb-3 px-10 bg-primary-600 backdrop-blur-xl rounded-tl-[48px] flex gap-4 z-20 transition-all duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
-              {/* Previous Button */}
-              <motion.button
-                onMouseEnter={() => setIsPrevHovered(true)}
-                onMouseLeave={() => setIsPrevHovered(false)}
-                onClick={handlePrev}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
-              >
-                <div className="relative w-6 h-6 scale-x-[-1]">
-                  {/* Arrow 1 */}
-                  <motion.div
-                    animate={{ x: isPrevHovered ? -120 : 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                  {/* Arrow 2 */}
-                  <motion.div
-                    initial={{ x: 60 }}
-                    animate={{ x: isPrevHovered ? -60 : 60 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                  {/* Arrow 3 */}
-                  <motion.div
-                    initial={{ x: 120 }}
-                    animate={{ x: isPrevHovered ? 0 : 120 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                </div>
-              </motion.button>
-
-              {/* Next Button */}
-              <motion.button
-                onMouseEnter={() => setIsNextHovered(true)}
-                onMouseLeave={() => setIsNextHovered(false)}
-                onClick={handleNext}
-                whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 md:w-14 md:h-14 bg-primary-900/80 hover:bg-primary-900 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden"
-              >
-                <div className="relative w-6 h-6">
-                  {/* Arrow 1 */}
-                  <motion.div
-                    animate={{ x: isNextHovered ? -120 : 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                  {/* Arrow 2 */}
-                  <motion.div
-                    initial={{ x: 60 }}
-                    animate={{ x: isNextHovered ? -60 : 60 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                  {/* Arrow 3 */}
-                  <motion.div
-                    initial={{ x: 120 }}
-                    animate={{ x: isNextHovered ? 0 : 120 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </motion.div>
-                </div>
-              </motion.button>
-            </div>
-
           </motion.div>
+
+          {/* Navigation Controls - Liquid Notch integrated with Video Card */}
+          {!isPlaying && (
+            <div className="absolute -bottom-3 right-6 z-20">
+              <div className="relative pt-4 pb-3 pr-4 pl-8 bg-primary-600 rounded-tl-[48px] rounded-br-[32px] flex gap-3 items-center min-w-[175px] justify-end">
+                {/* Visual Shims - Precisely aligned to FLAT edges only to prevent corner bleed */}
+                <div className="absolute -top-[1px] left-[48px] right-0 h-[2px] bg-primary-600 pointer-events-none" />
+                <div className="absolute top-[48px] bottom-0 -right-[1px] w-[2px] bg-primary-600 pointer-events-none" />
+                <div className="absolute -bottom-[1px] left-0 right-[-1px] h-[2px] bg-primary-600 pointer-events-none" />
+
+                {/* Top-Right Transition (Concave) - Liquid flow back into side wall */}
+                <div className="absolute -top-[48.5px] -right-[0.2px] w-[50px] h-[50px] pointer-events-none">
+                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.1] origin-bottom-right">
+                    <path d="M 0 50 A 50 50 0 0 0 50 0 L 50 50 Z" fill="#4F39F6" />
+                  </svg>
+                </div>
+
+                {/* Bottom-Left Transition (Concave) - Liquid flow out from floor */}
+                <div className="absolute bottom-[12px] -left-[48.5px] w-[50px] h-[50px] pointer-events-none">
+                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.1] origin-bottom-right">
+                    <path d="M 0 50 A 50 50 0 0 0 50 0 L 50 50 Z" fill="#4F39F6" />
+                  </svg>
+                </div>
+                {/* Previous Button */}
+                <motion.button
+                  onMouseEnter={() => setIsPrevHovered(true)}
+                  onMouseLeave={() => setIsPrevHovered(false)}
+                  onClick={handlePrev}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-[64px] h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                >
+                  <div className="relative w-6 h-6 scale-x-[-1]">
+                    <motion.div
+                      animate={{ x: isPrevHovered ? -140 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                    <motion.div
+                      initial={{ x: 70 }}
+                      animate={{ x: isPrevHovered ? -70 : 70 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                    <motion.div
+                      initial={{ x: 140 }}
+                      animate={{ x: isPrevHovered ? 0 : 140 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                </motion.button>
+
+                {/* Next Button */}
+                <motion.button
+                  onMouseEnter={() => setIsNextHovered(true)}
+                  onMouseLeave={() => setIsNextHovered(false)}
+                  onClick={handleNext}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-[64px] h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                >
+                  <div className="relative w-6 h-6">
+                    <motion.div
+                      animate={{ x: isNextHovered ? -140 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                    <motion.div
+                      initial={{ x: 70 }}
+                      animate={{ x: isNextHovered ? -70 : 70 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                    <motion.div
+                      initial={{ x: 140 }}
+                      animate={{ x: isNextHovered ? 0 : 140 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="absolute inset-0 flex items-center justify-center"
+                    >
+                      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </motion.div>
+                  </div>
+                </motion.button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

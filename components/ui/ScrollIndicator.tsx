@@ -13,10 +13,10 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
       initial="initial"
       whileHover="hover"
       animate="initial"
-      className="relative flex items-center justify-center w-14 h-14 rounded-full shadow-lg overflow-hidden"
+      className="relative flex items-center justify-center w-14 h-14 rounded-full overflow-hidden"
       variants={{
         initial: {
-          backgroundColor: "#5B4DFF",
+          backgroundColor: "#4F39F6",
           scale: 1
         },
         hover: {

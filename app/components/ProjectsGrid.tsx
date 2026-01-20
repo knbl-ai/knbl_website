@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { VideoPreview } from '@/components/ui/VideoPreview';
-import { ArrowRight } from 'lucide-react';
+import { VideoPreview } from '../../components/ui/VideoPreview';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 interface Project {
   id: number;
@@ -13,22 +14,24 @@ interface Project {
   slug: string;
   alt: string;
   delay?: number;
+  trimEnd?: number;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    image: '/images/projects/project-1.webp',
+    image: '',
     videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
     name: 'H&O',
     slug: 'ho-brands',
     alt: 'H&O',
-    delay: 0
+    delay: 0,
+    trimEnd: 4
   },
   {
     id: 2,
-    image: '/images/projects/project-5.webp',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4',
+    image: '',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768731363/photo_to_video_ai_nktppl.mp4',
     name: 'Rafael',
     slug: 'rafael',
     alt: 'Rafael',
@@ -36,8 +39,8 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    image: '/images/projects/xiaomi.jpg',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
+    image: '',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768738072/10S__RN15_High_Battery__Horizontal__Clean_low_rpdqrs.mp4',
     name: 'Xiaomi',
     slug: 'xiaomi',
     alt: 'Xiaomi',
@@ -45,7 +48,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    image: '/images/projects/project-3.webp',
+    image: '',
     videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
     name: 'Roladin',
     slug: 'roladin',
@@ -54,8 +57,8 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    image: '/images/projects/project-6.webp',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4',
+    image: '',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768732094/3105_CARTERS_TADMIT_VIDEO_960X520_1_meeqfj.mp4',
     name: "Carter's",
     slug: 'carters',
     alt: "Carter's",
@@ -63,7 +66,7 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    image: '/images/projects/project-2.webp',
+    image: '',
     videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4',
     name: 'Electra',
     slug: 'electra',
@@ -72,7 +75,7 @@ const projects: Project[] = [
   },
   {
     id: 7,
-    image: '/images/projects/project-7.png',
+    image: '',
     videoUrl: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4',
     name: 'Takeda',
     slug: 'takeda',
@@ -81,7 +84,7 @@ const projects: Project[] = [
   },
   {
     id: 8,
-    image: '/images/projects/project-8.png',
+    image: '',
     videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4',
     name: 'Aion',
     slug: 'aion',
@@ -90,8 +93,8 @@ const projects: Project[] = [
   },
   {
     id: 9,
-    image: '/images/projects/project-9.png',
-    videoUrl: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4',
+    image: '',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4',
     name: 'Reuth Hospital',
     slug: 'reuth-hospital',
     alt: 'Reuth Hospital',
@@ -103,42 +106,88 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
   return (
     <Link href={`/work/${project.slug}`}>
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: project.delay }}
-        className={`${height} rounded-3xl overflow-hidden cursor-pointer relative group`}
+        initial="initial"
+        whileHover="hover"
+        className={`${height} rounded-[40px] overflow-hidden cursor-pointer relative group`}
       >
-        <VideoPreview
-          videoUrl={project.videoUrl}
-          posterUrl={project.image}
-          alt={project.alt}
-        />
-        {/* Purple overlay on hover */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute bottom-0 left-0 right-0 bg-primary-600 p-4 flex items-center justify-between"
+          className="w-full h-full relative rounded-[40px] overflow-hidden"
+          variants={{
+            initial: { scale: 1, y: 0 },
+            hover: { scale: 1.1, y: -20 }
+          }}
+          transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
         >
-          <span className="text-white font-semibold text-lg">{project.name}</span>
+          <VideoPreview
+            videoUrl={project.videoUrl}
+            posterUrl={project.image}
+            alt={project.alt}
+            trimEnd={project.trimEnd}
+          />
+          {/* Subtle dark overlay on hover to make text pop */}
           <motion.div
-            className="group/button bg-white rounded-full flex items-center cursor-pointer overflow-hidden h-12 px-3"
-            initial={false}
+            className="absolute inset-0 bg-black/10 transition-colors"
+            variants={{
+              initial: { opacity: 0 },
+              hover: { opacity: 1 }
+            }}
+          />
+        </motion.div>
+
+        {/* Purple Bar Overlay */}
+        <motion.div
+          variants={{
+            initial: { y: "100%" },
+            hover: { y: 0 }
+          }}
+          transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+          className="absolute bottom-0 left-0 right-0 bg-[#5046E4] px-10 py-6 flex items-center justify-between z-10 rounded-b-[40px]"
+        >
+          <span className="text-white font-bold text-[28px] tracking-tight">{project.name}</span>
+          <motion.div
+            className="flex items-center bg-white rounded-full group/btn cursor-pointer overflow-hidden h-12"
+            initial="initial"
             whileHover="hover"
-            animate="rest"
+            variants={{
+              initial: { width: "48px" },
+              hover: { width: "160px" }
+            }}
+            transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
           >
-            <motion.span
-              variants={{
-                rest: { width: 0, opacity: 0, marginRight: 0 },
-                hover: { width: 'auto', opacity: 1, marginRight: 8 }
-              }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="text-primary-600 font-semibold text-sm whitespace-nowrap overflow-hidden"
-            >
-              View Case
-            </motion.span>
-            <ArrowRight className="w-6 h-6 text-primary-600 flex-shrink-0" />
+            <div className="flex items-center justify-center w-full px-4 relative">
+              <motion.span
+                className="text-[#5046E4] font-bold text-sm whitespace-nowrap absolute left-5"
+                variants={{
+                  initial: { opacity: 0, x: 10 },
+                  hover: { opacity: 1, x: 0 }
+                }}
+              >
+                View Case
+              </motion.span>
+              <motion.div
+                className="ml-auto relative w-5 h-5"
+              >
+                <motion.div
+                  className="absolute inset-0"
+                  variants={{
+                    initial: { opacity: 1, rotate: 0 },
+                    hover: { opacity: 0, rotate: 45 }
+                  }}
+                >
+                  <ArrowRight className="w-5 h-5 text-[#5046E4]" />
+                </motion.div>
+                <motion.div
+                  className="absolute inset-0"
+                  initial={{ opacity: 0, rotate: -45 }}
+                  variants={{
+                    initial: { opacity: 0, rotate: -45 },
+                    hover: { opacity: 1, rotate: 0 }
+                  }}
+                >
+                  <ArrowUpRight className="w-5 h-5 text-[#5046E4]" />
+                </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -153,14 +202,24 @@ export default function ProjectsGrid() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-medium max-w-2xl"
+            className="text-4xl md:text-[56px] font-medium max-w-4xl leading-[1.1] text-black"
           >
-            The Brands We&apos;ve{' '}
-            <span className="text-primary-600">Grown.</span>
+            The Brands <br />
+            We&apos;ve <span className="text-primary-600">Grown.</span>
           </motion.h2>
+
+          <Link href="/projects" className="hidden md:block">
+            <InteractiveHoverButton
+              className="bg-[#4F39F6] text-white rounded-full font-medium h-[64px] flex items-center justify-center"
+              variants={{
+                initial: { width: "190px" },
+                hover: { width: "auto" }
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              View All Projects
+            </InteractiveHoverButton>
+          </Link>
         </div>
 
         {/* Projects Grid */}
@@ -172,31 +231,19 @@ export default function ProjectsGrid() {
             </div>
 
             <div className="md:col-span-8 flex flex-col gap-4">
-              <ProjectCard project={projects[1]} height="h-[250px]" />
+              <ProjectCard project={projects[1]} height="h-[200px]" />
 
               <div className="grid grid-cols-2 gap-4">
-                <ProjectCard project={projects[2]} height="h-[250px]" />
-                <ProjectCard project={projects[3]} height="h-[250px]" />
+                <ProjectCard project={projects[2]} height="h-[300px]" />
+                <ProjectCard project={projects[3]} height="h-[300px]" />
               </div>
             </div>
           </div>
 
-          {/* Second Row Block (2 cards) */}
+          {/* Third Row Block (2 cards) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ProjectCard project={projects[4]} height="h-[250px]" />
-            <ProjectCard project={projects[5]} height="h-[250px]" />
-          </div>
-
-          {/* Third Row Block (3 cards) */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div className="md:col-span-8 flex flex-col gap-4">
-              <ProjectCard project={projects[6]} height="h-[250px]" />
-              <ProjectCard project={projects[7]} height="h-[250px]" />
-            </div>
-
-            <div className="md:col-span-4">
-              <ProjectCard project={projects[8]} height="h-[516px]" />
-            </div>
+            <ProjectCard project={projects[4]} height="h-[300px]" />
+            <ProjectCard project={projects[8]} height="h-[300px]" />
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ export default function Navigation() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="container mx-auto px-6 md:px-24 py-6">
+      <div className="w-full px-6 md:px-[120px] py-[48px]">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -48,30 +48,60 @@ export default function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6">
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setActiveItem(item.label)}
-                className="relative px-3 py-2 text-neutral-200 hover:text-primary-600 transition-colors"
-              >
-                {item.label}
-                {activeItem === item.label && (
+          {/* Desktop Menu & Button Container */}
+          <div className="hidden md:flex items-center justify-end flex-1 gap-12">
+            <div className="flex items-center gap-4">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setActiveItem(item.label)}
+                  className="relative px-[12px] py-[10px] flex cursor-pointer group"
+                >
                   <motion.div
-                    layoutId="activeIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-600"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
+                    initial="initial"
+                    whileHover="hover"
+                    animate="initial" // Ensures variants reset smoothly on mouse leave
+                    className="flex text-[15px] font-normal leading-[24px]"
+                  >
+                    {item.label.split('').map((char, i) => (
+                      <span key={i} className="relative inline-block whitespace-pre">
+                        {/* Base Text */}
+                        <span className={`transition-colors duration-200 ${activeItem === item.label ? 'text-[#4F39F6]' : 'text-[#888888]'}`}>
+                          {char}
+                        </span>
+                        {/* Hover Effect Layer (The 'Wave') */}
+                        <motion.span
+                          variants={{
+                            initial: {
+                              clipPath: 'inset(0 100% 0 0)',
+                              transition: { duration: 0.15, ease: "easeInOut" }
+                            },
+                            hover: {
+                              clipPath: 'inset(0 0% 0 0)',
+                              transition: {
+                                duration: 0.12,
+                                delay: i * 0.015, // Faster wave stagger
+                                ease: "easeInOut"
+                              }
+                            }
+                          }}
+                          className="absolute inset-0 text-[#4F39F6]"
+                          aria-hidden="true"
+                        >
+                          {char}
+                        </motion.span>
+                      </span>
+                    ))}
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
 
             {/* Let's Talk Button */}
-            <Link href="/contact">
+            <Link href="/contact" className="transition-all duration-300">
               <InteractiveHoverButton
-                className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium"
+                className="bg-[#4F39F6] text-white rounded-full font-medium"
               >
                 Let&apos;s Talk
               </InteractiveHoverButton>

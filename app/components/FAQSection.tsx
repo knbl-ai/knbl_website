@@ -35,82 +35,104 @@ interface FAQCardProps {
 
 function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
   return (
-    <div className="bg-indigo-50 rounded-[32px] py-6 px-8">
+    <motion.div
+      layout
+      transition={{
+        layout: {
+          type: "spring",
+          stiffness: 400,
+          damping: 22,
+          mass: 1
+        }
+      }}
+      className="bg-indigo-50 rounded-[32px] py-6 px-8"
+    >
       <button
         onClick={onToggle}
-        className="w-full flex items-center gap-6 text-left"
+        className="w-full flex items-center justify-between gap-6 text-left group"
       >
+        <h3 className="text-[18px] font-medium text-black leading-tight">{question}</h3>
         <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
+          animate={{ rotate: isOpen ? -180 : 0 }}
           transition={{ duration: 0.3 }}
-          className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center flex-shrink-0"
+          className="w-10 h-10 bg-primary-600 group-hover:bg-[#8B7DFF] rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300"
         >
           <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </motion.div>
-        <h3 className="text-[18px] font-medium text-black leading-tight">{question}</h3>
       </button>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{
+              height: { type: "spring", stiffness: 400, damping: 20 },
+              opacity: { duration: 0.2 }
+            }}
             className="overflow-hidden"
           >
-            <div className="flex gap-6">
-              {/* Spacer matching the icon width */}
-              <div className="w-10 flex-shrink-0" />
-              <p className="mt-4 text-[18px] text-neutral-500 leading-relaxed font-normal">
-                {answer}
-              </p>
-            </div>
+            <p className="mt-4 text-[18px] text-neutral-500 leading-relaxed font-normal">
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndices, setOpenIndices] = useState<number[]>([0]);
+
+  const handleToggle = (index: number) => {
+    setOpenIndices(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
   return (
     <section className="py-44 px-6 md:px-24">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column - Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-6xl font-medium">
-              Got questions?
-              <br />
-              <span>We&apos;ve got </span>
-              <span className="text-primary-600">answers.</span>
+          <div className="max-w-xl">
+            <h2 className="text-4xl md:text-[56px] font-medium tracking-tight leading-[1.1] text-black">
+              Got questions? <br />
+              We&apos;ve got <span className="text-primary-600">answers.</span>
             </h2>
-          </motion.div>
+          </div>
 
           {/* Right Column - FAQs */}
           <div className="space-y-2">
             {faqs.map((faq, index) => (
               <motion.div
                 key={faq.question}
+                layout
+                transition={{
+                  layout: {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 22,
+                    mass: 1
+                  },
+                  opacity: { delay: index * 0.1 },
+                  y: { delay: index * 0.1 }
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
               >
                 <FAQCard
                   question={faq.question}
                   answer={faq.answer}
-                  isOpen={openIndex === index}
-                  onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                  isOpen={openIndices.includes(index)}
+                  onToggle={() => handleToggle(index)}
                 />
               </motion.div>
             ))}

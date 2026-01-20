@@ -27,7 +27,7 @@ export default function AboutHero() {
         </div>
 
         {/* Description with Text Reveal Animation */}
-        <TextReveal startEarly className="py-0 [&>div]:max-w-3xl [&>div]:mx-auto [&_p]:text-xl md:[&_p]:text-2xl [&_p]:text-neutral-300 [&_p]:leading-relaxed [&_p]:text-center [&_p]:justify-center">
+        <TextReveal startEarly className="py-0 text-lg md:text-[22px] leading-[1.5] font-medium tracking-tight text-neutral-300 text-center justify-center max-w-3xl mx-auto">
           KNBL is a performance driven digital agency helping brands grow through strategy, creative content and data based marketing. We combine smart media, strong creative and fast execution to bring brands real results in real time.
         </TextReveal>
       </div>
