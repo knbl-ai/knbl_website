@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { VideoPreview } from '@/components/ui/VideoPreview';
 import { ArrowRight } from 'lucide-react';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 
 interface Project {
   id: number;
