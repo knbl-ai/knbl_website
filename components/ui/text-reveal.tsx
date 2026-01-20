@@ -1,7 +1,7 @@
 "use client";
 
 import { ComponentPropsWithoutRef, FC, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
@@ -66,7 +66,7 @@ export const TextReveal: FC<TextRevealProps> = ({
 
 interface WordProps {
   children: string;
-  progress: any;
+  progress: MotionValue<number>;
   range: [number, number];
   initialColor: string;
   revealedColor: string;

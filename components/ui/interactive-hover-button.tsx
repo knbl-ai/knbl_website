@@ -22,7 +22,7 @@ export function InteractiveHoverButton({
         "group relative cursor-pointer overflow-hidden rounded-full border-none bg-primary-600 text-center font-semibold text-white transition-colors duration-300 hover:bg-[#8B8BFF]",
         className
       )}
-      {...(props as any)}
+      {...props}
     >
       <motion.div
         className="relative flex items-center justify-center py-3 px-8"

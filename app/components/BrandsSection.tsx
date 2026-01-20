@@ -3,7 +3,13 @@
 import { motion } from 'framer-motion';
 
 
-const topRowBrands = [
+interface Brand {
+  name: string;
+  logo: string;
+  className?: string;
+}
+
+const topRowBrands: Brand[] = [
   { name: 'Rafael', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767629498/rafael_logo-02_qcfdyr.png', className: 'h-16 md:h-24' },
   { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767629092/Reuth_Association_Assisted_living_Logo_Negative_ir40om.png', className: 'h-16 md:h-24' },
   { name: 'KKL', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628950/logo_heb_white_full_kklft6.png' },
@@ -14,7 +20,7 @@ const topRowBrands = [
   { name: 'Xiaomi', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628142/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
 ];
 
-const bottomRowBrands = [
+const bottomRowBrands: Brand[] = [
   { name: 'Electra', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628438/%D7%9C%D7%95%D7%92%D7%95_%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%94_%D7%9C%D7%91%D7%9F_2_swqjjk.png' },
   { name: 'Takeda', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627891/takeda_WHITE_oghfsj.png' },
   { name: 'Roladin', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627396/Roladin_logo_B2_nxsyzd.png' },
@@ -71,7 +77,7 @@ export default function BrandsSection() {
           <div className="space-y-2 md:space-y-4">
             <Marquee direction="left" duration={30}>
               {topRowBrands.map((brand, index) => (
-                <div key={`${brand.name}-${index}`} className={`relative h-10 md:h-14 flex-shrink-0 ${(brand as any).className || ''}`}>
+                <div key={`${brand.name}-${index}`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
                   <img
                     src={brand.logo}
                     alt={brand.name}
@@ -84,7 +90,7 @@ export default function BrandsSection() {
             {/* Bottom Row - Moves Right */}
             <Marquee direction="right" duration={30}>
               {bottomRowBrands.map((brand, index) => (
-                <div key={`${brand.name}-${index}-rev`} className={`relative h-10 md:h-14 flex-shrink-0 ${(brand as any).className || ''}`}>
+                <div key={`${brand.name}-${index}-rev`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
                   <img
                     src={brand.logo}
                     alt={brand.name}
