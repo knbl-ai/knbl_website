@@ -26,8 +26,11 @@ export default function Navigation() {
       if (item.href.startsWith('/#')) return pathname === '/';
       return pathname.startsWith(item.href);
     });
-    if (currentItem) {
-      setActiveItem(currentItem.label);
+
+    if (pathname === '/ai-productions') {
+      setActiveItem('AI productions');
+    } else {
+      setActiveItem(currentItem ? currentItem.label : '');
     }
   }, [pathname]);
 
@@ -98,14 +101,23 @@ export default function Navigation() {
               ))}
             </div>
 
-            {/* Let's Talk Button */}
-            <Link href="/contact" className="transition-all duration-300">
-              <InteractiveHoverButton
-                className="bg-[#4F39F6] text-white rounded-full font-medium"
-              >
-                Let&apos;s Talk
-              </InteractiveHoverButton>
-            </Link>
+            {/* AI productions & Let's Talk Buttons */}
+            <div className="flex items-center gap-4">
+              <Link href="/ai-productions" className="transition-all duration-300">
+                <InteractiveHoverButton
+                  className={`bg-[#4F39F6] text-white rounded-full font-medium ${activeItem === 'AI productions' ? 'ring-2 ring-white/20' : ''}`}
+                >
+                  AI productions
+                </InteractiveHoverButton>
+              </Link>
+              <Link href="/contact" className="transition-all duration-300">
+                <InteractiveHoverButton
+                  className="bg-[#4F39F6] text-white rounded-full font-medium"
+                >
+                  Let&apos;s Talk
+                </InteractiveHoverButton>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

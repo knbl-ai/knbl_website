@@ -9,10 +9,21 @@ interface VideoPreviewProps {
     alt: string;
     trimEnd?: number; // seconds to cut from the end
     maxDuration?: number; // max seconds to play
-    startTime?: number; // start time in seconds
+    startTime?: number; // seconds to start from
+    isPlaying?: boolean; // controlled playback
+    objectFit?: 'cover' | 'contain';
 }
 
-export function VideoPreview({ videoUrl, posterUrl, alt, trimEnd, maxDuration, startTime = 0 }: VideoPreviewProps) {
+export function VideoPreview({
+    videoUrl,
+    posterUrl,
+    alt,
+    trimEnd,
+    maxDuration,
+    startTime = 0,
+    isPlaying = true,
+    objectFit = 'cover'
+}: VideoPreviewProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
@@ -20,36 +31,44 @@ export function VideoPreview({ videoUrl, posterUrl, alt, trimEnd, maxDuration, s
         const video = videoRef.current;
         if (!video) return;
 
-        // Set initial start time
-        if (startTime > 0) {
+        if (isPlaying) {
+            video.play().catch(() => { });
+        } else {
+            video.pause();
+        }
+    }, [isPlaying]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (startTime > 0 && !isVideoLoaded) {
             video.currentTime = startTime;
         }
 
         const handleTimeUpdate = () => {
-            const currentEffectiveTime = video.currentTime - startTime;
-
-            if (maxDuration && currentEffectiveTime >= maxDuration) {
+            if (maxDuration && video.currentTime >= startTime + maxDuration) {
                 video.currentTime = startTime;
-                video.play().catch(() => { });
+                if (isPlaying) video.play().catch(() => { });
             } else if (trimEnd && video.duration && video.currentTime >= video.duration - trimEnd) {
                 video.currentTime = startTime;
-                video.play().catch(() => { });
+                if (isPlaying) video.play().catch(() => { });
             }
         };
 
         video.addEventListener('timeupdate', handleTimeUpdate);
         return () => video.removeEventListener('timeupdate', handleTimeUpdate);
-    }, [trimEnd, maxDuration, startTime]);
+    }, [trimEnd, maxDuration, startTime, isPlaying, isVideoLoaded]);
 
     return (
-        <div className="relative w-full h-full bg-neutral-100">
+        <div className="relative w-full h-full bg-transparent">
             {/* Poster Image - shown while video is loading or out of view */}
             {posterUrl && (
                 <Image
                     src={posterUrl}
                     alt={alt}
                     fill
-                    className={`object-cover transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'
+                    className={`object-${objectFit} transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'
                         }`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
@@ -61,11 +80,10 @@ export function VideoPreview({ videoUrl, posterUrl, alt, trimEnd, maxDuration, s
                 ref={videoRef}
                 src={videoUrl}
                 muted
-                loop={!maxDuration && !trimEnd} // Use native loop if no custom logic
+                loop
                 playsInline
-                autoPlay
                 onLoadedData={() => setIsVideoLoaded(true)}
-                className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ${!posterUrl || isVideoLoaded ? 'opacity-100' : 'opacity-0'
+                className={`w-full h-full object-${objectFit} absolute inset-0 transition-opacity duration-700 ${!posterUrl || isVideoLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
             />
         </div>

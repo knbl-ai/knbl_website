@@ -19,11 +19,7 @@ export default function HomePage() {
             <section id="about" className="flex flex-col items-center py-44">
                 <div className="max-w-[1200px] mx-auto text-center">
                     <TextReveal className="justify-center text-center text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-3xl mx-auto">
-                        We&apos;re KNBL a strategy-driven collective built for what&apos;s next.
-                        We started in storytelling, where every brand moment had a
-                        voice and a purpose. Today, that voice meets technology,
-                        partnered by AI, guided by insight, and scaled with
-                        precision. Our model connects every step.
+                        {`We're KNBL a strategy-driven collective built for what's next. We started in storytelling, where every brand moment had a voice and a purpose. Today, that voice meets technology, partnered by AI, guided by insight, and scaled with precision.\n\nOur model connects every step.`}
                     </TextReveal>
                 </div>
             </section>
@@ -32,7 +28,7 @@ export default function HomePage() {
 
             {/* Second About Section */}
             <div className="py-44 flex flex-col items-center justify-center">
-                <TextReveal className="justify-center text-center text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-3xl mx-auto">
+                <TextReveal className="justify-center text-center text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight max-w-[950px] mx-auto">
                     We believe noise doesn&apos;t build brands. Focus, direction, and a smart engine do. We combine strategic clarity with high-precision execution to ensure every move our brands make is intentional and impactful.
                 </TextReveal>
             </div>

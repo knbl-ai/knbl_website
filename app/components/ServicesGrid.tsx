@@ -185,7 +185,7 @@ export default function ServicesGrid() {
                           className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
                         >
                           <h3 className="text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
-                            {service.title}
+                            {index === 1 ? 'Creative' : service.title}
                           </h3>
                         </motion.div>
                       )}

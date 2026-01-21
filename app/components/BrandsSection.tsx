@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect, useState, ReactNode } from 'react';
+import { motion, useMotionValue, useSpring, useAnimationFrame } from 'framer-motion';
 
 
 interface Brand {
@@ -10,18 +11,19 @@ interface Brand {
 }
 
 const topRowBrands: Brand[] = [
-  { name: 'Rafael', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767629498/rafael_logo-02_qcfdyr.png', className: 'h-16 md:h-24' },
-  { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1768982987/REUTH_white_p74tld.png', className: 'h-16 md:h-24' },
-  { name: 'KKL', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628950/logo_heb_white_full_kklft6.png' },
+  { name: 'Terrogence', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769001889/Terrogence_Logo_white_dolipx.png' },
+  { name: 'Rafael', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002559/RAFAEL_LOGO_WHITE_yxntiv.png', className: 'h-16 md:h-24' },
+  { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002514/Reuth_ENGLISH_LOGO_WHITE1_yk3a75.png', className: 'h-16 md:h-24' },
+  { name: 'KKL', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002545/logo_eng_white_full_pl27m0.png' },
   { name: 'Calcalit', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628885/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png' },
-  { name: 'Logo New', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628727/Logo_%D7%9C%D7%95%D7%92%D7%95_%D7%97%D7%93%D7%A9_%D7%9C%D7%91%D7%9F_a7pzgj.png' },
+  { name: 'Hotze Israel', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002903/HOTZE_LOGO_WHITE_1_njmt5p.png', className: 'h-14 md:h-20' },
   { name: 'Heichal Hatarbut', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628565/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%9C%D7%91%D7%9F-%D7%9E%D7%9C%D7%90_u3xjih.png', className: 'translate-y-3' },
   { name: 'Anker', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628505/Logo_Anker_White_nqtpe8.png', className: 'h-32 md:h-48' },
   { name: 'Xiaomi', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628142/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
 ];
 
 const bottomRowBrands: Brand[] = [
-  { name: 'Electra', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628438/%D7%9C%D7%95%D7%92%D7%95_%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%94_%D7%9C%D7%91%D7%9F_2_swqjjk.png' },
+  { name: 'Electra', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002040/Electra_Logo_ENG_lavan_ALL_aqgf9v.png', className: 'h-40 md:h-56' },
   { name: 'Takeda', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627891/takeda_WHITE_oghfsj.png' },
   { name: 'Roladin', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627396/Roladin_logo_B2_nxsyzd.png' },
   { name: 'Reserved', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627358/reserved_logo_white-01_pywhgf.png', className: 'h-24 md:h-36' },
@@ -30,17 +32,72 @@ const bottomRowBrands: Brand[] = [
   { name: 'Aion', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627141/AION_LOGO_WHITE_rooieu.png', className: 'h-6 md:h-8' },
 ];
 
-const Marquee = ({ children, direction = 'left', duration = 20 }: { children: React.ReactNode, direction?: 'left' | 'right', duration?: number }) => {
+const Marquee = ({ children, direction = 'left', duration = 60 }: { children: ReactNode, direction?: 'left' | 'right', duration?: number }) => {
+  const [contentWidth, setContentWidth] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+
+  // High damping for premium, non-bouncy inertial feel
+  const springConfig = { stiffness: 300, damping: 60, mass: 1 };
+  const translateX = useSpring(x, springConfig);
+
+  const isDragging = useRef(false);
+  const speed = direction === 'left' ? -0.4 : 0.4; // Very slow and calm default speed
+
+  useEffect(() => {
+    if (contentRef.current) {
+      // Calculate width of a single set of logos (half the total scrollable width)
+      setContentWidth(contentRef.current.scrollWidth / 2);
+    }
+  }, [children]);
+
+  useAnimationFrame(() => {
+    if (isDragging.current || contentWidth === 0) return;
+
+    let currentX = x.get();
+    currentX += speed;
+
+    // Pixel-perfect seamless loop
+    if (currentX <= -contentWidth) {
+      currentX += contentWidth;
+    } else if (currentX > 0) {
+      currentX -= contentWidth;
+    }
+
+    x.set(currentX);
+  });
+
+  const onDrag = (_: any, info: any) => {
+    // Clamp delta to prevent crazy acceleration
+    const clampedDelta = Math.max(Math.min(info.delta.x, 20), -20);
+    let currentX = x.get() + clampedDelta;
+
+    // Maintain loop during drag
+    if (currentX <= -contentWidth) currentX += contentWidth;
+    if (currentX > 0) currentX -= contentWidth;
+
+    x.set(currentX);
+  };
+
   return (
-    <div className="flex overflow-hidden relative fade-sides">
+    <div className="flex overflow-hidden relative fade-sides cursor-grab active:cursor-grabbing select-none py-0">
       <motion.div
-        initial={{ x: direction === 'left' ? "0%" : "-50%" }}
-        animate={{ x: direction === 'left' ? "-50%" : "0%" }}
-        transition={{ ease: "linear", duration: duration, repeat: Infinity }}
-        className="flex gap-12 md:gap-20 items-center whitespace-nowrap min-w-full pr-12 md:pr-20"
+        ref={contentRef}
+        drag="x"
+        onDragStart={() => { isDragging.current = true; }}
+        onDragEnd={() => { isDragging.current = false; }}
+        onDrag={onDrag}
+        style={{ x: translateX }}
+        className="flex gap-20 md:gap-32 items-center flex-nowrap"
       >
-        {children}
-        {children}
+        {/* Set 1 */}
+        <div className="flex gap-20 md:gap-32 items-center flex-nowrap flex-shrink-0">
+          {children}
+        </div>
+        {/* Set 2 (for seamless loop) */}
+        <div className="flex gap-20 md:gap-32 items-center flex-nowrap flex-shrink-0">
+          {children}
+        </div>
       </motion.div>
     </div>
   );
@@ -48,8 +105,8 @@ const Marquee = ({ children, direction = 'left', duration = 20 }: { children: Re
 
 export default function BrandsSection() {
   return (
-    <section className="bg-neutral-900 py-24 md:py-32 overflow-hidden">
-      <div className="px-6 md:px-24 mb-16">
+    <section className="bg-neutral-900 pt-12 md:pt-16 pb-24 md:pb-32 overflow-hidden">
+      <div className="px-6 md:px-24 mb-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -74,7 +131,7 @@ export default function BrandsSection() {
 
       <div className="px-6 md:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="space-y-2 md:space-y-4">
+          <div className="space-y-0">
             <Marquee direction="left" duration={30}>
               {topRowBrands.map((brand, index) => (
                 <div key={`${brand.name}-${index}`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
