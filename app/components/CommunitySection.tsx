@@ -185,20 +185,20 @@ export default function CommunitySection() {
             <div className="absolute -bottom-3 right-6 z-20">
               <div className="relative pt-4 pb-3 pr-4 pl-8 bg-primary-600 rounded-tl-[48px] rounded-br-[32px] flex gap-3 items-center min-w-[175px] justify-end">
                 {/* Visual Shims - Precisely aligned to FLAT edges only to prevent corner bleed */}
-                <div className="absolute -top-[1px] left-[48px] right-0 h-[2px] bg-primary-600 pointer-events-none" />
-                <div className="absolute top-[48px] bottom-0 -right-[1px] w-[2px] bg-primary-600 pointer-events-none" />
-                <div className="absolute -bottom-[1px] left-0 right-[-1px] h-[2px] bg-primary-600 pointer-events-none" />
+                <div className="absolute -top-[2px] left-[46px] right-0 h-[3px] bg-primary-600 pointer-events-none" />
+                <div className="absolute top-[46px] bottom-0 -right-[2px] w-[3px] bg-primary-600 pointer-events-none" />
+                <div className="absolute -bottom-[2px] left-0 right-[-2px] h-[3px] bg-primary-600 pointer-events-none" />
 
                 {/* Top-Right Transition (Concave) - Liquid flow back into side wall */}
-                <div className="absolute -top-[48.5px] -right-[0.2px] w-[50px] h-[50px] pointer-events-none">
-                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.1] origin-bottom-right">
+                <div className="absolute -top-[48px] -right-[1px] w-[50px] h-[50px] pointer-events-none">
+                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.05] origin-bottom-right">
                     <path d="M 0 50 A 50 50 0 0 0 50 0 L 50 50 Z" fill="#4F39F6" />
                   </svg>
                 </div>
 
                 {/* Bottom-Left Transition (Concave) - Liquid flow out from floor */}
-                <div className="absolute bottom-[12px] -left-[48.5px] w-[50px] h-[50px] pointer-events-none">
-                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.1] origin-bottom-right">
+                <div className="absolute bottom-[10px] -left-[48px] w-[50px] h-[50px] pointer-events-none">
+                  <svg width="50" height="50" viewBox="0 0 50 50" fill="none" className="scale-[1.05] origin-bottom-right">
                     <path d="M 0 50 A 50 50 0 0 0 50 0 L 50 50 Z" fill="#4F39F6" />
                   </svg>
                 </div>

@@ -11,7 +11,7 @@ interface Brand {
 
 const topRowBrands: Brand[] = [
   { name: 'Rafael', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767629498/rafael_logo-02_qcfdyr.png', className: 'h-16 md:h-24' },
-  { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767629092/Reuth_Association_Assisted_living_Logo_Negative_ir40om.png', className: 'h-16 md:h-24' },
+  { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1768982987/REUTH_white_p74tld.png', className: 'h-16 md:h-24' },
   { name: 'KKL', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628950/logo_heb_white_full_kklft6.png' },
   { name: 'Calcalit', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628885/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png' },
   { name: 'Logo New', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628727/Logo_%D7%9C%D7%95%D7%92%D7%95_%D7%97%D7%93%D7%A9_%D7%9C%D7%91%D7%9F_a7pzgj.png' },

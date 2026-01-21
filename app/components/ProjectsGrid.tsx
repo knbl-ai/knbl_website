@@ -15,6 +15,8 @@ interface Project {
   alt: string;
   delay?: number;
   trimEnd?: number;
+  maxDuration?: number;
+  startTime?: number;
 }
 
 const projects: Project[] = [
@@ -26,7 +28,7 @@ const projects: Project[] = [
     slug: 'ho-brands',
     alt: 'H&O',
     delay: 0,
-    trimEnd: 4
+    maxDuration: 20
   },
   {
     id: 2,
@@ -35,7 +37,8 @@ const projects: Project[] = [
     name: 'Rafael',
     slug: 'rafael',
     alt: 'Rafael',
-    delay: 0.1
+    delay: 0.1,
+    maxDuration: 20
   },
   {
     id: 3,
@@ -44,7 +47,8 @@ const projects: Project[] = [
     name: 'Xiaomi',
     slug: 'xiaomi',
     alt: 'Xiaomi',
-    delay: 0.2
+    delay: 0.2,
+    maxDuration: 20
   },
   {
     id: 4,
@@ -53,7 +57,8 @@ const projects: Project[] = [
     name: 'Roladin',
     slug: 'roladin',
     alt: 'Roladin',
-    delay: 0.3
+    delay: 0.3,
+    maxDuration: 20
   },
   {
     id: 5,
@@ -62,7 +67,8 @@ const projects: Project[] = [
     name: "Carter's",
     slug: 'carters',
     alt: "Carter's",
-    delay: 0.4
+    delay: 0.4,
+    maxDuration: 20
   },
   {
     id: 6,
@@ -71,7 +77,8 @@ const projects: Project[] = [
     name: 'Electra',
     slug: 'electra',
     alt: 'Electra',
-    delay: 0.5
+    delay: 0.5,
+    maxDuration: 20
   },
   {
     id: 7,
@@ -80,7 +87,8 @@ const projects: Project[] = [
     name: 'Takeda',
     slug: 'takeda',
     alt: 'Takeda',
-    delay: 0.6
+    delay: 0.6,
+    maxDuration: 20
   },
   {
     id: 8,
@@ -89,16 +97,19 @@ const projects: Project[] = [
     name: 'Aion',
     slug: 'aion',
     alt: 'Aion',
-    delay: 0.7
+    delay: 0.7,
+    maxDuration: 20
   },
   {
     id: 9,
     image: '',
-    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4',
+    videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%9C%D7%90%D7%AA%D7%92%D7%A8_%D7%90%D7%AA_%D7%94%D7%91%D7%9C%D7%AA%D7%99_%D7%90%D7%A4%D7%A9%D7%A8%D7%99-%D7%91%D7%99%D7%AA_%D7%97%D7%95%D7%9C%D7%99%D7%9D_%D7%A8%D7%A2%D7%95%D7%AA_cvxk0v.mp4',
     name: 'Reuth Hospital',
     slug: 'reuth-hospital',
     alt: 'Reuth Hospital',
-    delay: 0.8
+    delay: 0.8,
+    maxDuration: 10,
+    startTime: 40
   },
 ];
 
@@ -123,6 +134,8 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
             posterUrl={project.image}
             alt={project.alt}
             trimEnd={project.trimEnd}
+            maxDuration={project.maxDuration}
+            startTime={project.startTime}
           />
           {/* Subtle dark overlay on hover to make text pop */}
           <motion.div
