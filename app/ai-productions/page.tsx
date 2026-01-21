@@ -106,6 +106,17 @@ const productVideos = [
     }
 ];
 
+interface Video {
+    id: number;
+    url: string;
+    title: string;
+    category?: string;
+    startTime?: number;
+    maxDuration?: number;
+    headline?: string;
+    description?: string;
+}
+
 function AIVideoCard({
     video,
     index,
@@ -116,7 +127,7 @@ function AIVideoCard({
     onMouseLeave,
     onPlay
 }: {
-    video: any,
+    video: Video,
     index: number,
     height?: string,
     isPortrait?: boolean,
@@ -219,7 +230,7 @@ function AIVideoCard({
     );
 }
 
-function VideoModal({ video, onClose }: { video: any, onClose: () => void }) {
+function VideoModal({ video, onClose }: { video: Video, onClose: () => void }) {
     if (!video) return null;
 
     return (
@@ -264,7 +275,7 @@ function VideoModal({ video, onClose }: { video: any, onClose: () => void }) {
 
 export default function AIProductionsPage() {
     const [playingId, setPlayingId] = useState<number | null>(null);
-    const [selectedVideo, setSelectedVideo] = useState<any | null>(null);
+    const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
 
     // Lock scroll when modal is open
     useEffect(() => {

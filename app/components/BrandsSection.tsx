@@ -67,7 +67,7 @@ const Marquee = ({ children, direction = 'left', duration = 60 }: { children: Re
     x.set(currentX);
   });
 
-  const onDrag = (_: any, info: any) => {
+  const onDrag = (_: unknown, info: { delta: { x: number } }) => {
     // Clamp delta to prevent crazy acceleration
     const clampedDelta = Math.max(Math.min(info.delta.x, 20), -20);
     let currentX = x.get() + clampedDelta;
