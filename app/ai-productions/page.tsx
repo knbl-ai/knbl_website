@@ -90,7 +90,7 @@ const portraitVideos = [
     {
         id: 16,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769084546/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.mp4',
-        title: 'Rafael Digital Future',
+        title: 'Xiaomi Redmi Note 15 Series',
     }
 ];
 
@@ -153,7 +153,7 @@ function AIVideoCard({
             variants={{
                 initial: { opacity: 0, y: 20, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)' },
                 animate: { opacity: 1, y: 0 },
-                hover: { scale: 1.02, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }
+                hover: { scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }
             }}
             animate="animate"
             transition={{
@@ -166,7 +166,7 @@ function AIVideoCard({
                 className="w-full h-full relative rounded-[12px] overflow-hidden"
                 variants={{
                     initial: { scale: 1, y: 0 },
-                    hover: { scale: 1.05, y: -20 }
+                    hover: { scale: 1.15, y: -20 }
                 }}
                 transition={{
                     duration: 0.8,
@@ -199,8 +199,8 @@ function AIVideoCard({
                     hover: { y: 0, opacity: 1 }
                 }}
                 transition={{
-                    duration: 0.6,
-                    y: { type: "spring", stiffness: 120, damping: 14 }
+                    duration: 0.5,
+                    y: { type: "spring", stiffness: 100, damping: 20 }
                 }}
                 className="absolute bottom-0 left-0 right-0 bg-[#5046E4] px-6 py-3 flex items-center justify-between z-10 rounded-b-[12px]"
             >
@@ -257,20 +257,22 @@ function VideoModal({ video, onClose }: { video: Video, onClose: () => void }) {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="relative flex items-center justify-center z-50"
             >
-                <div className="relative bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                    <video
-                        src={video.url}
-                        className="max-w-[95vw] max-h-[90vh] block"
-                        autoPlay
-                        controls
-                        playsInline
-                    />
+                <div className="relative group">
+                    <div className="bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                        <video
+                            src={video.url}
+                            className="max-w-[95vw] max-h-[90vh] block"
+                            autoPlay
+                            controls
+                            playsInline
+                        />
+                    </div>
 
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 p-2 bg-black/40 hover:bg-black/60 backdrop-blur-xl rounded-full transition-all group z-50 border border-white/20"
+                        className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 p-2 bg-neutral-400/50 hover:bg-neutral-400/70 backdrop-blur-md shadow-xl rounded-full transition-all z-[60] border border-white/30 opacity-0 group-hover:opacity-100"
                     >
-                        <X className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                        <X className="w-5 h-5 text-white hover:scale-110 transition-transform" />
                     </button>
                 </div>
             </motion.div>
@@ -333,14 +335,14 @@ export default function AIProductionsPage() {
 
             {/* Portrait Videos Section (Black Stripe) */}
             <section className="bg-black py-24 px-6 md:px-[120px]">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr_1fr] gap-8 items-center">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
                         {portraitVideos.map((video, index) => (
                             <AIVideoCard
                                 key={video.id}
                                 video={video}
                                 index={index}
-                                height={index === 1 ? "aspect-[4/5]" : "aspect-[9/16]"}
+                                height="aspect-[3/4]"
                                 isPortrait={true}
                                 isPlaying={playingId === video.id}
                                 onMouseEnter={() => setPlayingId(video.id)}
