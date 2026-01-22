@@ -86,6 +86,11 @@ const portraitVideos = [
         id: 12,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993557/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.mp4',
         title: 'Rafael 2026',
+    },
+    {
+        id: 16,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769084546/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.mp4',
+        title: 'Rafael Digital Future',
     }
 ];
 
