@@ -71,7 +71,7 @@ export default function CommunitySection() {
       <div className="absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b from-white via-[#A3B3FF] via-[20%] to-transparent pointer-events-none" />
 
       {/* Text Section */}
-      <div className="relative pt-0 pb-32 px-6 md:px-24 z-10">
+      <div className="relative pt-0 pb-16 md:pb-32 px-6 md:px-24 z-10">
         <TextReveal
           initialColor="#FFFFFF"
           startEarly={true}
@@ -82,7 +82,7 @@ export default function CommunitySection() {
       </div>
 
       {/* Video Card Section */}
-      <div className="relative pt-0 pb-32 z-10">
+      <div className="relative pt-0 pb-16 md:pb-32 z-10">
         <div className="w-full max-w-[1320px] mx-auto px-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -114,9 +114,9 @@ export default function CommunitySection() {
                 />
 
                 <div className="absolute bottom-6 left-6 max-w-lg">
-                  <div className="bg-neutral-900/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 space-y-6 border border-white/10">
+                  <div className="bg-neutral-900/20 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 space-y-6 border border-white/10">
                     <div className="space-y-2">
-                      <h3 className="text-3xl md:text-4xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
                       <p className="text-base md:text-lg leading-normal" style={{ color: '#CFCFD3' }}>
                         {currentVideo.description.split('Limy.ai').map((part, i, arr) => (
                           <span key={i}>
@@ -143,9 +143,9 @@ export default function CommunitySection() {
                       animate={{ width: isHovered ? 170 : 60 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="relative bg-white rounded-full flex items-center justify-start cursor-pointer h-[60px] overflow-hidden"
+                      className="relative bg-white rounded-full flex items-center justify-start cursor-pointer h-[50px] md:h-[60px] overflow-hidden"
                     >
-                      <div className="w-[60px] h-[60px] flex items-center justify-center flex-shrink-0">
+                      <div className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex items-center justify-center flex-shrink-0">
                         <motion.div
                           animate={{
                             scale: isHovered ? 0.95 : 1,
@@ -208,7 +208,7 @@ export default function CommunitySection() {
                   onMouseLeave={() => setIsPrevHovered(false)}
                   onClick={handlePrev}
                   whileTap={{ scale: 0.95 }}
-                  className="w-[64px] h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
                   <div className="relative w-6 h-6 scale-x-[-1]">
                     <motion.div
@@ -249,7 +249,7 @@ export default function CommunitySection() {
                   onMouseLeave={() => setIsNextHovered(false)}
                   onClick={handleNext}
                   whileTap={{ scale: 0.95 }}
-                  className="w-[64px] h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
                   <div className="relative w-6 h-6">
                     <motion.div

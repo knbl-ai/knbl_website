@@ -88,14 +88,14 @@ const Marquee = ({ children, direction = 'left', duration = 60 }: { children: Re
         onDragEnd={() => { isDragging.current = false; }}
         onDrag={onDrag}
         style={{ x: translateX }}
-        className="flex gap-20 md:gap-32 items-center flex-nowrap"
+        className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap"
       >
         {/* Set 1 */}
-        <div className="flex gap-20 md:gap-32 items-center flex-nowrap flex-shrink-0">
+        <div className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap flex-shrink-0">
           {children}
         </div>
         {/* Set 2 (for seamless loop) */}
-        <div className="flex gap-20 md:gap-32 items-center flex-nowrap flex-shrink-0">
+        <div className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap flex-shrink-0">
           {children}
         </div>
       </motion.div>
@@ -106,7 +106,7 @@ const Marquee = ({ children, direction = 'left', duration = 60 }: { children: Re
 export default function BrandsSection() {
   return (
     <section className="bg-neutral-900 pt-12 md:pt-16 pb-24 md:pb-32 overflow-hidden">
-      <div className="px-6 md:px-24 mb-8">
+      <div className="px-6 md:px-24 mb-6 md:mb-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ export default function BrandsSection() {
             viewport={{ once: true }}
             className="space-y-6 max-w-3xl"
           >
-            <h2 className="text-5xl md:text-6xl font-medium text-white leading-tight flex items-baseline flex-wrap">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-white leading-tight flex items-baseline flex-wrap">
               <span>Brands that trust</span>
               <img
                 src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768739081/5_otsmdt.png"

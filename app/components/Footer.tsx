@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
 
           {/* Right Columns - Links */}
-          <div className="flex gap-20">
+          <div className="flex gap-12 md:gap-20">
             {/* Explore Column */}
             <div className="flex flex-col gap-6">
               <h3 className="text-white font-normal text-base">Explore</h3>
@@ -117,7 +117,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           {/* KNBL Logo */}
-          <div className="w-full max-w-[607px]">
+          <div className="w-full max-w-[400px] md:max-w-[607px]">
             <Image
               src="/images/logo/knbl-footer-graphic.svg"
               alt="KNBL Logo"

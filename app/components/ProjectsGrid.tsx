@@ -183,7 +183,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         </svg>
                     </div>
 
-                    <span className="text-white font-medium text-[28px] tracking-tight">{project.name}</span>
+                    <span className="text-white font-medium text-[20px] md:text-[28px] tracking-tight">{project.name}</span>
                     <motion.div
                         className="flex items-center bg-white rounded-full group/btn cursor-pointer overflow-hidden h-12"
                         initial="initial"
@@ -237,7 +237,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
 
 export default function ProjectsGrid() {
     return (
-        <section id="work" className="py-44 px-6 md:px-24">
+        <section id="work" className="py-24 md:py-44 px-6 md:px-24">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
@@ -267,11 +267,11 @@ export default function ProjectsGrid() {
                     {/* First Row Block (4 cards) */}
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                         <div className="md:col-span-4">
-                            <ProjectCard project={projects[0]} height="h-[516px]" />
+                            <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" />
                         </div>
 
                         <div className="md:col-span-8 flex flex-col gap-4">
-                            <ProjectCard project={projects[1]} height="h-[200px]" />
+                            <ProjectCard project={projects[1]} height="h-[300px] md:h-[200px]" />
 
                             <div className="grid grid-cols-2 gap-4">
                                 <ProjectCard project={projects[2]} height="h-[300px]" />

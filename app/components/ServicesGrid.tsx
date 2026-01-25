@@ -63,7 +63,7 @@ export default function ServicesGrid() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="services" className="bg-neutral-900 px-6 md:px-24 pt-20 pb-44">
+    <section id="services" className="bg-neutral-900 px-6 md:px-24 pt-12 md:pt-20 pb-24 md:pb-44">
       <div className="max-w-[1240px] mx-auto">
         {/* Section Header */}
         <div className="mb-16">
@@ -85,7 +85,7 @@ export default function ServicesGrid() {
         </div>
 
         {/* Dynamic Cards Grid */}
-        <div className="flex gap-6 h-[600px] justify-between">
+        <div className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px] md:justify-between">
           {services.map((service, index) => {
             const isExpanded = expandedIndex === index;
             const isHovered = hoveredIndex === index;
@@ -102,9 +102,11 @@ export default function ServicesGrid() {
                 onClick={() => setExpandedIndex(index)}
                 layout
                 animate={{
-                  width: isExpanded ? '706px' : '154px',
+                  width: typeof window !== 'undefined' && window.innerWidth >= 768
+                    ? (isExpanded ? '706px' : '154px')
+                    : '100%',
                 }}
-                className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0"
+                className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full h-[400px] md:w-auto md:h-auto"
               >
                 {/* Background Asset */}
                 <div className="absolute inset-0">
@@ -165,10 +167,10 @@ export default function ServicesGrid() {
                           transition={{ duration: 0.5, ease: "easeOut" }}
                           className="pointer-events-none"
                         >
-                          <h3 className="text-[48px] font-medium text-white mb-3 tracking-[-0.04em] leading-none font-sans">
+                          <h3 className="text-[36px] md:text-[48px] font-medium text-white mb-3 tracking-[-0.04em] leading-none font-sans">
                             {service.title.replace('\n', ' ')}
                           </h3>
-                          <p className="text-white/90 text-[16px] font-medium tracking-[-0.01em] leading-none max-w-lg font-sans">
+                          <p className="text-white/90 text-[14px] md:text-[16px] font-medium tracking-[-0.01em] leading-none max-w-lg font-sans">
                             {service.description}
                           </p>
                         </motion.div>
@@ -184,7 +186,7 @@ export default function ServicesGrid() {
                           transition={{ duration: 0.4, ease: "easeOut" }}
                           className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
                         >
-                          <h3 className="text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
+                          <h3 className="text-[36px] md:text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
                             {index === 1 ? 'Creative' : service.title}
                           </h3>
                         </motion.div>

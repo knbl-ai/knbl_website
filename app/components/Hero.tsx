@@ -6,7 +6,7 @@ import ScrollIndicator from '@/components/ui/ScrollIndicator';
 
 export default function Hero() {
     return (
-        <section className="relative h-[1025px] flex flex-col items-center justify-center bg-gradient-to-b from-white via-indigo-50/30 to-white pt-20">
+        <section className="relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-gradient-to-b from-white via-indigo-50/30 to-white pt-20">
             {/* Background Blobs */}
             <div className="absolute inset-0 overflow-hidden">
                 <motion.div
@@ -23,7 +23,7 @@ export default function Hero() {
                         x: { duration: 10, repeat: Infinity, ease: "easeInOut" },
                         y: { duration: 9, repeat: Infinity, ease: "easeInOut" },
                     }}
-                    className="absolute top-[30%] right-[-15%] w-[1100px] h-[1100px] opacity-60"
+                    className="absolute top-[30%] right-[-15%] w-[600px] h-[600px] md:w-[1100px] md:h-[1100px] opacity-60"
                     style={{ rotate: '242deg' }}
                 >
                     <Image
@@ -48,7 +48,7 @@ export default function Hero() {
                         x: { duration: 12, repeat: Infinity, ease: "easeInOut" },
                         y: { duration: 11, repeat: Infinity, ease: "easeInOut" },
                     }}
-                    className="absolute top-[40%] left-[-15%] w-[1200px] h-[1200px] opacity-60"
+                    className="absolute top-[40%] left-[-15%] w-[700px] h-[700px] md:w-[1200px] md:h-[1200px] opacity-60"
                     style={{ rotate: '314deg' }}
                 >
                     <Image
@@ -71,7 +71,7 @@ export default function Hero() {
                         scale: { duration: 9, repeat: Infinity, ease: "easeInOut" },
                         y: { duration: 13, repeat: Infinity, ease: "easeInOut" },
                     }}
-                    className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[1400px] h-[1400px] opacity-60"
+                    className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] md:w-[1400px] md:h-[1400px] opacity-60"
                     style={{ rotate: '41deg' }}
                 >
                     <Image
@@ -106,7 +106,7 @@ export default function Hero() {
                         whileInView={{ color: "#000000" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: "easeInOut" }}
-                        className="text-[72px] font-medium leading-[72px] tracking-[-0.04em] font-sans"
+                        className="text-[40px] leading-[40px] md:text-[72px] md:leading-[72px] font-medium tracking-[-0.04em] font-sans"
                     >
                         <span className="block">Cut the noise.</span>
                         <span className="block">
@@ -118,7 +118,7 @@ export default function Hero() {
                         whileInView={{ color: "#000000" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-                        className="mt-8 text-[24px] font-normal leading-none tracking-[-0.02em] font-sans"
+                        className="mt-6 md:mt-8 text-[18px] md:text-[24px] font-normal leading-none tracking-[-0.02em] font-sans"
                     >
                         Creative marketing for ambitious brands
                     </motion.p>
@@ -129,7 +129,7 @@ export default function Hero() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="mt-32"
+                    className="mt-16 md:mt-32"
                 >
                     <ScrollIndicator onClick={() => {
                         document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });

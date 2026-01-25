@@ -45,7 +45,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
     >
       <div className="space-y-4">
         {/* Image */}
-        <div className="relative h-64 overflow-hidden rounded-[24px] group-hover:rounded-[36px] transition-all duration-500 ease-in-out">
+        <div className="relative h-56 md:h-64 overflow-hidden rounded-[24px] group-hover:rounded-[36px] transition-all duration-500 ease-in-out">
           <Image
             src={blog.image}
             alt={blog.title}
@@ -69,8 +69,8 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
         <div className="pt-6 px-4 pb-4 flex justify-between items-end gap-4">
           <div className="flex flex-col">
             <p className="text-neutral-300 text-sm mb-4">{blog.date}</p>
-            <h3 className="text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
-            <p className="text-neutral-400 leading-[1.3] font-normal">{blog.excerpt}</p>
+            <h3 className="text-[18px] md:text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
+            <p className="text-neutral-400 text-[14px] md:text-base leading-[1.3] font-normal">{blog.excerpt}</p>
           </div>
 
           {/* Arrow Button */}
@@ -121,7 +121,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
 
 export default function BlogSection() {
   return (
-    <section id="insights" className="py-44 px-6 md:px-24">
+    <section id="insights" className="py-24 md:py-44 px-6 md:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">

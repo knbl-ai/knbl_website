@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import AiProductionForm from '../components/AiProductionForm';
 import { VideoPreview } from '../../components/ui/VideoPreview';
 import { Maximize2, X } from 'lucide-react';
 
@@ -390,6 +391,7 @@ export default function AIProductionsPage() {
                 </div>
             </section>
 
+            <AiProductionForm />
             <Footer />
 
             <AnimatePresence>

@@ -51,7 +51,7 @@ function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-6 text-left group"
       >
-        <h3 className="text-[18px] font-medium text-black leading-tight">{question}</h3>
+        <h3 className="text-[16px] md:text-[18px] font-medium text-black leading-tight">{question}</h3>
         <motion.div
           animate={{ rotate: isOpen ? -180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -97,9 +97,9 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-44 px-6 md:px-24">
+    <section className="py-24 md:py-44 px-6 md:px-24">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Left Column - Heading */}
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-[56px] font-medium tracking-tight leading-[1.1] text-black">
