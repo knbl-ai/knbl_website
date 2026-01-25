@@ -24,7 +24,7 @@ export default function AiProductionForm() {
                 setStatus('error');
                 setErrorMessage(result.error || 'Something went wrong');
             }
-        } catch (error) {
+        } catch {
             setStatus('error');
             setErrorMessage('Failed to send inquiry. Please try again.');
         }

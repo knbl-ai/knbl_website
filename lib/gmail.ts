@@ -39,6 +39,7 @@ export async function sendEmail({
             scopes: ['https://www.googleapis.com/auth/gmail.send'],
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const authClient: any = await googleAuth.getClient();
         // Impersonate the sender
         authClient.subject = SENDER_EMAIL;
