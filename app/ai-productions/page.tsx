@@ -69,6 +69,13 @@ const aiVideos = [
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005735/Woman_talking_in_202601021508_ab1pf_k46tar.mp4',
         title: 'AI Virtual Spokesperson',
         category: 'Avatar Realism'
+    },
+    {
+        id: 17,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769335973/takeda_fin_LOWER_sgeqe4.mp4',
+        title: 'Takeda',
+        category: 'Health-AI',
+        startTime: 1
     }
 ];
 
