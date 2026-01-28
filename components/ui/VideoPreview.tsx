@@ -61,7 +61,7 @@ export function VideoPreview({
     }, [trimEnd, maxDuration, startTime, isPlaying, isVideoLoaded]);
 
     return (
-        <div className="relative w-full h-full bg-transparent">
+        <div className="relative w-full h-full bg-neutral-900">
             {/* Poster Image - shown while video is loading or out of view */}
             {posterUrl && (
                 <Image

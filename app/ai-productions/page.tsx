@@ -170,7 +170,7 @@ function AIVideoCard({
             onMouseLeave={onMouseLeave}
             onViewportEnter={onScrollEnter}
             onClick={onPlay}
-            className={`${height} rounded-[12px] overflow-hidden cursor-pointer relative group isolation-auto`}
+            className={`${height} rounded-[12px] overflow-hidden cursor-pointer relative group isolation-auto bg-neutral-900`}
             style={{ transform: 'translateZ(0)' }}
             variants={{
                 initial: { opacity: 0, y: 20, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)' },
@@ -363,7 +363,10 @@ export default function AIProductionsPage() {
                                 <AIVideoCard
                                     video={video}
                                     index={index}
-                                    isPlaying={true}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -380,7 +383,10 @@ export default function AIProductionsPage() {
                                     index={12 + index}
                                     height="aspect-[3/4]"
                                     isPortrait={true}
-                                    isPlaying={true}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -396,7 +402,10 @@ export default function AIProductionsPage() {
                                     video={video}
                                     index={16 + index}
                                     height="aspect-video"
-                                    isPlaying={true}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -450,7 +459,10 @@ export default function AIProductionsPage() {
                                     index={index}
                                     height="aspect-[4/3]"
                                     objectFit="contain"
-                                    isPlaying={true}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
