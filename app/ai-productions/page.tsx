@@ -6,7 +6,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import AiProductionForm from '../components/AiProductionForm';
 import { VideoPreview } from '../../components/ui/VideoPreview';
-import { Maximize2, X } from 'lucide-react';
+import { Maximize2, X, Play } from 'lucide-react';
 
 const aiVideos = [
     {
@@ -76,6 +76,12 @@ const aiVideos = [
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005735/Woman_talking_in_202601021508_ab1pf_k46tar.mp4',
         title: 'AI Virtual Spokesperson',
         category: 'Avatar Realism'
+    },
+    {
+        id: 20,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769613726/WhatsApp_Video_2026-01-08_at_19.41.18__without_end_of_video_czxoce.mp4',
+        title: 'AI Spec Work',
+        category: 'Transportation'
     }
 ];
 
@@ -128,6 +134,7 @@ interface Video {
     maxDuration?: number;
     headline?: string;
     description?: string;
+    trimEnd?: number;
 }
 
 function AIVideoCard({
@@ -138,6 +145,7 @@ function AIVideoCard({
     objectFit = 'cover' as 'cover' | 'contain',
     onMouseEnter,
     onMouseLeave,
+    onScrollEnter,
     onPlay
 }: {
     video: Video,
@@ -148,32 +156,42 @@ function AIVideoCard({
     objectFit?: 'cover' | 'contain',
     onMouseEnter?: () => void,
     onMouseLeave?: () => void,
+    onScrollEnter?: () => void,
     onPlay?: () => void
 }) {
     return (
         <motion.div
             initial="initial"
             whileHover="hover"
+            whileTap="tap"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.6, margin: "-10% 0% -10% 0%" }}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className={`${height} rounded-[12px] overflow-hidden cursor-default relative group isolation-auto`}
+            onViewportEnter={onScrollEnter}
+            onClick={onPlay}
+            className={`${height} rounded-[12px] overflow-hidden cursor-pointer relative group isolation-auto`}
             style={{ transform: 'translateZ(0)' }}
             variants={{
                 initial: { opacity: 0, y: 20, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)' },
+                visible: { opacity: 1, y: 0 },
                 animate: { opacity: 1, y: 0 },
-                hover: { scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }
+                hover: { scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' },
+                tap: { scale: 1.1, y: -10 }
             }}
             animate="animate"
             transition={{
                 duration: 0.6,
-                delay: index * 0.1,
-                scale: { type: "spring", stiffness: 300, damping: 20 }
+                delay: index * 0.05,
+                scale: { type: "spring", stiffness: 300, damping: 20 },
+                y: { type: "spring", stiffness: 300, damping: 20 }
             }}
         >
             <motion.div
                 className="w-full h-full relative rounded-[12px] overflow-hidden"
                 variants={{
                     initial: { scale: 1, y: 0 },
+                    visible: { scale: 1, y: 0 },
                     hover: { scale: 1.15, y: -20 }
                 }}
                 transition={{
@@ -188,6 +206,7 @@ function AIVideoCard({
                     maxDuration={video.maxDuration || 20}
                     isPlaying={isPlaying}
                     startTime={video.startTime}
+                    trimEnd={video.trimEnd}
                     objectFit={objectFit}
                 />
 
@@ -195,22 +214,44 @@ function AIVideoCard({
                     className="absolute inset-0 bg-black/10 transition-colors"
                     variants={{
                         initial: { opacity: 0 },
+                        visible: { opacity: 0 },
                         hover: { opacity: 1 }
                     }}
                 />
+
+                {/* Centered Play Button */}
+                <motion.div
+                    className="absolute inset-0 flex items-center justify-center z-20"
+                    variants={{
+                        initial: { opacity: 0, scale: 0.8 },
+                        visible: { opacity: 1, scale: 1 },
+                        hover: { opacity: 1, scale: 1.1 }
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 25
+                    }}
+                >
+                    <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-4 shadow-2xl group-hover:bg-[#5046E4] group-hover:border-[#5046E4] transition-all duration-300">
+                        <Play className="w-8 h-8 text-white fill-current" />
+                    </div>
+                </motion.div>
             </motion.div>
 
-            {/* Purple Bar Overlay - Only visible on hover */}
+            {/* Purple Bar Overlay - Now triggers while scrolling (whileInView) and hover */}
             <motion.div
                 variants={{
-                    initial: { y: "100%", opacity: 1 },
-                    hover: { y: 0, opacity: 1 }
+                    initial: { opacity: 0 },
+                    visible: { opacity: 1 },
+                    hover: { opacity: 1 }
                 }}
                 transition={{
-                    duration: 0.5,
-                    y: { type: "spring", stiffness: 100, damping: 20 }
+                    duration: 0.6,
+                    ease: [0.33, 1, 0.68, 1],
+                    opacity: { duration: 0.3 }
                 }}
-                className="absolute bottom-0 left-0 right-0 bg-[#5046E4] px-6 py-3 flex items-center justify-between z-10 rounded-b-[12px]"
+                className="absolute bottom-0 left-0 right-0 bg-[#5046E4] px-6 py-2.5 flex items-center justify-between z-10 rounded-b-[12px]"
             >
                 {/* Concave Shims - Small liquid joints */}
                 <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none">
@@ -225,19 +266,10 @@ function AIVideoCard({
                 </div>
 
                 <div className="flex flex-col">
-                    <span className="text-white font-normal text-[18px] tracking-tight leading-tight">
+                    <span className="text-white font-medium text-[15px] md:text-[17px] tracking-tight leading-tight">
                         {video.title}
                     </span>
                 </div>
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onPlay?.();
-                    }}
-                    className="flex items-center justify-center bg-white rounded-full h-8 w-8 flex-shrink-0 ml-4 hover:scale-110 transition-transform active:scale-95 z-20"
-                >
-                    <Maximize2 className="w-3.5 h-3.5 text-[#5046E4]" />
-                </button>
             </motion.div>
         </motion.div>
     );
@@ -307,66 +339,78 @@ export default function AIProductionsPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-44 pb-12 px-6 md:px-[120px]">
+            <section className="pt-24 pb-4 px-10 md:px-[120px] md:pt-44 md:pb-12">
                 <div className="max-w-7xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-                        className="max-w-4xl"
+                        className="max-w-4xl -ml-4 md:ml-0"
                     >
-                        <h1 className="text-6xl md:text-[84px] font-medium text-black leading-[0.95] tracking-[-0.04em] mb-6">
-                            AI <span className="text-primary-600">Productions.</span>
+                        <h1 className="text-[52px] md:text-[84px] font-medium text-black leading-[1.1] tracking-[-0.04em] mb-6">
+                            AI <br className="md:hidden" /> <span className="text-primary-600">Productions.</span>
                         </h1>
                     </motion.div>
                 </div>
             </section>
 
             {/* Video Grid Section */}
-            <section className="pb-32 px-6 md:px-[120px]">
+            <section className="pb-16 px-10 md:px-[120px] md:pb-32">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                        {/* Rows 1-3: Landscapes (3 per row) */}
-                        {aiVideos.slice(0, 9).map((video, index) => (
-                            <div key={video.id} className="md:col-span-6 lg:col-span-4">
+                    <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-6 md:gap-6 -ml-4 -mr-5 md:ml-0 md:mr-0">
+                        {/* Rows 1-4: Landscapes (3 per row) */}
+                        {aiVideos.slice(0, 12).map((video, index) => (
+                            <div key={video.id} className="col-span-2 md:col-span-6 lg:col-span-4">
                                 <AIVideoCard
                                     video={video}
                                     index={index}
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
-                                    onPlay={() => setSelectedVideo(video)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    onPlay={() => {
+                                        setSelectedVideo(video);
+                                        setPlayingId(null);
+                                    }}
                                 />
                             </div>
                         ))}
 
                         {/* Row 4: Portraits (4 per row) */}
                         {portraitVideos.map((video, index) => (
-                            <div key={video.id} className="md:col-span-6 lg:col-span-3">
+                            <div key={video.id} className="col-span-1 md:col-span-6 lg:col-span-3">
                                 <AIVideoCard
                                     video={video}
-                                    index={9 + index}
+                                    index={12 + index}
                                     height="aspect-[3/4]"
                                     isPortrait={true}
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
-                                    onPlay={() => setSelectedVideo(video)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    onPlay={() => {
+                                        setSelectedVideo(video);
+                                        setPlayingId(null);
+                                    }}
                                 />
                             </div>
                         ))}
 
-                        {/* Row 5: Remaining Landscapes (2 items, larger span) */}
-                        {aiVideos.slice(9).map((video, index) => (
-                            <div key={video.id} className="md:col-span-6 lg:col-span-6">
+                        {/* Row 5: Remaining Landscapes (larger span) */}
+                        {aiVideos.slice(12).map((video, index) => (
+                            <div key={video.id} className="col-span-2 md:col-span-6 lg:col-span-6">
                                 <AIVideoCard
                                     video={video}
-                                    index={13 + index}
+                                    index={16 + index}
                                     height="aspect-video"
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
-                                    onPlay={() => setSelectedVideo(video)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    onPlay={() => {
+                                        setSelectedVideo(video);
+                                        setPlayingId(null);
+                                    }}
                                 />
                             </div>
                         ))}
@@ -376,24 +420,40 @@ export default function AIProductionsPage() {
 
 
             {/* Additional Videos Section (White Stripe) */}
-            <section className="bg-white py-32 px-6 md:px-[120px]">
+            <section className="bg-white pt-0 pb-16 px-10 md:px-[120px] md:pt-8 md:pb-32">
                 <div className="max-w-7xl mx-auto">
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-[56px] font-medium text-black leading-[1.1] tracking-[-0.02em] mb-16"
+                        className="text-[52px] md:text-[84px] font-medium text-black leading-[1.1] tracking-[-0.04em] mb-8 -ml-4 md:ml-0"
                     >
                         AI agents & <br />
                         <span className="text-primary-600">Product development.</span>
                     </motion.h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 -ml-4 -mr-5 md:ml-0 md:mr-0">
                         {productVideos.map((video, index) => (
-                            <div key={video.id} className="flex flex-col gap-2">
-                                <div className="space-y-1">
-                                    <h3 className="text-2xl md:text-[32px] font-medium text-black tracking-tight">{video.headline}</h3>
-                                    <p className="text-lg text-neutral-500 font-normal">{video.description}</p>
+                            <div key={video.id} className="flex flex-col gap-1.5">
+                                <div className="space-y-0 ml-0 md:ml-0">
+                                    <motion.h3
+                                        initial={{ color: "#B3B3B3" }}
+                                        whileInView={{ color: "#000000" }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.2, ease: "easeInOut" }}
+                                        className="text-2xl md:text-[32px] font-medium tracking-tight"
+                                    >
+                                        {video.headline}
+                                    </motion.h3>
+                                    <motion.p
+                                        initial={{ color: "#B3B3B3" }}
+                                        whileInView={{ color: "#000000" }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+                                        className="text-lg font-normal"
+                                    >
+                                        {video.description}
+                                    </motion.p>
                                 </div>
                                 <AIVideoCard
                                     video={video}
@@ -403,7 +463,11 @@ export default function AIProductionsPage() {
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
-                                    onPlay={() => setSelectedVideo(video)}
+                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    onPlay={() => {
+                                        setSelectedVideo(video);
+                                        setPlayingId(null);
+                                    }}
                                 />
                             </div>
                         ))}

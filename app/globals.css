@@ -12,6 +12,17 @@
     font-weight: 500;
   }
 
+  main>* {
+    transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .mobile-menu-open main>*:not(nav) {
+    transform: scale(0.94);
+    opacity: 0;
+    filter: blur(8px);
+    pointer-events: none;
+  }
+
   * {
     font-family: inherit;
   }

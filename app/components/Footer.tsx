@@ -51,7 +51,7 @@ export default function Footer() {
   const legalLinks = ['Terms of use', 'Privacy policy', 'Cookies'];
 
   return (
-    <footer className="bg-black text-white px-6 md:px-24 py-24 rounded-t-[32px]">
+    <footer className="bg-black text-white px-10 md:px-24 pt-16 pb-8 rounded-t-[32px]">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
