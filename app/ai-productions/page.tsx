@@ -10,6 +10,24 @@ import { Maximize2, X } from 'lucide-react';
 
 const aiVideos = [
     {
+        id: 7,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005785/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4',
+        title: 'Electra "BEYOND" project',
+        category: 'Tech Visualization'
+    },
+    {
+        id: 6,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005810/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4',
+        title: 'Electra Robotic Parking',
+        category: 'Innovation'
+    },
+    {
+        id: 5,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769007136/electra_Precise_Speed_LOW_bv6bzb.mp4',
+        title: 'Electra Shneider',
+        category: 'Gen-AI Storytelling'
+    },
+    {
         id: 1,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175045/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bgm8ew.mp4',
         title: 'H&O Black Friday',
@@ -20,6 +38,13 @@ const aiVideos = [
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175274/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_tm0bbf.mp4',
         title: 'H&O Jeans',
         category: 'Product Launch'
+    },
+    {
+        id: 17,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769335973/takeda_fin_LOWER_sgeqe4.mp4',
+        title: 'Takeda',
+        category: 'Health-AI',
+        startTime: 1
     },
     {
         id: 3,
@@ -33,24 +58,6 @@ const aiVideos = [
         title: 'POCO X7 Series',
         category: 'Immersive Experience',
         startTime: 1
-    },
-    {
-        id: 5,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769007136/electra_Precise_Speed_LOW_bv6bzb.mp4',
-        title: 'Electra Shneider',
-        category: 'Gen-AI Storytelling'
-    },
-    {
-        id: 6,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005810/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4',
-        title: 'Electra Robotic Parking',
-        category: 'Innovation'
-    },
-    {
-        id: 7,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005785/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4',
-        title: 'Electra "BEYOND" project',
-        category: 'Tech Visualization'
     },
     {
         id: 8,
@@ -69,17 +76,15 @@ const aiVideos = [
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005735/Woman_talking_in_202601021508_ab1pf_k46tar.mp4',
         title: 'AI Virtual Spokesperson',
         category: 'Avatar Realism'
-    },
-    {
-        id: 17,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769335973/takeda_fin_LOWER_sgeqe4.mp4',
-        title: 'Takeda',
-        category: 'Health-AI',
-        startTime: 1
     }
 ];
 
 const portraitVideos = [
+    {
+        id: 16,
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769084546/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.mp4',
+        title: 'Xiaomi Redmi Note 15 Series',
+    },
     {
         id: 10,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993607/IMG_1820_nxuyj4.mov',
@@ -94,11 +99,6 @@ const portraitVideos = [
         id: 12,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993557/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.mp4',
         title: 'Rafael 2026',
-    },
-    {
-        id: 16,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769084546/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.mp4',
-        title: 'Xiaomi Redmi Note 15 Series',
     }
 ];
 
@@ -325,42 +325,55 @@ export default function AIProductionsPage() {
             {/* Video Grid Section */}
             <section className="pb-32 px-6 md:px-[120px]">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {aiVideos.map((video, index) => (
-                            <AIVideoCard
-                                key={video.id}
-                                video={video}
-                                index={index}
-                                isPlaying={playingId === video.id}
-                                onMouseEnter={() => setPlayingId(video.id)}
-                                onMouseLeave={() => setPlayingId(null)}
-                                onPlay={() => setSelectedVideo(video)}
-                            />
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                        {/* Rows 1-3: Landscapes (3 per row) */}
+                        {aiVideos.slice(0, 9).map((video, index) => (
+                            <div key={video.id} className="md:col-span-6 lg:col-span-4">
+                                <AIVideoCard
+                                    video={video}
+                                    index={index}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onPlay={() => setSelectedVideo(video)}
+                                />
+                            </div>
+                        ))}
+
+                        {/* Row 4: Portraits (4 per row) */}
+                        {portraitVideos.map((video, index) => (
+                            <div key={video.id} className="md:col-span-6 lg:col-span-3">
+                                <AIVideoCard
+                                    video={video}
+                                    index={9 + index}
+                                    height="aspect-[3/4]"
+                                    isPortrait={true}
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onPlay={() => setSelectedVideo(video)}
+                                />
+                            </div>
+                        ))}
+
+                        {/* Row 5: Remaining Landscapes (2 items, larger span) */}
+                        {aiVideos.slice(9).map((video, index) => (
+                            <div key={video.id} className="md:col-span-6 lg:col-span-6">
+                                <AIVideoCard
+                                    video={video}
+                                    index={13 + index}
+                                    height="aspect-video"
+                                    isPlaying={playingId === video.id}
+                                    onMouseEnter={() => setPlayingId(video.id)}
+                                    onMouseLeave={() => setPlayingId(null)}
+                                    onPlay={() => setSelectedVideo(video)}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Portrait Videos Section (Black Stripe) */}
-            <section className="bg-black py-24 px-6 md:px-[120px]">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
-                        {portraitVideos.map((video, index) => (
-                            <AIVideoCard
-                                key={video.id}
-                                video={video}
-                                index={index}
-                                height="aspect-[3/4]"
-                                isPortrait={true}
-                                isPlaying={playingId === video.id}
-                                onMouseEnter={() => setPlayingId(video.id)}
-                                onMouseLeave={() => setPlayingId(null)}
-                                onPlay={() => setSelectedVideo(video)}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
 
             {/* Additional Videos Section (White Stripe) */}
             <section className="bg-white py-32 px-6 md:px-[120px]">
