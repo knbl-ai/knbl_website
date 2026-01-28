@@ -219,12 +219,11 @@ function AIVideoCard({
                     }}
                 />
 
-                {/* Centered Play Button */}
                 <motion.div
                     className="absolute inset-0 flex items-center justify-center z-20"
                     variants={{
                         initial: { opacity: 0, scale: 0.8 },
-                        visible: { opacity: 1, scale: 1 },
+                        visible: { opacity: 0, scale: 1 },
                         hover: { opacity: 1, scale: 1.1 }
                     }}
                     transition={{
@@ -297,7 +296,7 @@ function VideoModal({ video, onClose }: { video: Video, onClose: () => void }) {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="relative flex items-center justify-center z-50"
             >
-                <div className="relative group">
+                <div className="relative w-full h-full bg-neutral-900">
                     <div className="bg-black rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
                         <video
                             src={video.url}
@@ -364,10 +363,7 @@ export default function AIProductionsPage() {
                                 <AIVideoCard
                                     video={video}
                                     index={index}
-                                    isPlaying={playingId === video.id}
-                                    onMouseEnter={() => setPlayingId(video.id)}
-                                    onMouseLeave={() => setPlayingId(null)}
-                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    isPlaying={true}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -384,10 +380,7 @@ export default function AIProductionsPage() {
                                     index={12 + index}
                                     height="aspect-[3/4]"
                                     isPortrait={true}
-                                    isPlaying={playingId === video.id}
-                                    onMouseEnter={() => setPlayingId(video.id)}
-                                    onMouseLeave={() => setPlayingId(null)}
-                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    isPlaying={true}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -403,10 +396,7 @@ export default function AIProductionsPage() {
                                     video={video}
                                     index={16 + index}
                                     height="aspect-video"
-                                    isPlaying={playingId === video.id}
-                                    onMouseEnter={() => setPlayingId(video.id)}
-                                    onMouseLeave={() => setPlayingId(null)}
-                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    isPlaying={true}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
@@ -460,10 +450,7 @@ export default function AIProductionsPage() {
                                     index={index}
                                     height="aspect-[4/3]"
                                     objectFit="contain"
-                                    isPlaying={playingId === video.id}
-                                    onMouseEnter={() => setPlayingId(video.id)}
-                                    onMouseLeave={() => setPlayingId(null)}
-                                    onScrollEnter={() => setPlayingId(video.id)}
+                                    isPlaying={true}
                                     onPlay={() => {
                                         setSelectedVideo(video);
                                         setPlayingId(null);
