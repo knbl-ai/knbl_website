@@ -169,7 +169,7 @@ function AIVideoCard({
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onViewportEnter={() => {
-                if (typeof window !== 'undefined' && window.innerWidth >= 768) onScrollEnter?.();
+                if (typeof window !== 'undefined') onScrollEnter?.();
             }}
             onTap={onPlay}
             role="button"
@@ -259,7 +259,7 @@ function AIVideoCard({
                     },
                     hover: { opacity: 1, y: 0 }
                 }}
-                animate={(isPlaying && typeof window !== 'undefined' && window.innerWidth < 768) ? { opacity: 1, y: 0 } : undefined}
+                animate={undefined}
                 transition={{
                     duration: 0.5,
                     ease: [0.33, 1, 0.68, 1],
@@ -408,7 +408,7 @@ export default function AIProductionsPage() {
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
                                     onScrollEnter={() => {
-                                        if (window.innerWidth >= 768) setPlayingId(video.id);
+                                        setPlayingId(video.id);
                                     }}
                                     onPlay={() => {
                                         setSelectedVideo(video);
@@ -430,7 +430,7 @@ export default function AIProductionsPage() {
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
                                     onScrollEnter={() => {
-                                        if (window.innerWidth >= 768) setPlayingId(video.id);
+                                        setPlayingId(video.id);
                                     }}
                                     onPlay={() => {
                                         setSelectedVideo(video);
