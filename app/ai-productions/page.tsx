@@ -223,27 +223,6 @@ function AIVideoCard({
                     }}
                 />
 
-                <motion.div
-                    className="absolute inset-0 hidden md:flex items-center justify-center z-20 pointer-events-none"
-                    variants={{
-                        initial: { opacity: 0, scale: 0.8 },
-                        visible: { opacity: 0, scale: 1 },
-                        hover: {
-                            opacity: 1,
-                            scale: 1
-                        }
-                    }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 25,
-                        opacity: { duration: 0.2 }
-                    }}
-                >
-                    <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-full p-3 shadow-[0_0_40px_rgba(0,0,0,0.4)] group-hover:bg-[#5046E4]/90 group-hover:border-[#5046E4] group-hover:shadow-[0_0_60px_rgba(80,70,228,0.5)] transition-all duration-500">
-                        <Play className="w-5 h-5 text-white fill-current" />
-                    </div>
-                </motion.div>
             </motion.div>
 
             {/* Purple Bar Overlay - Shows on hover for desktop (with slide), and when playing/active on mobile */}
@@ -254,10 +233,13 @@ function AIVideoCard({
                         y: typeof window !== 'undefined' && window.innerWidth >= 768 ? "100%" : 0
                     },
                     visible: {
-                        opacity: 0, // Hidden by default on scroll for mobile per request
+                        opacity: 0,
                         y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : "100%"
                     },
-                    hover: { opacity: 1, y: 0 }
+                    hover: {
+                        opacity: typeof window !== 'undefined' && window.innerWidth >= 768 ? 1 : 0,
+                        y: 0
+                    }
                 }}
                 animate={undefined}
                 transition={{
