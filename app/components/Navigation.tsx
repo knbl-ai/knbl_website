@@ -220,7 +220,7 @@ export default function Navigation() {
             className="fixed inset-0 bg-black z-40 md:hidden flex flex-col"
           >
             {/* Safe area for header */}
-            <div className="h-[160px]" />
+            <div className="h-[125px]" />
 
             {/* Mobile Menu Items */}
             <div className="flex flex-col items-start justify-start flex-1 gap-5 px-10 -ml-4 pb-20 pt-0">
@@ -234,7 +234,7 @@ export default function Navigation() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.4 }}
-                    className={`text-[46px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors ${activeItem === item.label ? 'text-[#4F39F6]' : 'text-white'
+                    className={`text-[38px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors ${activeItem === item.label ? 'text-[#4F39F6]' : 'text-white'
                       }`}
                   >
                     {item.label}
@@ -251,7 +251,7 @@ export default function Navigation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4 }}
-                  className={`text-[46px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors ${activeItem === "Let's Talk" ? 'text-[#4F39F6]' : 'text-white'}`}
+                  className={`text-[38px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors ${activeItem === "Let's Talk" ? 'text-[#4F39F6]' : 'text-white'}`}
                 >
                   Let&apos;s Talk
                 </motion.div>
