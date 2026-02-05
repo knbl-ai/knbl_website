@@ -61,13 +61,25 @@ function ServiceVideo({ src, isExpanded }: { src: string; isExpanded: boolean })
 export default function ServicesGrid() {
   const [expandedIndices, setExpandedIndices] = useState<number[]>([0]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const toggleIndex = (index: number) => {
-    setExpandedIndices(prev =>
-      prev.includes(index)
-        ? prev.filter(i => i !== index)
-        : [...prev, index]
-    );
+    if (isMobile) {
+      setExpandedIndices(prev =>
+        prev.includes(index)
+          ? prev.filter(i => i !== index)
+          : [...prev, index]
+      );
+    } else {
+      setExpandedIndices([index]);
+    }
   };
 
   return (
@@ -112,8 +124,8 @@ export default function ServicesGrid() {
                 layout
                 style={{ transformOrigin: 'top' }}
                 animate={{
-                  width: (typeof window !== 'undefined' && window.innerWidth >= 768) ? (isExpanded ? '706px' : '154px') : '100%',
-                  height: (typeof window !== 'undefined' && window.innerWidth < 768) ? (isExpanded ? 340 : 140) : (typeof window !== 'undefined' && window.innerWidth >= 768 ? 600 : 'auto')
+                  width: !isMobile ? (isExpanded ? '706px' : '154px') : '100%',
+                  height: isMobile ? (isExpanded ? 340 : 140) : 600
                 }}
                 className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full md:w-auto shadow-sm"
               >
@@ -132,20 +144,21 @@ export default function ServicesGrid() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{
-                    opacity: typeof window !== 'undefined' && window.innerWidth < 768
+                    opacity: isMobile
                       ? (isExpanded ? 1 : 0)
                       : (isExpanded || isHovered ? 1 : 0)
                   }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className={isExpanded
+                  className={isExpanded && isMobile
                     ? "absolute inset-0 pointer-events-none z-[5] bg-gradient-to-b from-[#4F39F6] via-[#4F39F6]/50 50% to-[#4F39F6]/10"
                     : "absolute inset-0 pointer-events-none z-[5] bg-gradient-to-t from-[#4F39F6] via-[#4F39F6]/50 50% to-[#4F39F6]/10"}
                 />
 
-                <div className="relative h-full pt-[54px] pb-6 px-6 md:p-12 z-10 flex flex-col justify-start md:justify-between items-start">
-                  <div className="flex justify-between items-start w-full">
-                    <div className="flex flex-col flex-1">
-                      <div className="md:hidden">
+                <div className={`relative h-full z-10 flex flex-col items-start ${isMobile ? 'pt-[54px] pb-6 px-6 justify-start' : 'p-12 justify-between'}`}>
+                  {isMobile ? (
+                    /* Mobile Layout: Text and Arrow at top */
+                    <div className="flex justify-between items-start w-full">
+                      <div className="flex flex-col flex-1">
                         <h3 className="text-[32px] font-medium text-white tracking-[-0.04em] leading-none font-sans">
                           {service.title.replace('\n', ' ')}
                         </h3>
@@ -164,15 +177,70 @@ export default function ServicesGrid() {
                         </AnimatePresence>
                       </div>
 
-                      <div className="hidden md:block">
+                      <motion.div
+                        layout
+                        animate={{
+                          scale: 1,
+                          backgroundColor: '#ffffff'
+                        }}
+                        className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
+                      >
+                        <motion.svg
+                          className="w-5 h-5 text-[#4F39F6]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          animate={{ rotate: isExpanded ? 0 : -180 }}
+                          transition={{ duration: 0.4, ease: "backOut" }}
+                        >
+                          <path d="M12 5v14M19 12l-7 7-7-7" />
+                        </motion.svg>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    /* Desktop Layout: Arrow at top, Text at bottom */
+                    <>
+                      <div className="flex justify-end w-full">
+                        <motion.div
+                          layout
+                          animate={{
+                            scale: 1,
+                            backgroundColor: isExpanded ? '#000000' : '#ffffff'
+                          }}
+                          className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
+                        >
+                          <motion.svg
+                            className="w-5 h-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            animate={{
+                              rotate: isExpanded ? 360 : (isHovered ? 270 : 180),
+                              color: isExpanded ? '#ffffff' : '#4F39F6'
+                            }}
+                            transition={{ duration: 0.4, ease: "backOut" }}
+                          >
+                            <path d="M12 5v14M19 12l-7 7-7-7" />
+                          </motion.svg>
+                        </motion.div>
+                      </div>
+
+                      <div className="relative w-full min-h-[140px] flex flex-col justify-end">
                         <AnimatePresence mode="wait">
-                          {isExpanded && (
+                          {isExpanded ? (
                             <motion.div
                               key="expanded-text-desktop"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              transition={{ duration: 0.4 }}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, ease: "easeOut" }}
+                              className="pointer-events-none"
                             >
                               <h3 className="text-[48px] font-medium text-white mb-3 tracking-[-0.04em] leading-none font-sans">
                                 {service.title.replace('\n', ' ')}
@@ -181,50 +249,26 @@ export default function ServicesGrid() {
                                 {service.description}
                               </p>
                             </motion.div>
+                          ) : (
+                            <motion.div
+                              key={`collapsed-${service.title}`}
+                              initial={{ opacity: 0, y: 0 }}
+                              animate={{
+                                opacity: 1,
+                                y: isHovered ? -12 : 0
+                              }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.4, ease: "easeOut" }}
+                              className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
+                            >
+                              <h3 className="text-[36px] md:text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
+                                {index === 1 ? 'Creative' : service.title}
+                              </h3>
+                            </motion.div>
                           )}
                         </AnimatePresence>
                       </div>
-                    </div>
-
-                    <motion.div
-                      layout
-                      animate={{
-                        scale: 1,
-                        backgroundColor: isExpanded ? '#000000' : '#4F39F6'
-                      }}
-                      className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
-                    >
-                      <motion.svg
-                        className="w-5 h-5 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        animate={{ rotate: isExpanded ? 0 : -180 }}
-                        transition={{ duration: 0.4, ease: "backOut" }}
-                      >
-                        <path d="M12 5v14M19 12l-7 7-7-7" />
-                      </motion.svg>
-                    </motion.div>
-                  </div>
-
-                  {!isExpanded && (
-                    <div className="hidden md:block relative w-full">
-                      <motion.div
-                        key={`collapsed-${service.title}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, y: isHovered ? -12 : 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
-                      >
-                        <h3 className="text-[36px] md:text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
-                          {index === 1 ? 'Creative' : service.title}
-                        </h3>
-                      </motion.div>
-                    </div>
+                    </>
                   )}
                 </div>
               </motion.div>

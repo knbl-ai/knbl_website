@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { VideoPreview } from '@/components/ui/VideoPreview';
@@ -174,6 +175,15 @@ const projects: Project[] = [
 ];
 
 function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; height?: string }) {
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <Link href={`/work/${project.slug}`}>
             <motion.div
@@ -195,11 +205,12 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                 <motion.div
                     className="w-full h-full relative rounded-[40px] overflow-hidden"
                     variants={{
-                        initial: { scale: 1 },
-                        hover: { scale: 1.05 }
+                        initial: { scale: 1, y: 0 },
+                        hover: { scale: 1.05, y: isMobile ? 0 : -20 }
                     }}
                     transition={{
-                        duration: 0.8
+                        duration: 0.8,
+                        y: { type: "spring", stiffness: 100, damping: 15, mass: 1 }
                     }}
                 >
                     <VideoPreview
@@ -226,46 +237,101 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                         initial: { y: "100%", opacity: 0 },
                         hover: { y: 0, opacity: 1 },
                         visible: {
-                            y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : "100%",
-                            opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 0
+                            y: 0,
+                            opacity: 1
                         }
                     }}
                     transition={{
-                        duration: 0.5,
-                        y: { type: "spring", stiffness: 200, damping: 22, mass: 1 },
+                        duration: 0.6,
+                        y: { type: "spring", stiffness: isMobile ? 200 : 120, damping: isMobile ? 22 : 14, mass: 1 },
                         opacity: { duration: 0.2 }
                     }}
-                    className="absolute bottom-0 left-0 right-0 bg-primary-600/90 backdrop-blur-md px-6 md:px-10 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[40px] border-t border-white/10"
+                    className="absolute bottom-0 left-0 right-0 px-6 md:px-10 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[40px] bg-primary-600/90 backdrop-blur-md border-t border-white/10"
                 >
-                    <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none">
+                    {/* Concave Shims - Smooth small liquid joints */}
+                    <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none text-primary-600/90">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" shapeRendering="geometricPrecision">
-                            <path d="M 0 0 A 16 16 0 0 0 16 16 L 0 16 Z" fill="currentColor" className="text-primary-600/90" />
+                            <path d="M 0 0 A 16 16 0 0 0 16 16 L 0 16 Z" fill="currentColor" />
                         </svg>
                     </div>
-                    <div className="absolute -top-[15.9px] right-0 w-[16px] h-[16px] pointer-events-none">
+                    <div className="absolute -top-[15.9px] right-0 w-[16px] h-[16px] pointer-events-none text-primary-600/90">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" shapeRendering="geometricPrecision">
-                            <path d="M 16 0 A 16 16 0 0 1 0 16 L 16 16 Z" fill="currentColor" className="text-primary-600/90" />
+                            <path d="M 16 0 A 16 16 0 0 1 0 16 L 16 16 Z" fill="currentColor" />
                         </svg>
                     </div>
 
                     <span className="text-white font-medium text-[16px] md:text-[28px] tracking-tight">{project.name}</span>
-                    <motion.div
-                        className="flex items-center justify-center bg-black/20 md:bg-white rounded-full h-10 w-10 md:h-16 md:w-16 relative z-20 shrink-0 overflow-hidden cursor-pointer"
-                        variants={{
-                            initial: { rotate: 0 },
-                            hover: { rotate: 0 }
-                        }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 30
-                        }}
-                    >
-                        <ArrowRight
-                            className="w-5 h-5 md:w-9 md:h-9 text-white md:text-primary-600"
-                            strokeWidth={2.5}
-                        />
-                    </motion.div>
+
+                    {isMobile ? (
+                        /* Mobile Arrow Button */
+                        <motion.div
+                            className="flex items-center justify-center bg-white rounded-full h-10 w-10 shrink-0 overflow-hidden cursor-pointer shadow-sm ml-auto"
+                        >
+                            <ArrowRight
+                                className="w-5 h-5 text-[#5046E4]"
+                                strokeWidth={2}
+                            />
+                        </motion.div>
+                    ) : (
+                        /* Desktop Expanding Button (refined for ultra-smooth animation) */
+                        <motion.div
+                            className="flex items-center rounded-full group/btn cursor-pointer overflow-hidden h-10 bg-white relative z-20"
+                            initial="initial"
+                            whileHover="hover"
+                            variants={{
+                                initial: { width: "40px" },
+                                hover: { width: "160px" }
+                            }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <div className="flex items-center w-full px-0 h-full relative">
+                                <motion.div
+                                    className="overflow-hidden flex items-center justify-center h-full"
+                                    variants={{
+                                        initial: { width: 0, opacity: 0 },
+                                        hover: { width: 115, opacity: 1 }
+                                    }}
+                                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                >
+                                    <span className="font-bold text-sm text-[#5046E4] whitespace-nowrap pl-5">
+                                        View Case
+                                    </span>
+                                </motion.div>
+                                <div className="flex items-center justify-center w-10 h-10 shrink-0">
+                                    <motion.div
+                                        className="relative w-5 h-5"
+                                        variants={{
+                                            initial: { x: 0 },
+                                            hover: { x: 0 }
+                                        }}
+                                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                    >
+                                        <motion.div
+                                            className="absolute inset-0 flex items-center justify-center"
+                                            variants={{
+                                                initial: { opacity: 1, rotate: 0, color: "#5046E4" },
+                                                hover: { opacity: 0, rotate: 45, color: "#5046E4" }
+                                            }}
+                                            transition={{ duration: 0.4 }}
+                                        >
+                                            <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                                        </motion.div>
+                                        <motion.div
+                                            className="absolute inset-0 flex items-center justify-center"
+                                            initial={{ opacity: 0, rotate: -45 }}
+                                            variants={{
+                                                initial: { opacity: 0, rotate: -45, color: "#5046E4" },
+                                                hover: { opacity: 1, rotate: 0, color: "#5046E4" }
+                                            }}
+                                            transition={{ duration: 0.4 }}
+                                        >
+                                            <ArrowUpRight className="w-5 h-5" strokeWidth={2} />
+                                        </motion.div>
+                                    </motion.div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
                 </motion.div>
             </motion.div>
         </Link>

@@ -46,8 +46,17 @@ const AnimatedIcon = ({ src }: { src: string }) => {
 };
 
 export default function HowWeDoIt() {
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <section className="pt-12 md:pt-20 pb-8 md:pb-12 px-6 md:px-[120px]">
+    <section className={`pt-12 md:pt-20 pb-8 ${isMobile ? 'md:pb-12 px-6 md:px-[120px]' : 'md:pb-50 px-6 md:px-24'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Sticky Sidebar */}
@@ -59,8 +68,14 @@ export default function HowWeDoIt() {
               it <span className="text-primary-600">happen.</span>
             </motion.h2>
 
-            <TextReveal className="py-0 text-[10px] leading-[1.6] font-normal tracking-wide text-neutral-500">
-              {`At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do. We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`}
+            <TextReveal className={isMobile
+              ? "py-0 text-[10px] leading-[1.6] font-normal tracking-wide text-neutral-500"
+              : "py-0 text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight text-neutral-500"
+            }>
+              {isMobile
+                ? "At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do. We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works."
+                : `At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`
+              }
             </TextReveal>
           </div>
 
@@ -73,18 +88,28 @@ export default function HowWeDoIt() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="relative bg-primary-600 rounded-[32px] p-8 md:p-10 lg:p-14 overflow-hidden min-h-[300px] md:min-h-[340px] lg:h-[380px] flex flex-col justify-end"
+                className={`relative bg-primary-600 rounded-[32px] p-8 md:p-10 lg:p-14 overflow-hidden flex flex-col justify-end ${isMobile
+                    ? "min-h-[300px] md:min-h-[340px] lg:h-[380px]"
+                    : "min-h-[400px] md:min-h-[450px] lg:h-[510px]"
+                  }`}
               >
                 {/* Large Number Background */}
-                <div className="absolute top-[-20px] md:top-[-30px] lg:top-[-45px] right-4 md:right-6 lg:right-10 text-[150px] md:text-[200px] lg:text-[260px] font-extralight text-primary-700 leading-none">
+                <div className={`absolute font-extralight text-primary-700 leading-none ${isMobile
+                    ? "top-[-20px] md:top-[-30px] lg:top-[-45px] right-4 md:right-6 lg:right-10 text-[150px] md:text-[200px] lg:text-[260px]"
+                    : "top-[-12px] md:top-[-24px] left-4 md:left-6 lg:left-10 text-[120px] md:text-[160px] lg:text-[200px]"
+                  }`}>
                   {step.number}
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 space-y-3">
+                <div className={`relative z-10 ${isMobile ? 'space-y-3' : 'space-y-4'}`}>
                   <AnimatedIcon src={step.icon} />
-                  <h3 className="text-[28px] md:text-[32px] lg:text-[40px] font-medium text-white leading-[1.1] tracking-tight">{step.title}</h3>
-                  <p className="text-[16px] md:text-[18px] lg:text-[20px] text-white font-light leading-[1.2]">{step.description}</p>
+                  <h3 className={`font-medium text-white ${isMobile ? 'text-[28px] md:text-[32px] lg:text-[40px] leading-[1.1] tracking-tight' : 'text-[28px] md:text-[32px] lg:text-[40px]'}`}>
+                    {step.title}
+                  </h3>
+                  <p className={`text-white font-light ${isMobile ? 'text-[16px] md:text-[18px] lg:text-[20px] leading-[1.2]' : 'text-[16px] md:text-[18px] lg:text-[20px] text-white/90 leading-normal'}`}>
+                    {step.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
