@@ -12,6 +12,7 @@ import Footer from '../../components/Footer';
 const projects: Record<string, {
   title: string;
   logo: string;
+  logoBg?: string;
   description: string;
   socialLinks: { type: 'instagram' | 'tiktok' | 'facebook'; url: string }[];
   videos: {
@@ -22,6 +23,7 @@ const projects: Record<string, {
   'ho-brands': {
     title: 'H&O',
     logo: '/images/partners/ho.png',
+    logoBg: '#F7F7F8',
     description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -39,7 +41,8 @@ const projects: Record<string, {
   },
   'rafael': {
     title: 'Rafael',
-    logo: '/images/partners/rafael.png',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Rafael_MainLogo_RGB.png',
+    logoBg: '#F7F7F8',
     description: "Rafael Advanced Defense Systems is a pioneer in defense technologies, providing innovative solutions for security and protection. Their commitment to excellence and reliability has made them a global leader in the defense industry.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -56,6 +59,7 @@ const projects: Record<string, {
   'xiaomi': {
     title: 'Xiaomi',
     logo: '/images/partners/xiaomi.png',
+    logoBg: '#F7F7F8',
     description: "Xiaomi is a global leader in smart electronics and consumer technology, bringing innovation and accessibility to everyone through their cutting-edge AI-driven productions and sleek device launches.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -72,7 +76,8 @@ const projects: Record<string, {
   },
   'roladin': {
     title: 'Roladin',
-    logo: '/images/partners/roladin.jpg',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Roladin_logo_BLACK.png',
+    logoBg: '#F7F7F8',
     description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From iconic holiday collections to artisanal breads, they set the bar for quality and creativity.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -89,6 +94,7 @@ const projects: Record<string, {
   'carters': {
     title: "Carter's",
     logo: '/images/partners/carters.png',
+    logoBg: '#F7F7F8',
     description: "Carter's is the most trusted name in baby and children's apparel, known for quality, comfort, and timeless designs that have made them a beloved part of childhood memories for families worldwide.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -98,52 +104,98 @@ const projects: Record<string, {
       { title: 'With You From The Start', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
     ],
   },
-  'electra': {
-    title: 'Electra',
-    logo: '/images/partners/electra.png',
-    description: "Electra Group is a leader in electrical systems, infrastructure, and consumer appliances, providing innovative solutions that power modern living and industrial progress across Israel.",
+  'safari': {
+    title: 'Safari',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/logo_eng_brown_full.png',
+    logoBg: '#F7F7F8',
+    description: "The Safari (Ramat Gan) experience is brought to life through cinematic AI-driven visuals. This project captures the essence of wildlife conservation and family adventure, showcasing the park's vibrant life in high definition.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
     videos: [
-      { title: 'AI Sarona Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767619624/3791_ELECTRA_AI_SARONA_VID_ENGLISH_1920x1080_tz9isv.mp4' },
-      { title: 'Electra Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176020/WhatsApp_Video_2025-08-25_at_19.22.53_35bc2965_egjpg1.mp4' },
+      { title: 'Safari Experience', url: 'https://storage.googleapis.com/knbl_website/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.mp4' },
     ],
   },
   'takeda': {
     title: 'Takeda',
     logo: '/images/partners/takeda.png',
+    logoBg: '#F7F7F8',
     description: "Takeda is a global pharmaceutical leader dedicated to bringing better health and a brighter future to people worldwide through advanced medical research and innovative healthcare solutions.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'facebook', url: '#' },
     ],
     videos: [
+      { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/takeda_fin_LOWER_sgeqe4.mp4' },
       { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4' },
       { title: 'Plasma Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175927/Plasma_video_hp7py2.mp4' },
       { title: 'Corporate Short', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175955/45_wq8xba.mp4' },
     ],
   },
+  'electra-precise': {
+    title: 'Electra',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Electra%20Logo%20ENG-01.png',
+    logoBg: '#F7F7F8',
+    description: "Electra's AI-driven storytelling showcases the intersection of technology and precision. This project highlights the seamless integration of AI in cinematic product visualization, emphasizing speed, accuracy, and innovation.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4' },
+    ],
+  },
   'aion': {
     title: 'Aion',
     logo: '/images/partners/aion.png',
+    logoBg: '#F7F7F8',
     description: "Aion is at the forefront of the electric vehicle revolution, combining cutting-edge technology with sustainable mobility to redefine the driving experience for the modern world.",
     socialLinks: [
       { type: 'instagram', url: '#' },
       { type: 'tiktok', url: '#' },
     ],
     videos: [
+      { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4' },
+      { title: 'Family Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769689298/Aion_Family_40s_16x9_V13_HQ_gpg38z.mp4' },
       { title: 'Brand Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
       { title: 'Parking Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176972/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
       { title: 'HT Highlight', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176999/HT_ysxnx9.mp4' },
       { title: 'Interior Drive', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767177020/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
-      { title: 'Driving Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176961/%D7%97%D7%95%D7%95%D7%99%D7%AA_%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%94%D7%9B%D7%99_%D7%A1%D7%95%D7%A4%D7%99_%D7%A9%D7%99%D7%A9_hab4an.mp4' },
+      { title: 'Driving Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176961/%D7%97%D7%95%D7%95%D7%99%D7%AA_%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9ה%D7%9B%D7%99_%D7%A1%D7%95%D7%A4%D7%99_%D7%A9%D7%99%D7%A9_hab4an.mp4' },
+    ],
+  },
+  'lod': {
+    title: 'Lod',
+    logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628885/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png',
+    logoBg: '#F7F7F8',
+    description: "The city of Lod's urban transformation and strategic growth are captured through advanced AI-driven cinematography. This project showcases the city's rich heritage alongside its future as a central hub of innovation and development.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Urban Transformation', url: 'https://storage.googleapis.com/knbl_website/videos/lod/lod_16x9_2mbps.mp4' },
+    ],
+  },
+  'anker': {
+    title: 'Anker',
+    logo: '/images/partners/anker.png',
+    logoBg: '#F7F7F8',
+    description: "Anker is the global leader in charging technology. This includes wireless charging, car charging, and our best-selling portable and wall chargers. Anker is pioneering Power Delivery technology to charge phones, tablets, and laptops at unprecedented speeds.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Anker Eufy Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.mp4' },
+      { title: 'Eufy E25 Preview', url: 'https://storage.googleapis.com/knbl_website/videos/anker/HEMILTON_EUFI_E25_f9pu95.mp4' },
     ],
   },
   'reuth-hospital': {
     title: 'Reuth Hospital',
     logo: '/images/partners/reuth.png',
+    logoBg: '#F7F7F8',
     description: "Reuth Rehabilitation Hospital is a leading medical center in Israel, specializing in advanced rehabilitation and geriatric care, providing hope and healing to patients through expert medical attention.",
     socialLinks: [
       { type: 'instagram', url: '#' },
@@ -153,6 +205,32 @@ const projects: Record<string, {
       { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
       { title: 'Patient Story', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%9C%D7%90%D7%AA%D7%92%D7%A8_%D7%90%D7%AA_%D7%94%D7%91%D7%9C%D7%AA%D7%99_%D7%90%D7%A4%D7%A9%D7%A8%D7%99-%D7%91%D7%99%D7%AA_%D7%97%D7%95%D7%9C%D7%99%D7%9D_%D7%A8%D7%A2%D7%95%D7%AA_cvxk0v.mp4' },
       { title: 'Hospital Choir', url: 'https://storage.googleapis.com/knbl_website/4.12%20%D7%9E%D7%A7%D7%94%D7%9C%D7%94%20-%20%D7%91%D7%99%D7%AA%20%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
+    ],
+  },
+  'trans-israel': {
+    title: 'Trans Israel',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Logo%20%D7%9C%D7%95%D7%92%D7%95%20%D7%97%D7%93%D7%A9.png',
+    logoBg: '#F7F7F8',
+    description: "Trans Israel (Hotze Israel) is connecting the nation through a network of advanced transportation projects. This cinematic AI production highlights the connectivity, speed, and impact of these infrastructure milestones on the landscape.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4' },
+    ],
+  },
+  'petach-tikva-center': {
+    title: 'Petach Tikva Center for the Performing Arts',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%A9%D7%97%D7%95%D7%A8.png',
+    logoBg: '#F7F7F8',
+    description: "The Petach Tikva Center for the Performing Arts is a premiere cultural destination, showcasing world-class theater, music, and dance in a state-of-the-art facility dedicated to artistic excellence.",
+    socialLinks: [
+      { type: 'instagram', url: '#' },
+      { type: 'facebook', url: '#' },
+    ],
+    videos: [
+      { title: 'Center Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/Culture%20Center/3137_TARBUT_OCT_VID_1080X1920_G.mp4' },
     ],
   },
 };
@@ -201,7 +279,7 @@ export default function ProjectPage() {
       <Navigation />
 
       {/* Project Header */}
-      <section className="pt-[120px] pb-[60px] px-6 md:px-[120px]">
+      <section className="pt-32 md:pt-48 pb-[60px] px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -209,7 +287,10 @@ export default function ProjectPage() {
             className="flex flex-col md:flex-row gap-16 items-start"
           >
             {/* Logo */}
-            <div className="w-[120px] h-[120px] bg-neutral-50 rounded-3xl flex items-center justify-center p-6 flex-shrink-0">
+            <div
+              className="w-[160px] h-[160px] rounded-3xl flex items-center justify-center p-8 flex-shrink-0 border border-white/5"
+              style={{ backgroundColor: project.logoBg || '#171717' }}
+            >
               <div className="relative w-full h-full">
                 <Image
                   src={project.logo}

@@ -97,7 +97,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-24 md:py-44 px-6 md:px-24">
+    <section className="py-24 md:py-44 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Left Column - Heading */}

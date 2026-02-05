@@ -27,7 +27,7 @@ const services = [
     title: 'Media',
     description: 'Precision at scale. Growth by design.',
     image: '/images/services/data-bg.webp',
-    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768128687/3356_KNBLE_WEBSITE_VIDEO_1080x1080_MEDIA_NO_PURPLE_FILTER_tpxqos.mp4',
+    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769683508/3356_KNBLE_WEBSITE_VIDEO_1080x1080_MEDIA_NO_PURPLE_FILTER_2_a121i0.mp4',
   },
 ];
 
@@ -59,35 +59,38 @@ function ServiceVideo({ src, isExpanded }: { src: string; isExpanded: boolean })
 }
 
 export default function ServicesGrid() {
-  const [expandedIndex, setExpandedIndex] = useState<number>(0);
+  const [expandedIndices, setExpandedIndices] = useState<number[]>([0]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  return (
-    <section id="services" className="bg-neutral-900 px-6 md:px-24 pt-12 md:pt-20 pb-24 md:pb-44">
-      <div className="max-w-[1240px] mx-auto">
-        {/* Section Header */}
-        <div className="mb-16">
-          <motion.h2
-            className="text-4xl md:text-[56px] font-medium text-white mb-1 max-w-4xl tracking-tight font-sans leading-[1.1]"
-          >
-            From insight <span className="text-primary-600">to impact</span>
-          </motion.h2>
+  const toggleIndex = (index: number) => {
+    setExpandedIndices(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
+  return (
+    <section id="services" className="bg-neutral-900 px-6 md:px-[120px] pt-24 md:pt-20 pb-24 md:pb-44">
+      <div className="max-w-[1240px] mx-auto">
+        <div className="mb-10 md:mb-16">
+          <motion.h2 className="text-4xl md:text-[56px] font-medium text-white mb-1 max-w-4xl tracking-tight font-sans leading-[1.1]">
+            From insight <br className="md:hidden" /> <span className="text-primary-600">to impact</span>
+          </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl text-neutral-300 font-light max-w-3xl mt-0 font-sans"
+            className="text-xl md:text-2xl text-neutral-300 font-light max-w-3xl mt-4 md:mt-0 font-sans"
           >
             Great results aren&apos;t accidental. They are engineered
           </motion.p>
         </div>
 
-        {/* Dynamic Cards Grid */}
-        <div className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px] md:justify-between">
+        <motion.div layout className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px] md:justify-between">
           {services.map((service, index) => {
-            const isExpanded = expandedIndex === index;
+            const isExpanded = expandedIndices.includes(index);
             const isHovered = hoveredIndex === index;
 
             return (
@@ -98,106 +101,136 @@ export default function ServicesGrid() {
                 viewport={{ once: true }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                transition={{ type: "spring", stiffness: 200, damping: 25, mass: 1 }}
-                onClick={() => setExpandedIndex(index)}
-                layout
-                animate={{
-                  width: typeof window !== 'undefined' && window.innerWidth >= 768
-                    ? (isExpanded ? '706px' : '154px')
-                    : '100%',
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 25,
+                  mass: 1,
+                  layout: { type: "spring", stiffness: 350, damping: 12, mass: 2 }
                 }}
-                className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full h-[400px] md:w-auto md:h-auto"
+                onClick={() => toggleIndex(index)}
+                layout
+                style={{ transformOrigin: 'top' }}
+                animate={{
+                  width: (typeof window !== 'undefined' && window.innerWidth >= 768) ? (isExpanded ? '706px' : '154px') : '100%',
+                  height: (typeof window !== 'undefined' && window.innerWidth < 768) ? (isExpanded ? 340 : 140) : (typeof window !== 'undefined' && window.innerWidth >= 768 ? 600 : 'auto')
+                }}
+                className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full md:w-auto shadow-sm"
               >
-                {/* Background Asset */}
-                <div className="absolute inset-0">
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ scale: isExpanded ? 1.15 : 1 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                >
                   {service.video ? (
                     <ServiceVideo src={service.video} isExpanded={isExpanded} />
                   ) : (
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover scale-105"
-                      sizes="100vw"
-                    />
+                    <Image src={service.image} alt={service.title} fill className="object-cover scale-105" sizes="100vw" />
                   )}
-                </div>
+                </motion.div>
 
-                {/* Gradient Wash (Matches Reference Image) */}
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: (isExpanded || isHovered) ? 1 : 0 }}
+                  animate={{
+                    opacity: typeof window !== 'undefined' && window.innerWidth < 768
+                      ? (isExpanded ? 1 : 0)
+                      : (isExpanded || isHovered ? 1 : 0)
+                  }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="absolute inset-0 pointer-events-none z-[5] bg-gradient-to-t from-[#4F39F6] via-[#4F39F6]/50 50% to-[#4F39F6]/10"
+                  className={isExpanded
+                    ? "absolute inset-0 pointer-events-none z-[5] bg-gradient-to-b from-[#4F39F6] via-[#4F39F6]/50 50% to-[#4F39F6]/10"
+                    : "absolute inset-0 pointer-events-none z-[5] bg-gradient-to-t from-[#4F39F6] via-[#4F39F6]/50 50% to-[#4F39F6]/10"}
                 />
 
-                <div className="relative h-full p-12 flex flex-col justify-between items-start z-10">
-                  {/* Arrow Icon */}
-                  <motion.div
-                    animate={{
-                      scale: 1,
-                      backgroundColor: '#4F39F6'
-                    }}
-                    className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
-                  >
-                    <motion.svg
-                      className="w-5 h-5 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      animate={{ rotate: isExpanded ? 360 : (isHovered ? 270 : 180) }}
-                      transition={{ duration: 0.4, ease: "backOut" }}
-                    >
-                      <path d="M12 5v14M19 12l-7 7-7-7" />
-                    </motion.svg>
-                  </motion.div>
+                <div className="relative h-full pt-[54px] pb-6 px-6 md:p-12 z-10 flex flex-col justify-start md:justify-between items-start">
+                  <div className="flex justify-between items-start w-full">
+                    <div className="flex flex-col flex-1">
+                      <div className="md:hidden">
+                        <h3 className="text-[32px] font-medium text-white tracking-[-0.04em] leading-none font-sans">
+                          {service.title.replace('\n', ' ')}
+                        </h3>
+                        <AnimatePresence initial={false}>
+                          {isExpanded && (
+                            <motion.p
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="text-white/90 text-[14px] font-medium tracking-[-0.01em] leading-tight max-w-[200px] overflow-hidden"
+                            >
+                              {service.description}
+                            </motion.p>
+                          )}
+                        </AnimatePresence>
+                      </div>
 
-                  {/* Text Layer */}
-                  <div className="relative w-full">
-                    <AnimatePresence mode="wait">
-                      {isExpanded ? (
-                        <motion.div
-                          key="expanded"
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 20 }}
-                          transition={{ duration: 0.5, ease: "easeOut" }}
-                          className="pointer-events-none"
-                        >
-                          <h3 className="text-[36px] md:text-[48px] font-medium text-white mb-3 tracking-[-0.04em] leading-none font-sans">
-                            {service.title.replace('\n', ' ')}
-                          </h3>
-                          <p className="text-white/90 text-[14px] md:text-[16px] font-medium tracking-[-0.01em] leading-none max-w-lg font-sans">
-                            {service.description}
-                          </p>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key={`collapsed-${service.title}`}
-                          initial={{ opacity: 0, y: 0 }}
-                          animate={{
-                            opacity: 1,
-                            y: isHovered ? -12 : 0
-                          }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.4, ease: "easeOut" }}
-                          className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
-                        >
-                          <h3 className="text-[36px] md:text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
-                            {index === 1 ? 'Creative' : service.title}
-                          </h3>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <div className="hidden md:block">
+                        <AnimatePresence mode="wait">
+                          {isExpanded && (
+                            <motion.div
+                              key="expanded-text-desktop"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.4 }}
+                            >
+                              <h3 className="text-[48px] font-medium text-white mb-3 tracking-[-0.04em] leading-none font-sans">
+                                {service.title.replace('\n', ' ')}
+                              </h3>
+                              <p className="text-white/90 text-[16px] font-medium tracking-[-0.01em] leading-none max-w-lg font-sans">
+                                {service.description}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </div>
+
+                    <motion.div
+                      layout
+                      animate={{
+                        scale: 1,
+                        backgroundColor: isExpanded ? '#000000' : '#4F39F6'
+                      }}
+                      className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
+                    >
+                      <motion.svg
+                        className="w-5 h-5 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        animate={{ rotate: isExpanded ? 0 : -180 }}
+                        transition={{ duration: 0.4, ease: "backOut" }}
+                      >
+                        <path d="M12 5v14M19 12l-7 7-7-7" />
+                      </motion.svg>
+                    </motion.div>
                   </div>
+
+                  {!isExpanded && (
+                    <div className="hidden md:block relative w-full">
+                      <motion.div
+                        key={`collapsed-${service.title}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, y: isHovered ? -12 : 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="absolute bottom-4 left-0 w-full flex items-center justify-center pointer-events-none"
+                      >
+                        <h3 className="text-[36px] md:text-[48px] font-medium text-white whitespace-pre-wrap [writing-mode:vertical-rl] rotate-180 tracking-[-0.04em] leading-[1.1] font-sans text-left">
+                          {index === 1 ? 'Creative' : service.title}
+                        </h3>
+                      </motion.div>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

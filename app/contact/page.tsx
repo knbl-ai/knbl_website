@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Call us',
-    value: '03-632-2242',
+    value: '+972 3 632 2242',
     href: 'tel:+97236322242',
   },
 ];
@@ -32,7 +32,7 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-[120px] pb-[60px] px-6 md:px-[120px]">
+      <section className="pt-32 md:pt-48 pb-[60px] px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="pb-[120px] px-6 md:px-[120px]">
+      <section className="pt-6 md:pt-12 pb-[120px] px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Contact Cards */}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useEffect, useState, ReactNode } from 'react';
-import { motion, useMotionValue, useSpring, useAnimationFrame } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useAnimationFrame, useTransform } from 'framer-motion';
 
 
 interface Brand {
@@ -20,6 +20,7 @@ const topRowBrands: Brand[] = [
   { name: 'Heichal Hatarbut', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628565/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%9C%D7%91%D7%9F-%D7%9E%D7%9C%D7%90_u3xjih.png', className: 'translate-y-3' },
   { name: 'Anker', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628505/Logo_Anker_White_nqtpe8.png', className: 'h-32 md:h-48' },
   { name: 'Xiaomi', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628142/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
+  { name: 'Safari', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002559/RAFAEL_LOGO_WHITE_yxntiv.png' }, // Placeholder logo for now as I don't have the safari white logo yet
 ];
 
 const bottomRowBrands: Brand[] = [
@@ -32,51 +33,51 @@ const bottomRowBrands: Brand[] = [
   { name: 'Aion', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627141/AION_LOGO_WHITE_rooieu.png', className: 'h-6 md:h-8' },
 ];
 
-const Marquee = ({ children, direction = 'left', duration = 60 }: { children: ReactNode, direction?: 'left' | 'right', duration?: number }) => {
-  const [contentWidth, setContentWidth] = useState(0);
+const Marquee = ({ children, direction = 'left', duration = 30 }: { children: ReactNode, direction?: 'left' | 'right', duration?: number }) => {
+  const [iterationWidth, setIterationWidth] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
 
-  // High damping for premium, non-bouncy inertial feel
-  const springConfig = { stiffness: 300, damping: 60, mass: 1 };
+  // High damping for premium feel without bounciness
+  const springConfig = { stiffness: 400, damping: 90, mass: 1 };
   const translateX = useSpring(x, springConfig);
 
   const isDragging = useRef(false);
-  const speed = direction === 'left' ? -0.4 : 0.4; // Very slow and calm default speed
+  // Speed set to a premium "moving" pace
+  const speed = direction === 'left' ? -1.5 : 1.5;
 
   useEffect(() => {
-    if (contentRef.current) {
-      // Calculate width of a single set of logos (half the total scrollable width)
-      setContentWidth(contentRef.current.scrollWidth / 2);
-    }
+    const calculateWidth = () => {
+      if (contentRef.current) {
+        const styles = window.getComputedStyle(contentRef.current);
+        const gap = parseInt(styles.gap) || 0;
+        // With 3 sets, scrollWidth = 3*Width + 2*Gap
+        // One full iteration is Width + Gap
+        setIterationWidth((contentRef.current.scrollWidth + gap) / 3);
+      }
+    };
+
+    calculateWidth();
+    window.addEventListener('resize', calculateWidth);
+    return () => window.removeEventListener('resize', calculateWidth);
   }, [children]);
 
   useAnimationFrame(() => {
-    if (isDragging.current || contentWidth === 0) return;
+    if (isDragging.current || iterationWidth === 0) return;
+    x.set(x.get() + speed);
+  });
 
-    let currentX = x.get();
-    currentX += speed;
-
-    // Pixel-perfect seamless loop
-    if (currentX <= -contentWidth) {
-      currentX += contentWidth;
-    } else if (currentX > 0) {
-      currentX -= contentWidth;
-    }
-
-    x.set(currentX);
+  // The secret to seamless looping with useSpring: 
+  // Never jump the spring's target (x), instead loop the visual result.
+  const displayX = useTransform(translateX, (v: number) => {
+    if (iterationWidth === 0) return 0;
+    return ((v % iterationWidth) - iterationWidth) % iterationWidth;
   });
 
   const onDrag = (_: unknown, info: { delta: { x: number } }) => {
-    // Clamp delta to prevent crazy acceleration
+    // Smooth dragging that integrates with the continuous movement
     const clampedDelta = Math.max(Math.min(info.delta.x, 20), -20);
-    let currentX = x.get() + clampedDelta;
-
-    // Maintain loop during drag
-    if (currentX <= -contentWidth) currentX += contentWidth;
-    if (currentX > 0) currentX -= contentWidth;
-
-    x.set(currentX);
+    x.set(x.get() + clampedDelta);
   };
 
   return (
@@ -87,14 +88,16 @@ const Marquee = ({ children, direction = 'left', duration = 60 }: { children: Re
         onDragStart={() => { isDragging.current = true; }}
         onDragEnd={() => { isDragging.current = false; }}
         onDrag={onDrag}
-        style={{ x: translateX }}
+        style={{ x: displayX }}
         className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap"
       >
-        {/* Set 1 */}
+        {/* Triple repetition for absolute coverage and perfect loop points */}
         <div className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap flex-shrink-0">
           {children}
         </div>
-        {/* Set 2 (for seamless loop) */}
+        <div className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap flex-shrink-0">
+          {children}
+        </div>
         <div className="flex gap-12 md:gap-20 lg:gap-32 items-center flex-nowrap flex-shrink-0">
           {children}
         </div>
@@ -106,7 +109,7 @@ const Marquee = ({ children, direction = 'left', duration = 60 }: { children: Re
 export default function BrandsSection() {
   return (
     <section className="bg-neutral-900 pt-12 md:pt-16 pb-24 md:pb-32 overflow-hidden">
-      <div className="px-6 md:px-24 mb-6 md:mb-8">
+      <div className="px-6 md:px-[120px] mb-6 md:mb-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,22 +117,44 @@ export default function BrandsSection() {
             viewport={{ once: true }}
             className="space-y-6 max-w-3xl"
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-white leading-tight flex items-baseline flex-wrap">
-              <span>Brands that trust</span>
-              <img
-                src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768739081/5_otsmdt.png"
-                alt="KNBL"
-                className="h-[1.9em] w-auto translate-y-[0.65em] -translate-x-4"
-              />
+            <h2 className="text-[40px] md:text-[56px] lg:text-7xl font-medium text-white leading-[1.1] tracking-[-0.04em]">
+              Brands that <br />
+              <span className="inline-flex items-baseline gap-x-4 md:gap-x-6">
+                trust
+                <svg
+                  viewBox="0 0 108 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-[0.72em] md:h-[0.75em] w-auto translate-y-[0.06em]"
+                >
+                  <path
+                    d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z"
+                    fill="#4F39F6"
+                  />
+                  <path
+                    d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z"
+                    fill="#4F39F6"
+                  />
+                  <path
+                    d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 21.3546 77.6088 21.4143 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z"
+                    fill="#4F39F6"
+                  />
+                  <path
+                    d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z"
+                    fill="#4F39F6"
+                  />
+                  <circle cx="104.34" cy="25.8" r="3.7" fill="white" />
+                </svg>
+              </span>
             </h2>
-            <p className="text-2xl text-neutral-300">
+            <p className="text-xl md:text-2xl text-neutral-300 font-light max-w-2xl tracking-tight">
               From early stage companies to global teams, these are the partners we help move forward.
             </p>
           </motion.div>
         </div>
       </div>
 
-      <div className="px-6 md:px-24">
+      <div className="px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-0">
             <Marquee direction="left" duration={30}>
@@ -159,6 +184,6 @@ export default function BrandsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

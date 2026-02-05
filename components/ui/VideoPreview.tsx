@@ -12,6 +12,7 @@ interface VideoPreviewProps {
     startTime?: number; // seconds to start from
     isPlaying?: boolean; // controlled playback
     objectFit?: 'cover' | 'contain';
+    objectPosition?: string;
 }
 
 export function VideoPreview({
@@ -22,7 +23,8 @@ export function VideoPreview({
     maxDuration,
     startTime = 0,
     isPlaying = true,
-    objectFit = 'cover'
+    objectFit = 'cover',
+    objectPosition = 'center'
 }: VideoPreviewProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -70,6 +72,7 @@ export function VideoPreview({
                     fill
                     className={`object-${objectFit} transition-opacity duration-700 ${isVideoLoaded ? 'opacity-0' : 'opacity-100'
                         }`}
+                    style={{ objectPosition }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     priority
                 />
@@ -83,6 +86,7 @@ export function VideoPreview({
                 loop
                 playsInline
                 onLoadedData={() => setIsVideoLoaded(true)}
+                style={{ objectPosition }}
                 className={`w-full h-full object-${objectFit} absolute inset-0 transition-opacity duration-700 ${!posterUrl || isVideoLoaded ? 'opacity-100' : 'opacity-0'
                     }`}
             />

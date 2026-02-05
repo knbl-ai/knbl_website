@@ -125,7 +125,7 @@ export default function BlogPostPage() {
     <main className="min-h-screen bg-white">
       <Navigation />
 
-      <article className="pt-[120px] pb-[120px] px-6 md:px-[120px]">
+      <article className="pt-32 md:pt-48 pb-[120px] px-6 md:px-[120px]">
         <div className="max-w-[640px] mx-auto">
           {/* Header */}
           <motion.div

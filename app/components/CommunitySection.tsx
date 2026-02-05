@@ -35,12 +35,6 @@ const videos = [
     title: 'GOOGLE AI',
     description: 'Everything about Google AI with Elit Ben Bassat, Head of Cloud Marketing at Google',
     duration: '48 min'
-  },
-  {
-    id: 'toRkgVwuerk',
-    title: 'GOOGLE AI',
-    description: "Meet the minds shaping tomorrow's marketing. Real talks, shared knowledge, and ideas that move brands forward.",
-    duration: '50 min'
   }
 ];
 
@@ -71,7 +65,7 @@ export default function CommunitySection() {
       <div className="absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b from-white via-[#A3B3FF] via-[20%] to-transparent pointer-events-none" />
 
       {/* Text Section */}
-      <div className="relative pt-0 pb-16 md:pb-32 px-6 md:px-24 z-10">
+      <div className="relative pt-0 pb-16 md:pb-32 px-6 md:px-[120px] z-10">
         <TextReveal
           initialColor="#FFFFFF"
           startEarly={true}

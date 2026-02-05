@@ -10,16 +10,16 @@ import { X } from 'lucide-react';
 
 const menuItems = [
   { label: 'Home', href: '/' },
-  { label: 'Work', href: '/#work' },
+  { label: 'Work', href: '/work' },
   { label: 'Services', href: '/#services' },
   { label: 'Insights', href: '/insights' },
   { label: 'Agency', href: '/agency' },
-  { label: 'Ai productions', href: '/ai-productions' },
 ];
 
 export default function Navigation() {
   const pathname = usePathname();
   const [activeItem, setActiveItem] = useState('Home');
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Update active item based on current pathname
@@ -31,7 +31,7 @@ export default function Navigation() {
     });
 
     if (pathname === '/ai-productions') {
-      setActiveItem('Ai productions');
+      setActiveItem('AI Productions');
     } else if (pathname === '/contact') {
       setActiveItem("Let's Talk");
     } else {
@@ -63,9 +63,9 @@ export default function Navigation() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="w-full max-w-7xl mx-auto px-10 md:px-[120px] py-6 md:py-[48px] relative z-[60]">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
+      <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link href="/" className="flex items-center shrink-0">
             <div className={`relative flex items-center w-[92px] h-[26px] md:w-[108px] md:h-[30px] -ml-4 -mt-2 md:ml-0 md:mt-0 transition-colors duration-300`}>
               <svg
                 viewBox="0 0 108 30"
@@ -138,40 +138,44 @@ export default function Navigation() {
             </motion.div>
           </button>
 
-          {/* Desktop Menu & Button Container */}
-          <div className="hidden md:flex items-center justify-end flex-1 gap-12">
-            <div className="flex items-center gap-4">
-              {menuItems.filter(item => item.label !== 'Ai productions').map((item) => (
+          {/* Desktop Menu - Shifted Right, closer to Buttons */}
+          <div className="hidden md:flex items-center justify-end gap-2 lg:gap-4 flex-1 mr-8 lg:mr-12">
+            {menuItems.map((item) => {
+              const isItemActive = activeItem === item.label;
+              const isItemHovered = hoveredItem === item.label;
+              // Rule: Only one name can be purple at a time. Hover takes priority over Active.
+              const shouldShowPurple = isItemHovered || (isItemActive && hoveredItem === null);
+
+              return (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={() => setActiveItem(item.label)}
+                  onMouseEnter={() => setHoveredItem(item.label)}
+                  onMouseLeave={() => setHoveredItem(null)}
                   className="relative px-[12px] py-[10px] flex cursor-pointer group"
                 >
-                  <motion.div
-                    initial="initial"
-                    whileHover="hover"
-                    animate="initial" // Ensures variants reset smoothly on mouse leave
-                    className="flex text-[15px] font-normal leading-[24px]"
-                  >
+                  <motion.div className="flex text-[15px] font-normal leading-[24px]">
                     {item.label.split('').map((char, i) => (
                       <span key={i} className="relative inline-block whitespace-pre">
-                        {/* Base Text */}
-                        <span className={`transition-colors duration-200 ${activeItem === item.label ? 'text-[#4F39F6]' : 'text-[#888888]'}`}>
-                          {char}
-                        </span>
-                        {/* Hover Effect Layer (The 'Wave') */}
+                        <span className="text-[#888888]">{char}</span>
                         <motion.span
+                          initial="initial"
+                          animate={shouldShowPurple ? "visible" : "initial"}
                           variants={{
                             initial: {
                               clipPath: 'inset(0 100% 0 0)',
-                              transition: { duration: 0.15, ease: "easeInOut" }
+                              transition: {
+                                duration: 0.4,
+                                ease: "easeInOut",
+                                delay: (item.label.length - i) * 0.03
+                              }
                             },
-                            hover: {
+                            visible: {
                               clipPath: 'inset(0 0% 0 0)',
                               transition: {
-                                duration: 0.12,
-                                delay: i * 0.015, // Faster wave stagger
+                                duration: 0.6,
+                                delay: i * 0.06,
                                 ease: "easeInOut"
                               }
                             }
@@ -185,26 +189,26 @@ export default function Navigation() {
                     ))}
                   </motion.div>
                 </Link>
-              ))}
-            </div>
+              );
+            })}
+          </div>
 
-            {/* AI productions & Let's Talk Buttons */}
-            <div className="flex items-center gap-4">
-              <Link href="/ai-productions" className="transition-all duration-300">
-                <InteractiveHoverButton
-                  className={`bg-[#4F39F6] text-white rounded-full font-medium ${activeItem === 'Ai productions' ? 'ring-2 ring-white/20' : ''}`}
-                >
-                  AI productions
-                </InteractiveHoverButton>
-              </Link>
-              <Link href="/contact" className="transition-all duration-300">
-                <InteractiveHoverButton
-                  className="bg-[#4F39F6] text-white rounded-full font-medium"
-                >
-                  Let&apos;s Talk
-                </InteractiveHoverButton>
-              </Link>
-            </div>
+          {/* Desktop CTA Buttons - Flush Right */}
+          <div className="hidden md:flex items-center gap-4 shrink-0">
+            <Link href="/ai-productions" className="transition-all duration-300">
+              <InteractiveHoverButton
+                className={`bg-[#4F39F6] text-white rounded-full font-medium ${activeItem === 'AI Productions' ? 'ring-2 ring-white/20' : ''}`}
+              >
+                AI Productions
+              </InteractiveHoverButton>
+            </Link>
+            <Link href="/contact" className="transition-all duration-300">
+              <InteractiveHoverButton
+                className="bg-[#4F39F6] text-white rounded-full font-medium"
+              >
+                Let&apos;s Talk
+              </InteractiveHoverButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -241,6 +245,21 @@ export default function Navigation() {
                   </motion.div>
                 </Link>
               ))}
+
+              {/* AI Productions Link */}
+              <Link
+                href="/ai-productions"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className={`text-[38px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors ${activeItem === "AI Productions" ? 'text-[#4F39F6]' : 'text-white'}`}
+                >
+                  AI Productions
+                </motion.div>
+              </Link>
 
               {/* Let's Talk Link */}
               <Link

@@ -46,7 +46,8 @@ export default function Footer() {
     { label: 'Work', href: '/work' },
     { label: 'Agency', href: '/agency' },
     { label: 'Insights', href: '/insights' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'AI Productions', href: '/ai-productions' },
+    { label: 'Contact', href: '/contact' },
   ];
   const legalLinks = ['Terms of use', 'Privacy policy', 'Cookies'];
 
@@ -128,7 +129,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-neutral-400 text-[12px]">© 2025 KNBL. All rights reserved.</p>
+          <p className="text-neutral-400 text-[12px]">© 2026 KNBL. All rights reserved.</p>
         </div>
       </div>
     </footer>

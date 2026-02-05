@@ -12,6 +12,7 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
       onClick={onClick}
       initial="initial"
       whileHover="hover"
+      whileTap="tap"
       animate="initial"
       className="relative flex items-center justify-center w-14 h-14 rounded-full overflow-hidden"
       variants={{
@@ -22,6 +23,11 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
         hover: {
           backgroundColor: "#000000",
           scale: 1.1
+        },
+        tap: {
+          scale: 0.9,
+          backgroundColor: "#000000",
+          transition: { type: "spring", stiffness: 400, damping: 10 }
         }
       }}
       transition={{
@@ -35,7 +41,8 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
           className="absolute inset-0 flex items-center justify-center"
           variants={{
             initial: { y: 0 },
-            hover: { y: -120 }
+            hover: { y: -120 },
+            tap: { y: -110 }
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
@@ -59,7 +66,8 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
           className="absolute inset-0 flex items-center justify-center"
           variants={{
             initial: { y: 60 },
-            hover: { y: -60 }
+            hover: { y: -60 },
+            tap: { y: -50 }
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
@@ -83,7 +91,8 @@ export default function ScrollIndicator({ onClick }: ScrollIndicatorProps) {
           className="absolute inset-0 flex items-center justify-center"
           variants={{
             initial: { y: 120 },
-            hover: { y: 0 }
+            hover: { y: 0 },
+            tap: { y: 10 }
           }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >

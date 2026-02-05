@@ -121,7 +121,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
 
 export default function BlogSection() {
   return (
-    <section id="insights" className="py-24 md:py-44 px-6 md:px-24">
+    <section id="insights" className="py-24 md:py-44 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">

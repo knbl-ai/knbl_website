@@ -6,13 +6,13 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import AiProductionForm from '../components/AiProductionForm';
 import { VideoPreview } from '../../components/ui/VideoPreview';
-import { Maximize2, X, Play } from 'lucide-react';
+import { Maximize2, X, Play, ArrowRight } from 'lucide-react';
 
 const aiVideos = [
     {
         id: 7,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005785/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4',
-        title: 'Electra "BEYOND" project',
+        title: 'Electra "BEYOND" Project',
         category: 'Tech Visualization'
     },
     {
@@ -60,28 +60,16 @@ const aiVideos = [
         startTime: 1
     },
     {
-        id: 8,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005841/roladin_moon-video-export-2025-12-30T08-37-46.443Z_qk44k2.mp4',
-        title: 'Roladin AI Moon',
-        category: 'Automotive AI'
-    },
-    {
         id: 9,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005747/8u2Q50QoEmcqTVa6DJdGe_output_1_mxzzbt.mp4',
         title: "AI",
         category: 'Emotional AI'
     },
     {
-        id: 15,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005735/Woman_talking_in_202601021508_ab1pf_k46tar.mp4',
-        title: 'AI Virtual Spokesperson',
-        category: 'Avatar Realism'
-    },
-    {
         id: 20,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769613726/WhatsApp_Video_2026-01-08_at_19.41.18__without_end_of_video_czxoce.mp4',
-        title: 'AI Spec Work',
-        category: 'Transportation'
+        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4',
+        title: 'Electra',
+        category: 'AI Production'
     },
 ];
 
@@ -93,6 +81,11 @@ const portraitVideos = [
     },
     {
         id: 10,
+        url: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4',
+        title: 'Trans Israel',
+    },
+    {
+        id: 11,
         url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993607/IMG_1820_nxuyj4.mov',
         title: 'Rafael Developer Day',
     },
@@ -174,7 +167,7 @@ function AIVideoCard({
             onTap={onPlay}
             role="button"
             tabIndex={0}
-            className={`${height} rounded-[12px] overflow-hidden cursor-pointer relative group isolation-auto bg-neutral-900`}
+            className={`${height} rounded-[12px] overflow-hidden cursor-pointer relative group isolation-auto ${objectFit === 'contain' ? 'bg-white' : 'bg-neutral-900'}`}
             style={{ transform: 'translateZ(0)' }}
             variants={{
                 initial: { opacity: 0, y: 20, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)' },
@@ -229,23 +222,22 @@ function AIVideoCard({
             <motion.div
                 variants={{
                     initial: {
-                        opacity: 0,
-                        y: typeof window !== 'undefined' && window.innerWidth >= 768 ? "100%" : 0
-                    },
-                    visible: {
-                        opacity: 0,
-                        y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : "100%"
+                        y: "100%",
+                        opacity: 0
                     },
                     hover: {
-                        opacity: typeof window !== 'undefined' && window.innerWidth >= 768 ? 1 : 0,
-                        y: 0
+                        y: 0,
+                        opacity: 1
+                    },
+                    visible: {
+                        y: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : "100%",
+                        opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 0
                     }
                 }}
-                animate={undefined}
                 transition={{
                     duration: 0.5,
-                    ease: [0.33, 1, 0.68, 1],
-                    opacity: { duration: 0.3 }
+                    y: { type: "spring", stiffness: 200, damping: 22, mass: 1 },
+                    opacity: { duration: 0.2 }
                 }}
                 className="absolute bottom-0 left-0 right-0 bg-[#5046E4] px-6 py-2.5 flex items-center justify-between z-10 rounded-b-[12px]"
             >
@@ -266,6 +258,22 @@ function AIVideoCard({
                         {video.title}
                     </span>
                 </div>
+                <motion.div
+                    className="flex items-center justify-center bg-black/20 hover:bg-black/30 rounded-full w-8 h-8 transition-colors duration-300 relative z-20"
+                    whileHover="hoverIcon"
+                    whileTap="tapIcon"
+                >
+                    <motion.div
+                        variants={{
+                            initial: { rotate: 0, scale: 1 },
+                            hoverIcon: { rotate: -45, scale: 1.1 },
+                            tapIcon: { rotate: -45, scale: 1.1 }
+                        }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    >
+                        <ArrowRight className="w-4 h-4 text-white" />
+                    </motion.div>
+                </motion.div>
             </motion.div>
         </motion.div>
     );
@@ -361,13 +369,13 @@ export default function AIProductionsPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-24 pb-0 px-10 md:px-[120px] md:pt-44 md:pb-2">
-                <div className="max-w-7xl mx-auto">
+            <section className="pt-32 md:pt-48 pb-0 px-6 md:px-[120px] md:pb-2">
+                <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-                        className="max-w-4xl -ml-4 md:ml-0"
+                        className="max-w-4xl"
                     >
                         <h1 className="text-4xl md:text-[56px] font-medium text-black leading-[1.1] tracking-[-0.04em] mb-4">
                             AI <br className="md:hidden" /> <span className="text-primary-600">Productions.</span>
@@ -377,9 +385,9 @@ export default function AIProductionsPage() {
             </section>
 
             {/* Video Grid Section */}
-            <section className="pb-16 px-10 md:px-[120px] md:pb-32">
+            <section className="pt-12 md:pt-16 pb-10 px-6 md:px-[120px] md:pb-12">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-6 md:gap-6 -ml-4 -mr-5 md:ml-0 md:mr-0">
+                    <div className="grid grid-cols-2 md:grid-cols-12 gap-x-4 gap-y-6 md:gap-6">
                         {/* All Landscape Videos (4 rows of 3) */}
                         {aiVideos.map((video, index) => (
                             <div key={video.id} className="col-span-2 md:col-span-6 lg:col-span-4">
@@ -429,19 +437,21 @@ export default function AIProductionsPage() {
             {/* Additional Videos Section (White Stripe) */}
             <section className="bg-white pt-0 pb-16 px-10 md:px-[120px] md:pt-8 md:pb-32">
                 <div className="max-w-7xl mx-auto">
-                    <motion.h2
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-[56px] font-medium text-black leading-[1.1] tracking-[-0.04em] mb-4 -ml-4 md:ml-0"
-                    >
-                        AI agents & <br />
-                        <span className="text-primary-600">Product development.</span>
-                    </motion.h2>
+                    <div className="text-center mb-12">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="text-4xl md:text-[56px] font-medium text-black leading-[1.1] tracking-[-0.04em]"
+                        >
+                            AI agents & <br />
+                            <span className="text-primary-600">Product development.</span>
+                        </motion.h2>
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 -ml-4 -mr-5 md:ml-0 md:mr-0">
                         {productVideos.map((video, index) => (
-                            <div key={video.id} className="flex flex-col gap-1.5">
+                            <div key={video.id} className="flex flex-col gap-8">
                                 <div className="space-y-0 ml-0 md:ml-0">
                                     <motion.h3
                                         initial={{ color: "#B3B3B3" }}
