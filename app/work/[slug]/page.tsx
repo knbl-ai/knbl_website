@@ -26,9 +26,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'tiktok', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/ho.fashion_?igsh=bnN4azNsNW1jNjZk' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1AeF12pcP2/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Brand Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4' },
@@ -45,8 +44,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Rafael Advanced Defense Systems is a pioneer in defense technologies, providing innovative solutions for security and protection. Their commitment to excellence and reliability has made them a global leader in the defense industry.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/rafaeldefense_il?igsh=MTVkdzIxcmJvanU4NA==' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1GSDDTkWpf/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Financial Reports', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4' },
@@ -62,8 +61,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Xiaomi is a global leader in smart electronics and consumer technology, bringing innovation and accessibility to everyone through their cutting-edge AI-driven productions and sleek device launches.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'tiktok', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/xiaomiil?igsh=MXdoY2h0a205dmFlYg==' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/189W2LXgm1/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Poco X7 Launch AI Production', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4' },
@@ -80,8 +79,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From iconic holiday collections to artisanal breads, they set the bar for quality and creativity.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/roladin_il?igsh=eXdrazFiYTkyd29x' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/17t3nBB9cx/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Movie 2', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4' },
@@ -97,8 +96,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Carter's is the most trusted name in baby and children's apparel, known for quality, comfort, and timeless designs that have made them a beloved part of childhood memories for families worldwide.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'tiktok', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/cartersisrael?igsh=MTY3ODkyMjdncDZ0aA==' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1CGyWty72e/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'With You From The Start', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
@@ -110,8 +109,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "The Safari (Ramat Gan) experience is brought to life through cinematic AI-driven visuals. This project captures the essence of wildlife conservation and family adventure, showcasing the park's vibrant life in high definition.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/safari_israel?igsh=NjJ5NTc0dmMzN2lr' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1FpYYhUG1S/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Safari Experience', url: 'https://storage.googleapis.com/knbl_website/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.mp4' },
@@ -123,8 +122,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Takeda is a global pharmaceutical leader dedicated to bringing better health and a brighter future to people worldwide through advanced medical research and innovative healthcare solutions.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/takeda_il?igsh=c3NyYWVpNHo1dXdu' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1GRfwX6zz4/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/takeda_fin_LOWER_sgeqe4.mp4' },
@@ -139,8 +138,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Electra's AI-driven storytelling showcases the intersection of technology and precision. This project highlights the seamless integration of AI in cinematic product visualization, emphasizing speed, accuracy, and innovation.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/electragroup_official?igsh=YWJsa3gzbjA3djk=' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1aKnGCNTe8/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4' },
@@ -152,8 +151,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Aion is at the forefront of the electric vehicle revolution, combining cutting-edge technology with sustainable mobility to redefine the driving experience for the modern world.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'tiktok', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/aion_israel?igsh=MW9jeTVmbXNtb3JwNQ==' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1CG5Xsixtn/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4' },
@@ -167,12 +166,12 @@ const projects: Record<string, {
   },
   'lod': {
     title: 'Lod',
-    logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628885/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png',
+    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/CALCALIT_LOD_LOGO.png',
     logoBg: '#F7F7F8',
     description: "The city of Lod's urban transformation and strategic growth are captured through advanced AI-driven cinematography. This project showcases the city's rich heritage alongside its future as a central hub of innovation and development.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/calcalit_lod?igsh=dzY0ZHY4N2Fhd253' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1DVYojbZiv/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Urban Transformation', url: 'https://storage.googleapis.com/knbl_website/videos/lod/lod_16x9_2mbps.mp4' },
@@ -184,8 +183,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Anker is the global leader in charging technology. This includes wireless charging, car charging, and our best-selling portable and wall chargers. Anker is pioneering Power Delivery technology to charge phones, tablets, and laptops at unprecedented speeds.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/anker_israel?igsh=MW41ejJjZGc0dHlvag==' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1HCGgCvNL4/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Anker Eufy Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.mp4' },
@@ -198,8 +197,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Reuth Rehabilitation Hospital is a leading medical center in Israel, specializing in advanced rehabilitation and geriatric care, providing hope and healing to patients through expert medical attention.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/reuth_hospital?igsh=YnA1dmw2cWFkNnZ3' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/14TVNU6ybRm/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
@@ -213,8 +212,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "Trans Israel (Hotze Israel) is connecting the nation through a network of advanced transportation projects. This cinematic AI production highlights the connectivity, speed, and impact of these infrastructure milestones on the landscape.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/trans_israel?igsh=MndqOGdrdWhkb2pz' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/183SaAZ4Cv/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4' },
@@ -226,8 +225,8 @@ const projects: Record<string, {
     logoBg: '#F7F7F8',
     description: "The Petach Tikva Center for the Performing Arts is a premiere cultural destination, showcasing world-class theater, music, and dance in a state-of-the-art facility dedicated to artistic excellence.",
     socialLinks: [
-      { type: 'instagram', url: '#' },
-      { type: 'facebook', url: '#' },
+      { type: 'instagram', url: 'https://www.instagram.com/hatarbut.pt?igsh=NzE0N3k0dDRvZm95' },
+      { type: 'facebook', url: 'https://www.facebook.com/share/1E4w94iZrD/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Center Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/Culture%20Center/3137_TARBUT_OCT_VID_1080X1920_G.mp4' },
@@ -316,6 +315,8 @@ export default function ProjectPage() {
                   <a
                     key={index}
                     href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-[34px] h-[34px] bg-neutral-300 rounded-full flex items-center justify-center text-white hover:bg-primary-600 transition-colors"
                   >
                     <SocialIcon type={link.type} />
@@ -410,15 +411,17 @@ function VideoPlayer({ url, thumbnail, title }: { url: string; thumbnail: string
 
       <AnimatePresence>
         {!isPlaying && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={togglePlay}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform z-10 shadow-lg"
-          >
-            <Play className="w-6 h-6 text-primary-600 ml-1" fill="currentColor" />
-          </motion.button>
+          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              onClick={togglePlay}
+              className="w-16 h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg pointer-events-auto"
+            >
+              <Play className="w-6 h-6 text-primary-600" fill="currentColor" />
+            </motion.button>
+          </div>
         )}
       </AnimatePresence>
     </div>

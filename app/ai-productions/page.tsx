@@ -142,6 +142,7 @@ function AIVideoCard({
     index,
     height = "aspect-video",
     isPlaying = false,
+    isPortrait = false,
     objectFit = 'cover' as 'cover' | 'contain',
     onMouseEnter,
     onMouseLeave,
@@ -225,50 +226,40 @@ function AIVideoCard({
 
             </motion.div>
 
-            {/* Purple Bar Overlay - Shows on hover for desktop (with slide), and when playing/active on mobile */}
+            {/* Purple Bar Overlay - Matches ProjectsGrid style */}
             <motion.div
                 variants={{
-                    initial: {
-                        y: "100%",
-                        opacity: 0
-                    },
-                    hover: {
-                        y: 0,
-                        opacity: 1
-                    },
-                    visible: {
-                        y: "100%",
-                        opacity: 0
-                    }
+                    initial: { y: "100%" },
+                    hover: { y: 0 },
+                    visible: { y: "100%" }
                 }}
                 transition={{
-                    duration: 0.5,
-                    y: { type: "spring", stiffness: 200, damping: 22, mass: 1 },
-                    opacity: { duration: 0.2 }
+                    duration: 0.6,
+                    y: { type: "spring", stiffness: 120, damping: 14, mass: 1 }
                 }}
-                className="absolute bottom-0 left-0 right-0 bg-primary-600/90 backdrop-blur-md px-6 md:px-10 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[12px] border-t border-white/10"
+                className={`absolute bottom-0 left-0 right-0 bg-[#5046E4] px-6 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[12px] ${isPortrait ? 'md:px-7' : 'md:px-10'}`}
             >
                 {/* Concave Shims - Small liquid joints */}
-                <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none text-primary-600/90">
+                <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" shapeRendering="geometricPrecision">
-                        <path d="M 0 0 A 16 16 0 0 0 16 16 L 0 16 Z" fill="currentColor" />
+                        <path d="M 0 0 A 16 16 0 0 0 16 16 L 0 16 Z" fill="#5046E4" />
                     </svg>
                 </div>
-                <div className="absolute -top-[15.9px] right-0 w-[16px] h-[16px] pointer-events-none text-primary-600/90">
+                <div className="absolute -top-[15.9px] right-0 w-[16px] h-[16px] pointer-events-none">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" shapeRendering="geometricPrecision">
-                        <path d="M 16 0 A 16 16 0 0 1 0 16 L 16 16 Z" fill="currentColor" />
+                        <path d="M 16 0 A 16 16 0 0 1 0 16 L 16 16 Z" fill="#5046E4" />
                     </svg>
                 </div>
 
-                <div className="flex flex-col">
-                    <span className="text-white font-medium text-[16px] md:text-[24px] tracking-tight leading-tight">
+                <div className="flex flex-col min-w-0 flex-1 mr-4">
+                    <span className={`text-white font-medium tracking-tight leading-tight line-clamp-2 ${isPortrait ? 'text-[16px] md:text-[20px]' : 'text-[16px] md:text-[24px]'}`}>
                         {video.title}
                     </span>
                 </div>
 
-                {/* Desktop Expanding Button (refined for ultra-smooth animation) */}
+                {/* Desktop Expanding Button (Ultra-smooth version from ProjectsGrid) */}
                 <motion.div
-                    className="hidden md:flex items-center rounded-full group/btn cursor-pointer overflow-hidden h-10 bg-white relative z-20 ml-auto"
+                    className="hidden md:flex items-center bg-white rounded-full group/btn cursor-pointer overflow-hidden h-10 ml-auto shrink-0"
                     initial="initial"
                     whileHover="hover"
                     variants={{
@@ -293,32 +284,27 @@ function AIVideoCard({
                         <div className="flex items-center justify-center w-10 h-10 shrink-0">
                             <motion.div
                                 className="relative w-5 h-5 flex items-center justify-center"
-                                variants={{
-                                    initial: { x: 0 },
-                                    hover: { x: 0 }
-                                }}
-                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                             >
                                 <motion.div
                                     className="absolute inset-0 flex items-center justify-center"
                                     variants={{
-                                        initial: { opacity: 1, rotate: 0, color: "#5046E4" },
-                                        hover: { opacity: 0, rotate: 45, color: "#5046E4" }
+                                        initial: { opacity: 1, rotate: 0 },
+                                        hover: { opacity: 0, rotate: 45 }
                                     }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                                    <ArrowRight className="w-5 h-5 text-[#5046E4]" strokeWidth={2} />
                                 </motion.div>
                                 <motion.div
                                     className="absolute inset-0 flex items-center justify-center"
                                     initial={{ opacity: 0, rotate: -45 }}
                                     variants={{
-                                        initial: { opacity: 0, rotate: -45, color: "#5046E4" },
-                                        hover: { opacity: 1, rotate: 0, color: "#5046E4" }
+                                        initial: { opacity: 0, rotate: -45 },
+                                        hover: { opacity: 1, rotate: 0 }
                                     }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <ArrowUpRight className="w-5 h-5" strokeWidth={2} />
+                                    <ArrowUpRight className="w-5 h-5 text-[#5046E4]" strokeWidth={2} />
                                 </motion.div>
                             </motion.div>
                         </div>
@@ -326,11 +312,9 @@ function AIVideoCard({
                 </motion.div>
 
                 {/* Mobile Button */}
-                <motion.div
-                    className="flex md:hidden items-center justify-center bg-white rounded-full w-10 h-10 shrink-0 relative z-20"
-                >
+                <div className="flex md:hidden items-center justify-center bg-white rounded-full w-10 h-10 shrink-0 relative z-20">
                     <ArrowRight className="w-5 h-5 text-[#5046E4]" strokeWidth={2} />
-                </motion.div>
+                </div>
             </motion.div>
         </motion.div>
     );
@@ -434,7 +418,7 @@ export default function AIProductionsPage() {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-32 md:pt-48 pb-0 px-6 md:px-[120px] md:pb-2">
+            <section className="pt-32 md:pt-48 pb-0 px-6 md:px-[120px] md:pb-0">
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -497,10 +481,10 @@ export default function AIProductionsPage() {
                 </section>
             ) : (
                 /* Desktop Layout: 3 Columns Landscape, 4 Columns Portrait */
-                <section className="pt-4 pb-32 px-[120px]">
+                <section className="pt-0 pb-32 px-[120px]">
                     <div className="max-w-7xl mx-auto">
                         {/* Main Landscape Grid - 3 Columns */}
-                        <div className="grid grid-cols-3 gap-6 mb-12">
+                        <div className="grid grid-cols-3 gap-6 mb-6">
                             {aiVideos.map((video, index) => (
                                 <AIVideoCard
                                     key={video.id}
@@ -526,6 +510,7 @@ export default function AIProductionsPage() {
                                     video={video}
                                     index={index + aiVideos.length}
                                     height="aspect-[3/4.2]"
+                                    isPortrait={true}
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}

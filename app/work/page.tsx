@@ -237,8 +237,8 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                         initial: { y: "100%", opacity: 0 },
                         hover: { y: 0, opacity: 1 },
                         visible: {
-                            y: 0,
-                            opacity: 1
+                            y: isMobile ? 0 : "100%",
+                            opacity: isMobile ? 1 : 0
                         }
                     }}
                     transition={{

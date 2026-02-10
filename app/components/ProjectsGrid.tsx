@@ -239,8 +239,8 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         initial: { y: "100%", opacity: 0 },
                         hover: { y: 0, opacity: 1 },
                         visible: {
-                            y: 0,
-                            opacity: 1
+                            y: isMobile ? 0 : "100%",
+                            opacity: isMobile ? 1 : 0
                         }
                     }}
                     transition={{
@@ -345,11 +345,11 @@ export default function ProjectsGrid() {
         <section id="work" className="pt-10 md:pt-16 pb-24 md:pb-44 px-6 md:px-[120px]">
             <div className="max-w-[1550px] mx-auto">
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-6">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12 md:mb-20">
                     <motion.h2
                         className="text-[40px] md:text-[56px] font-medium max-w-4xl leading-[1.1] text-black tracking-[-0.04em]"
                     >
-                        The Brands <br className="md:hidden" />
+                        The Brands <br />
                         <span className="text-primary-600">We&apos;ve Grown.</span>
                     </motion.h2>
 

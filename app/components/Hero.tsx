@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import { TextReveal } from '@/components/ui/text-reveal';
 import ScrollIndicator from '@/components/ui/ScrollIndicator';
 
 interface FloatingCircleProps {
@@ -102,6 +103,25 @@ export default function Hero() {
         <section className="relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-white pt-20 overflow-hidden">
             {/* Background Gradient Layer for Mobile */}
             <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-indigo-50/50 to-transparent md:hidden" />
+
+            {/* Bottom Purple Glow matching reference - Grounded even more */}
+            <div
+                className="absolute inset-x-0 -bottom-px h-[50%] bg-gradient-to-t from-[#4F39F6]/40 via-[#4F39F6]/10 to-transparent z-0 pointer-events-none"
+                style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+            />
+
+            {/* Dotted Halftone Pattern Overlay */}
+            <div
+                className="absolute inset-0 z-0 opacity-[0.35]"
+                style={{
+                    backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
+                    backgroundSize: '12px 12px',
+                    maskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 60%)',
+                    WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 60%)',
+                    transform: 'translateZ(0)',
+                    willChange: 'mask-image, -webkit-mask-image'
+                }}
+            />
 
             {/* Background Blobs */}
             <div className="absolute inset-0 overflow-hidden z-0">
@@ -209,15 +229,12 @@ export default function Hero() {
                             <span className="text-[#4F39F6]">Be impossible</span> <br className="md:hidden" /> to ignore
                         </span>
                     </motion.h1>
-                    <motion.p
-                        initial={{ color: "#B3B3B3" }}
-                        whileInView={{ color: typeof window !== 'undefined' && window.innerWidth < 768 ? "#B3B3B3" : "#000000" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-                        className="mt-6 md:mt-8 text-[16px] md:text-[24px] font-normal leading-[1.3] tracking-[-0.02em] font-sans max-w-[200px] md:max-w-none mx-auto opacity-80 md:opacity-100"
+                    <TextReveal
+                        startEarly
+                        className="mt-6 md:mt-8 text-[16px] md:text-[24px] font-light leading-[1.3] tracking-[-0.02em] font-sans max-w-[200px] md:max-w-none mx-auto justify-center text-center py-0"
                     >
                         Creative marketing for ambitious brands
-                    </motion.p>
+                    </TextReveal>
                 </motion.div>
 
                 {/* Scroll Indicator - Positioned Lower per Reference */}

@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, useAnimationFrame, useTransform } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 
 interface Brand {
@@ -20,7 +21,6 @@ const topRowBrands: Brand[] = [
   { name: 'Heichal Hatarbut', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628565/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%9C%D7%91%D7%9F-%D7%9E%D7%9C%D7%90_u3xjih.png', className: 'translate-y-3' },
   { name: 'Anker', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628505/Logo_Anker_White_nqtpe8.png', className: 'h-32 md:h-48' },
   { name: 'Xiaomi', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628142/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
-  { name: 'Safari', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002559/RAFAEL_LOGO_WHITE_yxntiv.png' }, // Placeholder logo for now as I don't have the safari white logo yet
 ];
 
 const bottomRowBrands: Brand[] = [
@@ -44,7 +44,7 @@ const Marquee = ({ children, direction = 'left', duration = 30 }: { children: Re
 
   const isDragging = useRef(false);
   // Speed set to a premium "moving" pace
-  const speed = direction === 'left' ? -1.5 : 1.5;
+  const speed = direction === 'left' ? -0.8 : 0.8;
 
   useEffect(() => {
     const calculateWidth = () => {
@@ -108,8 +108,8 @@ const Marquee = ({ children, direction = 'left', duration = 30 }: { children: Re
 
 export default function BrandsSection() {
   return (
-    <section className="bg-neutral-900 pt-12 md:pt-16 pb-24 md:pb-32 overflow-hidden">
-      <div className="px-6 md:px-[120px] mb-6 md:mb-8">
+    <section className="bg-neutral-900 pt-24 md:pt-40 pb-20 md:pb-28 overflow-hidden">
+      <div className="px-6 md:px-[120px] mb-2 md:mb-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -117,8 +117,8 @@ export default function BrandsSection() {
             viewport={{ once: true }}
             className="space-y-6 max-w-3xl"
           >
-            <h2 className="text-[40px] md:text-[56px] lg:text-7xl font-medium text-white leading-[1.1] tracking-[-0.04em]">
-              Brands that <br />
+            <h2 className="text-4xl md:text-[56px] font-medium text-white leading-[1.05] tracking-[-0.04em] md:max-w-none">
+              Brands that <br className="md:hidden" />
               <span className="inline-flex items-baseline gap-x-4 md:gap-x-6">
                 trust
                 <svg
@@ -147,23 +147,28 @@ export default function BrandsSection() {
                 </svg>
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-neutral-300 font-light max-w-2xl tracking-tight">
+            <TextReveal
+              startEarly
+              initialColor="#737373"
+              revealedColor="#FFFFFF"
+              className="text-lg md:text-xl text-neutral-300 font-light max-w-3xl tracking-tight py-0"
+            >
               From early stage companies to global teams, these are the partners we help move forward.
-            </p>
+            </TextReveal>
           </motion.div>
         </div>
       </div>
 
       <div className="px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
-          <div className="space-y-0">
+          <div className="space-y-[-24px] md:space-y-[-44px]">
             <Marquee direction="left" duration={30}>
               {topRowBrands.map((brand, index) => (
                 <div key={`${brand.name}-${index}`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
                   <img
                     src={brand.logo}
                     alt={brand.name}
-                    className="h-full w-auto object-contain opacity-60 hover:opacity-100 transition-all duration-300 pointer-events-none select-none"
+                    className="h-full w-auto object-contain transition-all duration-300 pointer-events-none select-none"
                   />
                 </div>
               ))}
@@ -176,7 +181,7 @@ export default function BrandsSection() {
                   <img
                     src={brand.logo}
                     alt={brand.name}
-                    className="h-full w-auto object-contain opacity-60 hover:opacity-100 transition-all duration-300 pointer-events-none select-none"
+                    className="h-full w-auto object-contain transition-all duration-300 pointer-events-none select-none"
                   />
                 </div>
               ))}

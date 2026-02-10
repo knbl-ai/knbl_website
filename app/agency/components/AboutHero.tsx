@@ -27,7 +27,7 @@ export default function AboutHero() {
         </div>
 
         {/* Description with Text Reveal Animation */}
-        <TextReveal startEarly className="py-0 text-lg md:text-[22px] leading-[1.5] font-medium tracking-tight text-center justify-center max-w-3xl mx-auto">
+        <TextReveal startEarly className="py-0 text-lg md:text-[22px] leading-[1.5] font-light tracking-tight text-center justify-center max-w-3xl mx-auto">
           {`KNBL is a performance driven digital agency helping brands grow through strategy, creative content and data based marketing.\nWe combine smart media, strong creative and fast execution to bring brands real results in real time.`}
         </TextReveal>
       </div>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { TextReveal } from '@/components/ui/text-reveal';
 import Lottie from 'lottie-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const steps = [
   {
@@ -47,6 +47,7 @@ const AnimatedIcon = ({ src }: { src: string }) => {
 
 export default function HowWeDoIt() {
   const [isMobile, setIsMobile] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -56,11 +57,11 @@ export default function HowWeDoIt() {
   }, []);
 
   return (
-    <section className={`pt-12 md:pt-20 pb-8 ${isMobile ? 'md:pb-12 px-6 md:px-[120px]' : 'md:pb-50 px-6 md:px-24'}`}>
+    <section ref={sectionRef} className="pt-0 md:pt-16 pb-12 md:pb-32 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Sticky Sidebar */}
-          <div className="lg:sticky lg:top-24 h-fit max-w-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
+          {/* Sticky Sidebar - Desktop only */}
+          <div className="md:sticky md:top-[12vh] h-fit max-w-xl">
             <motion.h2
               className="text-4xl md:text-[56px] font-medium mb-8 tracking-tight leading-[1.1] text-black"
             >
@@ -68,10 +69,14 @@ export default function HowWeDoIt() {
               it <span className="text-primary-600">happen.</span>
             </motion.h2>
 
-            <TextReveal className={isMobile
-              ? "py-0 text-[10px] leading-[1.6] font-normal tracking-wide text-neutral-500"
-              : "py-0 text-lg md:text-[26px] leading-[1.5] font-medium tracking-tight text-neutral-500"
-            }>
+            <TextReveal
+              startEarly
+              containerRef={sectionRef}
+              className={isMobile
+                ? "py-0 text-[10px] leading-[1.6] font-normal tracking-wide text-neutral-500"
+                : "py-0 text-lg md:text-[16px] leading-[1.6] font-light tracking-tight text-neutral-500"
+              }
+            >
               {isMobile
                 ? "At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do. We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works."
                 : `At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`
@@ -80,23 +85,24 @@ export default function HowWeDoIt() {
           </div>
 
           {/* Steps */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:space-y-12">
             {steps.map((step, index) => (
               <motion.div
                 key={step.number}
+                data-theme="dark"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
                 className={`relative bg-primary-600 rounded-[32px] p-8 md:p-10 lg:p-14 overflow-hidden flex flex-col justify-end ${isMobile
-                    ? "min-h-[300px] md:min-h-[340px] lg:h-[380px]"
-                    : "min-h-[400px] md:min-h-[450px] lg:h-[510px]"
+                  ? "min-h-[300px] md:min-h-[340px] lg:h-[380px]"
+                  : "min-h-[400px] md:min-h-[480px] lg:min-h-[510px]"
                   }`}
               >
                 {/* Large Number Background */}
                 <div className={`absolute font-extralight text-primary-700 leading-none ${isMobile
-                    ? "top-[-20px] md:top-[-30px] lg:top-[-45px] right-4 md:right-6 lg:right-10 text-[150px] md:text-[200px] lg:text-[260px]"
-                    : "top-[-12px] md:top-[-24px] left-4 md:left-6 lg:left-10 text-[120px] md:text-[160px] lg:text-[200px]"
+                  ? "top-[-20px] md:top-[-30px] lg:top-[-45px] right-4 md:right-6 lg:right-10 text-[150px] md:text-[200px] lg:text-[260px]"
+                  : "top-[-12px] md:top-[-24px] left-4 md:left-6 lg:left-10 text-[120px] md:text-[160px] lg:text-[200px]"
                   }`}>
                   {step.number}
                 </div>
@@ -107,9 +113,14 @@ export default function HowWeDoIt() {
                   <h3 className={`font-medium text-white ${isMobile ? 'text-[28px] md:text-[32px] lg:text-[40px] leading-[1.1] tracking-tight' : 'text-[28px] md:text-[32px] lg:text-[40px]'}`}>
                     {step.title}
                   </h3>
-                  <p className={`text-white font-light ${isMobile ? 'text-[16px] md:text-[18px] lg:text-[20px] leading-[1.2]' : 'text-[16px] md:text-[18px] lg:text-[20px] text-white/90 leading-normal'}`}>
+                  <TextReveal
+                    startEarly
+                    initialColor="rgba(255,255,255,0.4)"
+                    revealedColor="#FFFFFF"
+                    className={`font-light py-0 ${isMobile ? 'text-[12px] md:text-[13px] lg:text-[14px] leading-[1.3]' : 'text-[12px] md:text-[13px] lg:text-[14px] leading-relaxed'}`}
+                  >
                     {step.description}
-                  </p>
+                  </TextReveal>
                 </div>
               </motion.div>
             ))}

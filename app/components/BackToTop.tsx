@@ -6,12 +6,7 @@ import { useEffect, useState } from 'react';
 
 export default function BackToTop() {
     const [isVisible, setIsVisible] = useState(false);
-
-    // Although the user said "always visible", it's usually better to show it after some scroll.
-    // However, I will obey "always visible" but add a slight fade-in for smoothness if they change their mind, 
-    // or I'll just keep it strictly visible if that's what's meant.
-    // Actually, I'll check scroll to show/hide it just to be a bit smarter, 
-    // but I'll set a very low threshold (e.g., 200px) so it feels "always there" once you leave the hero.
+    const [isDarkTheme, setIsDarkTheme] = useState(false);
 
     useEffect(() => {
         const toggleVisibility = () => {
@@ -20,10 +15,35 @@ export default function BackToTop() {
             } else {
                 setIsVisible(false);
             }
+
+            // Check if the area where the button sits is over a dark section
+            // We look at the bottom right area (where the button is fixed)
+            const x = window.innerWidth - 60; // Approximate button center
+            const y = window.innerHeight - 60;
+
+            if (typeof document !== 'undefined') {
+                const elements = document.elementsFromPoint(x, y);
+                // We want to skip the button itself when checking what's behind it
+                const darkSection = elements.find(el => {
+                    // Check if the element or its parents are NOT the button
+                    const isSelf = el.closest('.back-to-top-btn');
+                    if (isSelf) return false;
+
+                    // Check if it belongs to a dark theme container
+                    return el.closest('[data-theme="dark"]');
+                });
+                setIsDarkTheme(!!darkSection);
+            }
         };
 
-        window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        // Run initial check after a short delay to ensure DOM is ready
+        const timer = setTimeout(toggleVisibility, 100);
+
+        return () => {
+            window.removeEventListener('scroll', toggleVisibility);
+            clearTimeout(timer);
+        };
     }, []);
 
     const scrollToTop = () => {
@@ -38,12 +58,18 @@ export default function BackToTop() {
             {isVisible && (
                 <motion.button
                     initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        backgroundColor: isDarkTheme ? '#FFFFFF' : '#4F39F6',
+                        color: isDarkTheme ? '#4F39F6' : '#FFFFFF'
+                    }}
                     exit={{ opacity: 0, y: 20, scale: 0.8 }}
                     whileHover={{ scale: 1.1, translateY: -4 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={scrollToTop}
-                    className="hidden md:flex fixed bottom-8 right-10 z-[100] w-12 h-12 bg-[#4F39F6] text-white rounded-full items-center justify-center shadow-[0_8px_30px_rgb(79,57,246,0.3)] hover:shadow-[0_8px_40px_rgb(79,57,246,0.5)] transition-shadow duration-300 group"
+                    className="back-to-top-btn hidden md:flex fixed bottom-8 right-10 z-[100] w-12 h-12 rounded-full items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 group"
                     aria-label="Back to top"
                 >
                     <ChevronUp className="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-0.5" />

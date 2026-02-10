@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 const faqs = [
   {
@@ -75,7 +76,7 @@ function FAQCard({ question, answer, isOpen, onToggle }: FAQCardProps) {
             }}
             className="overflow-hidden"
           >
-            <p className="mt-4 text-[18px] text-neutral-500 leading-relaxed font-normal">
+            <p className="mt-4 text-[17px] text-neutral-500 leading-relaxed font-normal">
               {answer}
             </p>
           </motion.div>

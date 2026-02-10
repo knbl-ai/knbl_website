@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Tag from '@/components/ui/Tag';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
-import { useState } from 'react';
+import { TextReveal } from '@/components/ui/text-reveal';
+import { useState, useEffect } from 'react';
 
 const blogs = [
   {
@@ -32,6 +33,15 @@ const blogs = [
 
 const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; date: string; category: string; image: string }, index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <motion.article
@@ -41,6 +51,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
       transition={{ delay: index * 0.1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => isMobile && setIsClicked(!isClicked)}
       className="bg-indigo-50 p-4 cursor-pointer group rounded-[32px] hover:rounded-[44px] transition-all duration-500 ease-in-out"
     >
       <div className="space-y-4">
@@ -70,16 +81,23 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
           <div className="flex flex-col">
             <p className="text-neutral-300 text-sm mb-4">{blog.date}</p>
             <h3 className="text-[18px] md:text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
-            <p className="text-neutral-400 text-[14px] md:text-base leading-[1.3] font-normal">{blog.excerpt}</p>
+            <p className="text-neutral-500 text-[14px] md:text-base leading-[1.3] font-light py-0">
+              {blog.excerpt}
+            </p>
           </div>
 
           {/* Arrow Button */}
           <div className="flex-shrink-0 mb-1">
             <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white overflow-hidden">
-              <div className="relative w-5 h-5">
+              <motion.div
+                className="relative w-5 h-5 origin-center"
+                animate={isMobile ? { rotate: isClicked ? -45 : 0 } : {}}
+                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                style={{ originX: 0.5, originY: 0.5 }}
+              >
                 {/* Unity Rail System for perfect alignment */}
                 <motion.div
-                  animate={{ x: isHovered ? -120 : 0 }}
+                  animate={{ x: !isMobile && isHovered ? -120 : 0 }}
                   transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                   className="flex absolute left-0 top-0 h-full items-center"
                 >
@@ -110,7 +128,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
                     </svg>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -121,7 +139,7 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
 
 export default function BlogSection() {
   return (
-    <section id="insights" className="py-24 md:py-44 px-6 md:px-[120px]">
+    <section id="insights" className="pt-24 pb-16 md:py-44 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
@@ -132,15 +150,19 @@ export default function BlogSection() {
               <span className="text-primary-600">Our signals</span>
               {' in Strategy, Creative & Innovation'}
             </h2>
-            <p className="text-2xl opacity-70">
+            <TextReveal
+              startEarly
+              className="text-2xl text-neutral-500 font-light py-0"
+            >
               In a noisy world, we add clarity. Explore our latest articles, insights, and perspectives.
-            </p>
+            </TextReveal>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            className="hidden md:block"
           >
             <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
               View All Articles
@@ -154,6 +176,18 @@ export default function BlogSection() {
             <BlogCard key={blog.title} blog={blog} index={index} />
           ))}
         </div>
+
+        {/* Mobile View All Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 flex justify-center md:hidden"
+        >
+          <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
+            View All Articles
+          </InteractiveHoverButton>
+        </motion.div>
       </div>
     </section>
   );

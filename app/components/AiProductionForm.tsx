@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { sendAiInquiry } from '../actions/sendAiInquiry';
 
@@ -44,15 +45,12 @@ export default function AiProductionForm() {
                         Ready to start your <br />
                         <span className="text-primary-600">AI production?</span>
                     </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-xl text-neutral-500 font-normal"
+                    <TextReveal
+                        startEarly
+                        className="text-xl text-neutral-500 font-light py-0 justify-center text-center"
                     >
                         Get fast and cost efficient Ai video solution for your business
-                    </motion.p>
+                    </TextReveal>
                 </div>
 
                 <motion.div

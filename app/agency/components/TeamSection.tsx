@@ -8,58 +8,109 @@ import { TextReveal } from '@/components/ui/text-reveal';
 interface TeamMember {
   name: string;
   role: string;
-  image: string;
+  image?: string;
+  video?: string;
   bio: string;
+  videoClass?: string;
+  videoStyle?: React.CSSProperties;
+  imageStyle?: React.CSSProperties;
+  bgColor?: string;
 }
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Maya Regev',
-    role: 'Founder & Head of Strategy',
+    name: 'Raz',
+    role: 'Founder',
     image: '/images/projects/project-1.webp',
-    bio: 'Leads strategic planning, connecting market insights with measurable growth paths for brands.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/RAZ1.mp4',
+    bio: 'Founder of KNBL, leading the vision of creative and strategic excellence.',
+    bgColor: '#EEF2FF',
   },
   {
-    name: 'Yaron Cohen',
-    role: 'Founder & Creative Director',
+    name: 'Ravit',
+    role: 'Co-Founder',
     image: '/images/projects/project-2.webp',
-    bio: 'Drives creative vision and brand storytelling across all client projects.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ravit1.mp4',
+    bio: 'Co-Founder of KNBL, driving brand growth and strategic partnerships.',
+    bgColor: '#EEF2FF',
   },
   {
-    name: 'Tamar Azulay',
-    role: 'Social Media Manager',
-    image: '/images/projects/project-3.webp',
-    bio: 'Shapes daily brand presence with content, engagement and social storytelling.',
-  },
-  {
-    name: 'Daniel Mor',
-    role: 'Performance Marketing Lead',
+    name: 'Daniel',
+    role: 'Performance Lead',
     image: '/images/projects/project-4.webp',
-    bio: 'Optimizes paid media campaigns for maximum ROI and brand visibility.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniel1.mp4',
+    bio: 'Leading performance marketing and data-driven growth strategies.',
+    bgColor: '#EEF2FF',
   },
   {
-    name: 'Noa Shaked',
-    role: 'Content Strategist',
+    name: 'Michelle',
+    role: 'Creative Strategist',
     image: '/images/projects/project-5.webp',
-    bio: 'Crafts compelling narratives that resonate with target audiences.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/michelle.mp4',
+    bio: 'Developing compelling creative narratives and visual brand identities.',
+    bgColor: '#EEF2FF',
   },
   {
-    name: 'Omer Levi',
-    role: 'Data Analyst',
-    image: '/images/projects/project-6.webp',
-    bio: 'Transforms data into actionable insights for strategic decisions.',
-  },
-  {
-    name: 'Shira Ben-David',
-    role: 'Art Director',
+    name: 'Ido',
+    role: 'Creative Lead',
     image: '/images/projects/project-1.webp',
-    bio: 'Leads visual design and brand identity development.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ido1.mp4',
+    bio: 'Crafting visionary creative concepts and high-impact visual storytelling.',
+    bgColor: '#EEF2FF',
   },
   {
-    name: 'Itay Goldstein',
-    role: 'Account Manager',
+    name: 'Niv',
+    role: 'Account Director',
     image: '/images/projects/project-2.webp',
-    bio: 'Ensures seamless client relationships and project delivery.',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Niv1.mp4',
+    bio: 'Bridging the gap between client vision and technical execution.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Daniella',
+    role: 'Social Content Creator',
+    image: '/images/projects/project-3.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniela2.mp4',
+    bio: 'Shaping social presence through engaging and innovative content.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Noya',
+    role: 'Studio Manager',
+    image: '/images/projects/project-6.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/NOYA1.mp4',
+    bio: 'Ensuring seamless studio operations and creative project workflows.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Noa',
+    role: 'PPC Specialist',
+    image: '/images/projects/project-1.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/noa1.mp4',
+    bio: 'Designing and executing high-performance paid search and social campaigns.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Vladi',
+    role: 'Senior Developer',
+    image: '/images/projects/project-2.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Vladi.mp4',
+    bio: 'Building robust and scalable digital solutions with a focus on user experience.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Ronit',
+    role: 'Content Manager',
+    image: '/images/projects/project-3.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ronit.mp4',
+    bio: 'Crafting engaging content strategies that tell a compelling brand story.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Adi',
+    role: 'Creative Designer',
+    bio: 'Bringing brands to life through innovative and impactful visual design.',
+    bgColor: '#EEF2FF',
   },
 ];
 
@@ -83,24 +134,59 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
         className="relative w-full h-full"
         style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Front Side - Image with gradient */}
+        {/* Front Side - Media with gradient */}
         <div
           className="absolute inset-0 rounded-3xl overflow-hidden"
-          style={{ backfaceVisibility: 'hidden' }}
+          style={{
+            backfaceVisibility: 'hidden',
+            backgroundColor: member.bgColor || 'rgb(245 247 255)'
+          }}
         >
-          <Image
-            src={member.image}
-            alt={member.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 25vw"
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-600 via-primary-600/50 to-transparent opacity-80" />
+          {/* Atmospheric Background Layers */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Soft Light Catch - Simulates natural window lighting */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.4)_0%,transparent_50%)]" />
+
+            {/* Grain/Noise Overlay for dispersion quality */}
+            <div className="absolute inset-0 opacity-[0.12] mix-blend-overlay pointer-events-none"
+              style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+          </div>
+
+          {member.video ? (
+            <video
+              src={member.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 mix-blend-multiply"
+              style={member.videoStyle}
+            />
+          ) : member.image ? (
+            <Image
+              src={member.image}
+              alt={member.name}
+              fill
+              className="object-cover transition-opacity duration-700"
+              style={member.imageStyle}
+              sizes="(max-width: 768px) 100vw, 25vw"
+            />
+          ) : null}
+
+          {/* Signature Purple Dispersion Filter Overlay - Lower Quarter with smoother falloff */}
+          <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-primary-600/90 via-primary-600/60 via-primary-600/30 to-transparent z-10" />
+
+          {/* Dynamic Light Flare for atmosphere */}
+          {!member.bgColor && <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-400/20 rounded-full blur-[60px] z-10" />}
+
           {/* Front Content */}
-          <div className="absolute bottom-8 left-0 right-0 text-center">
-            <p className="text-white text-lg font-medium">{member.name}</p>
-            <p className="text-primary-200 text-sm">{member.role}</p>
+          <div className="absolute bottom-10 left-0 right-0 text-center px-6 z-20">
+            <p className="text-white text-2xl font-medium tracking-tight mb-0.5">
+              {member.name}
+            </p>
+            <p className="text-[#A3B3FF] text-[15px] font-normal leading-tight">
+              {member.role}
+            </p>
           </div>
         </div>
 

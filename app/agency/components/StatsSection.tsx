@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 const stats = [
   {
@@ -34,9 +35,12 @@ export default function StatsSection() {
               <p className="text-5xl md:text-[64px] font-medium tracking-[-0.04em] mb-4">
                 {stat.value}
               </p>
-              <p className="text-neutral-300 text-lg">
+              <TextReveal
+                startEarly
+                className="text-neutral-500 text-lg leading-relaxed py-0 justify-center text-center"
+              >
                 {stat.description}
-              </p>
+              </TextReveal>
             </motion.div>
           ))}
         </div>

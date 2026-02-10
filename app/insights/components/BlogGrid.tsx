@@ -95,11 +95,11 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
         transition={{ delay: index * 0.05 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out"
+        className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out h-full flex flex-col"
       >
-        <div className="space-y-6">
+        <div className="flex flex-col h-full space-y-6">
           {/* Image */}
-          <div className="relative h-64 overflow-hidden rounded-[14px] group-hover:rounded-[24px] transition-all duration-500 ease-in-out">
+          <div className="relative h-64 overflow-hidden rounded-[14px] group-hover:rounded-[24px] flex-shrink-0 transition-all duration-500 ease-in-out">
             <Image
               src={blog.image}
               alt={blog.title}
@@ -113,14 +113,16 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
           </div>
 
           {/* Content */}
-          <div className="px-2 pb-4 space-y-3">
-            <p className="text-neutral-300 text-xs">{blog.date}</p>
-            <h3 className="text-xl font-medium leading-tight tracking-[-0.03em]">{blog.title}</h3>
-            <p className="text-neutral-400 text-base leading-relaxed">{blog.excerpt}</p>
+          <div className="px-2 pb-4 flex flex-col flex-1">
+            <div className="space-y-3 flex-1">
+              <p className="text-neutral-300 text-xs">{blog.date}</p>
+              <h3 className="text-xl font-medium leading-tight tracking-[-0.03em] line-clamp-2">{blog.title}</h3>
+              <p className="text-neutral-400 text-base leading-relaxed line-clamp-3">{blog.excerpt}</p>
+            </div>
 
             {/* Arrow Button */}
-            <div className="flex justify-end pt-2">
-              <div className="w-[52px] h-[52px] bg-primary-600 rounded-full flex items-center justify-center text-white shadow-lg overflow-hidden">
+            <div className="flex justify-end pt-6">
+              <div className="w-[52px] h-[52px] bg-primary-600 rounded-full flex items-center justify-center text-white shadow-lg overflow-hidden flex-shrink-0">
                 <div className="relative w-6 h-6">
                   {/* Arrow 1 (Starts center, exits left) */}
                   <motion.div

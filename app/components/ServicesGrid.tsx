@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
+import { TextReveal } from '@/components/ui/text-reveal';
 
 const services = [
   {
@@ -83,21 +84,20 @@ export default function ServicesGrid() {
   };
 
   return (
-    <section id="services" className="bg-neutral-900 px-6 md:px-[120px] pt-24 md:pt-20 pb-24 md:pb-44">
+    <section id="services" className="bg-neutral-900 px-6 md:px-[120px] pt-16 md:pt-20 pb-20 md:pb-24">
       <div className="max-w-[1240px] mx-auto">
         <div className="mb-10 md:mb-16">
           <motion.h2 className="text-4xl md:text-[56px] font-medium text-white mb-1 max-w-4xl tracking-tight font-sans leading-[1.1]">
             From insight <br className="md:hidden" /> <span className="text-primary-600">to impact</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl text-neutral-300 font-light max-w-3xl mt-4 md:mt-0 font-sans"
+          <TextReveal
+            startEarly
+            initialColor="#737373"
+            revealedColor="#FFFFFF"
+            className="text-lg md:text-xl text-neutral-300 font-light max-w-3xl mt-4 md:mt-0 font-sans py-0"
           >
             Great results aren&apos;t accidental. They are engineered
-          </motion.p>
+          </TextReveal>
         </div>
 
         <motion.div layout className="flex flex-col md:flex-row gap-6 h-auto md:h-[600px] md:justify-between">
