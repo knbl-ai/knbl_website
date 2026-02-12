@@ -151,7 +151,7 @@ export default function BrandsSection() {
               startEarly
               initialColor="#737373"
               revealedColor="#FFFFFF"
-              className="text-lg md:text-xl text-neutral-300 font-light max-w-3xl tracking-tight py-0"
+              className="text-xl md:text-2xl text-neutral-300 font-normal tracking-tight py-0"
             >
               From early stage companies to global teams, these are the partners we help move forward.
             </TextReveal>

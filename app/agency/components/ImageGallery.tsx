@@ -4,11 +4,12 @@ import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const galleryMedia = [
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/IMG_5628.MOV' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/IMG_5625.MOV' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/IMG_5570.MOV' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/IMG_5573.MOV' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/IMG_5636.MOV' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250219_110635_qiqlkf.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250326_101317_ig3qmp.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250326_135838_yrjxk0.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250701_172708_avttud.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_GENERAL_NO_PURPLE_FILTER_yyfvu0.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_VIEW_NO_PURPLE_FILTER_ifmxwl.mp4' },
 ];
 
 export default function ImageGallery() {
@@ -77,7 +78,7 @@ export default function ImageGallery() {
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none brightness-[0.85]"
               />
               <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500 pointer-events-none" />
             </motion.div>

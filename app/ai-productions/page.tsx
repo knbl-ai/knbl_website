@@ -103,8 +103,9 @@ const portraitVideos = [
     },
     {
         id: 12,
-        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993557/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.mp4',
+        url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768993557/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%20%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.mp4',
         title: 'Rafael 2026',
+        posterUrl: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg'
     }
 ];
 
@@ -135,6 +136,7 @@ interface Video {
     headline?: string;
     description?: string;
     trimEnd?: number;
+    posterUrl?: string;
 }
 
 function AIVideoCard({
@@ -206,7 +208,7 @@ function AIVideoCard({
             >
                 <VideoPreview
                     videoUrl={video.url}
-                    posterUrl=""
+                    posterUrl={video.posterUrl || ""}
                     alt={video.title}
                     maxDuration={video.maxDuration || 20}
                     isPlaying={isPlaying}

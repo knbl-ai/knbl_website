@@ -44,7 +44,9 @@ export default function WhyKNBLSection() {
           </motion.h2>
           <TextReveal
             startEarly
-            className="text-neutral-400 text-lg md:text-xl leading-relaxed max-w-sm py-0"
+            initialColor="#CFCFD3"
+            revealedColor="#000000"
+            className="text-xl md:text-2xl leading-relaxed max-w-md py-0"
           >
             Built for ambitious brands, we combine strategy, creativity, and technology to deliver marketing that truly works.
           </TextReveal>

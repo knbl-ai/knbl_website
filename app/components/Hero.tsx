@@ -100,7 +100,7 @@ export default function Hero() {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <section className="relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-white pt-20 overflow-hidden">
+        <section className="keep-background relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-white pt-20 overflow-hidden">
             {/* Background Gradient Layer for Mobile */}
             <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-indigo-50/50 to-transparent md:hidden" />
 
@@ -231,7 +231,7 @@ export default function Hero() {
                     </motion.h1>
                     <TextReveal
                         startEarly
-                        className="mt-6 md:mt-8 text-[16px] md:text-[24px] font-light leading-[1.3] tracking-[-0.02em] font-sans max-w-[200px] md:max-w-none mx-auto justify-center text-center py-0"
+                        className="mt-6 md:mt-8 text-[18px] md:text-[26px] leading-[1.4] md:leading-[1.5] font-medium tracking-tight font-sans max-w-[200px] md:max-w-none mx-auto justify-center text-center py-0"
                     >
                         Creative marketing for ambitious brands
                     </TextReveal>
@@ -253,7 +253,7 @@ export default function Hero() {
             {/* Floating Elements - Magnetic & Smooth */}
             <FloatingCircle
                 id="w1-l"
-                src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768751289/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg"
+                src="https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg"
                 className="absolute top-[28%] -left-[5%] lg:left-[5%]"
                 size="md:w-[180px] md:h-[180px]"
                 mobileSize="w-[90px] h-[90px]"
@@ -267,7 +267,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w1-r"
-                src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768752115/KARELA_-00628_fr67ju.jpg"
+                src="https://storage.googleapis.com/knbl_website/images/roladin/KARELA_-00628_fr67ju.jpg"
                 className="absolute top-[20%] -right-[5%] lg:right-[5%]"
                 size="md:w-[140px] md:h-[140px]"
                 mobileSize="w-[85px] h-[85px]"
@@ -281,7 +281,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w2-l"
-                src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768753146/SKIP_HOP_images_1920x1080_8_aksib1.jpg"
+                src="https://storage.googleapis.com/knbl_website/images/carters/%D7%A2%D7%95%D7%AA%D7%A7OK_FAL25_BBG_01_162_E_psmtg5.jpg"
                 className="absolute bottom-[25%] -left-[8%] lg:left-[8%]"
                 size="md:w-[150px] md:h-[150px]"
                 mobileSize="w-[110px] h-[110px]"
@@ -295,7 +295,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w2-r"
-                src="https://res.cloudinary.com/dbajenfxp/image/upload/v1768897140/2%D7%94%D7%93%D7%9E%D7%99%D7%94-_%D7%92%D7%A9%D7%A8_6400_dpdo57.jpg"
+                src="https://storage.googleapis.com/knbl_website/images/trans%20israel/2%D7%94%D7%93%D7%9E%D7%99%D7%94-_%D7%92%D7%A9%D7%A8_6400_dpdo57.jpg"
                 className="absolute top-[45%] -right-[8%] lg:right-[8%]"
                 size="md:w-[160px] md:h-[160px]"
                 mobileSize="w-[100px] h-[100px]"
@@ -307,68 +307,7 @@ export default function Hero() {
                 z={20}
             />
 
-            <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{
-                    opacity: 1,
-                    y: [0, -30, 20, 0],
-                    x: [0, 25, -12, 0],
-                    scale: [1, 1.01, 1]
-                }}
-                transition={{
-                    opacity: { duration: 1.2, delay: 1 },
-                    y: { duration: 14, repeat: Infinity, ease: "easeInOut" },
-                    x: { duration: 17, repeat: Infinity, ease: "easeInOut" },
-                    scale: { duration: 19, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute top-[28%] left-[12%] hidden lg:block z-30"
-            >
-                <div className="bg-black/[0.03] backdrop-blur-[12px] px-5 py-2 rounded-full border border-black/5 shadow-sm">
-                    <p className="text-[14px] font-medium text-black/80 whitespace-nowrap tracking-tight">20 years of experience</p>
-                </div>
-            </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{
-                    opacity: 1,
-                    y: [0, 25, -35, 0],
-                    x: [0, -20, 30, 0],
-                    scale: [1, 1.015, 1]
-                }}
-                transition={{
-                    opacity: { duration: 1.2, delay: 1.2 },
-                    y: { duration: 15, repeat: Infinity, ease: "easeInOut" },
-                    x: { duration: 18, repeat: Infinity, ease: "easeInOut" },
-                    scale: { duration: 21, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute bottom-[20%] right-[15%] hidden lg:block z-30"
-            >
-                <div className="bg-black/[0.03] backdrop-blur-[12px] px-5 py-2 rounded-full border border-black/5 shadow-sm">
-                    <p className="text-[14px] font-medium text-black/80 whitespace-nowrap tracking-tight">50+ campaigns launched</p>
-                </div>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{
-                    opacity: 1,
-                    y: [0, -8, 12, 0],
-                    x: [0, -10, 6, 0],
-                    scale: [1, 1.01, 1]
-                }}
-                transition={{
-                    opacity: { duration: 1.2, delay: 1.3 },
-                    y: { duration: 19, repeat: Infinity, ease: "easeInOut" },
-                    x: { duration: 22, repeat: Infinity, ease: "easeInOut" },
-                    scale: { duration: 26, repeat: Infinity, ease: "easeInOut" }
-                }}
-                className="absolute bottom-[12%] left-[18%] hidden lg:block z-30"
-            >
-                <div className="bg-black/[0.03] backdrop-blur-[12px] px-5 py-2 rounded-full border border-black/5 shadow-sm">
-                    <p className="text-[14px] font-medium text-black/80 whitespace-nowrap tracking-tight">Creative teams in TLV</p>
-                </div>
-            </motion.div>
 
             {/* Background Decorative Dots */}
             <motion.div

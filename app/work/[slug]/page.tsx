@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { Play } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 
@@ -18,13 +18,14 @@ const projects: Record<string, {
   videos: {
     title: string;
     url: string;
+    thumbnail?: string;
   }[];
 }> = {
   'ho-brands': {
     title: 'H&O',
     logo: '/images/partners/ho.png',
     logoBg: '#F7F7F8',
-    description: "H&O is one of Israel's largest and most influential retail groups, serving as a gateway to global style and quality for families across the nation. By curating a diverse portfolio of international and local brands, they provide a comprehensive 360-degree shopping experience.",
+    description: "Where timeless style meets the modern beat.\nCapturing the essence of everyday fashion through cinematic storytelling.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/ho.fashion_?igsh=bnN4azNsNW1jNjZk' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1AeF12pcP2/?mibextid=wwXIfr' },
@@ -42,13 +43,13 @@ const projects: Record<string, {
     title: 'Rafael',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Rafael_MainLogo_RGB.png',
     logoBg: '#F7F7F8',
-    description: "Rafael Advanced Defense Systems is a pioneer in defense technologies, providing innovative solutions for security and protection. Their commitment to excellence and reliability has made them a global leader in the defense industry.",
+    description: "Engineering the future of global security.\nDynamic visual storytelling for a world-class leader in advanced defense systems.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/rafaeldefense_il?igsh=MTVkdzIxcmJvanU4NA==' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1GSDDTkWpf/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Financial Reports', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4' },
+      { title: 'Financial Reports', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4', thumbnail: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg' },
       { title: 'Project Overview', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625366/1231_1_ixyoq3.mov' },
       { title: 'Timeline & History', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625434/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.mp4' },
       { title: 'Corporate Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180637/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v.mov' },
@@ -59,7 +60,7 @@ const projects: Record<string, {
     title: 'Xiaomi',
     logo: '/images/partners/xiaomi.png',
     logoBg: '#F7F7F8',
-    description: "Xiaomi is a global leader in smart electronics and consumer technology, bringing innovation and accessibility to everyone through their cutting-edge AI-driven productions and sleek device launches.",
+    description: "Defining the rhythm of a connected generation.\nDynamic storytelling for a powerhouse brand that redefines modern living through endless possibilities.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/xiaomiil?igsh=MXdoY2h0a205dmFlYg==' },
       { type: 'facebook', url: 'https://www.facebook.com/share/189W2LXgm1/?mibextid=wwXIfr' },
@@ -77,14 +78,12 @@ const projects: Record<string, {
     title: 'Roladin',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Roladin_logo_BLACK.png',
     logoBg: '#F7F7F8',
-    description: "Roladin is Israel's leading boutique bakery chain, renowned for its exceptional craftsmanship and innovative approach to traditional pastry. From iconic holiday collections to artisanal breads, they set the bar for quality and creativity.",
+    description: "The art of baking, captured in every frame.\nA visual journey into the heart of world-class patisserie and creative innovation",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/roladin_il?igsh=eXdrazFiYTkyd29x' },
       { type: 'facebook', url: 'https://www.facebook.com/share/17t3nBB9cx/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Movie 2', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4' },
-      { title: 'Project Summary', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175664/%D7%A8%D7%95%D7%97%D7%91_%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98_%D7%9E%D7%A1%D7%9B%D7%9D_-_ROLADIN_xo1p54.mp4' },
       { title: 'Bakery Factory', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%9E%D7%A4%D7%A2%D7%9C%20%D7%9C%D7%97%D7%9D_1.mp4' },
       { title: 'Branches Overview', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D.mp4' },
       { title: 'Square Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175703/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4' },
@@ -94,7 +93,7 @@ const projects: Record<string, {
     title: "Carter's",
     logo: '/images/partners/carters.png',
     logoBg: '#F7F7F8',
-    description: "Carter's is the most trusted name in baby and children's apparel, known for quality, comfort, and timeless designs that have made them a beloved part of childhood memories for families worldwide.",
+    description: "Where quality meets the sweetest memories.\nBringing the world’s most loved baby brand to life through authentic and playful storytelling.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/cartersisrael?igsh=MTY3ODkyMjdncDZ0aA==' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1CGyWty72e/?mibextid=wwXIfr' },
@@ -107,7 +106,7 @@ const projects: Record<string, {
     title: 'Safari',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/logo_eng_brown_full.png',
     logoBg: '#F7F7F8',
-    description: "The Safari (Ramat Gan) experience is brought to life through cinematic AI-driven visuals. This project captures the essence of wildlife conservation and family adventure, showcasing the park's vibrant life in high definition.",
+    description: "Bringing the wild heart of Africa to life. \nCapturing the breathtaking encounters and untamed beauty of the animal kingdom.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/safari_israel?igsh=NjJ5NTc0dmMzN2lr' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1FpYYhUG1S/?mibextid=wwXIfr' },
@@ -120,7 +119,7 @@ const projects: Record<string, {
     title: 'Takeda',
     logo: '/images/partners/takeda.png',
     logoBg: '#F7F7F8',
-    description: "Takeda is a global pharmaceutical leader dedicated to bringing better health and a brighter future to people worldwide through advanced medical research and innovative healthcare solutions.",
+    description: "Empowering lives through the art of science. \nVisualizing the journey from groundbreaking research to life-changing moments.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/takeda_il?igsh=c3NyYWVpNHo1dXdu' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1GRfwX6zz4/?mibextid=wwXIfr' },
@@ -128,47 +127,47 @@ const projects: Record<string, {
     videos: [
       { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/takeda_fin_LOWER_sgeqe4.mp4' },
       { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4' },
-      { title: 'Plasma Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175927/Plasma_video_hp7py2.mp4' },
-      { title: 'Corporate Short', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175955/45_wq8xba.mp4' },
+
+
     ],
   },
   'electra-precise': {
-    title: 'Electra',
+    title: 'Electra group',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Electra%20Logo%20ENG-01.png',
     logoBg: '#F7F7F8',
-    description: "Electra's AI-driven storytelling showcases the intersection of technology and precision. This project highlights the seamless integration of AI in cinematic product visualization, emphasizing speed, accuracy, and innovation.",
+    description: "One group. Infinite impact. \nDocumenting the strength, precision, and vision behind the most iconic projects.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/electragroup_official?igsh=YWJsa3gzbjA3djk=' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1aKnGCNTe8/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4' },
+      { title: 'Electra "BEYOND" Project', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005785/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4' },
+      { title: 'Electra Robotic Parking', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005810/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4' },
     ],
   },
   'aion': {
     title: 'Aion',
     logo: '/images/partners/aion.png',
     logoBg: '#F7F7F8',
-    description: "Aion is at the forefront of the electric vehicle revolution, combining cutting-edge technology with sustainable mobility to redefine the driving experience for the modern world.",
+    description: "Driving the next generation of intelligence.\nCinematic visuals that capture the electric pulse of a new era in mobility.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/aion_israel?igsh=MW9jeTVmbXNtb3JwNQ==' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1CG5Xsixtn/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4' },
-      { title: 'Family Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769689298/Aion_Family_40s_16x9_V13_HQ_gpg38z.mp4' },
       { title: 'Brand Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
       { title: 'Parking Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176972/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
       { title: 'HT Highlight', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176999/HT_ysxnx9.mp4' },
       { title: 'Interior Drive', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767177020/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
-      { title: 'Driving Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176961/%D7%97%D7%95%D7%95%D7%99%D7%AA_%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9ה%D7%9B%D7%99_%D7%A1%D7%95%D7%A4%D7%99_%D7%A9%D7%99%D7%A9_hab4an.mp4' },
     ],
   },
   'lod': {
     title: 'Lod',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/CALCALIT_LOD_LOGO.png',
     logoBg: '#F7F7F8',
-    description: "The city of Lod's urban transformation and strategic growth are captured through advanced AI-driven cinematography. This project showcases the city's rich heritage alongside its future as a central hub of innovation and development.",
+    description: "Reshaping the urban landscape, one project at a time",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/calcalit_lod?igsh=dzY0ZHY4N2Fhd253' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1DVYojbZiv/?mibextid=wwXIfr' },
@@ -181,7 +180,7 @@ const projects: Record<string, {
     title: 'Anker',
     logo: '/images/partners/anker.png',
     logoBg: '#F7F7F8',
-    description: "Anker is the global leader in charging technology. This includes wireless charging, car charging, and our best-selling portable and wall chargers. Anker is pioneering Power Delivery technology to charge phones, tablets, and laptops at unprecedented speeds.",
+    description: "Stay charged. Stay connected. Stay ahead.\nBringing Anker’s cutting-edge technology - to life through sharp, cinematic narratives",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/anker_israel?igsh=MW41ejJjZGc0dHlvag==' },
       { type: 'facebook', url: 'https://www.facebook.com/share/1HCGgCvNL4/?mibextid=wwXIfr' },
@@ -195,14 +194,13 @@ const projects: Record<string, {
     title: 'Reuth Hospital',
     logo: '/images/partners/reuth.png',
     logoBg: '#F7F7F8',
-    description: "Reuth Rehabilitation Hospital is a leading medical center in Israel, specializing in advanced rehabilitation and geriatric care, providing hope and healing to patients through expert medical attention.",
+    description: "Restoring life, celebrating progress. \nA soulful look at the moments that define the path to recovery.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/reuth_hospital?igsh=YnA1dmw2cWFkNnZ3' },
       { type: 'facebook', url: 'https://www.facebook.com/share/14TVNU6ybRm/?mibextid=wwXIfr' },
     ],
     videos: [
       { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
-      { title: 'Patient Story', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/%D7%9C%D7%90%D7%AA%D7%92%D7%A8_%D7%90%D7%AA_%D7%94%D7%91%D7%9C%D7%AA%D7%99_%D7%90%D7%A4%D7%A9%D7%A8%D7%99-%D7%91%D7%99%D7%AA_%D7%97%D7%95%D7%9C%D7%99%D7%9D_%D7%A8%D7%A2%D7%95%D7%AA_cvxk0v.mp4' },
       { title: 'Hospital Choir', url: 'https://storage.googleapis.com/knbl_website/4.12%20%D7%9E%D7%A7%D7%94%D7%9C%D7%94%20-%20%D7%91%D7%99%D7%AA%20%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
     ],
   },
@@ -210,7 +208,7 @@ const projects: Record<string, {
     title: 'Trans Israel',
     logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Logo%20%D7%9C%D7%95%D7%92%D7%95%20%D7%97%D7%93%D7%A9.png',
     logoBg: '#F7F7F8',
-    description: "Trans Israel (Hotze Israel) is connecting the nation through a network of advanced transportation projects. This cinematic AI production highlights the connectivity, speed, and impact of these infrastructure milestones on the landscape.",
+    description: "Connecting the nation, accelerating the future. \nHigh-impact visuals documenting the massive infrastructure projects that redefine Israel’s landscape.",
     socialLinks: [
       { type: 'instagram', url: 'https://www.instagram.com/trans_israel?igsh=MndqOGdrdWhkb2pz' },
       { type: 'facebook', url: 'https://www.facebook.com/share/183SaAZ4Cv/?mibextid=wwXIfr' },
@@ -219,19 +217,7 @@ const projects: Record<string, {
       { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4' },
     ],
   },
-  'petach-tikva-center': {
-    title: 'Petach Tikva Center for the Performing Arts',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%A9%D7%97%D7%95%D7%A8.png',
-    logoBg: '#F7F7F8',
-    description: "The Petach Tikva Center for the Performing Arts is a premiere cultural destination, showcasing world-class theater, music, and dance in a state-of-the-art facility dedicated to artistic excellence.",
-    socialLinks: [
-      { type: 'instagram', url: 'https://www.instagram.com/hatarbut.pt?igsh=NzE0N3k0dDRvZm95' },
-      { type: 'facebook', url: 'https://www.facebook.com/share/1E4w94iZrD/?mibextid=wwXIfr' },
-    ],
-    videos: [
-      { title: 'Center Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/Culture%20Center/3137_TARBUT_OCT_VID_1080X1920_G.mp4' },
-    ],
-  },
+
 };
 
 function SocialIcon({ type }: { type: 'instagram' | 'tiktok' | 'facebook' }) {
@@ -256,6 +242,7 @@ function SocialIcon({ type }: { type: 'instagram' | 'tiktok' | 'facebook' }) {
 }
 
 export default function ProjectPage() {
+  const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string; thumbnail?: string } | null>(null);
   const params = useParams();
   const slug = params.slug as string;
   const project = projects[slug];
@@ -305,8 +292,16 @@ export default function ProjectPage() {
               <h1 className="text-3xl md:text-[40px] font-medium tracking-[-0.03em] mb-7">
                 {project.title}
               </h1>
-              <p className="text-neutral-300 text-xl leading-relaxed mb-10 w-full">
-                {project.description}
+              <p className="text-neutral-500 text-xl leading-relaxed mb-10 w-full whitespace-pre-line">
+                {project.description.includes('\n') ? (
+                  <>
+                    <span className="font-bold text-black">{project.description.split('\n')[0]}</span>
+                    {'\n'}
+                    {project.description.split('\n').slice(1).join('\n')}
+                  </>
+                ) : (
+                  project.description
+                )}
               </p>
 
               {/* Social Links */}
@@ -329,11 +324,12 @@ export default function ProjectPage() {
       </section>
 
       {/* Videos Section */}
-      <section className="pb-[120px] px-6 md:px-[120px]">
-        <div className="max-w-7xl mx-auto">
-          {project.videos.length > 0 && (
-            <div className="space-y-12">
-              {/* Featured Top Video */}
+      {/* Videos Section */}
+      {project.videos.length > 0 && (
+        <>
+          {/* Featured Top Video */}
+          <section className="pb-[60px] px-6 md:px-[120px]">
+            <div className="max-w-7xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -341,89 +337,278 @@ export default function ProjectPage() {
               >
                 <VideoPlayer
                   url={project.videos[0].url}
-                  thumbnail=""
+                  thumbnail={project.videos[0].thumbnail || ""}
                   title={project.videos[0].title}
+                  onOpen={() => setSelectedVideo(project.videos[0])}
                 />
-                <p className="text-neutral-500 text-2xl tracking-[-0.01em]">
-                  {project.videos[0].title}
-                </p>
               </motion.div>
-
-              {/* Other Videos Grid */}
-              {project.videos.length > 1 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  {project.videos.slice(1).map((video, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex flex-col gap-6"
-                    >
-                      <VideoPlayer
-                        url={video.url}
-                        thumbnail=""
-                        title={video.title}
-                      />
-                      <p className="text-neutral-500 text-xl tracking-[-0.01em]">
-                        {video.title}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
             </div>
+          </section>
+
+          {/* Other Videos */}
+          {project.videos.length > 1 && (
+            project.videos.slice(1).length <= 2 ? (
+              <section className="pb-[120px] px-6 md:px-[120px]">
+                <div className="max-w-7xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    {project.videos.slice(1).map((video, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="flex flex-col gap-6"
+                      >
+                        <VideoPlayer
+                          url={video.url}
+                          thumbnail={video.thumbnail || ""}
+                          title={video.title}
+                          onOpen={() => setSelectedVideo(video)}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            ) : (
+              <VideoCarousel
+                videos={project.videos.slice(1)}
+                onOpen={(video) => setSelectedVideo(video)}
+              />
+            )
           )}
-        </div>
-      </section>
+        </>
+      )}
 
       <Footer />
+
+      <AnimatePresence>
+        {selectedVideo && (
+          <VideoModal
+            video={selectedVideo}
+            onClose={() => setSelectedVideo(null)}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 }
 
-function VideoPlayer({ url, thumbnail, title }: { url: string; thumbnail: string; title: string }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+function VideoCarousel({ videos, onOpen }: {
+  videos: { title: string; url: string; thumbnail?: string }[];
+  onOpen: (video: { title: string; url: string; thumbnail?: string }) => void;
+}) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [initialScrollLeft, setInitialScrollLeft] = useState(0);
+  const [clickStart, setClickStart] = useState({ x: 0, y: 0 });
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setInitialScrollLeft(scrollContainerRef.current.scrollLeft);
+    setClickStart({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = initialScrollLeft - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (isDragging) {
+      const dx = e.clientX - clickStart.x;
+      const dy = e.clientY - clickStart.y;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        e.stopPropagation();
+        e.preventDefault();
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   return (
-    <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-100">
+    <section className="pb-[120px] relative overflow-hidden group/section">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
+      <div
+        ref={scrollContainerRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        onClickCapture={handleClickCapture}
+        className={`flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 md:px-[120px] pb-10 ${isDragging ? 'cursor-grabbing select-none scroll-auto' : 'cursor-grab'
+          }`}
+        style={{
+          scrollSnapType: isDragging ? 'none' : 'x mandatory',
+          msOverflowStyle: 'none',
+          scrollbarWidth: 'none'
+        }}
+      >
+        {videos.map((video, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            className="relative flex-shrink-0 w-[85vw] md:w-[600px] snap-center"
+          >
+            <VideoPlayer
+              url={video.url}
+              thumbnail={video.thumbnail || ""}
+              title={video.title}
+              onOpen={() => onOpen(video)}
+            />
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function VideoPlayer({
+  url,
+  thumbnail,
+  title,
+  onOpen
+}: {
+  url: string;
+  thumbnail: string;
+  title: string;
+  onOpen: () => void;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {
+        // Autoplay might be blocked without interaction
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  return (
+    <div
+      className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-100 group cursor-pointer"
+      onClick={onOpen}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <video
         ref={videoRef}
         src={`${url}#t=0.001`}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         poster={thumbnail}
         preload="metadata"
-        onClick={togglePlay}
-        onEnded={() => setIsPlaying(false)}
+        muted
+        loop
+        playsInline
       />
 
-      <AnimatePresence>
-        {!isPlaying && (
-          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-            <motion.button
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              onClick={togglePlay}
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg pointer-events-auto"
-            >
-              <Play className="w-6 h-6 text-primary-600" fill="currentColor" />
-            </motion.button>
-          </div>
-        )}
-      </AnimatePresence>
+      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300" />
+
+      <div className="absolute inset-0 flex items-center justify-center z-10 transition-opacity duration-300 group-hover:opacity-0">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform"
+        >
+          <Play className="w-6 h-6 text-primary-600 ml-1" fill="currentColor" />
+        </motion.button>
+      </div>
     </div>
+  );
+}
+
+function VideoModal({ video, onClose }: { video: { title: string; url: string; thumbnail?: string }, onClose: () => void }) {
+  const [showControls, setShowControls] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    if (window.innerWidth >= 768) setShowControls(true);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (!video) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+      onClick={() => {
+        if (isMobile) setShowControls(!showControls);
+        else onClose();
+      }}
+    >
+      <div
+        className={`absolute inset-0 transition-colors duration-500 ${showControls ? 'bg-black/90' : 'bg-black/95'} backdrop-blur-xl`}
+      />
+
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="relative flex items-center justify-center z-50 group/modal w-full max-w-6xl aspect-video"
+        onClick={(e) => {
+          if (isMobile) {
+            e.stopPropagation();
+            setShowControls(!showControls);
+          } else {
+            e.stopPropagation(); // prevent closing when clicking on the video container
+          }
+        }}
+      >
+        <div className="relative w-full h-full bg-neutral-900 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="absolute inset-0 bg-black flex items-center justify-center">
+            <video
+              src={video.url}
+              className="w-full h-full object-contain"
+              autoPlay
+              controls={showControls}
+              playsInline
+            />
+          </div>
+
+          {/* Close Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            style={isMobile ? { display: showControls ? 'flex' : 'none' } : {}}
+            className={`absolute top-4 right-4 p-2.5 bg-black/60 hover:bg-black/80 backdrop-blur-md rounded-full z-[70] border border-white/20 shadow-2xl items-center justify-center ${isMobile ? '' : 'hidden md:flex'}`}
+          >
+            <X className="w-5 h-5 text-white" />
+          </button>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 }

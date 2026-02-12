@@ -5,16 +5,19 @@ import { TextReveal } from '@/components/ui/text-reveal';
 
 const stats = [
   {
-    value: '+180%',
-    description: 'increase in average ROAS across our performance accounts',
+    value: '24/7',
+    label: 'Thinking time',
+    description: "Because a great idea doesn't always\nhappen between 9 and 5",
   },
   {
-    value: '120M+',
-    description: 'monthly impressions managed across channels',
+    value: '9,357',
+    label: 'Coffees & Breakthroughs',
+    description: "The fuel behind every successful\nstrategy we've launched.",
   },
   {
-    value: '70%',
-    description: 'of new clients come from referrals and returning brands',
+    value: '0',
+    label: 'Buzzwords',
+    description: "We prefer real talk and clear results\nover industry hype and empty promises",
   },
 ];
 
@@ -32,12 +35,17 @@ export default function StatsSection() {
               transition={{ delay: index * 0.1 }}
               className="text-center"
             >
-              <p className="text-5xl md:text-[64px] font-medium tracking-[-0.04em] mb-4">
+              <p className="text-5xl md:text-[64px] font-medium tracking-[-0.04em] mb-1">
                 {stat.value}
+              </p>
+              <p className="text-lg md:text-xl font-bold mb-4 tracking-tight">
+                {stat.label}
               </p>
               <TextReveal
                 startEarly
-                className="text-neutral-500 text-lg leading-relaxed py-0 justify-center text-center"
+                initialColor="#CFCFD3"
+                revealedColor="#73727E"
+                className="text-[15px] md:text-[18px] leading-relaxed py-0 justify-center text-center"
               >
                 {stat.description}
               </TextReveal>

@@ -7,6 +7,7 @@ import ImageGallery from './components/ImageGallery';
 import StatsSection from './components/StatsSection';
 import TeamSection from './components/TeamSection';
 import WhyKNBLSection from './components/WhyKNBLSection';
+import TeamPromise from './components/TeamPromise';
 
 export default function AgencyPage() {
   return (
@@ -18,6 +19,9 @@ export default function AgencyPage() {
 
       {/* Image Gallery - horizontal scroll */}
       <ImageGallery />
+
+      {/* Team Promise Section */}
+      <TeamPromise />
 
       {/* Stats Section */}
       <StatsSection />

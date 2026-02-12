@@ -152,7 +152,9 @@ export default function BlogSection() {
             </h2>
             <TextReveal
               startEarly
-              className="text-2xl text-neutral-500 font-light py-0"
+              initialColor="#CFCFD3"
+              revealedColor="#000000"
+              className="text-xl md:text-2xl font-normal py-0 max-w-2xl"
             >
               In a noisy world, we add clarity. Explore our latest articles, insights, and perspectives.
             </TextReveal>

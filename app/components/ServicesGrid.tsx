@@ -10,25 +10,25 @@ const services = [
     title: 'Strategy',
     description: 'We turn insights into direction.',
     image: '/images/services/strategy-bg.webp',
-    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768128680/3356_KNBLE_WEBSITE_VIDEO_1080x1080_STRATEGY_NO_PURPLE_FILTER_zkfqub.mp4',
+    video: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_STRATEGY_NO_PURPLE_FILTER_zkfqub.mp4',
   },
   {
     title: 'Storytelling\n& Creative',
     description: 'We make them listen. We make them care.',
     image: '/images/services/message-bg.webp',
-    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768128692/3356_KNBLE_WEBSITE_VIDEO_1080x1080_CREATIVE_NO_PURPLE_FILTER_ngrc5z.mp4',
+    video: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_CREATIVE_NO_PURPLE_FILTER_ngrc5z.mp4',
   },
   {
     title: 'Tech',
     description: 'Built for speed. Scaled for impact.',
     image: '/images/services/creative-bg.webp',
-    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768128681/3356_KNBLE_WEBSITE_VIDEO_1080x1080_TECH_NO_PURPLE_FILTER_l5wzw2.mp4',
+    video: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_TECH_NO_PURPLE_FILTER_l5wzw2.mp4',
   },
   {
     title: 'Media',
     description: 'Precision at scale. Growth by design.',
     image: '/images/services/data-bg.webp',
-    video: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769683508/3356_KNBLE_WEBSITE_VIDEO_1080x1080_MEDIA_NO_PURPLE_FILTER_2_a121i0.mp4',
+    video: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_MEDIA_NO_PURPLE_FILTER_2_a121i0.mp4',
   },
 ];
 
@@ -127,7 +127,7 @@ export default function ServicesGrid() {
                   width: !isMobile ? (isExpanded ? '706px' : '154px') : '100%',
                   height: isMobile ? (isExpanded ? 340 : 140) : 600
                 }}
-                className="relative rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full md:w-auto shadow-sm"
+                className="relative bg-transparent rounded-[32px] overflow-hidden cursor-pointer flex-shrink-0 w-full md:w-auto shadow-sm"
               >
                 <motion.div
                   className="absolute inset-0"

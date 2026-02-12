@@ -68,20 +68,20 @@ export default function CommunitySection() {
   };
 
   return (
-    <section data-theme="dark" className="relative bg-primary-600 rounded-b-[48px] overflow-hidden">
+    <section data-theme="dark" className="keep-background relative bg-primary-600 rounded-b-[48px] overflow-hidden">
       {/* Background Gradient Overlay - Cut off earlier for solid bottom blend */}
       <div className="absolute inset-x-0 -top-[1px] h-[70.5%] bg-gradient-to-b from-white via-[#A3B3FF] via-[20%] to-transparent pointer-events-none" />
 
       {/* Text Section - Desktop Only */}
-      <div className="relative pt-16 md:pt-0 pb-12 md:pb-32 px-6 md:px-[120px] z-10 hidden md:block">
+      <div className="relative pt-16 md:pt-24 pb-12 md:pb-32 px-6 md:px-[120px] z-10 hidden md:block">
         <div className="max-w-3xl text-center mx-auto">
           <TextReveal
-            initialColor="#FFFFFF"
+            initialColor="#B3B3B3"
             revealedColor="#000000"
             startEarly={true}
             className="py-0 text-[26px] leading-[1.5] font-medium tracking-tight justify-center text-center"
           >
-            {`community at KNBL is where marketing minds meet to learn, share, and grow together. through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. it’s a space built on collaboration, learning, and collective movement forward.`}
+            {`Community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. It’s a space built on collaboration, learning, and collective movement forward.`}
           </TextReveal>
         </div>
       </div>
@@ -204,11 +204,11 @@ export default function CommunitySection() {
             <div className="space-y-4 text-center">
               <TextReveal
                 startEarly
-                initialColor="#FFFFFF"
+                initialColor="#B3B3B3"
                 revealedColor="#000000"
                 className="text-[18px] leading-[1.4] text-white/90 font-normal py-0 justify-center text-center"
               >
-                community at KNBL is where marketing minds meet to learn, share, and grow together. through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. it’s a space built on collaboration, learning, and collective movement forward.
+                Community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. It’s a space built on collaboration, learning, and collective movement forward.
               </TextReveal>
             </div>
 

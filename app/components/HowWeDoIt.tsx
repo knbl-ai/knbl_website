@@ -72,15 +72,11 @@ export default function HowWeDoIt() {
             <TextReveal
               startEarly
               containerRef={sectionRef}
-              className={isMobile
-                ? "py-0 text-[10px] leading-[1.6] font-normal tracking-wide text-neutral-500"
-                : "py-0 text-lg md:text-[16px] leading-[1.6] font-light tracking-tight text-neutral-500"
-              }
+              initialColor="#CFCFD3"
+              revealedColor="#000000"
+              className="py-0 text-xl md:text-2xl leading-relaxed font-normal tracking-tight max-w-xl"
             >
-              {isMobile
-                ? "At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do. We combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works."
-                : `At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`
-              }
+              {`At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`}
             </TextReveal>
           </div>
 

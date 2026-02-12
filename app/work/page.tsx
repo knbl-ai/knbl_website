@@ -37,7 +37,7 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        image: '',
+        image: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg',
         videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768731363/photo_to_video_ai_nktppl.mp4',
         name: 'Rafael',
         slug: 'rafael',
@@ -114,9 +114,9 @@ const projects: Project[] = [
         id: 9,
         image: '',
         videoUrl: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4',
-        name: 'Electra',
+        name: 'Electra group',
         slug: 'electra-precise',
-        alt: 'Electra',
+        alt: 'Electra group',
         delay: 0.8,
         maxDuration: 20
     },
@@ -161,17 +161,7 @@ const projects: Project[] = [
         maxDuration: 20,
         objectPosition: 'center 40%'
     },
-    {
-        id: 15,
-        image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/Culture%20Center/3137_TARBUT_OCT_VID_1080X1920_G.mp4',
-        name: 'Petach Tikva Center For The Performing Arts',
-        slug: 'petach-tikva-center',
-        alt: 'Petach Tikva Center For The Performing Arts',
-        delay: 1.3,
-        maxDuration: 20,
-        objectPosition: 'center 20%'
-    },
+
 ];
 
 function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; height?: string }) {
@@ -260,7 +250,7 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                         </svg>
                     </div>
 
-                    <span className="text-white font-medium text-[16px] md:text-[28px] tracking-tight">{project.name}</span>
+                    <span className="text-white font-medium text-[16px] md:text-[28px] tracking-tight flex-1 mr-4 line-clamp-2">{project.name}</span>
 
                     {isMobile ? (
                         /* Mobile Arrow Button */
@@ -275,7 +265,7 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                     ) : (
                         /* Desktop Expanding Button (refined for ultra-smooth animation) */
                         <motion.div
-                            className="flex items-center rounded-full group/btn cursor-pointer overflow-hidden h-10 bg-white relative z-20"
+                            className="flex items-center rounded-full group/btn cursor-pointer overflow-hidden h-10 bg-white relative z-20 ml-auto shrink-0"
                             initial="initial"
                             whileHover="hover"
                             variants={{
@@ -400,17 +390,14 @@ export default function WorkPage() {
                             </div>
                         </div>
 
-                        {/* ROW 4: Extended Bento Showcase (Projects 10-13) */}
+                        {/* ROW 4: Balanced 3-item Block (Projects 10-12) */}
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                            <div className="md:col-span-8 flex flex-col gap-4">
-                                <ProjectCard project={projects[10]} height="h-[300px] md:h-[400px]" />
-                                <div className="grid grid-cols-2 gap-4">
-                                    <ProjectCard project={projects[11]} height="h-[250px] md:h-[300px]" />
-                                    <ProjectCard project={projects[12]} height="h-[250px] md:h-[300px]" />
-                                </div>
-                            </div>
                             <div className="md:col-span-4">
-                                <ProjectCard project={projects[13]} height="h-[400px] md:h-[716px]" />
+                                <ProjectCard project={projects[10]} height="h-[400px] md:h-[516px]" />
+                            </div>
+                            <div className="md:col-span-8 flex flex-col gap-4">
+                                <ProjectCard project={projects[11]} height="h-[250px] md:h-[250px]" />
+                                <ProjectCard project={projects[12]} height="h-[250px] md:h-[250px]" />
                             </div>
                         </div>
                     </div>
