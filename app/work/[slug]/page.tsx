@@ -338,7 +338,6 @@ export default function ProjectPage() {
                 <VideoPlayer
                   url={project.videos[0].url}
                   thumbnail={project.videos[0].thumbnail || ""}
-                  title={project.videos[0].title}
                   onOpen={() => setSelectedVideo(project.videos[0])}
                 />
               </motion.div>
@@ -362,7 +361,6 @@ export default function ProjectPage() {
                         <VideoPlayer
                           url={video.url}
                           thumbnail={video.thumbnail || ""}
-                          title={video.title}
                           onOpen={() => setSelectedVideo(video)}
                         />
                       </motion.div>
@@ -469,7 +467,6 @@ function VideoCarousel({ videos, onOpen }: {
             <VideoPlayer
               url={video.url}
               thumbnail={video.thumbnail || ""}
-              title={video.title}
               onOpen={() => onOpen(video)}
             />
           </motion.div>
@@ -482,12 +479,10 @@ function VideoCarousel({ videos, onOpen }: {
 function VideoPlayer({
   url,
   thumbnail,
-  title,
   onOpen
 }: {
   url: string;
   thumbnail: string;
-  title: string;
   onOpen: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);

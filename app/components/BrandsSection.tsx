@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useRef, useEffect, useState, ReactNode } from 'react';
 import { motion, useMotionValue, useSpring, useAnimationFrame, useTransform } from 'framer-motion';
 import { TextReveal } from '@/components/ui/text-reveal';
@@ -33,7 +34,7 @@ const bottomRowBrands: Brand[] = [
   { name: 'Aion', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627141/AION_LOGO_WHITE_rooieu.png', className: 'h-6 md:h-8' },
 ];
 
-const Marquee = ({ children, direction = 'left', duration = 30 }: { children: ReactNode, direction?: 'left' | 'right', duration?: number }) => {
+const Marquee = ({ children, direction = 'left' }: { children: ReactNode, direction?: 'left' | 'right' }) => {
   const [iterationWidth, setIterationWidth] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
@@ -162,12 +163,14 @@ export default function BrandsSection() {
       <div className="px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-[-24px] md:space-y-[-44px]">
-            <Marquee direction="left" duration={30}>
+            <Marquee direction="left">
               {topRowBrands.map((brand, index) => (
-                <div key={`${brand.name}-${index}`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
-                  <img
+                <div key={`${brand.name}-${index}`} className={brand.className || 'h-10 md:h-14'}>
+                  <Image
                     src={brand.logo}
                     alt={brand.name}
+                    width={200}
+                    height={80}
                     className="h-full w-auto object-contain transition-all duration-300 pointer-events-none select-none"
                   />
                 </div>
@@ -175,12 +178,14 @@ export default function BrandsSection() {
             </Marquee>
 
             {/* Bottom Row - Moves Right */}
-            <Marquee direction="right" duration={30}>
+            <Marquee direction="right">
               {bottomRowBrands.map((brand, index) => (
-                <div key={`${brand.name}-${index}-rev`} className={`relative h-10 md:h-14 flex-shrink-0 ${brand.className || ''}`}>
-                  <img
+                <div key={`${brand.name}-${index}-rev`} className={brand.className || 'h-10 md:h-14'}>
+                  <Image
                     src={brand.logo}
                     alt={brand.name}
+                    width={200}
+                    height={80}
                     className="h-full w-auto object-contain transition-all duration-300 pointer-events-none select-none"
                   />
                 </div>

@@ -44,14 +44,7 @@ export default function CommunitySection() {
   const [isPrevHovered, setIsPrevHovered] = useState(false);
   const [isNextHovered, setIsNextHovered] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const currentVideo = videos[currentVideoIndex];
 

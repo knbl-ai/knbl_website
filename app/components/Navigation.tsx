@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
@@ -228,7 +227,7 @@ export default function Navigation() {
 
             {/* Mobile Menu Items */}
             <div className="flex flex-col items-start justify-start flex-1 gap-5 px-10 -ml-4 pb-20 pt-0">
-              {menuItems.map((item, index) => (
+              {menuItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}

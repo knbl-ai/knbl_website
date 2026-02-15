@@ -6,7 +6,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import AiProductionForm from '../components/AiProductionForm';
 import { VideoPreview } from '../../components/ui/VideoPreview';
-import { Maximize2, X, Play, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { X, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 const aiVideos = [
     {

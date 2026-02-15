@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import Image from 'next/image';
 import { TextReveal } from '@/components/ui/text-reveal';
 import ScrollIndicator from '@/components/ui/ScrollIndicator';

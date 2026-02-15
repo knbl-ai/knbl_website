@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TextReveal } from '@/components/ui/text-reveal';
+
 
 const faqs = [
   {
