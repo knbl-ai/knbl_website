@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { TextReveal } from '@/components/ui/text-reveal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const videos = [
   {

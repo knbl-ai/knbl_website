@@ -10,7 +10,7 @@ export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
   initialColor?: string;
   revealedColor?: string;
   startEarly?: boolean;
-  containerRef?: React.RefObject<HTMLElement>;
+  containerRef?: React.RefObject<HTMLElement | null>;
   biggerFirstLine?: boolean;
 }
 
