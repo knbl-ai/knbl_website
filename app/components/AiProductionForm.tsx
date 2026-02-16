@@ -1,12 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TextReveal } from '@/components/ui/text-reveal';
 import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { sendAiInquiry } from '../actions/sendAiInquiry';
 
 export default function AiProductionForm() {
+    const router = useRouter();
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,6 +23,8 @@ export default function AiProductionForm() {
             const result = await sendAiInquiry(formData);
             if (result.success) {
                 setStatus('success');
+                // Navigate to submission page after a small delay to show success state or immediately
+                router.push('/submission');
             } else {
                 setStatus('error');
                 setErrorMessage(result.error || 'Something went wrong');
