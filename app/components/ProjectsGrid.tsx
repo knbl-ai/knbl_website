@@ -27,7 +27,7 @@ const projects: Project[] = [
     {
         id: 1,
         image: '',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brand_collection_jt2hv9.mp4',
         name: 'H&O',
         slug: 'ho-brands',
         alt: 'H&O',
@@ -38,7 +38,7 @@ const projects: Project[] = [
     {
         id: 2,
         image: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768731363/photo_to_video_ai_nktppl.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/rafael/photo_to_video_ai_nktppl.mp4',
         name: 'Rafael',
         slug: 'rafael',
         alt: 'Rafael',
@@ -49,7 +49,7 @@ const projects: Project[] = [
     {
         id: 3,
         image: '',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768738072/10S__RN15_High_Battery__Horizontal__Clean_low_rpdqrs.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/10S__RN15_High_Battery__Horizontal__Clean_low_rpdqrs.mp4',
         name: 'Xiaomi',
         slug: 'xiaomi',
         alt: 'Xiaomi',
@@ -71,7 +71,7 @@ const projects: Project[] = [
     {
         id: 5,
         image: '',
-        videoUrl: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1768732094/3105_CARTERS_TADMIT_VIDEO_960X520_1_meeqfj.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/carters/3105_CARTERS_TADMIT_VIDEO_960X520_1_meeqfj.mp4',
         name: "Carter's",
         slug: 'carters',
         alt: "Carter's",
@@ -113,7 +113,7 @@ const projects: Project[] = [
     {
         id: 9,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/electra/electra_Precise_Speed_LOW_bv6bzb.mp4',
         name: 'Electra group',
         slug: 'electra-precise',
         alt: 'Electra group',
@@ -123,7 +123,7 @@ const projects: Project[] = [
     {
         id: 10,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/takeda_fin_LOWER_sgeqe4.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/takeda/takeda_fin_LOWER_sgeqe4.mp4',
         name: 'Takeda',
         slug: 'takeda',
         alt: 'Takeda',

@@ -31,12 +31,12 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1AeF12pcP2/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Brand Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176443/H_O_Brand_collection_jt2hv9.mp4' },
-      { title: 'Family Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176453/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4' },
-      { title: 'Collection Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617551/H_O_Brands_Collection_crsb8a.mp4' },
-      { title: 'Black Friday Commercial', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175045/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bgm8ew.mp4' },
-      { title: 'Jumbo Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175243/HnO_28sec_16x9_jumbo_lwvuzv.mp4' },
-      { title: 'Jeans New Collection', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175274/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_tm0bbf.mp4' },
+      { title: 'Brand Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brand_collection_jt2hv9.mp4' },
+      { title: 'Family Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/ho/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4' },
+      { title: 'Collection Highlights', url: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brands_Collection_crsb8a%20(1).mp4' },
+      { title: 'Black Friday Commercial', url: 'https://storage.googleapis.com/knbl_website/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.mp4' },
+      { title: 'Jumbo Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/HnO_28sec_16x9_jumbo_lwvuzv.mp4' },
+      { title: 'Jeans New Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.mp4' },
     ],
   },
   'rafael': {
@@ -49,11 +49,11 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1GSDDTkWpf/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Financial Reports', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180623/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4', thumbnail: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg' },
-      { title: 'Project Overview', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625366/1231_1_ixyoq3.mov' },
-      { title: 'Timeline & History', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767625434/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.mp4' },
-      { title: 'Corporate Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180637/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v.mov' },
-      { title: 'Event Highlights', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767180657/%D7%90%D7%99%D7%A8%D7%95%D7%A2_%D7%96%D7%95%D7%92%D7%95%D7%AA_%D7%A1%D7%95%D7%A4%D7%99_icmirh.mov' },
+      { title: 'Financial Reports', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4', thumbnail: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg' },
+      { title: 'Project Overview', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/1231_1_ixyoq3.mov' },
+      { title: 'Timeline & History', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.mp4' },
+      { title: 'Corporate Video', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v%20(1).mov' },
+      { title: 'Event Highlights', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%90%D7%99%D7%A8%D7%95%D7%A2_%D7%96%D7%95%D7%92%D7%95%D7%AA_%D7%A1%D7%95%D7%A4%D7%99_icmirh%20(1).mov' },
     ],
   },
   'xiaomi': {
@@ -66,12 +66,12 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/189W2LXgm1/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Poco X7 Launch AI Production', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617056/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4' },
-      { title: 'Poco X7 Launch AI Production #2', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767617054/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.mp4' },
-      { title: 'Poco X7 AI Video', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767274462/1723_POCO_X7_AI_3_VID_1920x1080_xuhfdj.mp4' },
-      { title: 'Xiaomi B Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767274318/11269-5_XIAOMI_B_yg4q7n.mp4' },
-      { title: 'Brand Story', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767275104/%D7%95%D7%99%D7%93%D7%90%D7%95_%D7%A9%D7%9C_WhatsApp__2024-06-03_%D7%91%D7%A9%D7%A2%D7%94_16.14.53_c9f00e72_o56ori.mp4' },
-      { title: 'TLV Edit', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767275107/TLV_EDIT_eoqnqi.mp4' },
+      { title: 'Poco X7 Launch AI Production', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4' },
+      { title: 'Poco X7 Launch AI Production #2', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.mp4' },
+      { title: 'Poco X7 AI Video', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/1723_POCO_X7_AI_3_VID_1920x1080_xuhfdj.mp4' },
+      { title: 'Xiaomi B Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/11269-5_XIAOMI_B_yg4q7n.mp4' },
+      { title: 'Brand Story', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/%D7%95%D7%99%D7%93%D7%90%D7%95_%D7%A9%D7%9C_WhatsApp__2024-06-03_%D7%91%D7%A9%D7%A2%D7%94_16.14.53_c9f00e72_o56ori.mp4' },
+      { title: 'TLV Edit', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/TLV_EDIT_eoqnqi.mp4' },
     ],
   },
   'roladin': {
@@ -86,7 +86,7 @@ const projects: Record<string, {
     videos: [
       { title: 'Bakery Factory', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%9E%D7%A4%D7%A2%D7%9C%20%D7%9C%D7%97%D7%9D_1.mp4' },
       { title: 'Branches Overview', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D.mp4' },
-      { title: 'Square Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767175703/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4' },
+      { title: 'Square Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/roladin/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4' },
     ],
   },
   'carters': {
@@ -99,7 +99,7 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1CGyWty72e/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'With You From The Start', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176444/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
+      { title: 'With You From The Start', url: 'https://storage.googleapis.com/knbl_website/videos/carters/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
     ],
   },
   'safari': {
@@ -125,7 +125,7 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1GRfwX6zz4/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/takeda_fin_LOWER_sgeqe4.mp4' },
+      { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/takeda/takeda_fin_LOWER_sgeqe4.mp4' },
       { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4' },
 
 
@@ -141,9 +141,9 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1aKnGCNTe8/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/electra_Precise_Speed_LOW_bv6bzb.mp4' },
-      { title: 'Electra "BEYOND" Project', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005785/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4' },
-      { title: 'Electra Robotic Parking', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1769005810/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4' },
+      { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/electra/electra_Precise_Speed_LOW_bv6bzb.mp4' },
+      { title: 'Electra "BEYOND" Project', url: 'https://storage.googleapis.com/knbl_website/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4' },
+      { title: 'Electra Robotic Parking', url: 'https://storage.googleapis.com/knbl_website/videos/electra/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4' },
     ],
   },
   'aion': {
@@ -157,10 +157,10 @@ const projects: Record<string, {
     ],
     videos: [
       { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4' },
-      { title: 'Brand Experience', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176915/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
-      { title: 'Parking Campaign', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176972/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
-      { title: 'HT Highlight', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767176999/HT_ysxnx9.mp4' },
-      { title: 'Interior Drive', url: 'https://res.cloudinary.com/dbajenfxp/video/upload/v1767177020/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
+      { title: 'Brand Experience', url: 'https://storage.googleapis.com/knbl_website/videos/aion/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
+      { title: 'Parking Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/aion/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
+      { title: 'HT Highlight', url: 'https://storage.googleapis.com/knbl_website/videos/aion/HT_ysxnx9.mp4' },
+      { title: 'Interior Drive', url: 'https://storage.googleapis.com/knbl_website/videos/aion/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
     ],
   },
   'lod': {

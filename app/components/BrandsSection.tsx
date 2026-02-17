@@ -13,25 +13,25 @@ interface Brand {
 }
 
 const topRowBrands: Brand[] = [
-  { name: 'Terrogence', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769001889/Terrogence_Logo_white_dolipx.png' },
-  { name: 'Rafael', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002559/RAFAEL_LOGO_WHITE_yxntiv.png', className: 'h-16 md:h-24' },
-  { name: 'Reuth', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002514/Reuth_ENGLISH_LOGO_WHITE1_yk3a75.png', className: 'h-16 md:h-24' },
-  { name: 'KKL', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002545/logo_eng_white_full_pl27m0.png' },
-  { name: 'Calcalit', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628885/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png' },
-  { name: 'Hotze Israel', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002903/HOTZE_LOGO_WHITE_1_njmt5p.png', className: 'h-14 md:h-20' },
-  { name: 'Heichal Hatarbut', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628565/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%9C%D7%91%D7%9F-%D7%9E%D7%9C%D7%90_u3xjih.png', className: 'translate-y-3' },
-  { name: 'Anker', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628505/Logo_Anker_White_nqtpe8.png', className: 'h-32 md:h-48' },
-  { name: 'Xiaomi', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767628142/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
+  { name: 'Terrogence', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/Terrogence_Logo_white_dolipx.png' },
+  { name: 'Rafael', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/RAFAEL_LOGO_WHITE_yxntiv.png', className: 'h-16 md:h-24' },
+  { name: 'Reuth', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/Reuth_ENGLISH_LOGO_WHITE1_yk3a75.png', className: 'h-16 md:h-24' },
+  { name: 'KKL', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/logo_eng_white_full_pl27m0.png' },
+  { name: 'Calcalit', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/CALCALIT_LOD_LOGO_WHITE_yoa6mk.png' },
+  { name: 'Hotze Israel', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/HOTZE_LOGO_WHITE_1_njmt5p.png', className: 'h-14 md:h-20' },
+  { name: 'Heichal Hatarbut', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%99%D7%9B%D7%9C-%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA-%D7%9C%D7%91%D7%9F-%D7%9E%D7%9C%D7%90_u3xjih.png', className: 'h-14 md:h-20 translate-y-2' },
+  { name: 'Anker', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/Logo_Anker_White_nqtpe8.png', className: 'h-32 md:h-48' },
+  { name: 'Xiaomi', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/logo_xiaomi_white_gk7vlk.png', className: 'h-16 md:h-24' },
 ];
 
 const bottomRowBrands: Brand[] = [
-  { name: 'Electra', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1769002040/Electra_Logo_ENG_lavan_ALL_aqgf9v.png', className: 'h-40 md:h-56' },
-  { name: 'Takeda', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627891/takeda_WHITE_oghfsj.png' },
-  { name: 'Roladin', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627396/Roladin_logo_B2_nxsyzd.png' },
-  { name: 'Reserved', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627358/reserved_logo_white-01_pywhgf.png', className: 'h-24 md:h-36' },
-  { name: 'Carters', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627282/carters_logo_LAVAN-01_otlo6i.png' },
-  { name: 'H&O', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627203/H_O_brands_collection_FACE_WHITE-01_nfzjua.png', className: 'h-20 md:h-32' },
-  { name: 'Aion', logo: 'https://res.cloudinary.com/dbajenfxp/image/upload/v1767627141/AION_LOGO_WHITE_rooieu.png', className: 'h-6 md:h-8' },
+  { name: 'Electra', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/Electra_Logo_ENG_lavan_ALL_aqgf9v.png', className: 'h-40 md:h-56' },
+  { name: 'Takeda', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/takeda_WHITE_oghfsj.png' },
+  { name: 'Roladin', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/Roladin_logo_B2_nxsyzd.png' },
+  { name: 'Reserved', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/reserved_logo_white-01_pywhgf.png', className: 'h-24 md:h-36' },
+  { name: 'Carters', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/carters_logo_LAVAN-01_otlo6i.png' },
+  { name: 'H&O', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/H_O_brands_collection_FACE_WHITE-01_nfzjua.png', className: 'h-20 md:h-32' },
+  { name: 'Aion', logo: 'https://storage.googleapis.com/knbl_website/logos/white%20logos/AION_LOGO_WHITE_rooieu.png', className: 'h-6 md:h-8' },
 ];
 
 const Marquee = ({ children, direction = 'left' }: { children: ReactNode, direction?: 'left' | 'right' }) => {

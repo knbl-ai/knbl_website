@@ -43,19 +43,19 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
+    name: 'Hadar',
+    role: 'VP',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/HADAR.mp4',
+    bio: 'Leading strategic growth and ensuring excellence across all agency operations.',
+    bgColor: '#EEF2FF',
+    videoStyle: { transform: 'translateY(20px)' },
+  },
+  {
     name: 'Michelle',
     role: 'Clients Manager',
     image: '/images/projects/project-5.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/michelle.mp4',
     bio: 'Developing compelling creative narratives and visual brand identities.',
-    bgColor: '#EEF2FF',
-  },
-  {
-    name: 'Ido',
-    role: 'Media Manager',
-    image: '/images/projects/project-1.webp',
-    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ido1.mp4',
-    bio: 'Crafting visionary creative concepts and high-impact visual storytelling.',
     bgColor: '#EEF2FF',
   },
   {
@@ -67,12 +67,12 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
-    name: 'Daniella',
-    role: 'Content Manager & Head of Fun',
-    image: '/images/projects/project-3.webp',
-    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniela2.mp4',
-    bio: 'Shaping social presence through engaging and innovative content.',
+    name: 'Omer',
+    role: 'Clients Manager',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/OMER.mp4',
+    bio: 'Bridging the gap between client vision and creative excellence.',
     bgColor: '#EEF2FF',
+    videoStyle: { transform: 'scale(1.6)' },
   },
   {
     name: 'Noya',
@@ -83,11 +83,28 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
+    name: 'Daniella',
+    role: 'Content Manager & Head of Fun',
+    image: '/images/projects/project-3.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniela2.mp4',
+    bio: 'Shaping social presence through engaging and innovative content.',
+    bgColor: '#EEF2FF',
+    videoStyle: { transform: 'translateY(20px)' },
+  },
+  {
     name: 'Noa',
     role: 'Content Manager',
     image: '/images/projects/project-1.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/noa1.mp4',
     bio: 'Designing and executing high-performance paid search and social campaigns.',
+    bgColor: '#EEF2FF',
+  },
+  {
+    name: 'Ido',
+    role: 'Media Manager',
+    image: '/images/projects/project-1.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ido1.mp4',
+    bio: 'Crafting visionary creative concepts and high-impact visual storytelling.',
     bgColor: '#EEF2FF',
   },
   {
@@ -109,9 +126,10 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Adi',
     role: 'Designer',
-    image: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Gemini_Generated_Image_6xty5o6xty5o6xty.png',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/ADI.mp4',
     bio: 'Bringing brands to life through innovative and impactful visual design.',
     bgColor: '#EEF2FF',
+    videoStyle: { transform: 'translateY(20px)' },
   },
 ];
 

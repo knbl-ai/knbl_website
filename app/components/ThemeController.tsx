@@ -13,18 +13,25 @@ export default function ThemeController() {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         const theme = entry.target.getAttribute('data-theme-section');
+                        const body = document.body;
+
                         if (theme === 'black') {
-                            document.body.style.backgroundColor = '#000000';
+                            body.style.backgroundColor = '#000000';
+                            body.classList.add('is-dark');
                         } else if (theme === 'purple') {
-                            document.body.style.backgroundColor = '#4F39F6';
+                            body.style.backgroundColor = '#4F39F6';
+                            body.classList.add('is-dark');
                         } else {
-                            document.body.style.backgroundColor = '#ffffff';
+                            body.style.backgroundColor = '#ffffff';
+                            body.classList.remove('is-dark');
                         }
                     }
                 });
             },
             {
-                threshold: 0.4,
+                // Trigger when the element crosses the middle of the screen
+                threshold: 0,
+                rootMargin: '-50% 0px -50% 0px'
             }
         );
 
