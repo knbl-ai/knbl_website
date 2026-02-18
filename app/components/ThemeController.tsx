@@ -11,6 +11,7 @@ export default function ThemeController() {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
+                    // Only trigger if it's intersecting the center area
                     if (entry.isIntersecting) {
                         const theme = entry.target.getAttribute('data-theme-section');
                         const body = document.body;
@@ -29,9 +30,9 @@ export default function ThemeController() {
                 });
             },
             {
-                // Trigger when the element crosses the middle of the screen
-                threshold: 0,
-                rootMargin: '-50% 0px -50% 0px'
+                // Slightly broader range to detect intersection before it hits the dead center
+                threshold: [0, 0.1, 0.5, 0.9, 1],
+                rootMargin: '-45% 0px -45% 0px'
             }
         );
 

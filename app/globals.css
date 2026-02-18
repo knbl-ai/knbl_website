@@ -10,7 +10,7 @@
   body {
     @apply text-black bg-white font-sans;
     font-weight: 500;
-    transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   section:not(.keep-background) {

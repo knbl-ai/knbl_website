@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 
 import BackToTop from './components/BackToTop';
 
+import SmoothScroll from '@/components/ui/SmoothScroll';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,7 +52,9 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
         <BackToTop />
       </body>
     </html>

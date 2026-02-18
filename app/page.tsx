@@ -63,11 +63,11 @@ export default function HomePage() {
                 <CommunitySection />
             </div>
 
-            <div data-theme-section="white" className="bg-white">
+            <div data-theme-section="white">
                 <FAQSection />
             </div>
 
-            <div data-theme-section="black" className="pt-[200px] bg-black">
+            <div data-theme-section="black" className="pt-[200px]">
                 <Footer />
             </div>
         </main>

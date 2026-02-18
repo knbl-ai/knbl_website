@@ -20,18 +20,18 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: 'Raz',
-    role: 'CEO',
+    role: 'Co-Founder',
     image: '/images/projects/project-1.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/RAZ1.mp4',
-    bio: 'Founder of KNBL, leading the vision of creative and strategic excellence.',
+    bio: "The operational backbone. Raz is the one who makes sure the gears are turning, the numbers are crushing it, and every single workflow is executed to perfection. He's the reason 'how we make it happen' actually happens.",
     bgColor: '#EEF2FF',
   },
   {
     name: 'Ravit',
-    role: 'CEO',
+    role: 'Co-Founder',
     image: '/images/projects/project-2.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ravit1.mp4',
-    bio: 'Co-Founder of KNBL, driving brand growth and strategic partnerships.',
+    bio: "Our spark and visionary. Ravit leads the charge in business development and innovation, ensuring KNBL stays at the bleeding edge where marketing meets technology. She's the energy that keeps us moving forward.",
     bgColor: '#EEF2FF',
   },
   {
@@ -39,23 +39,23 @@ const teamMembers: TeamMember[] = [
     role: 'Head of Content',
     image: '/images/projects/project-4.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniel1.mp4',
-    bio: 'Leading performance marketing and data-driven growth strategies.',
+    bio: "The architect of stories. Daniel takes strategic insights and carves them into content that leaves a mark. He's allergic to fluff and obsessed with finding your brand's true voice.",
     bgColor: '#EEF2FF',
   },
   {
     name: 'Hadar',
-    role: 'VP',
+    role: 'VP Clients',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/HADAR.mp4',
-    bio: 'Leading strategic growth and ensuring excellence across all agency operations.',
+    bio: "The strategic anchor for our partners. Hadar ensures that every brand vision is translated into a flawless roadmap for growth. With a deep understanding of the client journey and a passion for real connection, she oversees our partnerships to make sure they aren't just successful, but exceptional.",
     bgColor: '#EEF2FF',
     videoStyle: { transform: 'translateY(20px)' },
   },
   {
     name: 'Michelle',
-    role: 'Clients Manager',
+    role: 'Client Manager',
     image: '/images/projects/project-5.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/michelle.mp4',
-    bio: 'Developing compelling creative narratives and visual brand identities.',
+    bio: "Your partner in growth. Michelle bridges the gap between your goals and our execution, making sure every project feels like a shared win.",
     bgColor: '#EEF2FF',
   },
   {
@@ -63,14 +63,14 @@ const teamMembers: TeamMember[] = [
     role: 'Clients Manager',
     image: '/images/projects/project-2.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Niv1.mp4',
-    bio: 'Bridging the gap between client vision and technical execution.',
+    bio: "Niv handles the details so you don't have to, ensuring that the road from strategy to results is always a smooth, human experience.",
     bgColor: '#EEF2FF',
   },
   {
     name: 'Omer',
-    role: 'Clients Manager',
+    role: 'Client Manager',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/OMER.mp4',
-    bio: 'Bridging the gap between client vision and creative excellence.',
+    bio: "The master of industry pulse and partner needs. Omer brings a sharp analytical eye to every project, ensuring that our strategies aren't just visionary but perfectly aligned with current market realities.",
     bgColor: '#EEF2FF',
     videoStyle: { transform: 'scale(1.6)' },
   },
@@ -79,7 +79,7 @@ const teamMembers: TeamMember[] = [
     role: 'Content Manager & Head of Fun',
     image: '/images/projects/project-6.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/NOYA1.mp4',
-    bio: 'Ensuring seamless studio operations and creative project workflows.',
+    bio: "Strategic creativity with a pulse. Noya proves that professional results and a playful spirit aren't mutually exclusive - they're the secret sauce to great work.",
     bgColor: '#EEF2FF',
   },
   {
@@ -87,7 +87,7 @@ const teamMembers: TeamMember[] = [
     role: 'Content Manager & Head of Fun',
     image: '/images/projects/project-3.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniela2.mp4',
-    bio: 'Shaping social presence through engaging and innovative content.',
+    bio: "Content expert and our unofficial Chief Happiness Officer. She ensures our creative output is as engaging as the vibe she brings to the office every single day.",
     bgColor: '#EEF2FF',
     videoStyle: { transform: 'translateY(20px)' },
   },
@@ -96,7 +96,7 @@ const teamMembers: TeamMember[] = [
     role: 'Content Manager',
     image: '/images/projects/project-1.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/noa1.mp4',
-    bio: 'Designing and executing high-performance paid search and social campaigns.',
+    bio: 'A natural at finding the "signal" in the noise. Noa crafts content that speaks directly to the audience, turning complex strategy into messages that resonate and engage.',
     bgColor: '#EEF2FF',
   },
   {
@@ -104,15 +104,15 @@ const teamMembers: TeamMember[] = [
     role: 'Media Manager',
     image: '/images/projects/project-1.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ido1.mp4',
-    bio: 'Crafting visionary creative concepts and high-impact visual storytelling.',
+    bio: "The performance pilot. Ido lives in the data, optimizing every campaign to make sure your brand isn't just seen, but heard by the right people at the right time.",
     bgColor: '#EEF2FF',
   },
   {
     name: 'Vladi',
-    role: 'AI Developer',
+    role: 'CTO and AI creator',
     image: '/images/projects/project-2.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Vladi.mp4',
-    bio: 'Building robust and scalable digital solutions with a focus on user experience.',
+    bio: "The fusion of complex code and breathtaking content. Vladi builds the sophisticated systems that power our agency while leading our top-tier AI productions. By blending deep technical engineering with visionary AI creation, he ensures your brand isn't just following tech trends - it's defining them.",
     bgColor: '#EEF2FF',
   },
   {
@@ -120,14 +120,14 @@ const teamMembers: TeamMember[] = [
     role: 'Studio Manager',
     image: '/images/projects/project-3.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Ronit.mp4',
-    bio: 'Crafting engaging content strategies that tell a compelling brand story.',
+    bio: "The conductor of the creative orchestra. Ronit keeps the studio in perfect harmony, managing timelines and talents to make sure our high standards are met every single time.",
     bgColor: '#EEF2FF',
   },
   {
     name: 'Adi',
     role: 'Designer',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/ADI.mp4',
-    bio: 'Bringing brands to life through innovative and impactful visual design.',
+    bio: "The visual translator. Adi turns abstract ideas into high-end aesthetics, ensuring that every brand we grow doesn't just perform well, but looks incredible doing it.",
     bgColor: '#EEF2FF',
     videoStyle: { transform: 'translateY(20px)' },
   },
@@ -211,13 +211,13 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Back Side - Solid color with info */}
         <div
-          className="absolute inset-0 rounded-3xl bg-primary-600 p-8 flex flex-col justify-between"
+          className="absolute inset-0 rounded-3xl bg-primary-600 p-6 flex flex-col justify-between"
           style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
         >
           <div>
-            <p className="text-white text-2xl font-medium mb-1">{member.name}</p>
-            <p className="text-[#A3B3FF] text-base mb-6">{member.role}</p>
-            <p className="text-white text-lg leading-relaxed">{member.bio}</p>
+            <p className="text-white text-2xl font-medium mb-0.5">{member.name}</p>
+            <p className="text-[#A3B3FF] text-base mb-2">{member.role}</p>
+            <p className="text-white text-lg leading-tight">{member.bio}</p>
           </div>
 
 
