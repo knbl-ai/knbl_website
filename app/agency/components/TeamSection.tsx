@@ -35,20 +35,20 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
-    name: 'Daniel',
-    role: 'Head of Content',
-    image: '/images/projects/project-4.webp',
-    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniel1.mp4',
-    bio: "The architect of stories. Daniel takes strategic insights and carves them into content that leaves a mark. He's allergic to fluff and obsessed with finding your brand's true voice.",
-    bgColor: '#EEF2FF',
-  },
-  {
     name: 'Hadar',
     role: 'VP Clients',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/HADAR.mp4',
     bio: "The strategic anchor for our partners. Hadar ensures that every brand vision is translated into a flawless roadmap for growth. With a deep understanding of the client journey and a passion for real connection, she oversees our partnerships to make sure they aren't just successful, but exceptional.",
     bgColor: '#EEF2FF',
     videoStyle: { transform: 'translateY(20px)' },
+  },
+  {
+    name: 'Daniel',
+    role: 'Head of Content',
+    image: '/images/projects/project-4.webp',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Daniel1.mp4',
+    bio: "The architect of stories. Daniel takes strategic insights and carves them into content that leaves a mark. He's allergic to fluff and obsessed with finding your brand's true voice.",
+    bgColor: '#EEF2FF',
   },
   {
     name: 'Michelle',
@@ -60,7 +60,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Niv',
-    role: 'Clients Manager',
+    role: 'Client Manager',
     image: '/images/projects/project-2.webp',
     video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Niv1.mp4',
     bio: "Niv handles the details so you don't have to, ensuring that the road from strategy to results is always a smooth, human experience.",
