@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryMedia = [
-  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250326_101317_ig3qmp.mp4' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_GENERAL_NO_PURPLE_FILTER_yyfvu0.mp4' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250701_172708_avttud.mp4' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250219_110635_qiqlkf.mp4' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_VIEW_NO_PURPLE_FILTER_ifmxwl.mp4' },
-  { src: 'https://storage.googleapis.com/knbl_website/videos/backstage/20250326_135838_yrjxk0.mp4' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/backstage/20250326_101317_ig3qmp.webm' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_GENERAL_NO_PURPLE_FILTER_yyfvu0.webm' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/backstage/20250701_172708_avttud.webm' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/backstage/20250219_110635_qiqlkf.webm' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/category/3356_KNBLE_WEBSITE_VIDEO_1080x1080_VIEW_NO_PURPLE_FILTER_ifmxwl.webm' },
+  { src: 'https://storage.googleapis.com/knbl_website/optimized/videos/backstage/20250326_135838_yrjxk0.webm' },
 ];
 
 export default function ImageGallery() {

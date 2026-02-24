@@ -253,7 +253,7 @@ export default function Hero() {
             {/* Floating Elements - Magnetic & Smooth */}
             <FloatingCircle
                 id="w1-l"
-                src="https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg"
+                src="https://storage.googleapis.com/knbl_website/optimized/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.webp"
                 className="absolute top-[28%] -left-[5%] lg:left-[5%]"
                 size="md:w-[180px] md:h-[180px]"
                 mobileSize="w-[90px] h-[90px]"
@@ -267,7 +267,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w1-r"
-                src="https://storage.googleapis.com/knbl_website/images/roladin/KARELA_-00628_fr67ju.jpg"
+                src="https://storage.googleapis.com/knbl_website/optimized/images/roladin/KARELA_-00628_fr67ju.webp"
                 className="absolute top-[20%] -right-[5%] lg:right-[5%]"
                 size="md:w-[140px] md:h-[140px]"
                 mobileSize="w-[85px] h-[85px]"
@@ -281,7 +281,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w2-l"
-                src="https://storage.googleapis.com/knbl_website/images/carters/%D7%A2%D7%95%D7%AA%D7%A7OK_FAL25_BBG_01_162_E_psmtg5.jpg"
+                src="https://storage.googleapis.com/knbl_website/optimized/images/carters/%D7%A2%D7%95%D7%AA%D7%A7OK_FAL25_BBG_01_162_E_psmtg5.webp"
                 className="absolute bottom-[25%] -left-[8%] lg:left-[8%]"
                 size="md:w-[150px] md:h-[150px]"
                 mobileSize="w-[110px] h-[110px]"
@@ -295,7 +295,7 @@ export default function Hero() {
 
             <FloatingCircle
                 id="w2-r"
-                src="https://storage.googleapis.com/knbl_website/images/trans%20israel/2%D7%94%D7%93%D7%9E%D7%99%D7%94-_%D7%92%D7%A9%D7%A8_6400_dpdo57.jpg"
+                src="https://storage.googleapis.com/knbl_website/optimized/images/trans%20israel/2%D7%94%D7%93%D7%9E%D7%99%D7%94-_%D7%92%D7%A9%D7%A8_6400_dpdo57.webp"
                 className="absolute top-[45%] -right-[8%] lg:right-[8%]"
                 size="md:w-[160px] md:h-[160px]"
                 mobileSize="w-[100px] h-[100px]"
