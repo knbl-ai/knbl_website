@@ -80,7 +80,7 @@ export default function Navigation() {
   const burgerBg = isMobileMenuOpen || isDark ? 'bg-white' : 'bg-black';
 
   return (
-    <nav className={`absolute top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'} transition-all duration-300`}>
+    <nav className={`${isMobileMenuOpen ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
       <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0">
@@ -242,7 +242,7 @@ export default function Navigation() {
             className="fixed inset-0 bg-black z-40 md:hidden flex flex-col"
           >
             {/* Safe area for header */}
-            <div className="h-[125px]" />
+            <div className="h-[180px]" />
 
             {/* Mobile Menu Items */}
             <div className="flex flex-col items-start justify-start flex-1 gap-5 px-10 -ml-4 pb-20 pt-0">
