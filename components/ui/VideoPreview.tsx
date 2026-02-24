@@ -97,6 +97,13 @@ export function VideoPreview({
                 />
             )}
 
+            {/* Loading Spinner - shown while src is set but video hasn't loaded */}
+            {isInView && !isVideoLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                    <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+                </div>
+            )}
+
             {/* Video Element */}
             <video
                 ref={videoRef}

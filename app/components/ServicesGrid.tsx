@@ -34,6 +34,7 @@ const services = [
 
 function ServiceVideo({ src, isExpanded }: { src: string; isExpanded: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -48,14 +49,22 @@ function ServiceVideo({ src, isExpanded }: { src: string; isExpanded: boolean })
   }, [isExpanded]);
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover scale-105"
-    />
+    <>
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+          <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+        </div>
+      )}
+      <video
+        ref={videoRef}
+        src={src}
+        loop
+        muted
+        playsInline
+        onLoadedData={() => setIsLoaded(true)}
+        className="absolute inset-0 w-full h-full object-cover scale-105"
+      />
+    </>
   );
 }
 
