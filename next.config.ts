@@ -2,7 +2,6 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['www.figma.com', 'res.cloudinary.com', 'storage.googleapis.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -18,6 +17,8 @@ const nextConfig: NextConfig = {
         hostname: 'storage.googleapis.com',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 2592000,
   },
 };
 

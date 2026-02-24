@@ -164,7 +164,7 @@ const projects: Project[] = [
 
 ];
 
-function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
+function ProjectCard({ project, height = 'h-[250px]', priority = false }: { project: Project; height?: string; priority?: boolean }) {
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
@@ -212,6 +212,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         startTime={project.startTime}
                         objectPosition={project.objectPosition}
                         objectFit={project.objectFit || 'cover'}
+                        priority={priority}
                     />
                     {/* Subtle dark overlay on hover to make text pop */}
                     <motion.div
@@ -362,7 +363,7 @@ export default function ProjectsGrid() {
                     {/* First Row Block (4 cards) */}
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                         <div className="md:col-span-4">
-                            <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" />
+                            <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" priority={true} />
                         </div>
 
                         <div className="md:col-span-8 flex flex-col gap-4">

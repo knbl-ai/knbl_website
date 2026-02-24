@@ -164,7 +164,7 @@ const projects: Project[] = [
 
 ];
 
-function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; height?: string }) {
+function ProjectCard({ project, height = 'h-[400px]', priority = false }: { project: Project; height?: string; priority?: boolean }) {
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
@@ -212,6 +212,7 @@ function ProjectCard({ project, height = 'h-[400px]' }: { project: Project; heig
                         startTime={project.startTime}
                         objectPosition={project.objectPosition}
                         objectFit={project.objectFit || 'cover'}
+                        priority={priority}
                     />
                     <motion.div
                         className="absolute inset-0 bg-black/10 transition-colors"
@@ -355,7 +356,7 @@ export default function WorkPage() {
                         {/* ROW 1: Premium Bento Block (Projects 0-3) */}
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                             <div className="md:col-span-4 transition-transform duration-500 hover:z-10">
-                                <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" />
+                                <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" priority={true} />
                             </div>
                             <div className="md:col-span-8 flex flex-col gap-4">
                                 <ProjectCard project={projects[1]} height="h-[250px] md:h-[200px]" />

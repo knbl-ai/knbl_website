@@ -18,9 +18,10 @@ interface FloatingCircleProps {
     hoveredId: string | null;
     setHoveredId: (id: string | null) => void;
     z: number;
+    priority?: boolean;
 }
 
-const FloatingCircle = ({ id, src, className, size, mobileSize, duration, animateX, animateY, hoveredId, setHoveredId, z }: FloatingCircleProps) => {
+const FloatingCircle = ({ id, src, className, size, mobileSize, duration, animateX, animateY, hoveredId, setHoveredId, z, priority }: FloatingCircleProps) => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
@@ -90,6 +91,7 @@ const FloatingCircle = ({ id, src, className, size, mobileSize, duration, animat
                     fill
                     className="rounded-full object-cover shadow-sm transition-shadow duration-500 hover:shadow-2xl opacity-100"
                     style={{ transform: 'translateZ(0)', opacity: 1, mixBlendMode: 'normal' }}
+                    priority={priority}
                 />
             </motion.div>
         </motion.div>
@@ -263,6 +265,7 @@ export default function Hero() {
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
                 z={20}
+                priority={true}
             />
 
             <FloatingCircle
@@ -277,6 +280,7 @@ export default function Hero() {
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
                 z={20}
+                priority={true}
             />
 
             <FloatingCircle
@@ -291,6 +295,7 @@ export default function Hero() {
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
                 z={20}
+                priority={true}
             />
 
             <FloatingCircle
@@ -305,6 +310,7 @@ export default function Hero() {
                 hoveredId={hoveredId}
                 setHoveredId={setHoveredId}
                 z={20}
+                priority={true}
             />
 
 

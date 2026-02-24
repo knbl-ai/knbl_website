@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { TextReveal } from '@/components/ui/text-reveal';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
 import { useEffect, useState, useRef } from 'react';
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const steps = [
   {

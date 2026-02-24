@@ -13,6 +13,7 @@ interface VideoPreviewProps {
     isPlaying?: boolean; // controlled playback
     objectFit?: 'cover' | 'contain';
     objectPosition?: string;
+    priority?: boolean; // default false — only pass true for first visible video
 }
 
 export function VideoPreview({
@@ -24,10 +25,28 @@ export function VideoPreview({
     startTime = 0,
     isPlaying = true,
     objectFit = 'cover',
-    objectPosition = 'center'
+    objectPosition = 'center',
+    priority = false,
 }: VideoPreviewProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+    const [isInView, setIsInView] = useState(priority);
+
+    useEffect(() => {
+        if (priority) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsInView(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: '200px 0px' }
+        );
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => observer.disconnect();
+    }, [priority]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -38,7 +57,7 @@ export function VideoPreview({
         } else {
             video.pause();
         }
-    }, [isPlaying]);
+    }, [isPlaying, isInView]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -63,7 +82,7 @@ export function VideoPreview({
     }, [trimEnd, maxDuration, startTime, isPlaying, isVideoLoaded]);
 
     return (
-        <div className="relative w-full h-full bg-neutral-900">
+        <div ref={containerRef} className="relative w-full h-full bg-neutral-900">
             {/* Poster Image - shown while video is loading or out of view */}
             {posterUrl && (
                 <Image
@@ -74,14 +93,14 @@ export function VideoPreview({
                         }`}
                     style={{ objectPosition }}
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
+                    priority={priority}
                 />
             )}
 
             {/* Video Element */}
             <video
                 ref={videoRef}
-                src={videoUrl}
+                src={isInView ? videoUrl : undefined}
                 muted
                 loop
                 playsInline
