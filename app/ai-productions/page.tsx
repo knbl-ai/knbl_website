@@ -11,75 +11,75 @@ import { X, ArrowRight, ArrowUpRight } from 'lucide-react';
 const aiVideos = [
     {
         id: 7,
-        url: 'https://storage.googleapis.com/knbl_website/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.webm',
         title: 'Electra "BEYOND" Project',
         category: 'Tech Visualization'
     },
     {
         id: 6,
-        url: 'https://storage.googleapis.com/knbl_website/videos/electra/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.webm',
         title: 'Electra Robotic Parking',
         category: 'Innovation'
     },
     {
         id: 5,
-        url: 'https://storage.googleapis.com/knbl_website/videos/electra/electra_Precise_Speed_LOW_bv6bzb.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/electra_Precise_Speed_LOW_bv6bzb.webm',
         title: 'Electra Shneider',
         category: 'Gen-AI Storytelling'
     },
     {
         id: 1,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.webm',
         title: 'H&O Black Friday',
         category: 'Motion Design'
     },
     {
         id: 2,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.webm',
         title: 'H&O Jeans',
         category: 'Product Launch'
     },
     {
         id: 17,
-        url: 'https://storage.googleapis.com/knbl_website/videos/takeda/takeda_fin_LOWER_sgeqe4.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/takeda/takeda_fin_LOWER_sgeqe4.webm',
         title: 'Takeda',
         category: 'Health-AI',
         startTime: 1
     },
     {
         id: 3,
-        url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.webm',
         title: 'POCO X7 Series',
         category: 'Creative AI'
     },
     {
         id: 4,
-        url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.webm',
         title: 'POCO X7 Series',
         category: 'Immersive Experience',
         startTime: 1
     },
     {
         id: 9,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/8u2Q50QoEmcqTVa6DJdGe_output_1_mxzzbt.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/8u2Q50QoEmcqTVa6DJdGe_output_1_mxzzbt.webm',
         title: "AI",
         category: 'Emotional AI'
     },
     {
         id: 21,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/roladin_moon-video-export-2025-12-30T08-37-46.443Z_qk44k2.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/roladin_moon-video-export-2025-12-30T08-37-46.443Z_qk44k2.webm',
         title: 'Roladin Moon',
         category: 'Automotive AI'
     },
     {
         id: 22,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/Woman_talking_in_202601021508_ab1pf_k46tar.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/Woman_talking_in_202601021508_ab1pf_k46tar.webm',
         title: 'AI Virtual Spokesperson',
         category: 'Avatar Realism'
     },
     {
         id: 23,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/WhatsApp_Video_2026-01-08_at_19.41.18__without_end_of_video_czxoce.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/WhatsApp_Video_2026-01-08_at_19.41.18__without_end_of_video_czxoce.webm',
         title: 'AI Spec Work',
         category: 'Creative AI'
     },
@@ -88,38 +88,38 @@ const aiVideos = [
 const portraitVideos = [
     {
         id: 16,
-        url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.webm',
         title: 'Xiaomi Redmi Note 15 Series',
     },
     {
         id: 11,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/IMG_1820_nxuyj4.mov',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/IMG_1820_nxuyj4.webm',
         title: 'Rafael Developer Day',
     },
     {
         id: 18,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/%D7%99%D7%95%D7%9D_%D7%94%D7%9E%D7%93%D7%A2_%D7%94%D7%91%D7%93%D7%99%D7%95%D7%A0%D7%99_-_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_ldcugm.mov',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/%D7%99%D7%95%D7%9D_%D7%94%D7%9E%D7%93%D7%A2_%D7%94%D7%91%D7%93%D7%99%D7%95%D7%A0%D7%99_-_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_ldcugm.webm',
         title: 'Rafael Science Fiction Day',
     },
     {
         id: 12,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.mov',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.webm',
         title: 'Rafael 2026',
-        posterUrl: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg'
+        posterUrl: 'https://storage.googleapis.com/knbl_website/optimized/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.webp'
     }
 ];
 
 const productVideos = [
     {
         id: 13,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/0112_ylhhh4.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/0112_ylhhh4.webm',
         title: 'Trends Agents',
         headline: 'Trends agents by category',
         description: 'Research and analysis + newsletter automation'
     },
     {
         id: 14,
-        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/0108_jow8a4.mp4',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/0108_jow8a4.webm',
         title: 'iGentity',
         headline: 'iGentity',
         description: 'AI powered platform for social media creation and management'

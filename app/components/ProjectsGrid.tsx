@@ -27,7 +27,7 @@ const projects: Project[] = [
     {
         id: 1,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brand_collection_jt2hv9.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/H_O_Brand_collection_jt2hv9.webm',
         name: 'H&O',
         slug: 'ho-brands',
         alt: 'H&O',
@@ -37,8 +37,8 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        image: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/rafael/photo_to_video_ai_nktppl.mp4',
+        image: 'https://storage.googleapis.com/knbl_website/optimized/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.webp',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/photo_to_video_ai_nktppl.webm',
         name: 'Rafael',
         slug: 'rafael',
         alt: 'Rafael',
@@ -49,7 +49,7 @@ const projects: Project[] = [
     {
         id: 3,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/10S__RN15_High_Battery__Horizontal__Clean_low_rpdqrs.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/10S__RN15_High_Battery__Horizontal__Clean_low_rpdqrs.webm',
         name: 'Xiaomi',
         slug: 'xiaomi',
         alt: 'Xiaomi',
@@ -60,7 +60,7 @@ const projects: Project[] = [
     {
         id: 4,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/roladin%20-%20movie%202.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/roladin%20-%20movie%202.webm',
         name: 'Roladin',
         slug: 'roladin',
         alt: 'Roladin',
@@ -71,7 +71,7 @@ const projects: Project[] = [
     {
         id: 5,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/carters/3105_CARTERS_TADMIT_VIDEO_960X520_1_meeqfj.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/carters/3105_CARTERS_TADMIT_VIDEO_960X520_1_meeqfj.webm',
         name: "Carter's",
         slug: 'carters',
         alt: "Carter's",
@@ -82,7 +82,7 @@ const projects: Project[] = [
     {
         id: 6,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.webm',
         name: 'Safari',
         slug: 'safari',
         alt: 'Safari',
@@ -93,7 +93,7 @@ const projects: Project[] = [
     {
         id: 7,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.webm',
         name: 'Anker',
         slug: 'anker',
         alt: 'Anker',
@@ -103,7 +103,7 @@ const projects: Project[] = [
     {
         id: 8,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/lod/lod_16x9_2mbps.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/lod/lod_16x9_2mbps.webm',
         name: 'Lod',
         slug: 'lod',
         alt: 'Lod',
@@ -113,7 +113,7 @@ const projects: Project[] = [
     {
         id: 9,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/electra/electra_Precise_Speed_LOW_bv6bzb.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/electra_Precise_Speed_LOW_bv6bzb.webm',
         name: 'Electra group',
         slug: 'electra-precise',
         alt: 'Electra group',
@@ -123,7 +123,7 @@ const projects: Project[] = [
     {
         id: 10,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/takeda/takeda_fin_LOWER_sgeqe4.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/takeda/takeda_fin_LOWER_sgeqe4.webm',
         name: 'Takeda',
         slug: 'takeda',
         alt: 'Takeda',
@@ -133,7 +133,7 @@ const projects: Project[] = [
     {
         id: 11,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/reuth/REUT_4K_VIDEO_CLEAN.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/reuth/REUT_4K_VIDEO_CLEAN.webm',
         name: 'Reuth Hospital',
         slug: 'reuth-hospital',
         alt: 'Reuth Hospital',
@@ -143,7 +143,7 @@ const projects: Project[] = [
     {
         id: 12,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/1008_jr9vrx.webm',
         name: 'Aion',
         slug: 'aion',
         alt: 'Aion',
@@ -153,7 +153,7 @@ const projects: Project[] = [
     {
         id: 13,
         image: '',
-        videoUrl: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4',
+        videoUrl: 'https://storage.googleapis.com/knbl_website/optimized/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.webm',
         name: 'Trans Israel',
         slug: 'trans-israel',
         alt: 'Trans Israel',
@@ -164,7 +164,7 @@ const projects: Project[] = [
 
 ];
 
-function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; height?: string }) {
+function ProjectCard({ project, height = 'h-[250px]', priority = false }: { project: Project; height?: string; priority?: boolean }) {
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
@@ -212,6 +212,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         startTime={project.startTime}
                         objectPosition={project.objectPosition}
                         objectFit={project.objectFit || 'cover'}
+                        priority={priority}
                     />
                     {/* Subtle dark overlay on hover to make text pop */}
                     <motion.div
@@ -362,7 +363,7 @@ export default function ProjectsGrid() {
                     {/* First Row Block (4 cards) */}
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                         <div className="md:col-span-4">
-                            <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" />
+                            <ProjectCard project={projects[0]} height="h-[400px] md:h-[516px]" priority={true} />
                         </div>
 
                         <div className="md:col-span-8 flex flex-col gap-4">

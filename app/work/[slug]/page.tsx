@@ -31,17 +31,17 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1AeF12pcP2/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Brand Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brand_collection_jt2hv9.mp4' },
-      { title: 'Family Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/ho/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.mp4' },
-      { title: 'Collection Highlights', url: 'https://storage.googleapis.com/knbl_website/videos/ho/H_O_Brands_Collection_crsb8a%20(1).mp4' },
-      { title: 'Black Friday Commercial', url: 'https://storage.googleapis.com/knbl_website/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.mp4' },
-      { title: 'Jumbo Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/HnO_28sec_16x9_jumbo_lwvuzv.mp4' },
-      { title: 'Jeans New Collection', url: 'https://storage.googleapis.com/knbl_website/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.mp4' },
+      { title: 'Brand Collection', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/H_O_Brand_collection_jt2hv9.webm' },
+      { title: 'Family Campaign', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/%D7%94%D7%9E%D7%95%D7%AA%D7%92_%D7%94%D7%9B%D7%99_%D7%97%D7%96%D7%A7_%D7%A9%D7%9C%D7%A0%D7%95_%D7%96%D7%95_%D7%94%D7%9E%D7%A9%D7%A4%D7%97%D7%94_ebatqp.webm' },
+      { title: 'Collection Highlights', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/H_O_Brands_Collection_crsb8a%20(1).webm' },
+      { title: 'Black Friday Commercial', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.webm' },
+      { title: 'Jumbo Collection', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/HnO_28sec_16x9_jumbo_lwvuzv.webm' },
+      { title: 'Jeans New Collection', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.webm' },
     ],
   },
   'rafael': {
     title: 'Rafael',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Rafael_MainLogo_RGB.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/Rafael_MainLogo_RGB.webp',
     logoBg: '#F7F7F8',
     description: "Engineering the future of global security.\nDynamic visual storytelling for a world-class leader in advanced defense systems.",
     socialLinks: [
@@ -49,11 +49,11 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1GSDDTkWpf/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Financial Reports', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.mp4', thumbnail: 'https://storage.googleapis.com/knbl_website/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.jpg' },
-      { title: 'Project Overview', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/1231_1_ixyoq3.mov' },
-      { title: 'Timeline & History', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.mp4' },
-      { title: 'Corporate Video', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v%20(1).mov' },
-      { title: 'Event Highlights', url: 'https://storage.googleapis.com/knbl_website/videos/rafael/%D7%90%D7%99%D7%A8%D7%95%D7%A2_%D7%96%D7%95%D7%92%D7%95%D7%AA_%D7%A1%D7%95%D7%A4%D7%99_icmirh%20(1).mov' },
+      { title: 'Financial Reports', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/%D7%93%D7%95%D7%97%D7%95%D7%AA_%D7%9B%D7%A1%D7%A4%D7%99%D7%99%D7%9D_%D7%A2%D7%9D_%D7%A1%D7%90%D7%95%D7%A0%D7%93_-_%D7%A8%D7%95%D7%97%D7%91%D7%99_psbzgb.webm', thumbnail: 'https://storage.googleapis.com/knbl_website/optimized/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.webp' },
+      { title: 'Project Overview', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/1231_1_ixyoq3.webm' },
+      { title: 'Timeline & History', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/1002_RAFAEL_TIMELINE_VID_F_STORY_ENG_w3all8.webm' },
+      { title: 'Corporate Video', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/%D7%97%D7%95%D7%9C%D7%A6%D7%95%D7%AA_%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%A8%D7%98%D7%95%D7%9F_%D7%91%D7%9C%D7%99_%D7%9E%D7%95%D7%A8_gszg4v%20(1).webm' },
+      { title: 'Event Highlights', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/rafael/%D7%90%D7%99%D7%A8%D7%95%D7%A2_%D7%96%D7%95%D7%92%D7%95%D7%AA_%D7%A1%D7%95%D7%A4%D7%99_icmirh%20(1).webm' },
     ],
   },
   'xiaomi': {
@@ -66,17 +66,17 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/189W2LXgm1/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Poco X7 Launch AI Production', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.mp4' },
-      { title: 'Poco X7 Launch AI Production #2', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.mp4' },
+      { title: 'Poco X7 Launch AI Production', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_uetowy.webm' },
+      { title: 'Poco X7 Launch AI Production #2', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/Pocco_X7_launch_for_Xiaomi_-_AI_production_no2_f9b9c3.webm' },
       { title: 'Poco X7 AI Video', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/1723_POCO_X7_AI_3_VID_1920x1080_xuhfdj.mp4' },
-      { title: 'Xiaomi B Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/11269-5_XIAOMI_B_yg4q7n.mp4' },
-      { title: 'Brand Story', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/%D7%95%D7%99%D7%93%D7%90%D7%95_%D7%A9%D7%9C_WhatsApp__2024-06-03_%D7%91%D7%A9%D7%A2%D7%94_16.14.53_c9f00e72_o56ori.mp4' },
-      { title: 'TLV Edit', url: 'https://storage.googleapis.com/knbl_website/videos/xiaomi/TLV_EDIT_eoqnqi.mp4' },
+      { title: 'Xiaomi B Campaign', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/11269-5_XIAOMI_B_yg4q7n.webm' },
+      { title: 'Brand Story', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/%D7%95%D7%99%D7%93%D7%90%D7%95_%D7%A9%D7%9C_WhatsApp__2024-06-03_%D7%91%D7%A9%D7%A2%D7%94_16.14.53_c9f00e72_o56ori.webm' },
+      { title: 'TLV Edit', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/TLV_EDIT_eoqnqi.webm' },
     ],
   },
   'roladin': {
     title: 'Roladin',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Roladin_logo_BLACK.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/Roladin_logo_BLACK.webp',
     logoBg: '#F7F7F8',
     description: "The art of baking, captured in every frame.\nA visual journey into the heart of world-class patisserie and creative innovation",
     socialLinks: [
@@ -84,9 +84,9 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/17t3nBB9cx/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Bakery Factory', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%9E%D7%A4%D7%A2%D7%9C%20%D7%9C%D7%97%D7%9D_1.mp4' },
-      { title: 'Branches Overview', url: 'https://storage.googleapis.com/knbl_website/roladin%20-%20%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D.mp4' },
-      { title: 'Square Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/roladin/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.mp4' },
+      { title: 'Bakery Factory', url: 'https://storage.googleapis.com/knbl_website/optimized/roladin%20-%20%D7%9E%D7%A4%D7%A2%D7%9C%20%D7%9C%D7%97%D7%9D_1.webm' },
+      { title: 'Branches Overview', url: 'https://storage.googleapis.com/knbl_website/optimized/roladin%20-%20%D7%A1%D7%A0%D7%99%D7%A4%D7%99%D7%9D.webm' },
+      { title: 'Square Campaign', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/roladin/ROLADIN_PART_3_-_%D7%A8%D7%99%D7%91%D7%95%D7%A2%D7%99_wisrun.webm' },
     ],
   },
   'carters': {
@@ -99,12 +99,12 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1CGyWty72e/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'With You From The Start', url: 'https://storage.googleapis.com/knbl_website/videos/carters/Carter_s_-_with_you_from_the_start_zb0d6q.mp4' },
+      { title: 'With You From The Start', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/carters/Carter_s_-_with_you_from_the_start_zb0d6q.webm' },
     ],
   },
   'safari': {
     title: 'Safari',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/logo_eng_brown_full.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/logo_eng_brown_full.webp',
     logoBg: '#F7F7F8',
     description: "Bringing the wild heart of Africa to life. \nCapturing the breathtaking encounters and untamed beauty of the animal kingdom.",
     socialLinks: [
@@ -112,7 +112,7 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1FpYYhUG1S/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Safari Experience', url: 'https://storage.googleapis.com/knbl_website/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.mp4' },
+      { title: 'Safari Experience', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/safari/WhatsApp_Video_2026-01-18_at_12.43.55_rjsdeq.webm' },
     ],
   },
   'takeda': {
@@ -125,15 +125,15 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1GRfwX6zz4/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/takeda/takeda_fin_LOWER_sgeqe4.mp4' },
-      { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/2015_TAKEDA_GAUCHER_VID_FIX_1.mp4' },
+      { title: 'Takeda Showcase', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/takeda/takeda_fin_LOWER_sgeqe4.webm' },
+      { title: 'Gaucher Project', url: 'https://storage.googleapis.com/knbl_website/optimized/2015_TAKEDA_GAUCHER_VID_FIX_1.webm' },
 
 
     ],
   },
   'electra-precise': {
     title: 'Electra group',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Electra%20Logo%20ENG-01.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/Electra%20Logo%20ENG-01.webp',
     logoBg: '#F7F7F8',
     description: "One group. Infinite impact. \nDocumenting the strength, precision, and vision behind the most iconic projects.",
     socialLinks: [
@@ -141,9 +141,9 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1aKnGCNTe8/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/videos/electra/electra_Precise_Speed_LOW_bv6bzb.mp4' },
-      { title: 'Electra "BEYOND" Project', url: 'https://storage.googleapis.com/knbl_website/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.mp4' },
-      { title: 'Electra Robotic Parking', url: 'https://storage.googleapis.com/knbl_website/videos/electra/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.mp4' },
+      { title: 'Precise Speed', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/electra_Precise_Speed_LOW_bv6bzb.webm' },
+      { title: 'Electra "BEYOND" Project', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.webm' },
+      { title: 'Electra Robotic Parking', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/2749_ELECTRA_Robotic_Parking_VIDEO_1920X1080_02_iakpwj.webm' },
     ],
   },
   'aion': {
@@ -156,16 +156,16 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1CG5Xsixtn/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/aion/1008_jr9vrx.mp4' },
-      { title: 'Brand Experience', url: 'https://storage.googleapis.com/knbl_website/videos/aion/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.mp4' },
-      { title: 'Parking Campaign', url: 'https://storage.googleapis.com/knbl_website/videos/aion/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.mp4' },
-      { title: 'HT Highlight', url: 'https://storage.googleapis.com/knbl_website/videos/aion/HT_ysxnx9.mp4' },
-      { title: 'Interior Drive', url: 'https://storage.googleapis.com/knbl_website/videos/aion/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.mov' },
+      { title: 'Aion V Showcase', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/1008_jr9vrx.webm' },
+      { title: 'Brand Experience', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/AION_-_16X9_%D7%9E%D7%A9%D7%95%D7%9C%D7%91_ngegbm.webm' },
+      { title: 'Parking Campaign', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A1%D7%95%D7%A4%D7%99_csahyw.webm' },
+      { title: 'HT Highlight', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/HT_ysxnx9.webm' },
+      { title: 'Interior Drive', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/aion/%D7%A0%D7%A1%D7%99%D7%A2%D7%94_%D7%9E%D7%91%D7%A4%D7%A0%D7%99%D7%9D_%D7%9E%D7%AA%D7%95%D7%A7%D7%9F_u95ath.webm' },
     ],
   },
   'lod': {
     title: 'Lod',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/CALCALIT_LOD_LOGO.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/CALCALIT_LOD_LOGO.webp',
     logoBg: '#F7F7F8',
     description: "Reshaping the urban landscape, one project at a time",
     socialLinks: [
@@ -173,7 +173,7 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1DVYojbZiv/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Urban Transformation', url: 'https://storage.googleapis.com/knbl_website/videos/lod/lod_16x9_2mbps.mp4' },
+      { title: 'Urban Transformation', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/lod/lod_16x9_2mbps.webm' },
     ],
   },
   'anker': {
@@ -186,8 +186,8 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/1HCGgCvNL4/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Anker Eufy Showcase', url: 'https://storage.googleapis.com/knbl_website/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.mp4' },
-      { title: 'Eufy E25 Preview', url: 'https://storage.googleapis.com/knbl_website/videos/anker/HEMILTON_EUFI_E25_f9pu95.mp4' },
+      { title: 'Anker Eufy Showcase', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/anker/2727_ANKER_EUFY_T2352_PRODUCT_VID_970x250_C%203.webm' },
+      { title: 'Eufy E25 Preview', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/anker/HEMILTON_EUFI_E25_f9pu95.webm' },
     ],
   },
   'reuth-hospital': {
@@ -200,13 +200,13 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/14TVNU6ybRm/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
-      { title: 'Hospital Choir', url: 'https://storage.googleapis.com/knbl_website/4.12%20%D7%9E%D7%A7%D7%94%D7%9C%D7%94%20-%20%D7%91%D7%99%D7%AA%20%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.mp4' },
+      { title: 'Challenging the Impossible', url: 'https://storage.googleapis.com/knbl_website/optimized/%D7%9C%D7%90%D7%AA%D7%92%D7%A8%20%D7%90%D7%AA%20%D7%94%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%A4%D7%A9%D7%A8%D7%99%20-%20%D7%91%D7%99%D7%AA%20%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%94%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.webm' },
+      { title: 'Hospital Choir', url: 'https://storage.googleapis.com/knbl_website/optimized/4.12%20%D7%9E%D7%A7%D7%94%D7%9C%D7%94%20-%20%D7%91%D7%99%D7%AA%20%D7%97%D7%95%D7%9C%D7%99%D7%9D%20%D7%A9%D7%99%D7%A7%D7%95%D7%9E%D7%99%20%D7%A8%D7%A2%D7%95%D7%AA.webm' },
     ],
   },
   'trans-israel': {
     title: 'Trans Israel',
-    logo: 'https://storage.googleapis.com/knbl_website/logos/color%20logos/Logo%20%D7%9C%D7%95%D7%92%D7%95%20%D7%97%D7%93%D7%A9.png',
+    logo: 'https://storage.googleapis.com/knbl_website/optimized/logos/color%20logos/Logo%20%D7%9C%D7%95%D7%92%D7%95%20%D7%97%D7%93%D7%A9.webp',
     logoBg: '#F7F7F8',
     description: "Connecting the nation, accelerating the future. \nHigh-impact visuals documenting the massive infrastructure projects that redefine Israel’s landscape.",
     socialLinks: [
@@ -214,7 +214,7 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/183SaAZ4Cv/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.mp4' },
+      { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.webm' },
     ],
   },
 
