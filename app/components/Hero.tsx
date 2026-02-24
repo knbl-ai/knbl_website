@@ -100,7 +100,7 @@ export default function Hero() {
     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     return (
-        <section className="keep-background relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-white pt-20 overflow-hidden">
+        <section className="relative min-h-[600px] h-screen md:h-[1025px] flex flex-col items-center justify-center bg-transparent pt-20 overflow-hidden">
             {/* Background Gradient Layer for Mobile */}
             <div className="absolute inset-x-0 bottom-0 h-[25%] bg-gradient-to-t from-indigo-50/50 to-transparent md:hidden" />
 
@@ -210,7 +210,7 @@ export default function Hero() {
             </div>
 
             {/* Main Content Area */}
-            <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center">
+            <div className="relative z-30 md:z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -245,7 +245,11 @@ export default function Hero() {
                     className="mt-16 md:mt-32"
                 >
                     <ScrollIndicator onClick={() => {
-                        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                        const isMobile = window.innerWidth < 768;
+                        document.getElementById('about')?.scrollIntoView({
+                            behavior: 'smooth',
+                            block: isMobile ? 'center' : 'start'
+                        });
                     }} />
                 </motion.div>
             </div>
@@ -325,7 +329,7 @@ export default function Hero() {
                     y: [0, 12, -12, 0]
                 }}
                 transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[40%] right-[15%] w-4 h-4 md:w-5 md:h-5 bg-[#4F39F6] rounded-full z-10 opacity-100"
+                className="absolute top-[40%] right-[15%] w-4 h-4 md:w-5 md:h-5 bg-[#4F39F6] rounded-full z-10 opacity-100 hidden md:block"
             />
 
             <motion.div

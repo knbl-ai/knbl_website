@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Tag from '@/components/ui/Tag';
@@ -21,7 +21,7 @@ const blogs = [
     date: 'Sep 28, 2025',
     category: 'Data',
     image: '/images/blog/blog-data.webp',
-    slug: 'the-rise-of-micro-communities',
+    slug: 'the-end-of-one-size-fits-all-marketing',
   },
   {
     title: 'When Trends Become Strategy',
@@ -29,7 +29,7 @@ const blogs = [
     date: 'Aug 19, 2025',
     category: 'Culture',
     image: '/images/blog/blog-culture.webp',
-    slug: 'data-driven-storytelling',
+    slug: 'when-trends-become-strategy',
   },
   // Row 2
   {
@@ -89,10 +89,11 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
   return (
     <Link href={`/insights/${blog.slug}`}>
       <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.05 }}
+        layout
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out h-full flex flex-col"
@@ -108,7 +109,7 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
               sizes="(max-width: 768px) 100vw, 33vw"
             />
             <div className="absolute top-4 left-4 z-10">
-              <Tag variant={blog.category.toLowerCase() as 'ai' | 'data' | 'culture'}>{blog.category}</Tag>
+              <Tag>{blog.category}</Tag>
             </div>
           </div>
 
@@ -166,16 +167,29 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
   );
 };
 
-export default function BlogGrid() {
+interface BlogGridProps {
+  activeCategories: string[];
+}
+
+export default function BlogGrid({ activeCategories }: BlogGridProps) {
+  const filteredBlogs = activeCategories.includes('View all')
+    ? blogs
+    : blogs.filter(blog => activeCategories.includes(blog.category));
+
   return (
     <section className="px-6 md:px-[120px] pb-24">
       <div className="max-w-7xl mx-auto">
         {/* Blog Grid - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {blogs.map((blog, index) => (
-            <BlogCard key={`${blog.title}-${index}`} blog={blog} index={index} />
-          ))}
-        </div>
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredBlogs.map((blog, index) => (
+              <BlogCard key={`${blog.title}-${index}`} blog={blog} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

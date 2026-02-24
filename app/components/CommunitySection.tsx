@@ -69,7 +69,7 @@ export default function CommunitySection() {
       <div className="relative pt-16 md:pt-24 pb-12 md:pb-32 px-6 md:px-[120px] z-10 hidden md:block">
         <div className="max-w-3xl text-center mx-auto">
           <TextReveal
-            initialColor="#B3B3B3"
+            initialColor="#FFFFFF"
             revealedColor="#000000"
             startEarly={true}
             className="py-0 text-[26px] leading-[1.5] font-medium tracking-tight justify-center text-center"
@@ -82,6 +82,20 @@ export default function CommunitySection() {
       {/* Video Card and Info Section */}
       <div className="relative pt-6 md:pt-0 pb-32 md:pb-32 z-10">
         <div className="w-full max-w-[1320px] mx-auto px-6 relative">
+          {/* Mobile Text Section - Now above video */}
+          <div className="md:hidden mb-10">
+            <div className="space-y-4 text-center">
+              <TextReveal
+                startEarly
+                initialColor="#B3B3B3"
+                revealedColor="#000000"
+                className="text-[18px] leading-[1.4] text-white/90 font-normal py-0 justify-center text-center"
+              >
+                Community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. It’s a space built on collaboration, learning, and collective movement forward.
+              </TextReveal>
+            </div>
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -192,37 +206,49 @@ export default function CommunitySection() {
             )}
           </motion.div>
 
-          {/* Mobile Text and Info Section */}
-          <div className="md:hidden mt-10">
-            <div className="space-y-4 text-center">
-              <TextReveal
-                startEarly
-                initialColor="#B3B3B3"
-                revealedColor="#000000"
-                className="text-[18px] leading-[1.4] text-white/90 font-normal py-0 justify-center text-center"
-              >
-                Community at KNBL is where marketing minds meet to learn, share, and grow together. Through marketing masters, hands-on sessions, and open talks, we turn shared knowledge into real progress. It’s a space built on collaboration, learning, and collective movement forward.
-              </TextReveal>
-            </div>
+          {/* Mobile Navigation controls */}
+          <div className="md:hidden mt-6">
+            {!isPlaying && (
+              <div className="mb-6 space-y-2">
+                <h3 className="text-2xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
+                <p className="text-base leading-relaxed text-[#CFCFD3]">
+                  {currentVideo.description.split('Limy.ai').map((part, i, arr) => (
+                    <span key={i}>
+                      {part}
+                      {i < arr.length - 1 && (
+                        <a
+                          href="https://www.limy.ai/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white underline hover:text-primary-400 transition-colors cursor-pointer"
+                        >
+                          Limy.ai
+                        </a>
+                      )}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            )}
 
             {/* Navigation Controls - Left aligned for mobile */}
             {!isPlaying && (
-              <div className="flex gap-4 md:gap-3 items-center">
+              <div className="flex gap-2 md:gap-3 items-center">
                 {/* Previous Button */}
                 <motion.button
                   onMouseEnter={() => setIsPrevHovered(true)}
                   onMouseLeave={() => setIsPrevHovered(false)}
                   onClick={handlePrev}
                   whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 md:w-[64px] md:h-[64px] bg-primary-900/50 hover:bg-primary-900/70 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-10 h-10 md:w-[64px] md:h-[64px] bg-[#1E1A4D] hover:bg-[#1E1A4D]/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
-                  <div className="relative w-5 h-5 md:w-6 md:h-6 scale-x-[-1]">
+                  <div className="relative w-4 h-4 md:w-6 md:h-6 scale-x-[-1]">
                     <motion.div
                       animate={{ x: isPrevHovered ? -140 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -233,7 +259,7 @@ export default function CommunitySection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -243,7 +269,7 @@ export default function CommunitySection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -256,15 +282,15 @@ export default function CommunitySection() {
                   onMouseLeave={() => setIsNextHovered(false)}
                   onClick={handleNext}
                   whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 md:w-[64px] md:h-[64px] bg-primary-900/50 hover:bg-primary-900/70 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-10 h-10 md:w-[64px] md:h-[64px] bg-[#1E1A4D] hover:bg-[#1E1A4D]/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
-                  <div className="relative w-5 h-5 md:w-6 md:h-6">
+                  <div className="relative w-4 h-4 md:w-6 md:h-6">
                     <motion.div
                       animate={{ x: isNextHovered ? -140 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -274,7 +300,7 @@ export default function CommunitySection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -284,7 +310,7 @@ export default function CommunitySection() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="absolute inset-0 flex items-center justify-center"
                     >
-                      <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </motion.div>
@@ -325,7 +351,7 @@ export default function CommunitySection() {
                   onMouseLeave={() => setIsPrevHovered(false)}
                   onClick={handlePrev}
                   whileTap={{ scale: 0.95 }}
-                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-[#1E1A4D] hover:bg-[#1E1A4D]/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
                   <div className="relative w-6 h-6 scale-x-[-1]">
                     <motion.div
@@ -366,7 +392,7 @@ export default function CommunitySection() {
                   onMouseLeave={() => setIsNextHovered(false)}
                   onClick={handleNext}
                   whileTap={{ scale: 0.95 }}
-                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-primary-900 hover:bg-primary-900/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
+                  className="w-[52px] h-[52px] md:w-[64px] md:h-[64px] bg-[#1E1A4D] hover:bg-[#1E1A4D]/90 rounded-full flex items-center justify-center text-white transition-colors overflow-hidden group"
                 >
                   <div className="relative w-6 h-6">
                     <motion.div

@@ -32,7 +32,7 @@ export default function ThemeController() {
             {
                 // Slightly broader range to detect intersection before it hits the dead center
                 threshold: [0, 0.1, 0.5, 0.9, 1],
-                rootMargin: '-45% 0px -45% 0px'
+                rootMargin: '-30% 0% -30% 0%'
             }
         );
 

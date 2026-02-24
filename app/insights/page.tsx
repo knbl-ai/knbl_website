@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -7,6 +8,33 @@ import BlogFilterTags from './components/BlogFilterTags';
 import BlogGrid from './components/BlogGrid';
 
 export default function InsightsPage() {
+  const [activeCategories, setActiveCategories] = useState<string[]>(['View all']);
+
+  const toggleCategory = (category: string) => {
+    if (category === 'View all') {
+      setActiveCategories(['View all']);
+      return;
+    }
+
+    setActiveCategories((prev) => {
+      const isAlreadyActive = prev.includes(category);
+      let next: string[];
+
+      if (isAlreadyActive) {
+        // Remove the category
+        next = prev.filter((c) => c !== category);
+        // If nothing left, go back to 'View all'
+        if (next.length === 0) next = ['View all'];
+      } else {
+        // Add the category, but first remove 'View all' if it was there
+        next = prev.filter((c) => c !== 'View all');
+        next.push(category);
+      }
+
+      return next;
+    });
+  };
+
   return (
     <main className="min-h-screen bg-white">
       <Navigation />
@@ -19,7 +47,7 @@ export default function InsightsPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-neutral-200 text-xl mb-5"
           >
-            Our Blog
+            Our Blog (Updated)
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -34,10 +62,10 @@ export default function InsightsPage() {
       </section>
 
       {/* Filter Tags */}
-      <BlogFilterTags />
+      <BlogFilterTags activeCategories={activeCategories} toggleCategory={toggleCategory} />
 
       {/* Blog Grid */}
-      <BlogGrid />
+      <BlogGrid activeCategories={activeCategories} />
 
       <Footer />
     </main>

@@ -1,11 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Tag from '@/components/ui/Tag';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { TextReveal } from '@/components/ui/text-reveal';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const blogs = [
   {
@@ -14,6 +15,7 @@ const blogs = [
     date: 'Oct 14, 2025',
     category: 'AI',
     image: '/images/blog/blog-ai.webp',
+    slug: 'how-ai-is-redefining-brand-creativity',
   },
   {
     title: 'The End of "One-Size-Fits-All" Marketing',
@@ -21,6 +23,7 @@ const blogs = [
     date: 'Sep 28, 2025',
     category: 'Data',
     image: '/images/blog/blog-data.webp',
+    slug: 'the-end-of-one-size-fits-all-marketing',
   },
   {
     title: 'When Trends Become Strategy',
@@ -28,13 +31,20 @@ const blogs = [
     date: 'Aug 19, 2025',
     category: 'Culture',
     image: '/images/blog/blog-culture.webp',
+    slug: 'when-trends-become-strategy',
   },
 ];
 
-const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; date: string; category: string; image: string }, index: number }) => {
+const categories = [
+  'View all',
+  'Data',
+  'Culture',
+  'AI',
+];
+
+const BlogCard = ({ blog, index }: { blog: typeof blogs[0], index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -44,100 +54,141 @@ const BlogCard = ({ blog, index }: { blog: { title: string; excerpt: string; dat
   }, []);
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => isMobile && setIsClicked(!isClicked)}
-      className="bg-indigo-50 p-4 cursor-pointer group rounded-[32px] hover:rounded-[44px] transition-all duration-500 ease-in-out"
-    >
-      <div className="space-y-4">
-        {/* Image */}
-        <div className="relative h-56 md:h-64 overflow-hidden rounded-[24px] group-hover:rounded-[36px] transition-all duration-500 ease-in-out">
-          <Image
-            src={blog.image}
-            alt={blog.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-          <motion.div
-            animate={{
-              x: isHovered ? 8 : 0,
-              y: isHovered ? 8 : 0
-            }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="absolute top-4 left-4 z-10"
-          >
-            <Tag variant={blog.category.toLowerCase() as 'ai' | 'data' | 'culture'}>{blog.category}</Tag>
-          </motion.div>
-        </div>
-
-        {/* Content */}
-        <div className="pt-6 px-4 pb-4 flex justify-between items-end gap-4">
-          <div className="flex flex-col">
-            <p className="text-neutral-300 text-sm mb-4">{blog.date}</p>
-            <h3 className="text-[18px] md:text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
-            <p className="text-neutral-500 text-[14px] md:text-base leading-[1.3] font-light py-0">
-              {blog.excerpt}
-            </p>
+    <Link href={`/insights/${blog.slug}`}>
+      <motion.article
+        layout
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="bg-indigo-50 p-4 cursor-pointer group rounded-[32px] hover:rounded-[44px] transition-all duration-500 ease-in-out h-full flex flex-col"
+      >
+        <div className="space-y-4 flex-1 flex flex-col">
+          {/* Image */}
+          <div className="relative h-56 md:h-64 overflow-hidden rounded-[24px] group-hover:rounded-[36px] transition-all duration-500 ease-in-out flex-shrink-0">
+            <Image
+              src={blog.image}
+              alt={blog.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            <motion.div
+              animate={{
+                x: isHovered ? 8 : 0,
+                y: isHovered ? 8 : 0
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="absolute top-4 left-4 z-10"
+            >
+              <Tag>{blog.category}</Tag>
+            </motion.div>
           </div>
 
-          {/* Arrow Button */}
-          <div className="flex-shrink-0 mb-1">
-            <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white overflow-hidden">
-              <motion.div
-                className="relative w-5 h-5 origin-center"
-                animate={isMobile ? { rotate: isClicked ? -45 : 0 } : {}}
-                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                style={{ originX: 0.5, originY: 0.5 }}
-              >
-                {/* Unity Rail System for perfect alignment */}
+          {/* Content */}
+          <div className="pt-6 px-4 pb-4 flex justify-between items-end gap-4 flex-1">
+            <div className="flex flex-col">
+              <p className="text-neutral-300 text-sm mb-4">{blog.date}</p>
+              <h3 className="text-[18px] md:text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
+              <p className="text-neutral-500 text-[14px] md:text-base leading-[1.3] font-light py-0">
+                {blog.excerpt}
+              </p>
+            </div>
+
+            {/* Arrow Button */}
+            <div className="flex-shrink-0 mb-1">
+              <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white overflow-hidden">
                 <motion.div
-                  animate={{ x: !isMobile && isHovered ? -120 : 0 }}
-                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                  className="flex absolute left-0 top-0 h-full items-center"
+                  className="relative w-5 h-5 origin-center"
+                  animate={{ rotate: 0 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                  style={{ originX: 0.5, originY: 0.5 }}
                 >
-                  {/* Arrow 1 */}
-                  <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                  </div>
+                  {/* Unity Rail System for perfect alignment */}
+                  <motion.div
+                    animate={{ x: !isMobile && isHovered ? -180 : 0 }}
+                    transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+                    className="flex absolute left-0 top-0 h-full items-center"
+                  >
+                    {/* Arrow 1 */}
+                    <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </div>
 
-                  {/* Spacing (Aligns with 60px steps) */}
-                  <div className="w-[40px]" />
+                    {/* Spacing (Aligns with 60px steps) */}
+                    <div className="w-[40px]" />
 
-                  {/* Arrow 2 */}
-                  <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                  </div>
+                    {/* Arrow 2 */}
+                    <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </div>
 
-                  {/* Spacing */}
-                  <div className="w-[40px]" />
+                    {/* Spacing */}
+                    <div className="w-[40px]" />
 
-                  {/* Arrow 3 */}
-                  <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
-                  </div>
+                    {/* Arrow 3 */}
+                    <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </div>
+
+                    {/* Spacing */}
+                    <div className="w-[40px]" />
+
+                    {/* Arrow 4 */}
+                    <div className="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                      </svg>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </motion.article>
+      </motion.article>
+    </Link>
   );
 };
 
 export default function BlogSection() {
+  const [activeCategories, setActiveCategories] = useState<string[]>(['View all']);
+
+  const toggleCategory = (category: string) => {
+    if (category === 'View all') {
+      setActiveCategories(['View all']);
+      return;
+    }
+
+    setActiveCategories((prev) => {
+      const isAlreadyActive = prev.includes(category);
+      let next: string[];
+
+      if (isAlreadyActive) {
+        next = prev.filter((c) => c !== category);
+        if (next.length === 0) next = ['View all'];
+      } else {
+        next = prev.filter((c) => c !== 'View all');
+        next.push(category);
+      }
+
+      return next;
+    });
+  };
+
+  const filteredBlogs = activeCategories.includes('View all')
+    ? blogs
+    : blogs.filter(blog => activeCategories.includes(blog.category));
+
   return (
     <section id="insights" className="pt-24 pb-16 md:py-44 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
@@ -166,18 +217,41 @@ export default function BlogSection() {
             viewport={{ once: true }}
             className="hidden md:block"
           >
-            <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
-              View All Articles
-            </InteractiveHoverButton>
+            <Link href="/insights">
+              <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
+                View All Articles
+              </InteractiveHoverButton>
+            </Link>
           </motion.div>
         </div>
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {blogs.map((blog, index) => (
-            <BlogCard key={blog.title} blog={blog} index={index} />
-          ))}
+        {/* Filter Tags */}
+        <div className="mb-12 flex flex-col md:flex-row items-start md:items-center gap-4">
+          <span className="text-neutral-400 text-sm font-medium whitespace-nowrap">Filter by:</span>
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => toggleCategory(category)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeCategories.includes(category)
+                  ? 'bg-primary-600 text-white border-primary-600 shadow-lg scale-105'
+                  : 'bg-white text-neutral-400 border-neutral-200 hover:border-primary-600 hover:text-primary-600'
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Blog Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredBlogs.map((blog, index) => (
+              <BlogCard key={blog.title} blog={blog} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Mobile View All Button */}
         <motion.div
@@ -186,9 +260,11 @@ export default function BlogSection() {
           viewport={{ once: true }}
           className="mt-20 flex justify-center md:hidden"
         >
-          <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
-            View All Articles
-          </InteractiveHoverButton>
+          <Link href="/insights" className="scale-[0.85]">
+            <InteractiveHoverButton className="px-4 py-3 bg-primary-600 text-white rounded-full font-medium whitespace-nowrap">
+              View All Articles
+            </InteractiveHoverButton>
+          </Link>
         </motion.div>
       </div>
     </section>

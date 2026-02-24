@@ -181,7 +181,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                 whileHover="hover"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
-                className={`${height} bg-transparent rounded-[40px] overflow-hidden cursor-pointer relative group isolation-auto`}
+                className={`${height} bg-transparent rounded-[24px] md:rounded-[40px] overflow-hidden cursor-pointer relative group isolation-auto`}
                 style={{ transform: 'translateZ(0)' }}
                 variants={{
                     initial: { scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)' },
@@ -193,7 +193,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                 }}
             >
                 <motion.div
-                    className="w-full h-full relative rounded-[40px] overflow-hidden"
+                    className="w-full h-full relative rounded-[24px] md:rounded-[40px] overflow-hidden"
                     variants={{
                         initial: { scale: 1, y: 0 },
                         hover: { scale: 1.05, y: isMobile ? 0 : -20 }
@@ -238,7 +238,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         y: { type: "spring", stiffness: isMobile ? 200 : 120, damping: isMobile ? 22 : 14, mass: 1 },
                         opacity: { duration: 0.2 }
                     }}
-                    className="absolute bottom-0 left-0 right-0 px-6 md:px-10 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[40px] bg-primary-600/90 backdrop-blur-md border-t border-white/10"
+                    className="absolute bottom-0 left-0 right-0 px-6 md:px-10 py-4 md:py-6 flex items-center justify-between z-10 rounded-b-[24px] md:rounded-b-[40px] bg-primary-600/90 backdrop-blur-md border-t border-white/10"
                 >
                     {/* Concave Shims - Smooth small liquid joints */}
                     <div className="absolute -top-[15.9px] left-0 w-[16px] h-[16px] pointer-events-none text-primary-600/90">
@@ -252,7 +252,7 @@ function ProjectCard({ project, height = 'h-[250px]' }: { project: Project; heig
                         </svg>
                     </div>
 
-                    <span className="text-white font-medium text-[16px] md:text-[28px] tracking-tight flex-1 mr-4 line-clamp-2">{project.name}</span>
+                    <span className="text-white font-medium text-[22px] md:text-[28px] tracking-tight flex-1 mr-4 line-clamp-2">{project.name}</span>
 
                     {isMobile ? (
                         /* Mobile Arrow Button */
@@ -389,6 +389,17 @@ export default function ProjectsGrid() {
                         <ProjectCard project={projects[4]} height="h-[300px]" />
                         <ProjectCard project={projects[8]} height="h-[300px]" />
                     </div>
+                </div>
+
+                {/* Mobile View All Button */}
+                <div className="mt-8 md:hidden flex justify-center w-full">
+                    <Link href="/work" className="w-fit">
+                        <InteractiveHoverButton
+                            className="bg-[#4F39F6] text-white rounded-full font-medium h-[56px] w-[210px] flex items-center justify-center text-lg"
+                        >
+                            View All Projects
+                        </InteractiveHoverButton>
+                    </Link>
                 </div>
             </div>
         </section>

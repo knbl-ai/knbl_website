@@ -246,6 +246,14 @@ export default function ProjectPage() {
   const params = useParams();
   const slug = params.slug as string;
   const project = projects[slug];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (!project) {
     return (
@@ -265,7 +273,7 @@ export default function ProjectPage() {
       <Navigation />
 
       {/* Project Header */}
-      <section className="pt-32 md:pt-48 pb-[60px] px-6 md:px-[120px]">
+      <section className="pt-32 md:pt-48 pb-6 md:pb-[60px] px-6 md:px-[120px]">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -328,12 +336,12 @@ export default function ProjectPage() {
       {project.videos.length > 0 && (
         <>
           {/* Featured Top Video */}
-          <section className="pb-[60px] px-6 md:px-[120px]">
+          <section className="pb-6 md:pb-[60px] px-6 md:px-[120px]">
             <div className="max-w-7xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 w-[85vw] md:w-full mx-auto"
               >
                 <VideoPlayer
                   url={project.videos[0].url}
@@ -346,17 +354,17 @@ export default function ProjectPage() {
 
           {/* Other Videos */}
           {project.videos.length > 1 && (
-            project.videos.slice(1).length <= 2 ? (
-              <section className="pb-[120px] px-6 md:px-[120px]">
+            (isMobile || project.videos.slice(1).length <= 2) ? (
+              <section className="pb-20 md:pb-[120px] px-6 md:px-[120px]">
                 <div className="max-w-7xl mx-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
                     {project.videos.slice(1).map((video, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex flex-col gap-6"
+                        className="flex flex-col gap-6 w-[85vw] md:w-full mx-auto"
                       >
                         <VideoPlayer
                           url={video.url}
@@ -434,7 +442,7 @@ function VideoCarousel({ videos, onOpen }: {
   };
 
   return (
-    <section className="pb-[120px] relative overflow-hidden group/section">
+    <section className="pb-20 md:pb-[120px] relative overflow-hidden group/section">
       <style dangerouslySetInnerHTML={{
         __html: `
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -447,7 +455,7 @@ function VideoCarousel({ videos, onOpen }: {
         onMouseUp={handleMouseUpOrLeave}
         onMouseLeave={handleMouseUpOrLeave}
         onClickCapture={handleClickCapture}
-        className={`flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 md:px-[120px] pb-10 ${isDragging ? 'cursor-grabbing select-none scroll-auto' : 'cursor-grab'
+        className={`flex gap-4 md:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory px-6 md:px-[120px] pb-10 ${isDragging ? 'cursor-grabbing select-none scroll-auto' : 'cursor-grab'
           }`}
         style={{
           scrollSnapType: isDragging ? 'none' : 'x mandatory',

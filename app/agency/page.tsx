@@ -11,7 +11,7 @@ import TeamPromise from './components/TeamPromise';
 
 export default function AgencyPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-transparent">
       <Navigation />
 
       {/* Hero */}

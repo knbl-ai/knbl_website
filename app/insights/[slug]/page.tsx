@@ -21,7 +21,7 @@ const blogPosts: Record<string, {
 }> = {
   'how-ai-is-redefining-brand-creativity': {
     title: 'How AI Is Redefining Brand Creativity',
-    category: 'Innovation',
+    category: 'AI',
     date: 'Oct 14, 2025',
     readTime: '4 min Read',
     excerpt: 'From automated storytelling to adaptive design systems, artificial intelligence is reshaping the creative process in ways brands can no longer ignore.',
@@ -54,6 +54,50 @@ const blogPosts: Record<string, {
       {
         type: 'paragraph',
         text: 'Despite its growing capabilities, AI is not replacing the creative mind. It cannot replicate intuition, emotional nuance, or the cultural sensitivity that makes a brand feel alive. Instead, it acts as a partner that sharpens decision making and expands the space for experimentation. The future of brand creativity lies in this balance. Human vision leads the way, and AI supports it by providing insights, precision, and agility. Brands that understand this partnership will continue to stand out in a crowded digital landscape.',
+      },
+    ],
+  },
+  'the-end-of-one-size-fits-all-marketing': {
+    title: 'The End of "One-Size-Fits-All" Marketing',
+    category: 'Data',
+    date: 'Sep 28, 2025',
+    readTime: '5 min Read',
+    excerpt: 'Why brands that personalize their message around real human behavior are winning - and how to start doing it right.',
+    image: '/images/blog/blog-data.webp',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'The era of generic marketing is over. In a world where consumers are bombarded with thousands of messages daily, the only way to stand out is through relevance. Data-driven personalization has moved from a "nice-to-have" to a fundamental requirement for brand survival.',
+      },
+      {
+        type: 'heading',
+        text: 'The power of behavior',
+      },
+      {
+        type: 'paragraph',
+        text: 'Modern marketing is no longer about demographics; it is about behavior. By understanding how users interact with content, what they search for, and when they are most active, brands can deliver messages that feel helpful rather than intrusive. This shift requires a robust data engine that can process signals in real time and translate them into actionable creative directions.',
+      },
+    ],
+  },
+  'when-trends-become-strategy': {
+    title: 'When Trends Become Strategy',
+    category: 'Culture',
+    date: 'Aug 19, 2025',
+    readTime: '3 min Read',
+    excerpt: "Understanding cultural signals is more than following hype - it's how smart brands build lasting relevance.",
+    image: '/images/blog/blog-culture.webp',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Hyper-speed culture moves faster than traditional strategy can keep up with. For brands, the challenge is no longer just seeing a trend, but knowing which ones to act on and which ones to ignore. True strategy lies in the ability to distinguish between a fleeting moment and a fundamental shift in user behavior.',
+      },
+      {
+        type: 'heading',
+        text: 'Cultural Intelligence',
+      },
+      {
+        type: 'paragraph',
+        text: 'Building a relevant brand requires cultural intelligence—the ability to read between the lines of social signals. When a brand successfully aligns its core values with a growing cultural movement, it creates a connection that goes beyond a simple transaction. It becomes part of the conversation.',
       },
     ],
   },

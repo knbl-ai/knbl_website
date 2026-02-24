@@ -20,6 +20,21 @@ export default function Navigation() {
   const [activeItem, setActiveItem] = useState('Home');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  // Check if body has 'is-dark' class to update text color
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.body.classList.contains('is-dark'));
+    };
+
+    checkTheme();
+    // Observe class changes on body
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
 
   // Update active item based on current pathname
   useEffect(() => {
@@ -60,8 +75,12 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
+  const navTextColor = isMobileMenuOpen || isDark ? 'white' : 'black';
+  const logoFill = isMobileMenuOpen || isDark ? 'fill-white' : 'fill-black';
+  const burgerBg = isMobileMenuOpen || isDark ? 'bg-white' : 'bg-black';
+
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent">
+    <nav className={`absolute top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black/80 backdrop-blur-md' : 'bg-transparent'} transition-all duration-300`}>
       <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0">
@@ -75,19 +94,19 @@ export default function Navigation() {
                 <g clipPath="url(#clip0_0_717)">
                   <path
                     d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z"
-                    className={`transition-colors duration-300 ${isMobileMenuOpen ? 'fill-white' : 'fill-black'}`}
+                    className={`transition-colors duration-300 ${logoFill}`}
                   />
                   <path
                     d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z"
-                    className={`transition-colors duration-300 ${isMobileMenuOpen ? 'fill-white' : 'fill-black'}`}
+                    className={`transition-colors duration-300 ${logoFill}`}
                   />
                   <path
                     d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 21.3546 77.6088 21.3546 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z"
-                    className={`transition-colors duration-300 ${isMobileMenuOpen ? 'fill-white' : 'fill-black'}`}
+                    className={`transition-colors duration-300 ${logoFill}`}
                   />
                   <path
                     d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z"
-                    className={`transition-colors duration-300 ${isMobileMenuOpen ? 'fill-white' : 'fill-black'}`}
+                    className={`transition-colors duration-300 ${logoFill}`}
                   />
                   <path
                     d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z"
@@ -118,9 +137,9 @@ export default function Navigation() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="flex flex-col gap-[5.5px] absolute"
             >
-              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-black'}`} />
-              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-black'}`} />
-              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${isMobileMenuOpen ? 'bg-white' : 'bg-black'}`} />
+              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${burgerBg}`} />
+              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${burgerBg}`} />
+              <span className={`w-[24px] h-[2px] rounded-full transition-colors duration-300 ${burgerBg}`} />
             </motion.div>
 
             {/* X Icon */}

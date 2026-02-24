@@ -84,7 +84,7 @@ export default function ServicesGrid() {
   };
 
   return (
-    <section id="services" className="bg-neutral-900 px-6 md:px-[120px] pt-16 md:pt-20 pb-20 md:pb-24">
+    <section id="services" className="bg-transparent px-6 md:px-[120px] pt-16 md:pt-20 pb-20 md:pb-24">
       <div className="max-w-[1240px] mx-auto">
         <div className="mb-10 md:mb-16">
           <motion.h2 className="text-4xl md:text-[56px] font-medium text-white mb-1 max-w-4xl tracking-tight font-sans leading-[1.1]">
@@ -181,19 +181,22 @@ export default function ServicesGrid() {
                         layout
                         animate={{
                           scale: 1,
-                          backgroundColor: '#ffffff'
+                          backgroundColor: isExpanded ? '#1E1A4D' : '#4F39F6'
                         }}
                         className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
                       >
                         <motion.svg
-                          className="w-5 h-5 text-[#4F39F6]"
+                          className="w-5 h-5"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                           strokeWidth={2.5}
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          animate={{ rotate: isExpanded ? 0 : -180 }}
+                          animate={{
+                            rotate: isExpanded ? 0 : -180,
+                            color: '#ffffff'
+                          }}
                           transition={{ duration: 0.4, ease: "backOut" }}
                         >
                           <path d="M12 5v14M19 12l-7 7-7-7" />
@@ -203,12 +206,12 @@ export default function ServicesGrid() {
                   ) : (
                     /* Desktop Layout: Arrow at top, Text at bottom */
                     <>
-                      <div className="flex justify-end w-full">
+                      <div className={`flex w-full ${isExpanded ? 'justify-start' : 'justify-end'}`}>
                         <motion.div
                           layout
                           animate={{
                             scale: 1,
-                            backgroundColor: isExpanded ? '#000000' : '#ffffff'
+                            backgroundColor: isExpanded ? '#1E1A4D' : '#4F39F6'
                           }}
                           className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 border border-white/10 shadow-lg transition-colors duration-300"
                         >
@@ -222,7 +225,7 @@ export default function ServicesGrid() {
                             strokeLinejoin="round"
                             animate={{
                               rotate: isExpanded ? 360 : (isHovered ? 270 : 180),
-                              color: isExpanded ? '#ffffff' : '#4F39F6'
+                              color: '#ffffff'
                             }}
                             transition={{ duration: 0.4, ease: "backOut" }}
                           >

@@ -57,7 +57,7 @@ export default function HowWeDoIt() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-0 md:pt-16 pb-12 md:pb-32 px-6 md:px-[120px]">
+    <section ref={sectionRef} className="pt-24 md:pt-16 pb-12 md:pb-32 px-6 md:px-[120px]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
           {/* Sticky Sidebar - Desktop only */}
@@ -74,7 +74,7 @@ export default function HowWeDoIt() {
               containerRef={sectionRef}
               initialColor="#CFCFD3"
               revealedColor="#000000"
-              className="py-0 text-xl md:text-2xl leading-relaxed font-normal tracking-tight max-w-xl"
+              className="py-0 text-lg md:text-2xl leading-[1.1] md:leading-relaxed font-medium tracking-tight max-w-xl"
             >
               {`At KNBL, strategy isn't just the first step - it's the thread that runs through everything we do.\nWe combine strategic thinking, creative storytelling, and smart technology to build marketing that actually works.`}
             </TextReveal>
@@ -90,7 +90,8 @@ export default function HowWeDoIt() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className={`relative bg-primary-600 rounded-[32px] p-8 md:p-10 lg:p-14 overflow-hidden flex flex-col justify-end ${isMobile
+                style={isMobile ? { zIndex: index + 1 } : {}}
+                className={`${isMobile ? 'sticky top-[100px]' : 'relative'} bg-primary-600 rounded-[32px] p-8 md:p-10 lg:p-14 overflow-hidden flex flex-col justify-end ${isMobile
                   ? "min-h-[300px] md:min-h-[340px] lg:h-[380px]"
                   : "min-h-[400px] md:min-h-[480px] lg:min-h-[510px]"
                   }`}

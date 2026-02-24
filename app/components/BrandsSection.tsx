@@ -64,8 +64,10 @@ const Marquee = ({ children, direction = 'left' }: { children: ReactNode, direct
   }, [children]);
 
   useAnimationFrame(() => {
-    if (isDragging.current || iterationWidth === 0) return;
-    x.set(x.get() + speed);
+    if (iterationWidth === 0) return;
+    if (!isDragging.current) {
+      x.set(x.get() + speed);
+    }
   });
 
   // The secret to seamless looping with useSpring: 
@@ -109,7 +111,7 @@ const Marquee = ({ children, direction = 'left' }: { children: ReactNode, direct
 
 export default function BrandsSection() {
   return (
-    <section className="bg-neutral-900 pt-24 md:pt-40 pb-20 md:pb-28 overflow-hidden">
+    <section className="bg-transparent pt-24 md:pt-40 pb-20 md:pb-28 overflow-hidden">
       <div className="px-6 md:px-[120px] mb-2 md:mb-4">
         <div className="max-w-7xl mx-auto">
           <motion.div

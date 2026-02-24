@@ -1,6 +1,5 @@
 interface TagProps {
   children: React.ReactNode;
-  variant?: 'ai' | 'data' | 'culture';
 }
 
 export default function Tag({ children }: TagProps) {
