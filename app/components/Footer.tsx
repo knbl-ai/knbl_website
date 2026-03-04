@@ -49,7 +49,11 @@ export default function Footer() {
     { label: 'AI Productions', href: '/ai-productions' },
     { label: 'Contact', href: '/contact' },
   ];
-  const legalLinks = ['Terms of use', 'Privacy policy', 'Cookies'];
+  const legalLinks = [
+    { label: 'Terms of use', href: '/terms' },
+    { label: 'Privacy policy', href: '/privacy' },
+    { label: 'Cookie Policy', href: '/cookie-policy' },
+  ];
 
   return (
     <footer data-theme="dark" className="bg-black text-white px-10 md:px-24 pt-16 pb-8 rounded-t-[32px]">
@@ -102,13 +106,13 @@ export default function Footer() {
               <h3 className="text-white font-normal text-base">Legal</h3>
               <div className="flex flex-col gap-3">
                 {legalLinks.map((link) => (
-                  <a
-                    key={link}
-                    href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
+                  <Link
+                    key={link.label}
+                    href={link.href}
                     className="text-neutral-400 text-base font-medium hover:text-primary-600 active:text-primary-600 transition-colors"
                   >
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 ))}
               </div>
             </div>
