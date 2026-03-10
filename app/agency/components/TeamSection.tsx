@@ -124,6 +124,14 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
+    name: 'Roni',
+    role: 'Graphic Designer',
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/Roni.mp4',
+    bio: "Graphic designer and vibe coder\nWhere high-end aesthetics meet the rhythm of the web. She doesn't just design layouts; she codes the entire brand experience. By blending visual mastery with \"vibe coding\" precision, she ensures every digital touchpoint feels as intuitive and impactful as it looks.",
+    bgColor: '#ffffff',
+    videoStyle: { transform: 'scale(1.3) translateY(50px)' },
+  },
+  {
     name: 'Adi',
     role: 'Designer',
     video: 'https://storage.googleapis.com/knbl_website/optimized/videos/our%20team/ADI.webm',
