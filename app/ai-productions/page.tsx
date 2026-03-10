@@ -106,6 +106,12 @@ const portraitVideos = [
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/%D7%A1%D7%95%D7%A3_%D7%A9%D7%A0%D7%94_%D7%A2%D7%91%D7%A8%D7%99%D7%AA_gvo3xc.webm',
         title: 'Rafael 2026',
         posterUrl: 'https://storage.googleapis.com/knbl_website/optimized/images/rafael/%D7%9B%D7%99%D7%A4%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_1_wlekhg.webp'
+    },
+    {
+        id: 24,
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.webm',
+        title: 'Trans Israel',
+        aspectRatio: 'aspect-[4/5]'
     }
 ];
 
@@ -137,6 +143,7 @@ interface Video {
     description?: string;
     trimEnd?: number;
     posterUrl?: string;
+    aspectRatio?: string;
 }
 
 function AIVideoCard({
@@ -467,7 +474,7 @@ export default function AIProductionsPage() {
                                 <AIVideoCard
                                     video={video}
                                     index={aiVideos.length + index}
-                                    height="aspect-[3/4]"
+                                    height={video.aspectRatio || "aspect-[3/4]"}
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}
                                     onMouseLeave={() => setPlayingId(null)}
@@ -511,7 +518,7 @@ export default function AIProductionsPage() {
                                     key={video.id}
                                     video={video}
                                     index={index + aiVideos.length}
-                                    height="aspect-[3/4.2]"
+                                    height={video.aspectRatio || "aspect-[3/4.2]"}
                                     isPortrait={true}
                                     isPlaying={playingId === video.id}
                                     onMouseEnter={() => setPlayingId(video.id)}

@@ -19,6 +19,7 @@ const projects: Record<string, {
     title: string;
     url: string;
     thumbnail?: string;
+    aspectRatio?: 'video' | 'portrait' | 'square';
   }[];
 }> = {
   'ho-brands': {
@@ -214,7 +215,11 @@ const projects: Record<string, {
       { type: 'facebook', url: 'https://www.facebook.com/share/183SaAZ4Cv/?mibextid=wwXIfr' },
     ],
     videos: [
-      { title: 'Connecting the North', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.webm' },
+      {
+        title: 'Connecting the North',
+        url: 'https://storage.googleapis.com/knbl_website/optimized/videos/trans%20israel/3785_HOTZE_ISRAEL_CONNECITING_THE_NORTH_AI_VIDEO_1080x1350.webm',
+        aspectRatio: 'portrait'
+      },
     ],
   },
 
@@ -242,7 +247,7 @@ function SocialIcon({ type }: { type: 'instagram' | 'tiktok' | 'facebook' }) {
 }
 
 export default function ProjectPage() {
-  const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string; thumbnail?: string } | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<{ title: string; url: string; thumbnail?: string; aspectRatio?: 'video' | 'portrait' | 'square' } | null>(null);
   const params = useParams();
   const slug = params.slug as string;
   const project = projects[slug];
@@ -346,6 +351,7 @@ export default function ProjectPage() {
                 <VideoPlayer
                   url={project.videos[0].url}
                   thumbnail={project.videos[0].thumbnail || ""}
+                  aspectRatio={project.videos[0].aspectRatio}
                   onOpen={() => setSelectedVideo(project.videos[0])}
                 />
               </motion.div>
@@ -369,6 +375,7 @@ export default function ProjectPage() {
                         <VideoPlayer
                           url={video.url}
                           thumbnail={video.thumbnail || ""}
+                          aspectRatio={video.aspectRatio}
                           onOpen={() => setSelectedVideo(video)}
                         />
                       </motion.div>
@@ -401,8 +408,8 @@ export default function ProjectPage() {
 }
 
 function VideoCarousel({ videos, onOpen }: {
-  videos: { title: string; url: string; thumbnail?: string }[];
-  onOpen: (video: { title: string; url: string; thumbnail?: string }) => void;
+  videos: { title: string; url: string; thumbnail?: string; aspectRatio?: 'video' | 'portrait' | 'square' }[];
+  onOpen: (video: { title: string; url: string; thumbnail?: string; aspectRatio?: 'video' | 'portrait' | 'square' }) => void;
 }) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -475,6 +482,7 @@ function VideoCarousel({ videos, onOpen }: {
             <VideoPlayer
               url={video.url}
               thumbnail={video.thumbnail || ""}
+              aspectRatio={video.aspectRatio}
               onOpen={() => onOpen(video)}
             />
           </motion.div>
@@ -487,11 +495,13 @@ function VideoCarousel({ videos, onOpen }: {
 function VideoPlayer({
   url,
   thumbnail,
-  onOpen
+  onOpen,
+  aspectRatio = 'video'
 }: {
   url: string;
   thumbnail: string;
   onOpen: () => void;
+  aspectRatio?: 'video' | 'portrait' | 'square';
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -511,9 +521,12 @@ function VideoPlayer({
     }
   };
 
+  const aspectClass = aspectRatio === 'portrait' ? 'aspect-[4/5]' : aspectRatio === 'square' ? 'aspect-square' : 'aspect-video';
+  const containerClass = aspectRatio === 'portrait' ? 'max-w-[450px]' : aspectRatio === 'square' ? 'max-w-[600px]' : 'w-full';
+
   return (
     <div
-      className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-100 group cursor-pointer"
+      className={`relative ${containerClass} ${aspectClass} rounded-3xl overflow-hidden bg-neutral-100 group cursor-pointer`}
       onClick={onOpen}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -544,7 +557,7 @@ function VideoPlayer({
   );
 }
 
-function VideoModal({ video, onClose }: { video: { title: string; url: string; thumbnail?: string }, onClose: () => void }) {
+function VideoModal({ video, onClose }: { video: { title: string; url: string; thumbnail?: string; aspectRatio?: 'video' | 'portrait' | 'square' }, onClose: () => void }) {
   const [showControls, setShowControls] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -578,7 +591,7 @@ function VideoModal({ video, onClose }: { video: { title: string; url: string; t
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.9, opacity: 0, y: 20 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="relative flex items-center justify-center z-50 group/modal w-full max-w-6xl aspect-video"
+        className={`relative flex items-center justify-center z-50 group/modal w-full ${video.aspectRatio === 'portrait' ? 'max-w-md aspect-[4/5]' : video.aspectRatio === 'square' ? 'max-w-2xl aspect-square' : 'max-w-6xl aspect-video'}`}
         onClick={(e) => {
           if (isMobile) {
             e.stopPropagation();
