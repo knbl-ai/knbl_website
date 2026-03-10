@@ -8,7 +8,7 @@ import AiProductionForm from '../components/AiProductionForm';
 import { VideoPreview } from '../../components/ui/VideoPreview';
 import { X, ArrowRight, ArrowUpRight } from 'lucide-react';
 
-const aiVideos = [
+const aiVideos: Video[] = [
     {
         id: 7,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.webm',
@@ -85,7 +85,7 @@ const aiVideos = [
     },
 ];
 
-const portraitVideos = [
+const portraitVideos: Video[] = [
     {
         id: 16,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.webm',
@@ -115,7 +115,7 @@ const portraitVideos = [
     }
 ];
 
-const productVideos = [
+const productVideos: Video[] = [
     {
         id: 13,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ai%20productions/0112_ylhhh4.webm',
