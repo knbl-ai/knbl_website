@@ -133,7 +133,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Adi',
-    role: 'Designer',
+    role: 'Graphic Designer',
     video: 'https://storage.googleapis.com/knbl_website/optimized/videos/our%20team/ADI.webm',
     bio: "The visual translator. Adi turns abstract ideas into high-end aesthetics, ensuring that every brand we grow doesn't just perform well, but looks incredible doing it.",
     bgColor: '#EEF2FF',
