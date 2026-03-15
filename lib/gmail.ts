@@ -27,7 +27,11 @@ export async function sendEmail({
         throw new Error('Missing environment variables for Gmail service');
     }
 
-    const recipient = (to || TARGET_EMAIL).trim();
+    const recipient = (to || TARGET_EMAIL)
+        .split(',')
+        .map((e) => e.trim())
+        .filter(Boolean)
+        .join(', ');
 
     try {
         const googleAuth = new google.auth.GoogleAuth({

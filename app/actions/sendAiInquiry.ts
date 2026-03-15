@@ -1,6 +1,7 @@
 'use server';
 
 import { sendEmail } from '@/lib/gmail';
+import { appendSheetRow } from '@/lib/sheets';
 
 export async function sendAiInquiry(formData: FormData) {
     const name = formData.get('name') as string;
@@ -26,6 +27,15 @@ Message: ${message}
             subject: 'Ai video production inquiry',
             body: body,
         });
+
+        await appendSheetRow([
+            new Date().toISOString(),
+            name,
+            email,
+            phone || '',
+            message,
+        ]);
+
         return { success: true };
     } catch (error) {
         console.error('Failed to send AI inquiry:', error);
