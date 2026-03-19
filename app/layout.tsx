@@ -11,9 +11,42 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'KNBL - Outshine the noise. We make brands unforgettable',
-  description: 'Creative marketing for ambitious brands. Strategy-driven creative collective that turns insights into impact.',
-  keywords: ['creative agency', 'marketing', 'strategy', 'branding', 'design'],
+  metadataBase: new URL('https://knbl.co'),
+  title: {
+    default: 'KNBL — Outshine the Noise',
+    template: '%s | KNBL',
+  },
+  description: 'KNBL is a strategy-driven creative collective that turns insights into impact. Creative marketing and AI-powered productions for ambitious brands.',
+  keywords: ['creative agency', 'marketing', 'brand strategy', 'AI productions', 'video production', 'Tel Aviv', 'branding', 'design', 'digital marketing'],
+  authors: [{ name: 'KNBL' }],
+  creator: 'KNBL',
+  publisher: 'KNBL',
+  openGraph: {
+    type: 'website',
+    siteName: 'KNBL',
+    locale: 'en_US',
+    url: 'https://knbl.co',
+    title: 'KNBL — Outshine the Noise',
+    description: 'Strategy-driven creative collective. AI-powered marketing for ambitious brands.',
+    images: [
+      {
+        url: '/images/logo/knbl.png',
+        width: 512,
+        height: 512,
+        alt: 'KNBL — Outshine the Noise',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@knbl',
+    title: 'KNBL — Outshine the Noise',
+    description: 'Strategy-driven creative collective. AI-powered marketing for ambitious brands.',
+    images: ['/images/logo/knbl.png'],
+  },
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/images/logo/knbl.png',
   },

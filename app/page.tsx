@@ -1,100 +1,101 @@
-'use client';
+import type { Metadata } from 'next';
+import HomePageClient from './HomePageClient';
+import { JsonLd } from './components/JsonLd';
 
-import { useRef } from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
-import ServicesGrid from './components/ServicesGrid';
-import HowWeDoIt from './components/HowWeDoIt';
-import ProjectsGrid from './components/ProjectsGrid';
-import BrandsSection from './components/BrandsSection';
-import BlogSection from './components/BlogSection';
-import CommunitySection from './components/CommunitySection';
-import FAQSection from './components/FAQSection';
-import { TextReveal } from '@/components/ui/text-reveal';
-import ThemeController from './components/ThemeController';
+export const metadata: Metadata = {
+  title: 'Creative Agency for Ambitious Brands',
+  description: "We're KNBL — a strategy-driven creative collective built for what's next. AI-powered storytelling, precision marketing, and brand strategy that turns insights into impact.",
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'KNBL — Outshine the Noise',
+    description: "Strategy-driven creative collective. AI-powered marketing for ambitious brands.",
+    url: '/',
+  },
+};
 
 export default function HomePage() {
-    const secondAboutRef = useRef<HTMLDivElement>(null);
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'KNBL',
+    url: 'https://knbl.co',
+    logo: 'https://knbl.co/images/logo/knbl.png',
+    description: 'Strategy-driven creative collective that turns insights into impact. Creative marketing and AI-powered productions for ambitious brands.',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '114 Derech Menachem Begin',
+      addressLocality: 'Tel Aviv',
+      addressCountry: 'IL',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+972-3-632-2242',
+      contactType: 'customer service',
+      email: 'info@knbl360.com',
+    },
+    sameAs: [],
+  };
 
-    return (
-        <main className="min-h-screen">
-            <ThemeController />
-            <Navigation />
-            <div data-theme-section="white">
-                <Hero />
-            </div>
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'KNBL',
+    url: 'https://knbl.co',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://knbl.co/work?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
 
-            <div data-theme-section="white">
-                <section id="about" className="flex flex-col items-center justify-center py-24 md:py-44 px-6 min-h-screen md:min-h-0">
-                    <div className="max-w-[1200px] mx-auto text-center">
-                        <TextReveal startEarly className="justify-center text-center text-[21px] md:text-[26px] leading-[1.4] md:leading-[1.5] font-medium tracking-tight max-w-[400px] md:max-w-3xl mx-auto">
-                            {`We're KNBL a strategy-driven collective built for what's next.\nWe started in storytelling, where every brand moment had a voice and a purpose. Today, that voice meets technology, partnered by AI, guided by insight, and scaled with precision.\nOur model connects every step.`}
-                        </TextReveal>
-                    </div>
-                </section>
-            </div>
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What services does KNBL offer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'KNBL offers brand strategy, creative direction, AI-powered video productions, digital campaigns, social media marketing, motion design, and data-driven storytelling for ambitious brands.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is AI Productions at KNBL?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'AI Productions at KNBL uses generative AI to create commercial video content, virtual spokespersons, motion design, and immersive brand experiences that would be impossible or prohibitively expensive with traditional production methods.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where is KNBL located?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'KNBL is located at 114 Derech Menachem Begin, Tel Aviv, Israel. We serve clients both locally and internationally.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I contact KNBL?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can reach KNBL by email at info@knbl360.com, by phone at +972 3 632 2242, or by visiting our contact page at https://knbl.co/contact.',
+        },
+      },
+    ],
+  };
 
-            <div data-theme-section="black" className="my-[200px]">
-                <ServicesGrid />
-            </div>
-
-            {/* Second About Section */}
-            <div data-theme-section="white">
-                <div className="py-24 px-6 flex flex-col items-center justify-center min-h-screen md:min-h-0">
-                    {/* Mobile version: 7 lines exactly */}
-                    <div className="md:hidden w-full">
-                        <TextReveal
-                            startEarly
-                            initialColor="#B3B3B3"
-                            revealedColor="#000000"
-                            className="justify-center text-center text-[21px] leading-[1.4] font-medium tracking-tight max-w-[320px] mx-auto"
-                        >
-                            {`We believe noise doesn't build\nbrands. Focus, direction, and\na smart engine do. We\ncombine strategic clarity with\nhigh-precision execution to\nensure every move our brands\nmake is intentional and impactful.`}
-                        </TextReveal>
-                    </div>
-
-                    {/* Desktop version: Original layout */}
-                    <div className="hidden md:block w-full">
-                        <TextReveal
-                            startEarly
-                            initialColor="#B3B3B3"
-                            revealedColor="#000000"
-                            className="justify-center text-center text-[26px] leading-[1.5] font-medium tracking-tight max-w-[950px] mx-auto"
-                        >
-                            {`We believe noise doesn't build brands. Focus, direction, and a smart engine do.\nWe combine strategic clarity with high-precision execution to ensure every move our brands make is intentional and impactful.`}
-                        </TextReveal>
-                    </div>
-                </div>
-            </div>
-
-            <div data-theme-section="white">
-                <HowWeDoIt />
-            </div>
-
-            <div data-theme-section="white">
-                <ProjectsGrid />
-            </div>
-
-            <div data-theme-section="black" className="my-[200px]">
-                <BrandsSection />
-            </div>
-
-            <div data-theme-section="white">
-                <BlogSection />
-            </div>
-
-            <div data-theme-section="white">
-                <CommunitySection />
-            </div>
-
-            <div data-theme-section="white">
-                <FAQSection />
-            </div>
-
-            <div data-theme-section="black" className="pt-[200px]">
-                <Footer />
-            </div>
-        </main>
-    );
+  return (
+    <>
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={websiteSchema} />
+      <JsonLd data={faqSchema} />
+      <HomePageClient />
+    </>
+  );
 }
