@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'stop-renting-attention': {
+    title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
+    description: 'Most marketing budgets are structured like short-term rentals. The moment the spend stops, so does your presence. The brands that win long-term are the ones building assets, not buying impressions.',
+    category: 'Strategy',
+    date: '2026-03-17',
+    image: '/images/blog/2026-03-17_stop-renting-attention_header.webp',
+  },
   'the-cmo-as-navigator': {
     title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
     description: 'AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive. The marketers who last won\'t be the ones who generate the most. They\'ll be the ones who know where they\'re going.',
