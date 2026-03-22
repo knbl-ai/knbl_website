@@ -60,41 +60,6 @@ const blogPostsMeta: Record<string, {
     date: '2026-03-19',
     image: '/images/blog/2026-03-19_the-cmo-as-navigator_header.webp',
   },
-  'how-ai-is-redefining-brand-creativity': {
-    title: 'How AI Is Redefining Brand Creativity',
-    description: 'From automated storytelling to adaptive design systems, artificial intelligence is reshaping the creative process in ways brands can no longer ignore.',
-    category: 'AI',
-    date: '2025-10-14',
-    image: '/images/blog/blog-ai.webp',
-  },
-  'the-end-of-one-size-fits-all-marketing': {
-    title: 'The End of "One-Size-Fits-All" Marketing',
-    description: 'Why brands that personalize their message around real human behavior are winning — and how to start doing it right.',
-    category: 'Data',
-    date: '2025-09-28',
-    image: '/images/blog/blog-data.webp',
-  },
-  'when-trends-become-strategy': {
-    title: 'When Trends Become Strategy',
-    description: "Understanding cultural signals is more than following hype — it's how smart brands build lasting relevance.",
-    category: 'Culture',
-    date: '2025-08-19',
-    image: '/images/blog/blog-culture.webp',
-  },
-  'the-rise-of-micro-communities': {
-    title: 'The Rise of Micro-Communities in Brand Building',
-    description: 'Why smaller, engaged audiences are becoming more valuable than mass reach for modern brands.',
-    category: 'Culture',
-    date: '2025-10-10',
-    image: '/images/blog/blog-culture.webp',
-  },
-  'data-driven-storytelling': {
-    title: 'Data-Driven Storytelling: The New Creative Frontier',
-    description: 'How combining analytics with narrative craft is creating more compelling brand stories.',
-    category: 'Data',
-    date: '2025-10-05',
-    image: '/images/blog/blog-data.webp',
-  },
 };
 
 export async function generateStaticParams() {
