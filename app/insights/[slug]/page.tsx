@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'the-cmo-as-navigator': {
+    title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
+    description: 'AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive. The marketers who last won\'t be the ones who generate the most. They\'ll be the ones who know where they\'re going.',
+    category: 'AI & Tech',
+    date: '2026-03-19',
+    image: '/images/blog/2026-03-19_the-cmo-as-navigator_header.webp',
+  },
   'how-ai-is-redefining-brand-creativity': {
     title: 'How AI Is Redefining Brand Creativity',
     description: 'From automated storytelling to adaptive design systems, artificial intelligence is reshaping the creative process in ways brands can no longer ignore.',
