@@ -18,6 +18,35 @@ const blogPosts: Record<string, {
     text: string;
   }[];
 }> = {
+  'precision-is-the-new-competitive-moat': {
+    title: 'Precision Is the New Competitive Moat',
+    category: 'Strategy',
+    date: 'Mar 15, 2026',
+    readTime: '4 min read',
+    excerpt: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
+    image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
+    content: [
+      { type: 'paragraph', text: 'There is a paradox at the center of the AI content boom. The easier it becomes to produce content, the less any individual piece of it is worth. Brands are generating more than ever, audiences are consuming it less than ever, and the gap between volume and value has never been wider.' },
+      { type: 'paragraph', text: 'The marketers who understand this are not trying to out-produce AI. They are doing something harder and more durable: they are being precise.' },
+      { type: 'heading', text: 'The Volume Trap' },
+      { type: 'paragraph', text: 'When production costs drop to near zero, the instinct is to flood. More blog posts, more social content, more email sequences, more ad variations. The logic feels sound — if content drives results, more content drives more results.' },
+      { type: 'paragraph', text: 'But that is not what is happening. What is happening is that audiences are becoming more selective under higher noise conditions, not less. When everything competes for attention, the threshold for what actually earns it rises. Generic content does not just underperform — it actively damages brand perception by signaling that a company does not know enough to be genuinely useful.' },
+      { type: 'paragraph', text: 'Forrester has put a number on the counter-trend: the perceived value of data-grounded human expertise has increased by roughly 30% as AI-generated content has proliferated. The market is correcting. The signal is getting more valuable as the noise gets louder.' },
+      { type: 'heading', text: 'What Precision Actually Looks Like' },
+      { type: 'paragraph', text: 'Precision in marketing is not about being more careful with words. It is about understanding your category deeply enough to say something that could only come from you — something that requires context, judgment, and accumulated expertise to produce.' },
+      { type: 'paragraph', text: 'Your customers are not searching for more content. They are searching for three specific things: accuracy about their actual situation, strategic insight that connects their problem to a path forward, and business truth that a generalist could not extract from the same data they already have.' },
+      { type: 'paragraph', text: 'The distinction matters. Anyone can write an article about marketing trends in 2026. Only a team that has spent years inside specific industries, with specific clients, across specific competitive dynamics, can produce a piece of analysis that a CFO reads and thinks: this person understands my problem better than my last three consultants did.' },
+      { type: 'paragraph', text: 'That is not a function of effort. It is a function of depth.' },
+      { type: 'heading', text: 'The New Competitive Logic' },
+      { type: 'paragraph', text: 'This creates an unusual strategic situation. In most markets, scale is a moat. In the attention economy right now, depth is the moat. And depth cannot be automated, at least not in any meaningful sense.' },
+      { type: 'paragraph', text: 'You cannot prompt your way to genuine category expertise. You can use AI to research faster, synthesize more efficiently, and distribute more broadly — but the underlying judgment that makes content precise still has to come from somewhere real. The brands that are winning audience trust in high-noise environments are the ones treating expertise as an asset to be developed and deployed, not a commodity to be scaled.' },
+      { type: 'paragraph', text: 'This has direct implications for how marketing budgets and priorities should be structured. The question is not: how do we produce more content? The question is: how do we become genuinely worth reading?' },
+      { type: 'heading', text: 'Outshine the Noise' },
+      { type: 'paragraph', text: 'KNBL\'s operating principle — "outshine the noise, be impossible to ignore" — is not aspirational language. It is a strategic position. In an environment where most content is interchangeable, differentiation comes from the willingness to be specific, to take a position, to make a claim that requires real expertise to back up.' },
+      { type: 'paragraph', text: 'The brands that will still have audience relationships worth something in three years are the ones currently making the harder choice: producing less, but making each piece count for more.' },
+      { type: 'paragraph', text: 'Precision does not scale the way volume does. That is precisely why it is a moat.' },
+    ],
+  },
   'your-best-influencers-are-already-on-payroll': {
     title: 'Your Best Influencers Are Already on Payroll',
     category: 'Content',

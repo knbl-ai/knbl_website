@@ -8,6 +8,14 @@ import Tag from '@/components/ui/Tag';
 
 const blogs = [
   {
+    title: 'Precision Is the New Competitive Moat',
+    excerpt: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
+    date: 'Mar 15, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
+    slug: 'precision-is-the-new-competitive-moat',
+  },
+  {
     title: 'Your Best Influencers Are Already on Payroll',
     excerpt: 'Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.',
     date: 'Feb 19, 2026',

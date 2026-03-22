@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'precision-is-the-new-competitive-moat': {
+    title: 'Precision Is the New Competitive Moat',
+    description: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
+    category: 'Strategy',
+    date: '2026-03-15',
+    image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
+  },
   'your-best-influencers-are-already-on-payroll': {
     title: 'Your Best Influencers Are Already on Payroll',
     description: 'Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.',
