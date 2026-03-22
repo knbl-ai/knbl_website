@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'your-best-influencers-are-already-on-payroll': {
+    title: 'Your Best Influencers Are Already on Payroll',
+    description: 'Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.',
+    category: 'Content',
+    date: '2026-02-19',
+    image: '/images/blog/2026-02-19_your-best-influencers-are-already-on-payroll_header.webp',
+  },
   'stop-renting-attention': {
     title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
     description: 'Most marketing budgets are structured like short-term rentals. The moment the spend stops, so does your presence. The brands that win long-term are the ones building assets, not buying impressions.',

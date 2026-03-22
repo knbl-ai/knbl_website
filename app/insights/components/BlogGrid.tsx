@@ -8,6 +8,14 @@ import Tag from '@/components/ui/Tag';
 
 const blogs = [
   {
+    title: 'Your Best Influencers Are Already on Payroll',
+    excerpt: 'Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.',
+    date: 'Feb 19, 2026',
+    category: 'Content',
+    image: '/images/blog/2026-02-19_your-best-influencers-are-already-on-payroll_header.webp',
+    slug: 'your-best-influencers-are-already-on-payroll',
+  },
+  {
     title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
     excerpt: 'Most marketing budgets are structured like short-term rentals. The moment the spend stops, so does your presence. The brands that win long-term are the ones building assets, not buying impressions.',
     date: 'Mar 17, 2026',
