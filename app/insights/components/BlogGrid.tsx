@@ -8,6 +8,30 @@ import Tag from '@/components/ui/Tag';
 
 const blogs = [
   {
+    title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
+    excerpt: 'There are more AI tools aimed at marketers than any team can meaningfully evaluate. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.',
+    date: 'Dec 19, 2025',
+    category: 'AI & Tech',
+    image: '/images/blog/2025-12-19_marketers-guide-to-not-drowning-in-ai-tools_header.webp',
+    slug: 'marketers-guide-to-not-drowning-in-ai-tools',
+  },
+  {
+    title: 'Marketing Measurement Is Broken. Here\'s How to Fix It.',
+    excerpt: 'Last-click attribution is dead. 69% of CMOs are now under pressure to prove ROI more precisely than their current tools allow. The teams that survive this shift will be the ones who rebuild from first-party data up.',
+    date: 'Nov 19, 2025',
+    category: 'Data',
+    image: '/images/blog/2025-11-19_marketing-measurement-is-broken_header.webp',
+    slug: 'marketing-measurement-is-broken',
+  },
+  {
+    title: 'You Have 90 Seconds. Authenticity Is the Only Strategy That Works.',
+    excerpt: 'The brain makes purchase decisions in 90 seconds. Consumers today are manipulation-literate — they recognize a gimmick instantly. The brands that win the 90-second window do something simpler and harder: they are genuinely honest.',
+    date: 'Oct 19, 2025',
+    category: 'Brand Strategy',
+    image: '/images/blog/2025-10-19_ninety-seconds-authenticity-is-the-only-strategy_header.webp',
+    slug: 'ninety-seconds-authenticity-is-the-only-strategy',
+  },
+  {
     title: 'Precision Is the New Competitive Moat',
     excerpt: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
     date: 'Mar 15, 2026',

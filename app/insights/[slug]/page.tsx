@@ -11,6 +11,27 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'marketers-guide-to-not-drowning-in-ai-tools': {
+    title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
+    description: 'There are more AI tools aimed at marketers than any team can meaningfully evaluate. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.',
+    category: 'AI & Tech',
+    date: '2025-12-19',
+    image: '/images/blog/2025-12-19_marketers-guide-to-not-drowning-in-ai-tools_header.webp',
+  },
+  'marketing-measurement-is-broken': {
+    title: 'Marketing Measurement Is Broken. Here\'s How to Fix It.',
+    description: 'Last-click attribution is dead. 69% of CMOs are now under pressure to prove ROI more precisely than their current tools allow. The teams that survive this shift will be the ones who rebuild from first-party data up.',
+    category: 'Data',
+    date: '2025-11-19',
+    image: '/images/blog/2025-11-19_marketing-measurement-is-broken_header.webp',
+  },
+  'ninety-seconds-authenticity-is-the-only-strategy': {
+    title: 'You Have 90 Seconds. Authenticity Is the Only Strategy That Works.',
+    description: 'The brain makes purchase decisions in 90 seconds. Consumers today are manipulation-literate — they recognize a gimmick instantly. The brands that win the 90-second window do something simpler and harder: they are genuinely honest.',
+    category: 'Brand Strategy',
+    date: '2025-10-19',
+    image: '/images/blog/2025-10-19_ninety-seconds-authenticity-is-the-only-strategy_header.webp',
+  },
   'precision-is-the-new-competitive-moat': {
     title: 'Precision Is the New Competitive Moat',
     description: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
