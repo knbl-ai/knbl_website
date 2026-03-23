@@ -4,12 +4,11 @@ import { motion } from 'framer-motion';
 
 const categories = [
   'View all',
+  'AI & Tech',
   'Data',
-  'Culture',
-  'AI',
-  'Innovation',
+  'Brand Strategy',
+  'Strategy',
   'Content',
-  'Disruption',
 ];
 
 interface BlogFilterTagsProps {

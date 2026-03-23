@@ -7,12 +7,14 @@ const workSlugs = [
   'anker', 'lod', 'electra-precise', 'takeda', 'reuth-hospital', 'aion', 'trans-israel',
 ];
 
-const insightSlugs = [
-  'how-ai-is-redefining-brand-creativity',
-  'the-end-of-one-size-fits-all-marketing',
-  'when-trends-become-strategy',
-  'the-rise-of-micro-communities',
-  'data-driven-storytelling',
+const insightArticles = [
+  { slug: 'marketers-guide-to-not-drowning-in-ai-tools', date: '2025-12-19' },
+  { slug: 'marketing-measurement-is-broken', date: '2025-11-19' },
+  { slug: 'ninety-seconds-authenticity-is-the-only-strategy', date: '2025-10-19' },
+  { slug: 'precision-is-the-new-competitive-moat', date: '2026-03-15' },
+  { slug: 'your-best-influencers-are-already-on-payroll', date: '2026-02-19' },
+  { slug: 'stop-renting-attention', date: '2026-03-17' },
+  { slug: 'the-cmo-as-navigator', date: '2026-03-19' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,9 +34,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const insightRoutes = insightSlugs.map((slug) => ({
-    url: `${baseUrl}/insights/${slug}`,
-    lastModified: new Date(),
+  const insightRoutes = insightArticles.map((article) => ({
+    url: `${baseUrl}/insights/${article.slug}`,
+    lastModified: new Date(article.date),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));

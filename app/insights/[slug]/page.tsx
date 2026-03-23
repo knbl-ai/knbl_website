@@ -90,8 +90,10 @@ export async function generateMetadata({
       publishedTime: post.date,
       images: [
         {
-          url: post.image,
+          url: `https://knbl.co${post.image}`,
           alt: post.title,
+          width: 1200,
+          height: 630,
         },
       ],
     },
@@ -117,6 +119,7 @@ export default async function BlogPostPage({
     description: post.description,
     url: `https://knbl.co/insights/${slug}`,
     datePublished: post.date,
+    dateModified: post.date,
     author: {
       '@type': 'Organization',
       name: 'KNBL',

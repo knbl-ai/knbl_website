@@ -10,6 +10,7 @@ const blogPosts: Record<string, {
   title: string;
   category: string;
   date: string;
+  isoDate: string;
   readTime: string;
   excerpt: string;
   image: string;
@@ -22,6 +23,7 @@ const blogPosts: Record<string, {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
     category: 'AI & Tech',
     date: 'Dec 19, 2025',
+    isoDate: '2025-12-19',
     readTime: '5 min read',
     excerpt: 'There are more AI tools aimed at marketers than any team can meaningfully evaluate. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.',
     image: '/images/blog/2025-12-19_marketers-guide-to-not-drowning-in-ai-tools_header.webp',
@@ -52,6 +54,7 @@ const blogPosts: Record<string, {
     title: 'Marketing Measurement Is Broken. Here\'s How to Fix It.',
     category: 'Data',
     date: 'Nov 19, 2025',
+    isoDate: '2025-11-19',
     readTime: '5 min read',
     excerpt: 'Last-click attribution is dead. 69% of CMOs are now under pressure to prove ROI more precisely than their current tools allow. The teams that survive this shift will be the ones who rebuild from first-party data up.',
     image: '/images/blog/2025-11-19_marketing-measurement-is-broken_header.webp',
@@ -81,6 +84,7 @@ const blogPosts: Record<string, {
     title: 'You Have 90 Seconds. Authenticity Is the Only Strategy That Works.',
     category: 'Brand Strategy',
     date: 'Oct 19, 2025',
+    isoDate: '2025-10-19',
     readTime: '4 min read',
     excerpt: 'The brain makes purchase decisions in 90 seconds. Consumers today are manipulation-literate — they recognize a gimmick instantly. The brands that win the 90-second window do something simpler and harder: they are genuinely honest.',
     image: '/images/blog/2025-10-19_ninety-seconds-authenticity-is-the-only-strategy_header.webp',
@@ -110,6 +114,7 @@ const blogPosts: Record<string, {
     title: 'Precision Is the New Competitive Moat',
     category: 'Strategy',
     date: 'Mar 15, 2026',
+    isoDate: '2026-03-15',
     readTime: '4 min read',
     excerpt: 'The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.',
     image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
@@ -139,6 +144,7 @@ const blogPosts: Record<string, {
     title: 'Your Best Influencers Are Already on Payroll',
     category: 'Content',
     date: 'Feb 19, 2026',
+    isoDate: '2026-02-19',
     readTime: '4 min read',
     excerpt: 'Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.',
     image: '/images/blog/2026-02-19_your-best-influencers-are-already-on-payroll_header.webp',
@@ -169,6 +175,7 @@ const blogPosts: Record<string, {
     title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
     category: 'Strategy',
     date: 'Mar 17, 2026',
+    isoDate: '2026-03-17',
     readTime: '5 min read',
     excerpt: 'Most marketing budgets are structured like short-term rentals. The moment the spend stops, so does your presence. The brands that win long-term are the ones building assets, not buying impressions.',
     image: '/images/blog/2026-03-17_stop-renting-attention_header.webp',
@@ -202,6 +209,7 @@ const blogPosts: Record<string, {
     title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
     category: 'AI & Tech',
     date: 'Mar 19, 2026',
+    isoDate: '2026-03-19',
     readTime: '5 min read',
     excerpt: 'AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive. The marketers who last won\'t be the ones who generate the most. They\'ll be the ones who know where they\'re going.',
     image: '/images/blog/2026-03-19_the-cmo-as-navigator_header.webp',
@@ -278,7 +286,7 @@ export default function BlogPostPageClient({ slug }: { slug: string }) {
             {/* Meta Tags */}
             <div className="flex gap-3">
               <span className="bg-primary-200 text-white text-xs font-medium px-3 py-1.5 rounded-full">
-                {post.date}
+                <time dateTime={post.isoDate}>{post.date}</time>
               </span>
               <span className="bg-primary-200 text-white text-xs font-medium px-3 py-1.5 rounded-full">
                 {post.readTime}

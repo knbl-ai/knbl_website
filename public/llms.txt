@@ -51,3 +51,13 @@ H&O (fashion), Rafael Defense Systems, Xiaomi Israel, Roladin (patisserie), Cart
 - Insights Blog: https://knbl.co/insights
 - Agency: https://knbl.co/agency
 - Contact: https://knbl.co/contact
+
+## Insights Articles
+
+- [The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era](https://knbl.co/insights/the-cmo-as-navigator) — AI & Tech, March 19, 2026. AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive. The marketers who last won't be the ones who generate the most. They'll be the ones who know where they're going.
+- [Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign](https://knbl.co/insights/stop-renting-attention) — Strategy, March 17, 2026. Most marketing budgets are structured like short-term rentals. The moment the spend stops, so does your presence. The brands that win long-term are the ones building assets, not buying impressions.
+- [Precision Is the New Competitive Moat](https://knbl.co/insights/precision-is-the-new-competitive-moat) — Strategy, March 15, 2026. The easier it becomes to produce content, the less any individual piece is worth. The marketers winning now are not out-producing AI. They are being precise.
+- [Your Best Influencers Are Already on Payroll](https://knbl.co/insights/your-best-influencers-are-already-on-payroll) — Content, February 19, 2026. Content shared by employees generates 8x more engagement than the same post from a company page. Your most credible voices are not for hire — they already show up to work every day.
+- [The Marketing Leader's Guide to Not Drowning in AI Tools](https://knbl.co/insights/marketers-guide-to-not-drowning-in-ai-tools) — AI & Tech, December 19, 2025. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.
+- [Marketing Measurement Is Broken. Here's How to Fix It.](https://knbl.co/insights/marketing-measurement-is-broken) — Data, November 19, 2025. Last-click attribution is dead. 69% of CMOs are now under pressure to prove ROI more precisely than their current tools allow. The teams that survive this shift will be the ones who rebuild from first-party data up.
+- [You Have 90 Seconds. Authenticity Is the Only Strategy That Works.](https://knbl.co/insights/ninety-seconds-authenticity-is-the-only-strategy) — Brand Strategy, October 19, 2025. The brain makes purchase decisions in 90 seconds. Consumers today are manipulation-literate. The brands that win the 90-second window do something simpler and harder: they are genuinely honest.
