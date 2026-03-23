@@ -18,6 +18,7 @@ const blogPosts: Record<string, {
     type: 'paragraph' | 'heading';
     text: string;
   }[];
+  sources?: { name: string; url: string }[];
 }> = {
   'marketers-guide-to-not-drowning-in-ai-tools': {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
@@ -79,6 +80,10 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'That last shift is the hardest. It requires convincing boards and CFOs that some of marketing\'s most important work is not immediately measurable in the way they want it to be — and making that case with enough clarity and confidence that the investment continues anyway.' },
       { type: 'paragraph', text: 'That is not a data problem. It is a leadership problem. And it starts with being honest that the old dashboard was always showing you less than you thought.' },
     ],
+    sources: [
+      { name: 'CMSWire: State of Marketing Attribution', url: 'https://www.cmswire.com' },
+      { name: 'Hinge Research Institute: Professional Services Marketing', url: 'https://hingemarketing.com' },
+    ],
   },
   'ninety-seconds-authenticity-is-the-only-strategy': {
     title: 'You Have 90 Seconds. Authenticity Is the Only Strategy That Works.',
@@ -139,6 +144,9 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'The brands that will still have audience relationships worth something in three years are the ones currently making the harder choice: producing less, but making each piece count for more.' },
       { type: 'paragraph', text: 'Precision does not scale the way volume does. That is precisely why it is a moat.' },
     ],
+    sources: [
+      { name: 'Forrester Research: The Value of Human Expertise in the AI Era', url: 'https://www.forrester.com' },
+    ],
   },
   'your-best-influencers-are-already-on-payroll': {
     title: 'Your Best Influencers Are Already on Payroll',
@@ -169,6 +177,10 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'If the answer is ownership, the mechanics are straightforward. Identify employees who are already communicating publicly and have natural credibility in their space. Give them content support without over-scripting them. Create internal forums where interesting work gets visibility that can be turned into external content. Measure the output in terms of reach and trust signals, not volume.' },
       { type: 'paragraph', text: 'The goal is not to turn employees into a content factory. It is to remove the friction between genuine expertise that already exists inside the organization and the audience that would benefit from hearing it.' },
       { type: 'paragraph', text: 'Your most credible voices are not for hire. They already show up to work every day.' },
+    ],
+    sources: [
+      { name: 'Social Media Today: Employee Advocacy Research', url: 'https://www.socialmediatoday.com' },
+      { name: 'Hinge Research Institute: Inside the Buyer\'s Brain', url: 'https://hingemarketing.com' },
     ],
   },
   'stop-renting-attention': {
@@ -204,6 +216,9 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'That is the difference between renting attention and owning it. One requires continuous spending just to maintain position. The other builds a foundation that holds value even when the media goes quiet.' },
       { type: 'paragraph', text: 'The marketing leaders who understand this distinction are not just allocating budgets differently. They are building organizations that are structurally harder to compete with.' },
     ],
+    sources: [
+      { name: 'Ehrenberg-Bass Institute for Marketing Science', url: 'https://www.marketingscience.info' },
+    ],
   },
   'the-cmo-as-navigator': {
     title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
@@ -236,6 +251,9 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'The most important reframe for senior marketers right now is this: your value is not in your output. It\'s in your orientation.' },
       { type: 'paragraph', text: 'In an era where anyone can produce, the question every brand team should be asking is not are we producing enough? It\'s do we know where we\'re going, and does everything we produce point there?' },
       { type: 'paragraph', text: 'The teams that can answer yes, without hesitation, with evidence, are the ones that will build something that lasts. Everyone else is just adding to the noise they claim to be cutting through.' },
+    ],
+    sources: [
+      { name: 'Forrester Research: Marketing Leadership in the AI Era', url: 'https://www.forrester.com' },
     ],
   },
 };
@@ -338,6 +356,27 @@ export default function BlogPostPageClient({ slug }: { slug: string }) {
               );
             })}
           </motion.div>
+
+          {/* Sources */}
+          {post.sources && post.sources.length > 0 && (
+            <footer className="mt-12 pt-8 border-t border-neutral-100">
+              <p className="text-xs font-medium text-neutral-300 uppercase tracking-widest mb-4">Sources</p>
+              <ul className="space-y-2">
+                {post.sources.map((source, i) => (
+                  <li key={i} className="text-sm text-neutral-400">
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary-600 transition-colors"
+                    >
+                      {source.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </footer>
+          )}
         </div>
       </article>
 

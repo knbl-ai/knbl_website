@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/submission/', '/api/'],
+      disallow: ['/submission/', '/api/', '/privacy/', '/terms/', '/cookie-policy/'],
     },
     sitemap: 'https://knbl.co/sitemap.xml',
   };

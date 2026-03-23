@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     description: 'Strategy-driven creative collective. AI-powered marketing for ambitious brands.',
     images: [
       {
-        url: '/images/logo/knbl.png',
-        width: 512,
-        height: 512,
+        url: '/og_banner.png',
+        width: 1200,
+        height: 630,
         alt: 'KNBL — Outshine the Noise',
       },
     ],
@@ -42,10 +42,7 @@ export const metadata: Metadata = {
     site: '@knbl',
     title: 'KNBL — Outshine the Noise',
     description: 'Strategy-driven creative collective. AI-powered marketing for ambitious brands.',
-    images: ['/images/logo/knbl.png'],
-  },
-  alternates: {
-    canonical: '/',
+    images: ['/og_banner.png'],
   },
   icons: {
     icon: '/images/logo/knbl.png',
