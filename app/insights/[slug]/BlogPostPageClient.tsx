@@ -55,67 +55,6 @@ const blogPosts: Record<string, {
       { type: 'paragraph', text: 'The stakes are higher, the constraints tighter, but the opportunities for breakthrough brand building are immense — especially for agencies that understand where creativity meets technology meets strategic thinking. In B2G marketing, the challenge isn\'t just building awareness; it\'s building trust with the institutions that defend nations.' }
     ],
   },
-  'b2g-defense-marketing-social-media-strategy': {
-    title: 'B2G Defense Marketing: Managing Social Media for Advanced Defense Systems',
-    category: 'Strategy',
-    date: 'Mar 24, 2026',
-    isoDate: '2026-03-24',
-    readTime: '4 min read',
-    excerpt: 'Defense companies need social media for demand generation, talent acquisition, and public trust — not brand decoration. Here\'s how we built Rafael\'s global digital presence.',
-    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-strategy_header.webp',
-    content: [
-      { type: 'heading', text: 'When your client manufactures Iron Dome systems, every post carries national security weight' },
-      { type: 'paragraph', text: 'Managing social media for Rafael Advanced Defense Systems — the company behind Iron Dome, David\'s Sling, and Iron Beam — presents challenges that consumer brands never face. After two and a half years building Rafael\'s digital strategy across 10 social platforms, international campaigns, and AI-powered video productions, the question persists: why does a defense contractor need Instagram?' },
-      { type: 'paragraph', text: 'The answer reshapes how we think about B2G marketing entirely.' },
-      { type: 'heading', text: 'Why Defense Companies Need Digital Presence' },
-      { type: 'paragraph', text: 'Defense marketing operates in Business-to-Government (B2G) territory where the end customer is a nation-state, and decision-makers number in the dozens, not millions. Every word carries operational risk. Every visual could compromise security protocols.' },
-      { type: 'paragraph', text: 'Yet social media serves four critical strategic functions for defense contractors:' },
-      { type: 'paragraph', text: 'Demand Generation at Scale: Social media creates the "air cover" for field sales teams. Before a Rafael representative enters a meeting room in a target country, key decision-makers have already encountered the brand\'s capabilities in their feeds. This pre-exposure shortens sales cycles and establishes preliminary trust in what are typically 18-24 month procurement processes.' },
-      { type: 'paragraph', text: 'Tender Support: In international defense deals worth hundreds of millions, procurement evaluators are human beings who research digital footprints. While social presence won\'t close a deal, it demonstrates consistency, credibility, and social proof that the systems are genuinely state-of-the-art.' },
-      { type: 'paragraph', text: 'National Security Communication: In Israel\'s reality, digital platforms serve as tools for public reassurance. When citizens see successful Iron Beam tests or Iron Wind capabilities demonstrations, it generates confidence in national defense infrastructure. We\'re not just marketing systems — we\'re marketing peace of mind.' },
-      { type: 'paragraph', text: 'Talent Acquisition in Defense Tech: Defense companies compete with tech giants and startups for top engineering talent. To recruit the next aerospace engineer or AI specialist, these companies must communicate in their language and appear where they spend time — including TikTok and Instagram. The objective: demonstrate that defense technology is as cutting-edge as any Silicon Valley startup, with missions that dating apps can\'t match.' },
-      { type: 'heading', text: 'How to Build Defense Brands Without Compromising Security' },
-      { type: 'paragraph', text: 'Shift from Product Features to Combat-Proven Narratives: While companies like Lockheed Martin use institutional, governmental messaging, Israeli defense companies leverage "Combat Proven" positioning. We don\'t promise hypothetical performance — we deliver systems actively proving themselves in real combat scenarios. This transforms brand perception from "defense contractor" to "mission-ready technology provider."' },
-      { type: 'paragraph', text: 'Creative Solutions for Classified Content: When cameras become security threats, creativity accelerates. Defense marketing relies heavily on AI-generated simulations, technical animations, and strategic infographics that explain system capabilities without revealing classified components. AI video production has become essential for visualizing complex defense technologies safely.' },
-      { type: 'paragraph', text: 'Platform-Specific Strategies: Each platform serves distinct audience segments. LinkedIn targets high-level decision-makers and industry professionals through thought leadership content. Twitter focuses on media relations and technology discourse. TikTok and Instagram break down barriers with trend-based content and real-time marketing that repositions defense companies as dynamic technology leaders rather than bureaucratic entities.' },
-      { type: 'heading', text: 'Account-Based Marketing for Nation-States' },
-      { type: 'paragraph', text: 'Defense marketing demands hyper-focused account-based strategies. Instead of broad demographic targeting, successful campaigns identify specific "accounts" — target countries, partner organizations, strategic alliances — and create personalized content ecosystems for each.' },
-      { type: 'paragraph', text: 'This approach requires understanding geopolitical contexts, defense procurement cycles, and cultural communication preferences across multiple markets simultaneously. The precision mirrors the technology being marketed.' },
-      { type: 'heading', text: 'Humanizing Advanced Technology' },
-      { type: 'paragraph', text: 'Ultimately, even governments buy from people. Defense marketing must give brands human faces and voices, making complex physics accessible to non-technical decision-makers. Success depends on creating emotional connections around mission-critical technology while maintaining the technical credibility that defense procurement demands.' },
-      { type: 'paragraph', text: 'Defense marketing combines message precision, technological literacy, and emotional resonance in ways that traditional B2B or B2C frameworks don\'t address. The result: strategic communications that build international partnerships while strengthening domestic confidence in national security capabilities.' }
-    ],
-  },
-  'b2g-defense-marketing-social-media-weapons': {
-    title: 'B2G Defense Marketing: Strategic Social Media for Weapons Systems',
-    category: 'Strategy',
-    date: 'Mar 24, 2026',
-    isoDate: '2026-03-24',
-    readTime: '4 min read',
-    excerpt: 'Defense contractors face unique B2G marketing challenges where every word matters and security trumps engagement. Here\'s how Rafael Defense Systems navigates social media for weapons that protect nations.',
-    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-weapons_header.webp',
-    content: [
-      { type: 'heading', text: 'Managing social media for companies that build Iron Dome isn\'t your typical brand challenge.' },
-      { type: 'paragraph', text: 'Two and a half years managing Rafael Defense Systems\' digital presence has taught us something most marketers never encounter: how to promote laser interception systems on TikTok while navigating security clearances, government relations, and the delicate balance between transparency and operational security.' },
-      { type: 'paragraph', text: 'This isn\'t B2B marketing. This isn\'t even complex enterprise sales. This is B2G—business to government—where your ultimate customer is a nation, your decision-makers number in the dozens globally, and every word carries strategic weight.' },
-      { type: 'heading', text: 'Why Defense Companies Need Digital Presence' },
-      { type: 'paragraph', text: 'The question isn\'t whether defense contractors should engage in social media—it\'s how to do it without compromising national security. Four strategic imperatives drive this necessity:' },
-      { type: 'paragraph', text: 'Demand Generation as Air Support: Social media creates the "air cover" for physical sales teams entering target markets. Before a Rafael representative walks into a Pentagon meeting, decision-makers have already encountered the brand\'s capabilities in their feeds. This pre-exposure shortens sales cycles and builds foundational trust in markets where personal relationships determine billion-dollar contracts.' },
-      { type: 'paragraph', text: 'Tender Support Through Social Proof: International defense procurements involve human evaluators who research vendor credibility across all channels. While social presence won\'t close a $2 billion missile defense deal, it demonstrates consistency, reliability, and social validation that your systems represent state-of-the-art technology. In procurement committees where technical specifications are comparable, brand perception influences final decisions.' },
-      { type: 'paragraph', text: 'National Resilience Through Public Confidence: In Israel\'s security reality, digital communications serve dual purposes—marketing internationally while reassuring domestically. When citizens see successful Iron Beam tests or Wind Coat system demonstrations, they\'re not just viewing product marketing; they\'re receiving confirmation that brilliant minds are developing breakthrough solutions for their protection. This isn\'t selling systems—this is marketing peace of mind.' },
-      { type: 'paragraph', text: 'Talent Wars Against Big Tech: Defense companies compete directly with tech giants and unicorn startups for top engineering talent. To recruit the next aeronautics specialist or AI researcher, defense contractors must communicate in their language and appear where they consume content—including TikTok and Instagram. The goal: demonstrate that developing laser defense systems offers more compelling challenges than building the next dating app.' },
-      { type: 'heading', text: 'The Execution Framework for Defense Marketing' },
-      { type: 'paragraph', text: 'Successful B2G defense marketing requires navigating constraints that would paralyze traditional marketers:' },
-      { type: 'paragraph', text: 'From Product Features to Combat-Proven Narratives: While American defense giants like Lockheed Martin rely on institutional authority, Israeli companies leverage "Combat Proven" positioning. We don\'t promise theoretical capabilities—we showcase systems actively protecting lives under fire. This real-world validation creates unmatched product credibility that peacetime testing cannot replicate.' },
-      { type: 'paragraph', text: 'When security restrictions prevent filming actual operations, AI-generated content, technical animations, and sophisticated infographics explain complex systems without revealing classified components. Creative constraints force innovative storytelling approaches that traditional product marketing rarely requires.' },
-      { type: 'paragraph', text: 'Platform-Specific Audience Targeting: Each social platform serves distinct strategic purposes within the broader B2G framework:' },
-      { type: 'paragraph', text: 'LinkedIn targets C-suite defense officials and procurement decision-makers through thought leadership and capability demonstrations - Twitter engages defense journalists, technology analysts, and policy influencers shaping industry discourse - TikTok and Instagram reach younger engineering talent while humanizing typically austere defense companies through trend-based content and real-time marketing' },
-      { type: 'paragraph', text: 'Account-Based Marketing at Scale: B2G marketing operates through hyper-focused targeting rather than broad audience building. Success requires identifying strategic "accounts"—target nations, partner companies, key procurement officials—and developing personalized content that speaks to their specific defense challenges and geopolitical contexts.' },
-      { type: 'heading', text: 'The Strategic Imperative' },
-      { type: 'paragraph', text: 'Defense marketing represents a unique intersection of precision messaging, deep technological understanding, and emotional connection building. When executed properly, social media breaks stereotypes of conservative, institutional industries while maintaining the gravitas these life-and-death technologies demand.' },
-      { type: 'paragraph', text: 'The companies mastering this balance—demonstrating cutting-edge innovation through accessible content while respecting security boundaries—will dominate tomorrow\'s defense procurement cycles. Because in B2G marketing, trust isn\'t just about brand preference. It\'s about national survival.' }
-    ],
-  },
   'marketers-guide-to-not-drowning-in-ai-tools': {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
     category: 'AI & Tech',
@@ -480,3 +419,4 @@ export default function BlogPostPageClient({ slug }: { slug: string }) {
     </main>
   );
 }
+
