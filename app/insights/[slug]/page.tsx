@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'b2g-defense-marketing-social-media-weapons': {
+    title: 'B2G Defense Marketing: Strategic Social Media for Weapons Systems',
+    description: 'Defense contractors face unique B2G marketing challenges where every word matters and security trumps engagement. Here\'s how Rafael Defense Systems navigates social media for weapons that protect nations.',
+    category: 'Strategy',
+    date: '2026-03-24',
+    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-weapons_header.webp',
+  },
   'marketers-guide-to-not-drowning-in-ai-tools': {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
     description: 'There are more AI tools aimed at marketers than any team can meaningfully evaluate. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.',
