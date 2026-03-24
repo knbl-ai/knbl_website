@@ -8,6 +8,14 @@ import Tag from '@/components/ui/Tag';
 
 const blogs = [
   {
+    title: 'B2G Defense Marketing: Strategic Social Media for Weapons Systems',
+    excerpt: 'Defense contractors face unique B2G marketing challenges where every word matters and security trumps engagement. Here\'s how Rafael Defense Systems navigates social media for weapons that protect nations.',
+    date: 'Mar 24, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-weapons_header.webp',
+    slug: 'b2g-defense-marketing-social-media-weapons',
+  },
+  {
     title: 'B2G Defense Marketing: Managing Social Media for Advanced Defense Systems',
     excerpt: 'Defense companies need social media for demand generation, talent acquisition, and public trust — not brand decoration. Here\'s how we built Rafael\'s global digital presence.',
     date: 'Mar 24, 2026',
