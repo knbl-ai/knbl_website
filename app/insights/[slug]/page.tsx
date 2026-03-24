@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'b2g-defense-marketing-social-media-strategy': {
+    title: 'B2G Defense Marketing: Managing Social Media for Advanced Defense Systems',
+    description: 'Defense companies need social media for demand generation, talent acquisition, and public trust — not brand decoration. Here\'s how we built Rafael\'s global digital presence.',
+    category: 'Strategy',
+    date: '2026-03-24',
+    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-strategy_header.webp',
+  },
   'b2g-defense-marketing-social-media-weapons': {
     title: 'B2G Defense Marketing: Strategic Social Media for Weapons Systems',
     description: 'Defense contractors face unique B2G marketing challenges where every word matters and security trumps engagement. Here\'s how Rafael Defense Systems navigates social media for weapons that protect nations.',
