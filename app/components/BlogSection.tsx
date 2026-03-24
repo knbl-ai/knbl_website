@@ -7,33 +7,7 @@ import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button
 import { TextReveal } from '@/components/ui/text-reveal';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-const blogs = [
-  {
-    title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
-    excerpt: 'AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive.',
-    date: 'Mar 19, 2026',
-    category: 'AI & Tech',
-    image: '/images/blog/2026-03-19_the-cmo-as-navigator_header.webp',
-    slug: 'the-cmo-as-navigator',
-  },
-  {
-    title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
-    excerpt: 'Most marketing budgets are structured like short-term rentals. The brands that win long-term are the ones building assets, not buying impressions.',
-    date: 'Mar 17, 2026',
-    category: 'Strategy',
-    image: '/images/blog/2026-03-17_stop-renting-attention_header.webp',
-    slug: 'stop-renting-attention',
-  },
-  {
-    title: 'Precision Is the New Competitive Moat',
-    excerpt: 'In a satisficing world, the brands that win will be the ones that still care about getting it right.',
-    date: 'Mar 15, 2026',
-    category: 'Strategy',
-    image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
-    slug: 'precision-is-the-new-competitive-moat',
-  },
-];
+import { blogs } from '@/data/blogs';
 
 const categories = [
   'View all',
@@ -184,9 +158,11 @@ export default function BlogSection() {
     });
   };
 
+  const latestBlogs = [...blogs].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).slice(0, 3);
+
   const filteredBlogs = activeCategories.includes('View all')
-    ? blogs
-    : blogs.filter(blog => activeCategories.includes(blog.category));
+    ? latestBlogs
+    : latestBlogs.filter(blog => activeCategories.includes(blog.category));
 
   return (
     <section id="insights" className="pt-24 pb-16 md:py-44 px-6 md:px-[120px]">
