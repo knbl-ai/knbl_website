@@ -20,11 +20,11 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
         transition={{ duration: 0.4, ease: "easeOut" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="bg-primary-50 p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out h-full flex flex-col"
+        className="bg-primary-50 p-3 md:p-4 cursor-pointer group rounded-[24px] hover:rounded-[32px] transition-all duration-500 ease-in-out h-full flex flex-col"
       >
         <div className="flex flex-col h-full space-y-6">
           {/* Image */}
-          <div className="relative h-64 overflow-hidden rounded-[14px] group-hover:rounded-[24px] flex-shrink-0 transition-all duration-500 ease-in-out">
+          <div className="relative h-48 md:h-64 overflow-hidden rounded-[14px] group-hover:rounded-[24px] flex-shrink-0 transition-all duration-500 ease-in-out">
             <Image
               src={blog.image}
               alt={blog.title}
@@ -40,7 +40,7 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => 
           {/* Content */}
           <div className="px-2 pb-4 flex flex-col flex-1">
             <div className="space-y-3 flex-1">
-              <p className="text-neutral-300 text-xs">{blog.date}</p>
+              <p className="text-neutral-300 text-xs md:text-sm">{blog.date}</p>
               <h3 className="text-xl font-medium leading-tight tracking-[-0.03em] line-clamp-2">{blog.title}</h3>
               <p className="text-neutral-400 text-base leading-relaxed line-clamp-3">{blog.excerpt}</p>
             </div>
