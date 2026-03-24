@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import Tag from '@/components/ui/Tag';
-import { blogs } from '@/data/blogs';
+import { blogs } from '@/app/data/blogs';
 
 const BlogCard = ({ blog, index }: { blog: typeof blogs[0]; index: number }) => {
   const [isHovered, setIsHovered] = useState(false);

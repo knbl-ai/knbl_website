@@ -7,7 +7,7 @@ import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button
 import { TextReveal } from '@/components/ui/text-reveal';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { blogs } from '@/data/blogs';
+import { blogs } from '@/app/data/blogs';
 
 const categories = [
   'View all',
