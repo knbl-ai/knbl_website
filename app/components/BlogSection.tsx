@@ -10,36 +10,35 @@ import Link from 'next/link';
 
 const blogs = [
   {
-    title: 'How AI Is Redefining Brand Creativity',
-    excerpt: 'From automated storytelling to adaptive design systems - explore how artificial intelligence is reshaping the creative process.',
-    date: 'Oct 14, 2025',
-    category: 'AI',
-    image: '/images/blog/blog-ai.webp',
-    slug: 'how-ai-is-redefining-brand-creativity',
+    title: 'The CMO as Navigator: Why Brand Direction Is the Scarcest Skill in the AI Era',
+    excerpt: 'AI has collapsed the cost of content creation, but judgment, direction, and brand clarity have never been more expensive.',
+    date: 'Mar 19, 2026',
+    category: 'AI & Tech',
+    image: '/images/blog/2026-03-19_the-cmo-as-navigator_header.webp',
+    slug: 'the-cmo-as-navigator',
   },
   {
-    title: 'The End of "One-Size-Fits-All" Marketing',
-    excerpt: 'Why brands that personalize their message around real human behavior are winning - and how to start doing it right.',
-    date: 'Sep 28, 2025',
-    category: 'Data',
-    image: '/images/blog/blog-data.webp',
-    slug: 'the-end-of-one-size-fits-all-marketing',
+    title: 'Stop Renting Attention: Why Marketing Infrastructure Outlasts Every Campaign',
+    excerpt: 'Most marketing budgets are structured like short-term rentals. The brands that win long-term are the ones building assets, not buying impressions.',
+    date: 'Mar 17, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-03-17_stop-renting-attention_header.webp',
+    slug: 'stop-renting-attention',
   },
   {
-    title: 'When Trends Become Strategy',
-    excerpt: "Understanding cultural signals is more than following hype - it's how smart brands build lasting relevance.",
-    date: 'Aug 19, 2025',
-    category: 'Culture',
-    image: '/images/blog/blog-culture.webp',
-    slug: 'when-trends-become-strategy',
+    title: 'Precision Is the New Competitive Moat',
+    excerpt: 'In a satisficing world, the brands that win will be the ones that still care about getting it right.',
+    date: 'Mar 15, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-03-15_precision-is-the-new-competitive-moat_header.webp',
+    slug: 'precision-is-the-new-competitive-moat',
   },
 ];
 
 const categories = [
   'View all',
-  'Data',
-  'Culture',
-  'AI',
+  'AI & Tech',
+  'Strategy',
 ];
 
 const BlogCard = ({ blog, index }: { blog: typeof blogs[0], index: number }) => {
