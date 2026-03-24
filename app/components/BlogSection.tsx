@@ -62,7 +62,7 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0], index: number }) => 
           </div>
 
           {/* Content */}
-          <div className="pt-6 px-4 pb-4 flex justify-between items-end gap-4 flex-1">
+          <div className="pt-6 px-4 pb-4 flex flex-col md:flex-row justify-between items-end gap-4 flex-1">
             <div className="flex flex-col">
               <p className="text-neutral-300 text-sm mb-4">{blog.date}</p>
               <h3 className="text-[18px] md:text-[21px] font-medium leading-tight mb-2">{blog.title}</h3>
@@ -73,7 +73,7 @@ const BlogCard = ({ blog, index }: { blog: typeof blogs[0], index: number }) => 
 
             {/* Arrow Button */}
             <div className="flex-shrink-0 mb-1">
-              <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white overflow-hidden">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-primary-600 rounded-full flex items-center justify-center text-white overflow-hidden">
                 <motion.div
                   className="relative w-5 h-5 origin-center"
                   animate={{ rotate: 0 }}
