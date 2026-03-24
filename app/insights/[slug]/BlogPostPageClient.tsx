@@ -20,6 +20,36 @@ const blogPosts: Record<string, {
   }[];
   sources?: { name: string; url: string }[];
 }> = {
+  'b2g-defense-marketing-social-media-weapons': {
+    title: 'B2G Defense Marketing: Strategic Social Media for Weapons Systems',
+    category: 'Strategy',
+    date: 'Mar 24, 2026',
+    isoDate: '2026-03-24',
+    readTime: '4 min read',
+    excerpt: 'Defense contractors face unique B2G marketing challenges where every word matters and security trumps engagement. Here\'s how Rafael Defense Systems navigates social media for weapons that protect nations.',
+    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-weapons_header.webp',
+    content: [
+      { type: 'heading', text: 'Managing social media for companies that build Iron Dome isn\'t your typical brand challenge.' },
+      { type: 'paragraph', text: 'Two and a half years managing Rafael Defense Systems\' digital presence has taught us something most marketers never encounter: how to promote laser interception systems on TikTok while navigating security clearances, government relations, and the delicate balance between transparency and operational security.' },
+      { type: 'paragraph', text: 'This isn\'t B2B marketing. This isn\'t even complex enterprise sales. This is B2G—business to government—where your ultimate customer is a nation, your decision-makers number in the dozens globally, and every word carries strategic weight.' },
+      { type: 'heading', text: 'Why Defense Companies Need Digital Presence' },
+      { type: 'paragraph', text: 'The question isn\'t whether defense contractors should engage in social media—it\'s how to do it without compromising national security. Four strategic imperatives drive this necessity:' },
+      { type: 'paragraph', text: 'Demand Generation as Air Support: Social media creates the "air cover" for physical sales teams entering target markets. Before a Rafael representative walks into a Pentagon meeting, decision-makers have already encountered the brand\'s capabilities in their feeds. This pre-exposure shortens sales cycles and builds foundational trust in markets where personal relationships determine billion-dollar contracts.' },
+      { type: 'paragraph', text: 'Tender Support Through Social Proof: International defense procurements involve human evaluators who research vendor credibility across all channels. While social presence won\'t close a $2 billion missile defense deal, it demonstrates consistency, reliability, and social validation that your systems represent state-of-the-art technology. In procurement committees where technical specifications are comparable, brand perception influences final decisions.' },
+      { type: 'paragraph', text: 'National Resilience Through Public Confidence: In Israel\'s security reality, digital communications serve dual purposes—marketing internationally while reassuring domestically. When citizens see successful Iron Beam tests or Wind Coat system demonstrations, they\'re not just viewing product marketing; they\'re receiving confirmation that brilliant minds are developing breakthrough solutions for their protection. This isn\'t selling systems—this is marketing peace of mind.' },
+      { type: 'paragraph', text: 'Talent Wars Against Big Tech: Defense companies compete directly with tech giants and unicorn startups for top engineering talent. To recruit the next aeronautics specialist or AI researcher, defense contractors must communicate in their language and appear where they consume content—including TikTok and Instagram. The goal: demonstrate that developing laser defense systems offers more compelling challenges than building the next dating app.' },
+      { type: 'heading', text: 'The Execution Framework for Defense Marketing' },
+      { type: 'paragraph', text: 'Successful B2G defense marketing requires navigating constraints that would paralyze traditional marketers:' },
+      { type: 'paragraph', text: 'From Product Features to Combat-Proven Narratives: While American defense giants like Lockheed Martin rely on institutional authority, Israeli companies leverage "Combat Proven" positioning. We don\'t promise theoretical capabilities—we showcase systems actively protecting lives under fire. This real-world validation creates unmatched product credibility that peacetime testing cannot replicate.' },
+      { type: 'paragraph', text: 'When security restrictions prevent filming actual operations, AI-generated content, technical animations, and sophisticated infographics explain complex systems without revealing classified components. Creative constraints force innovative storytelling approaches that traditional product marketing rarely requires.' },
+      { type: 'paragraph', text: 'Platform-Specific Audience Targeting: Each social platform serves distinct strategic purposes within the broader B2G framework:' },
+      { type: 'paragraph', text: 'LinkedIn targets C-suite defense officials and procurement decision-makers through thought leadership and capability demonstrations - Twitter engages defense journalists, technology analysts, and policy influencers shaping industry discourse - TikTok and Instagram reach younger engineering talent while humanizing typically austere defense companies through trend-based content and real-time marketing' },
+      { type: 'paragraph', text: 'Account-Based Marketing at Scale: B2G marketing operates through hyper-focused targeting rather than broad audience building. Success requires identifying strategic "accounts"—target nations, partner companies, key procurement officials—and developing personalized content that speaks to their specific defense challenges and geopolitical contexts.' },
+      { type: 'heading', text: 'The Strategic Imperative' },
+      { type: 'paragraph', text: 'Defense marketing represents a unique intersection of precision messaging, deep technological understanding, and emotional connection building. When executed properly, social media breaks stereotypes of conservative, institutional industries while maintaining the gravitas these life-and-death technologies demand.' },
+      { type: 'paragraph', text: 'The companies mastering this balance—demonstrating cutting-edge innovation through accessible content while respecting security boundaries—will dominate tomorrow\'s defense procurement cycles. Because in B2G marketing, trust isn\'t just about brand preference. It\'s about national survival.' }
+    ],
+  },
   'marketers-guide-to-not-drowning-in-ai-tools': {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
     category: 'AI & Tech',
