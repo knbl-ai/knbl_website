@@ -8,6 +8,14 @@ import Tag from '@/components/ui/Tag';
 
 const blogs = [
   {
+    title: 'B2G Defense Marketing: Managing Social Media for Advanced Defense Systems',
+    excerpt: 'Defense companies need social media for demand generation, talent acquisition, and public trust — not brand decoration. Here\'s how we built Rafael\'s global digital presence.',
+    date: 'Mar 24, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-03-24_b2g-defense-marketing-social-media-strategy_header.webp',
+    slug: 'b2g-defense-marketing-social-media-strategy',
+  },
+  {
     title: 'The Marketing Leader\'s Guide to Not Drowning in AI Tools',
     excerpt: 'There are more AI tools aimed at marketers than any team can meaningfully evaluate. The teams winning with AI are not the ones with the most tools. They are the ones with the clearest sense of which two or three are genuinely changing their output.',
     date: 'Dec 19, 2025',
