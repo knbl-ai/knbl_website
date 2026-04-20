@@ -37,6 +37,7 @@ const projects: Record<string, {
       { title: 'Black Friday Commercial', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/3452_HO_Black_Friday_commerical_VIDEO_1920X1080_C_V7_bubsky.webm' },
       { title: 'Jumbo Collection', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/HnO_28sec_16x9_jumbo_lwvuzv.webm' },
       { title: 'Jeans New Collection', url: 'https://storage.googleapis.com/knbl_website/optimized/videos/ho/HO_JEANS_NEW_7-9_VIDEO_1920x1080_25FPS_ihsjsj.webm' },
+      { title: 'H&0 SPRING 2026', url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/4207_HO_SPRING_26_VIDEO_1920X1080_25-3-26.mp4' },
     ],
   },
   'rafael': {

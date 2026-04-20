@@ -40,6 +40,11 @@ const aiVideos: Video[] = [
         category: 'Product Launch'
     },
     {
+        id: 25,
+        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/4207_HO_SPRING_26_VIDEO_1920X1080_25-3-26.mp4',
+        title: 'H&0 SPRING 2026'
+    },
+    {
         id: 17,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/takeda/takeda_fin_LOWER_sgeqe4.webm',
         title: 'Takeda',
