@@ -51,12 +51,13 @@ const teamMembers: TeamMember[] = [
     bgColor: '#EEF2FF',
   },
   {
-    name: 'Michelle',
+    name: 'Yaffa',
     role: 'Client Manager',
     image: '/images/projects/project-5.webp',
-    video: 'https://storage.googleapis.com/knbl_website/optimized/videos/our%20team/michelle.webm',
-    bio: "Your partner in growth. Michelle bridges the gap between your goals and our execution, making sure every project feels like a shared win.",
+    video: 'https://storage.googleapis.com/knbl_website/videos/our%20team/YAFFA.mp4',
+    bio: "Your partner in growth. Yaffa bridges the gap between your goals and our execution, making sure every project feels like a shared win.",
     bgColor: '#EEF2FF',
+    videoStyle: { transform: 'scale(2.2) translateY(100px)' },
   },
   {
     name: 'Niv',
@@ -97,14 +98,6 @@ const teamMembers: TeamMember[] = [
     image: '/images/projects/project-1.webp',
     video: 'https://storage.googleapis.com/knbl_website/optimized/videos/our%20team/noa1.webm',
     bio: 'A natural at finding the "signal" in the noise. Noa crafts content that speaks directly to the audience, turning complex strategy into messages that resonate and engage.',
-    bgColor: '#EEF2FF',
-  },
-  {
-    name: 'Ido',
-    role: 'Media Manager',
-    image: '/images/projects/project-1.webp',
-    video: 'https://storage.googleapis.com/knbl_website/optimized/videos/our%20team/Ido1.webm',
-    bio: "The performance pilot. Ido lives in the data, optimizing every campaign to make sure your brand isn't just seen, but heard by the right people at the right time.",
     bgColor: '#EEF2FF',
   },
   {

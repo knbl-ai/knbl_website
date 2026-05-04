@@ -68,10 +68,10 @@ export default function AgencyPage() {
       image: `${baseUrl}/images/team/daniel.jpg`,
     },
     {
-      name: 'Michelle',
+      name: 'Yaffa',
       jobTitle: 'Client Manager',
       description: 'Client Manager at KNBL, bridging brand goals with agency execution to ensure every project delivers measurable results.',
-      image: `${baseUrl}/images/team/michelle.jpg`,
+      image: `${baseUrl}/images/team/yaffa.jpg`,
     },
     {
       name: 'Niv',
@@ -102,12 +102,6 @@ export default function AgencyPage() {
       jobTitle: 'Content Manager',
       description: 'Content Manager at KNBL specialising in finding the signal in the noise — crafting content that speaks directly to audience intent and drives real engagement.',
       image: `${baseUrl}/images/team/noa.jpg`,
-    },
-    {
-      name: 'Ido',
-      jobTitle: 'Media Manager',
-      description: 'Media Manager at KNBL. Ido leads performance media strategy, optimising campaigns through data to ensure brands reach the right audience at the right moment.',
-      image: `${baseUrl}/images/team/ido.jpg`,
     },
     {
       name: 'Vladi',
