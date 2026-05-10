@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { X } from 'lucide-react';
+import NewsletterModal from './NewsletterModal';
 
 const menuItems = [
   { label: 'Home', href: '/' },
@@ -21,6 +22,7 @@ export default function Navigation() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
   // Check if body has 'is-dark' class to update text color
   useEffect(() => {
@@ -34,6 +36,13 @@ export default function Navigation() {
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
+  }, []);
+
+  // Listen for global event to open newsletter modal
+  useEffect(() => {
+    const handleOpenNewsletter = () => setIsNewsletterModalOpen(true);
+    window.addEventListener('open-newsletter', handleOpenNewsletter);
+    return () => window.removeEventListener('open-newsletter', handleOpenNewsletter);
   }, []);
 
   // Update active item based on current pathname
@@ -213,6 +222,12 @@ export default function Navigation() {
 
           {/* Desktop CTA Buttons - Flush Right */}
           <div className="hidden md:flex items-center gap-4 shrink-0">
+            <InteractiveHoverButton
+              onClick={() => setIsNewsletterModalOpen(true)}
+              className="bg-black text-white rounded-full font-medium border border-white/10 hover:border-white/30"
+            >
+              Newsletter Sign-Up
+            </InteractiveHoverButton>
             <Link href="/ai-productions" className="transition-all duration-300">
               <InteractiveHoverButton
                 className={`bg-[#4F39F6] text-white rounded-full font-medium ${activeItem === 'AI Productions' ? 'ring-2 ring-white/20' : ''}`}
@@ -264,6 +279,24 @@ export default function Navigation() {
                 </Link>
               ))}
 
+              {/* Newsletter Link */}
+              <button
+                onClick={() => {
+                  setIsNewsletterModalOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-left"
+              >
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-[38px] font-medium tracking-[-0.04em] leading-[1.0] transition-colors text-white hover:text-[#4F39F6]"
+                >
+                  Newsletter Sign-Up
+                </motion.div>
+              </button>
+
               {/* AI Productions Link */}
               <Link
                 href="/ai-productions"
@@ -297,6 +330,11 @@ export default function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen} 
+        onClose={() => setIsNewsletterModalOpen(false)} 
+      />
     </nav>
   );
 }

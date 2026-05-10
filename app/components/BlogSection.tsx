@@ -190,8 +190,14 @@ export default function BlogSection() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="hidden md:block"
+            className="hidden md:flex items-center gap-4"
           >
+            <InteractiveHoverButton
+              onClick={() => window.dispatchEvent(new CustomEvent('open-newsletter'))}
+              className="px-6 py-3 bg-black text-white rounded-full font-medium"
+            >
+              Newsletter Sign-Up
+            </InteractiveHoverButton>
             <Link href="/insights">
               <InteractiveHoverButton className="px-6 py-3 bg-primary-600 text-white rounded-full font-medium">
                 View All Articles
@@ -233,10 +239,16 @@ export default function BlogSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 flex justify-center md:hidden"
+          className="mt-20 flex flex-col items-center gap-4 md:hidden"
         >
-          <Link href="/insights" className="scale-[0.85]">
-            <InteractiveHoverButton className="px-4 py-3 bg-primary-600 text-white rounded-full font-medium whitespace-nowrap">
+          <InteractiveHoverButton
+            onClick={() => window.dispatchEvent(new CustomEvent('open-newsletter'))}
+            className="w-full max-w-[280px] py-4 bg-black text-white rounded-full font-medium"
+          >
+            Newsletter Sign-Up
+          </InteractiveHoverButton>
+          <Link href="/insights" className="w-full max-w-[280px]">
+            <InteractiveHoverButton className="w-full py-4 bg-primary-600 text-white rounded-full font-medium whitespace-nowrap">
               View All Articles
             </InteractiveHoverButton>
           </Link>
