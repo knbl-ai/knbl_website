@@ -12,16 +12,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const scriptUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL;
+    const scriptUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbysQLmCE4pnqYnWSXo1Vwbm1sxXeFdThuPx61FnFJ27KGzSn0gosFj3M4Ahio9hpnJGIA/exec';
     
-    if (!scriptUrl) {
-      console.error('Missing GOOGLE_SHEETS_WEB_APP_URL environment variable');
-      return NextResponse.json(
-        { error: 'Server configuration error: Web App URL missing' },
-        { status: 500 }
-      );
-    }
-
     console.log('Using Script URL:', scriptUrl);
 
     // Prepare data to send to Google Apps Script
