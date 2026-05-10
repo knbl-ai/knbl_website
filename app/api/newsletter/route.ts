@@ -13,15 +13,16 @@ export async function POST(request: Request) {
     }
 
     const scriptUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL;
-
+    
     if (!scriptUrl) {
       console.error('Missing GOOGLE_SHEETS_WEB_APP_URL environment variable');
-      // If not configured yet, log error but you could return 500.
       return NextResponse.json(
         { error: 'Server configuration error: Web App URL missing' },
         { status: 500 }
       );
     }
+
+    console.log('Using Script URL:', scriptUrl);
 
     // Prepare data to send to Google Apps Script
     const payload = {
@@ -31,8 +32,8 @@ export async function POST(request: Request) {
       subscriptionStatus: 'Subscribed',
     };
 
-    // Note: Google Apps Script sometimes requires following redirects 
-    // fetch API in Node.js follows redirects by default.
+    console.log('Sending payload:', payload);
+
     const response = await fetch(scriptUrl, {
       method: 'POST',
       headers: {
@@ -41,11 +42,16 @@ export async function POST(request: Request) {
       body: JSON.stringify(payload),
     });
 
+    console.log('Response Status:', response.status);
+
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Response not OK:', errorText);
       throw new Error(`Google Apps Script returned status: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log('Data received:', data);
 
     if (data.status === 'error') {
       console.error('Error from Google Apps Script:', data.message);
