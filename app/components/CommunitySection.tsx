@@ -3,9 +3,15 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { TextReveal } from '@/components/ui/text-reveal';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const videos = [
+  {
+    src: 'https://storage.googleapis.com/knbl_website/videos/webinar/Claude%20for%20marketers%20-%20Ravit%20from%20KNBL%20is%20hosting%20Guy%20AGA_1080p.mp4',
+    title: 'Claude for marketers',
+    description: 'Ravit from KNBL is hosting Guy AGA',
+    duration: '60 min'
+  },
   {
     id: 'lhzrwPA9wlQ',
     title: 'From SEO to GEO',
@@ -44,17 +50,39 @@ export default function CommunitySection() {
   const [isPrevHovered, setIsPrevHovered] = useState(false);
   const [isNextHovered, setIsNextHovered] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const currentVideo = videos[currentVideoIndex];
 
+  const handlePlay = () => {
+    setIsPlaying(true);
+    if (currentVideo.src) {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {});
+      }
+    } else {
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+    }
+  };
+
   const handleNext = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
     setCurrentVideoIndex((prev: number) => (prev + 1) % videos.length);
     setIsPlaying(false);
     setIsNextHovered(false);
   };
 
   const handlePrev = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
     setCurrentVideoIndex((prev: number) => (prev - 1 + videos.length) % videos.length);
     setIsPlaying(false);
     setIsPrevHovered(false);
@@ -80,7 +108,7 @@ export default function CommunitySection() {
       </div>
 
       {/* Video Card and Info Section */}
-      <div className="relative pt-6 md:pt-0 pb-32 md:pb-32 z-10">
+      <div className="relative pt-6 md:pt-0 pb-32 md:pb-32 z-10 group">
         <div className="w-full max-w-[1320px] mx-auto px-6 relative">
           {/* Mobile Text Section - Now above video */}
           <div className="md:hidden mb-10">
@@ -102,29 +130,48 @@ export default function CommunitySection() {
             viewport={{ once: true }}
             className="relative aspect-[4/3] md:aspect-video w-full rounded-[32px] overflow-hidden bg-transparent md:[mask-image:radial-gradient(circle_at_100%_100%,transparent_47.9px,black_48px)] md:[-webkit-mask-image:radial-gradient(circle_at_100%_100%,transparent_47.9px,black_48px)]"
           >
-            {isPlaying ? (
+            {currentVideo.src ? (
+              <video
+                ref={videoRef}
+                className={`absolute inset-0 w-full h-full border-0 object-cover transition-opacity duration-300 ${isPlaying ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                src={currentVideo.src}
+                controls={isPlaying}
+                playsInline
+              />
+            ) : (
               <iframe
-                className="absolute inset-0 w-full h-full border-0 scale-[1.5] origin-center"
-                src={`https://www.youtube.com/embed/${currentVideo.id}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&controls=1&showinfo=0`}
+                ref={iframeRef}
+                className={`absolute inset-0 w-full h-full border-0 transition-opacity duration-300 ${isPlaying ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                src={`https://www.youtube.com/embed/${currentVideo.id}?enablejsapi=1&autoplay=0&modestbranding=1&rel=0&iv_load_policy=3&controls=1&showinfo=0`}
                 title={currentVideo.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
-            ) : (
-              <>
-                <Image
-                  src={`https://img.youtube.com/vi/${currentVideo.id}/maxresdefault.jpg`}
-                  alt={currentVideo.title}
-                  fill
-                  className="object-cover scale-[1.12] object-top"
-                  sizes="90vw"
-                  unoptimized
-                />
+            )}
+
+            {!isPlaying && (
+              <div className="absolute inset-0 z-20">
+                {currentVideo.src ? (
+                  <video 
+                    src={currentVideo.src} 
+                    className="absolute inset-0 w-full h-full object-cover" 
+                    preload="metadata"
+                  />
+                ) : (
+                  <Image
+                    src={`https://img.youtube.com/vi/${currentVideo.id}/maxresdefault.jpg`}
+                    alt={currentVideo.title}
+                    fill
+                    className="object-cover scale-[1.12] object-top"
+                    sizes="90vw"
+                    unoptimized
+                  />
+                )}
 
                 {/* Mobile Centered Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center md:hidden">
                   <motion.button
-                    onClick={() => setIsPlaying(true)}
+                    onClick={handlePlay}
                     whileTap={{ scale: 0.95 }}
                     className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl"
                   >
@@ -140,7 +187,7 @@ export default function CommunitySection() {
 
                 {/* Desktop Corner Text Overlay */}
                 <div className="hidden md:block absolute bottom-6 left-6 max-w-lg">
-                  <div className="bg-neutral-900/20 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 space-y-6 border border-white/10">
+                  <div className="bg-neutral-900/60 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 space-y-6 border border-white/10">
                     <div className="space-y-2">
                       <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tighter">{currentVideo.title}</h3>
                       <p className="text-base md:text-lg leading-normal" style={{ color: '#CFCFD3' }}>
@@ -165,7 +212,7 @@ export default function CommunitySection() {
                     <motion.button
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
-                      onClick={() => setIsPlaying(true)}
+                      onClick={handlePlay}
                       animate={{ width: isHovered ? 170 : 60 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -202,7 +249,7 @@ export default function CommunitySection() {
                     </motion.button>
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </motion.div>
 
@@ -321,11 +368,10 @@ export default function CommunitySection() {
           </div>
 
           {/* Desktop Only Navigation Controls - Liquid Notch integrated with Video Card */}
-          {!isPlaying && (
-            <div
-              className="hidden md:block absolute -bottom-3 right-6 z-20"
-              style={{ transform: 'translateZ(0)', willChange: 'transform' }}
-            >
+          <div
+            className={`hidden md:block absolute -bottom-3 right-6 z-20 transition-opacity duration-300 ${isPlaying ? 'opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto' : 'opacity-100 pointer-events-auto'}`}
+            style={{ transform: 'translateZ(0)', willChange: 'transform' }}
+          >
               <div className="relative pt-4 pb-3 pr-4 pl-8 bg-primary-600 rounded-tl-[48px] rounded-br-[32px] flex gap-3 items-center min-w-[175px] justify-end">
                 {/* Visual Shims - Precisely aligned to FLAT edges to prevent sub-pixel gaps */}
                 <div className="absolute -top-[1px] left-[47.5px] right-0 h-[2px] bg-primary-600 pointer-events-none" />
@@ -428,7 +474,6 @@ export default function CommunitySection() {
                 </motion.button>
               </div>
             </div>
-          )}
         </div>
       </div>
     </section>

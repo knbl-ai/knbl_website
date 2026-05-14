@@ -331,9 +331,9 @@ export default function Navigation() {
         )}
       </AnimatePresence>
 
-      <NewsletterModal 
-        isOpen={isNewsletterModalOpen} 
-        onClose={() => setIsNewsletterModalOpen(false)} 
+      <NewsletterModal
+        isOpen={isNewsletterModalOpen}
+        onClose={() => setIsNewsletterModalOpen(false)}
       />
     </nav>
   );
