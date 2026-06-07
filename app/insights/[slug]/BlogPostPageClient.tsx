@@ -20,18 +20,7 @@ const blogPosts: Record<string, {
   }[];
   sources?: { name: string; url: string }[];
 }> = {
-  'test-token-2026': {
-    title: 'Token Test 2026',
-    category: 'Strategy',
-    date: 'Jun 7, 2026',
-    isoDate: '2026-06-07',
-    readTime: '1 min read',
-    excerpt: 'Testing the new token',
-    image: '/images/blog/2026-06-07_test-token-2026_header.webp',
-    content: [
-      { type: 'paragraph', text: 'This is a connectivity test.' }
-    ],
-  },
+
   'b2g-defense-marketing-social-media-strategy': {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
     category: 'Strategy',
