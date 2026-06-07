@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     await sendEmail({
       to: email,
       cc: 'ravit@kanibal.co.il',
-      subject: 'יאללה להמיר ממסע לקוח!',
+      subject: '‏יאללה להמיר ממסע לקוח!',
       body: `שלום ${name},
 
 שמחה פלוס פלוס שנרשמת לוובינר הקרוב שלנו, בו נפצח יחד עם ניר זברו את הסודות לסוריטלינג מושלם עבור מסע לקוח.
