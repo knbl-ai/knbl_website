@@ -11,13 +11,7 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
-  'test-token-2026': {
-    title: 'Token Test 2026',
-    description: 'Testing the new token',
-    category: 'Strategy',
-    date: '2026-06-07',
-    image: '/images/blog/2026-06-07_test-token-2026_header.webp',
-  },
+
   'b2g-defense-marketing-social-media-strategy': {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
     description: 'Defense companies face unique B2G marketing challenges that require specialized social media strategies. Here\'s how to build brand authority when your client is a government.',
