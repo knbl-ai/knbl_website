@@ -16,25 +16,20 @@ export async function POST(request: Request) {
     const gasBody = new URLSearchParams({ name, email, role: role || '', org: org || '', phone: phone || '', newsletter: newsletter || 'לא' });
     await fetch(GAS_URL, { method: 'POST', mode: 'no-cors' as RequestMode, body: gasBody }).catch(() => {});
 
-    // Send confirmation email to the registrant
+    // Send confirmation email to the registrant, CC ravit
     await sendEmail({
       to: email,
-      subject: 'אישור הרשמה — וובינר KNBL · מסע לקוח וסטוריטלינג',
+      cc: 'ravit@kanibal.co.il',
+      subject: 'יאללה להמיר ממסע לקוח!',
       body: `שלום ${name},
 
-תודה שנרשמת לוובינר שלנו!
+שמחה פלוס פלוס שנרשמת לוובינר הקרוב שלנו, בו נפצח יחד עם ניר זברו את הסודות לסוריטלינג מושלם עבור מסע לקוח.
+מסע לקוח שמוכר, ממיר, זכיר למותג שלכם.
 
-📅 יום שני · 29.6.26
-🕙 11:00
-📹 בשידור ב־ZOOM
+הנה לינק לשמירה ליומן שלכם: https://calendarlink.com/event/Criyp
 
-נשלח אליך את קישור הכניסה לפני האירוע.
-
-מחכים לראותך,
 צוות KNBL
-
----
-KNBL · knbl360.com`,
+knbl360.com`,
     });
 
     return NextResponse.json({ success: true });

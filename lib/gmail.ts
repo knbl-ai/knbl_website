@@ -7,10 +7,12 @@ export async function sendEmail({
     subject,
     body,
     to,
+    cc,
 }: {
     subject: string;
     body: string;
     to?: string;
+    cc?: string;
 }) {
     const SENDER_EMAIL = (process.env.SENDER_EMAIL_FORM || '').trim();
     const TARGET_EMAIL = (process.env.TARGET_EMAIL_FORM || '').trim();
@@ -53,6 +55,7 @@ export async function sendEmail({
         const emailLines = [
             `From: ${SENDER_EMAIL}`,
             `To: ${recipient}`,
+            ...(cc ? [`Cc: ${cc}`] : []),
             `Subject: ${subject}`,
             `Content-Type: text/plain; charset=utf-8`,
             `MIME-Version: 1.0`,
