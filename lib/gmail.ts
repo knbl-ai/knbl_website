@@ -56,7 +56,7 @@ export async function sendEmail({
             `From: ${SENDER_EMAIL}`,
             `To: ${recipient}`,
             ...(cc ? [`Cc: ${cc}`] : []),
-            `Subject: ${subject}`,
+            `Subject: =?UTF-8?B?${Buffer.from(subject).toString('base64')}?=`,
             `Content-Type: text/plain; charset=utf-8`,
             `MIME-Version: 1.0`,
             ``,

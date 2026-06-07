@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
 הנה לינק לשמירה ליומן שלכם: https://calendarlink.com/event/Criyp
 
-צוות KNBL
+KNBL
 knbl360.com`,
     });
 
