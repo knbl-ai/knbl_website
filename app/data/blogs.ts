@@ -8,6 +8,14 @@ export type BlogPost = {
 };
 
 export const blogs: BlogPost[] = [
+  {
+    title: 'Intelligence Is Becoming a Commodity: What Comes Next',
+    excerpt: 'When everyone has access to AI intelligence, being the smartest person in the room becomes irrelevant. Success shifts to asking better questions and choosing the right ideas.',
+    date: 'Jun 7, 2026',
+    category: 'Strategy',
+    image: '/images/blog/2026-06-07_intelligence-commodity-ai-future_header.webp',
+    slug: 'intelligence-commodity-ai-future',
+  },
 
   {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
