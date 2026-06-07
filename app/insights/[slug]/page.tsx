@@ -11,6 +11,13 @@ const blogPostsMeta: Record<string, {
   date: string;
   image: string;
 }> = {
+  'intelligence-commodity-ai-future': {
+    title: 'Intelligence Is Becoming a Commodity: What Comes Next',
+    description: 'When everyone has access to AI intelligence, being the smartest person in the room becomes irrelevant. Success shifts to asking better questions and choosing the right ideas.',
+    category: 'Strategy',
+    date: '2026-06-07',
+    image: '/images/blog/2026-06-07_intelligence-commodity-ai-future_header.webp',
+  },
 
   'b2g-defense-marketing-social-media-strategy': {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
