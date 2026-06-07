@@ -8,14 +8,7 @@ export type BlogPost = {
 };
 
 export const blogs: BlogPost[] = [
-  {
-    title: 'Token Test 2026',
-    excerpt: 'Testing the new token',
-    date: 'Jun 7, 2026',
-    category: 'Strategy',
-    image: '/images/blog/2026-06-07_test-token-2026_header.webp',
-    slug: 'test-token-2026',
-  },
+
   {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
     excerpt: 'Defense companies face unique B2G marketing challenges that require specialized social media strategies. Here\'s how to build brand authority when your client is a government.',
