@@ -20,6 +20,43 @@ const blogPosts: Record<string, {
   }[];
   sources?: { name: string; url: string }[];
 }> = {
+  'intelligence-commodity-ai-future': {
+    title: 'Intelligence Is Becoming a Commodity: What Comes Next',
+    category: 'Strategy',
+    date: 'Jun 7, 2026',
+    isoDate: '2026-06-07',
+    readTime: '4 min read',
+    excerpt: 'When everyone has access to AI intelligence, being the smartest person in the room becomes irrelevant. Success shifts to asking better questions and choosing the right ideas.',
+    image: '/images/blog/2026-06-07_intelligence-commodity-ai-future_header.webp',
+    content: [
+      { type: 'heading', text: 'When everyone has access to AI, being smart isn\'t enough' },
+      { type: 'paragraph', text: 'Jensen Huang, NVIDIA\'s founder, delivered a stark prediction during his recent conversation with Lex Friedman: "Intelligence is going to become a commodity." When one of the most influential voices in tech makes this statement, the implications ripple far beyond Silicon Valley boardrooms.' },
+      { type: 'paragraph', text: 'The artificial intelligence revolution isn\'t just changing how we work—it\'s fundamentally redefining what constitutes professional value. For marketing leaders, this shift demands immediate strategic recalibration.' },
+      { type: 'heading', text: 'The Great Intelligence Equalizer' },
+      { type: 'paragraph', text: 'Consider the current trajectory: GPT-4 can analyze complex datasets, write compelling copy, generate strategic frameworks, and synthesize insights from massive information pools. Claude can audit entire marketing campaigns and propose optimization strategies. Midjourney creates visual concepts that rival seasoned creative directors.' },
+      { type: 'paragraph', text: 'When these capabilities become universally accessible—and they\'re already approaching that threshold—the traditional markers of professional intelligence lose their scarcity value. The Harvard MBA who can synthesize market research, the creative director with pattern recognition skills, the strategist who connects disparate data points: their core cognitive advantages are being democratized.' },
+      { type: 'paragraph', text: 'According to McKinsey\'s latest research, 75% of the value created by generative AI will come from four key areas: customer operations, marketing and sales, software engineering, and research and development. Marketing sits at the epicenter of this transformation.' },
+      { type: 'heading', text: 'From Information Processing to Decision Architecture' },
+      { type: 'paragraph', text: 'The game is shifting from "who knows more" to "who decides better." Intelligence becomes table stakes; judgment becomes the differentiator.' },
+      { type: 'paragraph', text: 'This isn\'t about replacing human creativity—it\'s about amplifying it strategically. At KNBL, we\'ve observed this transition firsthand through our AI-powered productions for brands like Rafael Defense Systems and Xiaomi Israel. The technology handles the computational heavy lifting, but success still depends on asking the right questions and recognizing breakthrough ideas when they emerge.' },
+      { type: 'paragraph', text: 'The new competitive advantages:' },
+      { type: 'paragraph', text: 'Question Formulation: The quality of your AI output directly correlates with the sophistication of your prompts. Marketing leaders who master the art of precise questioning will extract exponentially more value from AI tools.' },
+      { type: 'paragraph', text: 'Pattern Recognition: While AI can identify trends, humans still excel at recognizing which patterns matter for specific business contexts. The ability to separate signal from noise becomes crucial.' },
+      { type: 'paragraph', text: 'Strategic Synthesis: AI can generate hundreds of campaign concepts; experienced marketers can identify which one aligns with brand truth and market dynamics.' },
+      { type: 'heading', text: 'The Curation Economy Emerges' },
+      { type: 'paragraph', text: 'We\'re entering what behavioral economists call a "curation economy"—where the primary value lies not in creation but in selection. Netflix doesn\'t create all content; it curates viewing experiences. Similarly, future marketing leaders won\'t generate all ideas; they\'ll orchestrate the right combinations of human intuition and machine capability.' },
+      { type: 'paragraph', text: 'This parallels the shift media experienced during the internet\'s early days. When information became abundant, aggregation and curation services like Google emerged as the most valuable players. The same dynamic is now playing out in the intelligence economy.' },
+      { type: 'heading', text: 'Implications for Marketing Leadership' },
+      { type: 'paragraph', text: 'For CMOs and marketing heads, this commodity intelligence future demands three immediate strategic shifts:' },
+      { type: 'paragraph', text: 'Redefine Core Competencies: Stop competing on who can analyze data faster or generate more creative concepts. Start competing on strategic vision, brand intuition, and the ability to orchestrate complex AI-human collaborations.' },
+      { type: 'paragraph', text: 'Invest in Question Architecture: Develop frameworks for interrogating AI systems effectively. The marketing teams that master prompt engineering and AI conversation design will outperform competitors using the same tools crudely.' },
+      { type: 'paragraph', text: 'Build Judgment Protocols: Create systematic approaches for evaluating AI-generated outputs against brand standards, market realities, and strategic objectives.' },
+      { type: 'heading', text: 'The Human Edge in an AI World' },
+      { type: 'paragraph', text: 'The most successful marketing organizations won\'t be those that resist AI integration—they\'ll be those that thoughtfully combine machine capability with distinctly human strengths: emotional intelligence, cultural intuition, ethical judgment, and strategic vision.' },
+      { type: 'paragraph', text: 'Intelligence is becoming a utility, like electricity or internet access. The question isn\'t whether you have access to smart tools—it\'s whether you know how to conduct the orchestra.' },
+      { type: 'paragraph', text: 'In this new paradigm, the smartest person in the room isn\'t the one with the most knowledge. It\'s the one who asks the most valuable questions and makes the most consequential choices about what to do with unlimited intelligence at their disposal.' }
+    ],
+  },
 
   'b2g-defense-marketing-social-media-strategy': {
     title: 'B2G Marketing: How Defense Companies Navigate Social Media Strategy',
