@@ -52,15 +52,17 @@ export async function sendEmail({
 
         const gmail = google.gmail({ version: 'v1', auth: authClient });
 
+        const htmlBody = `<div dir="rtl" style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#222;text-align:right;">${body.replace(/\n/g, '<br>')}</div>`;
+
         const emailLines = [
             `From: ${SENDER_EMAIL}`,
             `To: ${recipient}`,
             ...(cc ? [`Cc: ${cc}`] : []),
             `Subject: =?UTF-8?B?${Buffer.from(subject).toString('base64')}?=`,
-            `Content-Type: text/plain; charset=utf-8`,
             `MIME-Version: 1.0`,
+            `Content-Type: text/html; charset=utf-8`,
             ``,
-            body,
+            htmlBody,
         ];
 
         const email = emailLines.join('\r\n');
