@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const scriptUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbysQLmCE4pnqYnWSXo1Vwbm1sxXeFdThuPx61FnFJ27KGzSn0gosFj3M4Ahio9hpnJGIA/exec';
+    const scriptUrl = process.env.GOOGLE_SHEETS_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbwxfWQYqxTrjdkJYB63IF5g-OJRthKLpWRS7B-i9eFOzLCek5XPsiyp0d6pYG2Eyz87/exec';
     
     console.log('Using Script URL:', scriptUrl);
 
