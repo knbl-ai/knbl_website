@@ -10,6 +10,12 @@ import { X, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 const aiVideos: Video[] = [
     {
+        id: 26,
+        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/AION%20Redefining%20Electric%20Travel_video.mp4',
+        title: 'AION: Redefining Electric Travel',
+        category: 'Electric Mobility'
+    },
+    {
         id: 7,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/electra/1926_ELECTRA_AI_NOFIT_VID_B_ENGLISH_1920x1080_hrnc1a.webm',
         title: 'Electra "BEYOND" Project',
@@ -91,6 +97,11 @@ const aiVideos: Video[] = [
 ];
 
 const portraitVideos: Video[] = [
+    {
+        id: 27,
+        url: 'https://storage.googleapis.com/knbl_website/videos/ai%20productions/Rafael%2065th%20Award%20Reveal.mp4',
+        title: 'Rafael 65th Award Reveal',
+    },
     {
         id: 16,
         url: 'https://storage.googleapis.com/knbl_website/optimized/videos/xiaomi/WhatsApp_Video_2026-01-22_at_13.59.38_lw2ehh.webm',
