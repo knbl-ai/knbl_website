@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function WebinarPage() {
   return (
     <iframe
-      src="/webinar-bundle-v2.html"
+      src="/webinar-bundle-v3.html"
       style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', border: 'none' }}
       title="KNBL Webinar"
     />
