@@ -22,6 +22,7 @@ export default function Navigation() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [isScrollDark, setIsScrollDark] = useState(false);
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
   // Check if body has 'is-dark' class to update text color
@@ -36,6 +37,39 @@ export default function Navigation() {
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
     return () => observer.disconnect();
+  }, []);
+
+  // Detect dark background sections under the nav on scroll
+  useEffect(() => {
+    const checkBgUnderNav = () => {
+      const el = document.elementFromPoint(window.innerWidth / 2, 60);
+      if (!el) return;
+      let current: Element | null = el;
+      while (current && current !== document.body) {
+        const bg = window.getComputedStyle(current).backgroundColor;
+        const rgb = bg.match(/\d+/g);
+        if (rgb && rgb.length >= 3) {
+          const [r, g, b] = rgb.map(Number);
+          const isTransparent = bg.includes('rgba') && rgb[3] === '0';
+          if (!isTransparent) {
+            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            if (luminance < 0.3) {
+              setIsScrollDark(true);
+              return;
+            } else {
+              setIsScrollDark(false);
+              return;
+            }
+          }
+        }
+        current = current.parentElement;
+      }
+      setIsScrollDark(false);
+    };
+
+    window.addEventListener('scroll', checkBgUnderNav, { passive: true });
+    checkBgUnderNav();
+    return () => window.removeEventListener('scroll', checkBgUnderNav);
   }, []);
 
   // Listen for global event to open newsletter modal
@@ -84,9 +118,10 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
-  const navTextColor = isMobileMenuOpen || isDark ? 'white' : 'black';
-  const logoFill = isMobileMenuOpen || isDark ? 'fill-white' : 'fill-black';
-  const burgerBg = isMobileMenuOpen || isDark ? 'bg-white' : 'bg-black';
+  const isLight = !isMobileMenuOpen && !isDark && !isScrollDark;
+  const navTextColor = isLight ? 'black' : 'white';
+  const logoFill = isLight ? 'fill-black' : 'fill-white';
+  const burgerBg = isLight ? 'bg-black' : 'bg-white';
 
   return (
     <nav className={`${isMobileMenuOpen ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
