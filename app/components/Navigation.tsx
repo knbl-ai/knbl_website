@@ -41,18 +41,30 @@ export default function Navigation() {
 
   // Detect dark background sections under the nav on scroll
   useEffect(() => {
+    const getBgDark = (el: Element): boolean | null => {
+      const bg = window.getComputedStyle(el).backgroundColor;
+      const rgb = bg.match(/\d+/g);
+      if (!rgb || rgb.length < 3) return null;
+      const [r, g, b, a] = rgb.map(Number);
+      if (a === 0) return null;
+      return (0.299 * r + 0.587 * g + 0.114 * b) / 255 < 0.5;
+    };
+
     const checkBgUnderNav = () => {
       const elements = document.elementsFromPoint(window.innerWidth / 2, 60);
       for (const el of elements) {
         if (el.closest('nav')) continue;
-        const bg = window.getComputedStyle(el).backgroundColor;
-        const rgb = bg.match(/\d+/g);
-        if (!rgb || rgb.length < 3) continue;
-        const [r, g, b, a] = rgb.map(Number);
-        if (a === 0) continue; // fully transparent
-        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-        setIsScrollDark(luminance < 0.5);
-        return;
+        if (el.tagName === 'IFRAME') {
+          // Can't read inside iframe — check html/body background
+          const htmlDark = getBgDark(document.documentElement);
+          if (htmlDark !== null) { setIsScrollDark(htmlDark); return; }
+          const bodyDark = getBgDark(document.body);
+          if (bodyDark !== null) { setIsScrollDark(bodyDark); return; }
+          setIsScrollDark(false);
+          return;
+        }
+        const dark = getBgDark(el);
+        if (dark !== null) { setIsScrollDark(dark); return; }
       }
       setIsScrollDark(false);
     };
@@ -108,7 +120,7 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
-  const isLight = !isMobileMenuOpen && !isDark && !isScrollDark;
+  const isLight = !isMobileMenuOpen && !isDark && !isScrollDark && pathname !== '/webinar';
   const navTextColor = isLight ? 'black' : 'white';
   const logoFill = isLight ? 'fill-black' : 'fill-white';
   const burgerBg = isLight ? 'bg-black' : 'bg-white';
