@@ -257,7 +257,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
 
   if (!project) {
     return (
-      <main className="min-h-screen bg-white">
+      <main data-logo-theme="white" className="min-h-screen bg-white">
         <Navigation />
         <div className="pt-[200px] pb-[120px] px-6 text-center">
           <h1 className="text-4xl font-medium mb-4">Project not found</h1>

@@ -21,58 +21,28 @@ export default function Navigation() {
   const [activeItem, setActiveItem] = useState('Home');
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [isScrollDark, setIsScrollDark] = useState(false);
+  const [logoTheme, setLogoTheme] = useState<'white' | 'black' | 'purple'>('white');
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
-  // Check if body has 'is-dark' class to update text color
+  // Detect logo theme from data-logo-theme attributes on sections
   useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.body.classList.contains('is-dark'));
-    };
-
-    checkTheme();
-    // Observe class changes on body
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Detect dark background sections under the nav on scroll
-  useEffect(() => {
-    const getBgDark = (el: Element): boolean | null => {
-      const bg = window.getComputedStyle(el).backgroundColor;
-      const rgb = bg.match(/\d+/g);
-      if (!rgb || rgb.length < 3) return null;
-      const [r, g, b, a] = rgb.map(Number);
-      if (a === 0) return null;
-      return (0.299 * r + 0.587 * g + 0.114 * b) / 255 < 0.5;
-    };
-
-    const checkBgUnderNav = () => {
-      const elements = document.elementsFromPoint(window.innerWidth / 2, 60);
-      for (const el of elements) {
-        if (el.closest('nav')) continue;
-        if (el.tagName === 'IFRAME') {
-          // Can't read inside iframe — check html/body background
-          const htmlDark = getBgDark(document.documentElement);
-          if (htmlDark !== null) { setIsScrollDark(htmlDark); return; }
-          const bodyDark = getBgDark(document.body);
-          if (bodyDark !== null) { setIsScrollDark(bodyDark); return; }
-          setIsScrollDark(false);
-          return;
+    const detect = () => {
+      const logoY = 40;
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-logo-theme]'));
+      let theme: 'white' | 'black' | 'purple' = 'white';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= logoY) {
+          theme = (section.getAttribute('data-logo-theme') as 'white' | 'black' | 'purple') || 'white';
+        } else {
+          break;
         }
-        const dark = getBgDark(el);
-        if (dark !== null) { setIsScrollDark(dark); return; }
       }
-      setIsScrollDark(false);
+      setLogoTheme(theme);
     };
-
-    window.addEventListener('scroll', checkBgUnderNav, { passive: true });
-    checkBgUnderNav();
-    return () => window.removeEventListener('scroll', checkBgUnderNav);
-  }, []);
+    detect();
+    window.addEventListener('scroll', detect, { passive: true });
+    return () => window.removeEventListener('scroll', detect);
+  }, [pathname]);
 
   // Listen for global event to open newsletter modal
   useEffect(() => {
@@ -120,10 +90,8 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
-  const isLight = !isMobileMenuOpen && !isDark && !isScrollDark && pathname !== '/webinar';
-  const navTextColor = isLight ? 'black' : 'white';
-  const logoFill = isLight ? 'fill-black' : 'fill-white';
-  const burgerBg = isLight ? 'bg-black' : 'bg-white';
+  const effectiveTheme = isMobileMenuOpen ? 'black' : logoTheme;
+  const burgerBg = effectiveTheme === 'white' ? 'bg-black' : 'bg-white';
 
   return (
     <nav className={`${isMobileMenuOpen ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
@@ -132,50 +100,46 @@ export default function Navigation() {
           <Link href="/" className="flex items-center shrink-0">
             <div className="relative w-[92px] h-[26px] md:w-[108px] md:h-[30px] -ml-4 -mt-2 md:ml-0 md:mt-0">
 
-              {/* logo-dark: black letters + blue dot — shown on light backgrounds */}
-              <svg
-                viewBox="0 0 108 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              {/* logo-on-white: black letters + purple dot */}
+              <svg viewBox="0 0 108 30" fill="none" xmlns="http://www.w3.org/2000/svg"
                 className="absolute inset-0 w-full h-full"
-                style={{ opacity: isLight ? 1 : 0, transition: 'opacity 200ms ease' }}
-                aria-hidden={!isLight}
-              >
-                <g clipPath="url(#logo-dark-clip)">
-                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="black" />
-                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="black" />
-                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="black" />
-                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="black" />
+                style={{ opacity: effectiveTheme === 'white' ? 1 : 0, transition: 'opacity 200ms ease', pointerEvents: effectiveTheme === 'white' ? 'auto' : 'none' }}>
+                <g clipPath="url(#lw-clip)">
+                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="#000000" />
+                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="#000000" />
+                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="#000000" />
+                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="#000000" />
                   <path d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z" fill="#4F39F6" />
                 </g>
-                <defs>
-                  <clipPath id="logo-dark-clip">
-                    <rect width="108" height="30" fill="white" />
-                  </clipPath>
-                </defs>
+                <defs><clipPath id="lw-clip"><rect width="108" height="30" fill="white" /></clipPath></defs>
               </svg>
 
-              {/* logo-light: white letters + blue dot — shown on dark/blue backgrounds */}
-              <svg
-                viewBox="0 0 108 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+              {/* logo-on-black: white letters + purple dot */}
+              <svg viewBox="0 0 108 30" fill="none" xmlns="http://www.w3.org/2000/svg"
                 className="absolute inset-0 w-full h-full"
-                style={{ opacity: isLight ? 0 : 1, transition: 'opacity 200ms ease' }}
-                aria-hidden={isLight}
-              >
-                <g clipPath="url(#logo-light-clip)">
-                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="white" />
-                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="white" />
-                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="white" />
-                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="white" />
+                style={{ opacity: effectiveTheme === 'black' ? 1 : 0, transition: 'opacity 200ms ease', pointerEvents: effectiveTheme === 'black' ? 'auto' : 'none' }}>
+                <g clipPath="url(#lb-clip)">
+                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="#ffffff" />
+                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="#ffffff" />
+                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="#ffffff" />
+                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="#ffffff" />
                   <path d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z" fill="#4F39F6" />
                 </g>
-                <defs>
-                  <clipPath id="logo-light-clip">
-                    <rect width="108" height="30" fill="white" />
-                  </clipPath>
-                </defs>
+                <defs><clipPath id="lb-clip"><rect width="108" height="30" fill="white" /></clipPath></defs>
+              </svg>
+
+              {/* logo-on-purple: black letters + white dot */}
+              <svg viewBox="0 0 108 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0 w-full h-full"
+                style={{ opacity: effectiveTheme === 'purple' ? 1 : 0, transition: 'opacity 200ms ease', pointerEvents: effectiveTheme === 'purple' ? 'auto' : 'none' }}>
+                <g clipPath="url(#lp-clip)">
+                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="#000000" />
+                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="#000000" />
+                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="#000000" />
+                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="#000000" />
+                  <path d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z" fill="#ffffff" />
+                </g>
+                <defs><clipPath id="lp-clip"><rect width="108" height="30" fill="white" /></clipPath></defs>
               </svg>
 
             </div>

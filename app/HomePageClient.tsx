@@ -21,11 +21,11 @@ export default function HomePageClient() {
         <main className="min-h-screen">
             <ThemeController />
             <Navigation />
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <Hero />
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <section id="about" className="flex flex-col items-center justify-center py-24 md:py-44 px-6 min-h-screen md:min-h-0">
                     <div className="max-w-[1200px] mx-auto text-center">
                         <TextReveal startEarly className="justify-center text-center text-[21px] md:text-[26px] leading-[1.4] md:leading-[1.5] font-medium tracking-tight max-w-[400px] md:max-w-3xl mx-auto">
@@ -35,12 +35,12 @@ export default function HomePageClient() {
                 </section>
             </div>
 
-            <div data-theme-section="black" className="my-[200px]">
+            <div data-theme-section="black" data-logo-theme="black" className="my-[200px]">
                 <ServicesGrid />
             </div>
 
             {/* Second About Section */}
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <div className="py-24 px-6 flex flex-col items-center justify-center min-h-screen md:min-h-0">
                     {/* Mobile version: 7 lines exactly */}
                     <div className="md:hidden w-full">
@@ -68,31 +68,31 @@ export default function HomePageClient() {
                 </div>
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <HowWeDoIt />
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <ProjectsGrid />
             </div>
 
-            <div data-theme-section="black" className="my-[200px]">
+            <div data-theme-section="black" data-logo-theme="black" className="my-[200px]">
                 <BrandsSection />
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <BlogSection />
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <CommunitySection />
             </div>
 
-            <div data-theme-section="white">
+            <div data-theme-section="white" data-logo-theme="white">
                 <FAQSection />
             </div>
 
-            <div data-theme-section="black" className="pt-[200px]">
+            <div data-theme-section="black" data-logo-theme="black" className="pt-[200px]">
                 <Footer />
             </div>
         </main>
