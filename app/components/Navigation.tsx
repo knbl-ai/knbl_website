@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLenis } from 'lenis/react';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { X } from 'lucide-react';
 import NewsletterModal from './NewsletterModal';
@@ -25,30 +24,33 @@ export default function Navigation() {
   const [logoTheme, setLogoTheme] = useState<'white' | 'black' | 'purple'>('white');
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
 
-  // Stable detect function — reads section positions and updates logo theme
-  const detect = useCallback(() => {
-    const logoY = 40;
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-logo-theme]'));
-    let theme: 'white' | 'black' | 'purple' = 'white';
-    for (const section of sections) {
-      if (section.getBoundingClientRect().top <= logoY) {
-        theme = (section.getAttribute('data-logo-theme') as 'white' | 'black' | 'purple') || 'white';
-      } else {
-        break;
-      }
-    }
-    setLogoTheme(prev => prev === theme ? prev : theme);
-  }, []);
-
-  // Initial detection + re-run on route change + native scroll fallback
+  // RAF-based logo theme detection — runs every frame, works with any scroll mechanism
   useEffect(() => {
-    detect();
-    window.addEventListener('scroll', detect, { passive: true });
-    return () => window.removeEventListener('scroll', detect);
-  }, [pathname, detect]);
+    let rafId: number;
+    let lastTheme: 'white' | 'black' | 'purple' = 'white';
 
-  // Lenis-driven scroll detection — fires on every Lenis animation frame
-  useLenis(detect);
+    const tick = () => {
+      const nav = document.querySelector<HTMLElement>('nav');
+      const logoY = nav ? nav.getBoundingClientRect().bottom : 80;
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-logo-theme]'));
+      let theme: 'white' | 'black' | 'purple' = 'white';
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= logoY) {
+          theme = (section.getAttribute('data-logo-theme') as 'white' | 'black' | 'purple') || 'white';
+        } else {
+          break;
+        }
+      }
+      if (theme !== lastTheme) {
+        lastTheme = theme;
+        setLogoTheme(theme);
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [pathname]);
 
   // Listen for global event to open newsletter modal
   useEffect(() => {
@@ -100,7 +102,7 @@ export default function Navigation() {
   const burgerBg = effectiveTheme === 'white' ? 'bg-black' : 'bg-white';
 
   return (
-    <nav className={`${isMobileMenuOpen ? 'fixed' : 'absolute'} top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
       <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0">
