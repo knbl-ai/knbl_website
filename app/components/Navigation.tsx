@@ -42,27 +42,17 @@ export default function Navigation() {
   // Detect dark background sections under the nav on scroll
   useEffect(() => {
     const checkBgUnderNav = () => {
-      const el = document.elementFromPoint(window.innerWidth / 2, 60);
-      if (!el) return;
-      let current: Element | null = el;
-      while (current && current !== document.body) {
-        const bg = window.getComputedStyle(current).backgroundColor;
+      const elements = document.elementsFromPoint(window.innerWidth / 2, 60);
+      for (const el of elements) {
+        if (el.closest('nav')) continue;
+        const bg = window.getComputedStyle(el).backgroundColor;
         const rgb = bg.match(/\d+/g);
-        if (rgb && rgb.length >= 3) {
-          const [r, g, b] = rgb.map(Number);
-          const isTransparent = bg.includes('rgba') && rgb[3] === '0';
-          if (!isTransparent) {
-            const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-            if (luminance < 0.3) {
-              setIsScrollDark(true);
-              return;
-            } else {
-              setIsScrollDark(false);
-              return;
-            }
-          }
-        }
-        current = current.parentElement;
+        if (!rgb || rgb.length < 3) continue;
+        const [r, g, b, a] = rgb.map(Number);
+        if (a === 0) continue; // fully transparent
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        setIsScrollDark(luminance < 0.5);
+        return;
       }
       setIsScrollDark(false);
     };
