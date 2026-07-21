@@ -130,41 +130,54 @@ export default function Navigation() {
       <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0">
-            <div className={`relative flex items-center w-[92px] h-[26px] md:w-[108px] md:h-[30px] -ml-4 -mt-2 md:ml-0 md:mt-0 transition-colors duration-300`}>
+            <div className="relative w-[92px] h-[26px] md:w-[108px] md:h-[30px] -ml-4 -mt-2 md:ml-0 md:mt-0">
+
+              {/* logo-dark: black letters + blue dot — shown on light backgrounds */}
               <svg
                 viewBox="0 0 108 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full scale-100"
+                className="absolute inset-0 w-full h-full"
+                style={{ opacity: isLight ? 1 : 0, transition: 'opacity 200ms ease' }}
+                aria-hidden={!isLight}
               >
-                <g clipPath="url(#clip0_0_717)">
-                  <path
-                    d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z"
-                    className={`transition-colors duration-200 ${logoFill}`}
-                  />
-                  <path
-                    d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z"
-                    className={`transition-colors duration-200 ${logoFill}`}
-                  />
-                  <path
-                    d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 21.3546 77.6088 21.3546 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z"
-                    className={`transition-colors duration-200 ${logoFill}`}
-                  />
-                  <path
-                    d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z"
-                    className={`transition-colors duration-200 ${logoFill}`}
-                  />
-                  <path
-                    d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z"
-                    fill="#4F39F6"
-                  />
+                <g clipPath="url(#logo-dark-clip)">
+                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="black" />
+                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="black" />
+                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="black" />
+                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="black" />
+                  <path d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z" fill="#4F39F6" />
                 </g>
                 <defs>
-                  <clipPath id="clip0_0_717">
+                  <clipPath id="logo-dark-clip">
                     <rect width="108" height="30" fill="white" />
                   </clipPath>
                 </defs>
               </svg>
+
+              {/* logo-light: white letters + blue dot — shown on dark/blue backgrounds */}
+              <svg
+                viewBox="0 0 108 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0 w-full h-full"
+                style={{ opacity: isLight ? 0 : 1, transition: 'opacity 200ms ease' }}
+                aria-hidden={isLight}
+              >
+                <g clipPath="url(#logo-light-clip)">
+                  <path d="M6.4442 14.1036L17.0652 0H24.663L15.0365 12.5896L24.7425 29.4821H17.3039L10.8199 18.0876L6.4442 23.8247V29.4821H0V0H6.4442V14.1036Z" fill="white" />
+                  <path d="M26.2144 29.4821V0H32.579L44.9901 18.7649V0H51.3547V29.4821H44.9901L32.579 10.757V29.4821H26.2144Z" fill="white" />
+                  <path d="M55.4917 0H67.7436C73.6707 0 77.2508 3.10757 77.2508 8.16733C77.2508 11.3147 75.8188 13.6255 73.1536 14.7809C76.0575 15.7371 77.6088 18.008 77.6088 21.3546C77.6088 26.5737 74.1083 29.4821 67.7436 29.4821H55.4917V0ZM61.9359 5.65737V12.0717H67.0674C69.3746 12.0717 70.6475 10.9163 70.6475 8.80478C70.6475 6.69323 69.4144 5.65737 67.0674 5.65737H61.9359ZM61.9359 17.49V23.8247H67.3856C69.7724 23.8247 71.0055 22.749 71.0055 20.5578C71.0055 18.5657 69.7326 17.49 67.3856 17.49H61.9359Z" fill="white" />
+                  <path d="M86.4 23.506H98.0155V29.4821H79.9558V0H86.4V23.506Z" fill="white" />
+                  <path d="M100.681 26.4143C100.681 24.4223 102.312 22.7888 104.34 22.7888C106.369 22.7888 108 24.4223 108 26.4143C108 28.4064 106.289 30 104.34 30C102.391 30 100.681 28.3665 100.681 26.4143Z" fill="#4F39F6" />
+                </g>
+                <defs>
+                  <clipPath id="logo-light-clip">
+                    <rect width="108" height="30" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+
             </div>
           </Link>
 
