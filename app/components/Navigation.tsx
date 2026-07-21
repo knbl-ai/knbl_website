@@ -30,12 +30,11 @@ export default function Navigation() {
     let lastTheme: 'white' | 'black' | 'purple' = 'white';
 
     const tick = () => {
-      const nav = document.querySelector<HTMLElement>('nav');
-      const logoY = nav ? nav.getBoundingClientRect().bottom : 80;
+      const mid = window.innerHeight * 0.5;
       const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-logo-theme]'));
       let theme: 'white' | 'black' | 'purple' = 'white';
       for (const section of sections) {
-        if (section.getBoundingClientRect().top <= logoY) {
+        if (section.getBoundingClientRect().top <= mid) {
           theme = (section.getAttribute('data-logo-theme') as 'white' | 'black' | 'purple') || 'white';
         } else {
           break;
