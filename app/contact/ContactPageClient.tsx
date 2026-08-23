@@ -28,7 +28,7 @@ const contactInfo = [
 
 export default function ContactPageClient() {
   return (
-    <main data-logo-theme="white" className="min-h-screen bg-white">
+    <main id="main-content" data-logo-theme="white" className="min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}

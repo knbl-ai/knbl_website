@@ -53,6 +53,7 @@ export default function Footer() {
     { label: 'Terms of use', href: '/terms' },
     { label: 'Privacy policy', href: '/privacy' },
     { label: 'Cookie Policy', href: '/cookie-policy' },
+    { label: 'Accessibility Statement', href: '/accessibility' },
   ];
 
   return (

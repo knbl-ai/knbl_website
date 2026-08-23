@@ -39,3 +39,128 @@
     text-wrap: balance;
   }
 }
+
+/* ==========================================================================
+   Accessibility layer — WCAG 2.1 AA / Israeli IS 5568.
+   Paired with app/components/A11yPanel.tsx, which sets the data-a11y-*
+   attributes below. Nothing here rewrites ARIA or the DOM at runtime.
+   ========================================================================== */
+
+/* --- 2.4.7 Focus Visible -------------------------------------------------
+   #4F39F6 is the brand accent, already used for hover/active states, and
+   clears 3:1 against both white and black sections. */
+:focus-visible {
+  outline: 3px solid #4F39F6;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* --- 2.4.1 Bypass Blocks -------------------------------------------------
+   Every page runs a fixed nav followed by a long single-page scroll. */
+.a11y-skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 2147483646;
+  background: #0F0F10;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 0 0 10px 10px;
+  text-decoration: none;
+  transition: top 0.18s ease-out;
+}
+.a11y-skip-link:focus { top: 0; }
+
+/* --- WCAG 2.2 2.4.11 Focus Not Obscured ----------------------------------
+   The nav is `position: fixed`, so in-page anchors land underneath it
+   without this. */
+[id] { scroll-margin-top: 140px; }
+@media (max-width: 767px) { [id] { scroll-margin-top: 96px; } }
+
+/* Screen-reader-only text. */
+.a11y-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- 2.3.3 prefers-reduced-motion ----------------------------------------
+   Covers plain CSS transitions/animations (hover states, the burger-to-X
+   morph, etc). Framer Motion animations are handled separately by
+   MotionPreferenceProvider, which reacts to the same OS setting and to the
+   panel's "Stop animations" toggle below. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-a11y-motion="off"] *,
+html[data-a11y-motion="off"] *::before,
+html[data-a11y-motion="off"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* --- Panel preferences ----------------------------------------------------
+   Each toggle is one attribute on <html> and one rule here.
+
+   `zoom` scales rendered output regardless of how a size was authored — this
+   codebase mixes Tailwind text utilities with literal px values, so a
+   rem-based root font-size scale would miss the latter.
+
+   Applied to <html>, never <body>: a `filter` on <body> makes it the
+   containing block for fixed-position descendants, which would detach the
+   fixed nav and let it scroll away with the page. */
+html[data-a11y-zoom="110"] { zoom: 1.10; }
+html[data-a11y-zoom="125"] { zoom: 1.25; }
+html[data-a11y-zoom="150"] { zoom: 1.50; }
+
+/* Inversion is the only high-contrast mode that survives a Tailwind palette
+   this size without overriding every color utility individually. Media is
+   inverted back so photography and logos still read correctly. */
+html[data-a11y-contrast="invert"] { filter: invert(1) hue-rotate(180deg); background: #FFFFFF; }
+html[data-a11y-contrast="invert"] img,
+html[data-a11y-contrast="invert"] video { filter: invert(1) hue-rotate(180deg); }
+
+html[data-a11y-grayscale="on"] { filter: grayscale(1); }
+html[data-a11y-contrast="invert"][data-a11y-grayscale="on"] { filter: invert(1) hue-rotate(180deg) grayscale(1); }
+
+html[data-a11y-links="on"] a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px !important;
+}
+html[data-a11y-links="on"] a:focus-visible,
+html[data-a11y-links="on"] a:hover { outline: 2px dashed currentColor; outline-offset: 2px; }
+
+html[data-a11y-font="readable"] body,
+html[data-a11y-font="readable"] body * {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+html[data-a11y-cursor="big"] body,
+html[data-a11y-cursor="big"] body * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 32 32'%3E%3Cpath d='M6 2l0 24 6-6 4 9 5-2-4-9 9 0z' fill='%23FFFFFF' stroke='%23000000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, auto !important;
+}
+
+/* The panel's own chrome un-inverts itself so its controls stay readable
+   while high contrast is on. Applied to the fixed elements directly — a
+   filter on a wrapper would become their containing block and break
+   `position: fixed`. */
+html[data-a11y-contrast="invert"] .a11y-fx { filter: invert(1) hue-rotate(180deg); }

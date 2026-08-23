@@ -33,7 +33,7 @@ export default function InsightsPageClient() {
   };
 
   return (
-    <main data-logo-theme="white" className="min-h-screen bg-white">
+    <main id="main-content" data-logo-theme="white" className="min-h-screen bg-white">
       <Navigation />
 
       {/* Hero Section */}

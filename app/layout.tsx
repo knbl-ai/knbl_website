@@ -50,8 +50,26 @@ export const metadata: Metadata = {
 };
 
 import BackToTop from './components/BackToTop';
+import A11yPanel from './components/A11yPanel';
+import MotionPreferenceProvider from './components/MotionPreferenceProvider';
 
 import SmoothScroll from '@/components/ui/SmoothScroll';
+
+// Keep in sync with the attribute mapping in components/A11yPanel.tsx.
+const A11Y_NO_FLASH_SCRIPT = `(function(){try{
+  var raw = localStorage.getItem('knbl-a11y-prefs');
+  if (!raw) return;
+  var p = JSON.parse(raw);
+  var el = document.documentElement;
+  var set = function(name, value){ if (value) el.setAttribute('data-a11y-' + name, value); };
+  if (p.zoom && p.zoom !== 100) set('zoom', String(p.zoom));
+  if (p.contrast === 'invert') set('contrast', 'invert');
+  if (p.grayscale) set('grayscale', 'on');
+  if (p.links) set('links', 'on');
+  if (p.motion) set('motion', 'off');
+  if (p.readableFont) set('font', 'readable');
+  if (p.bigCursor) set('cursor', 'big');
+}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -70,6 +88,9 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-N7VP8RX');`}
         </Script>
         {/* End Google Tag Manager */}
+        {/* Applies saved accessibility preferences before paint, so reloading
+            never flashes the unstyled/default state for a returning visitor. */}
+        <script id="a11y-no-flash" dangerouslySetInnerHTML={{ __html: A11Y_NO_FLASH_SCRIPT }} />
       </head>
       <body className={inter.className}>
         {/* Google Tag Manager (noscript) */}
@@ -82,10 +103,14 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
-        <BackToTop />
+        <a href="#main-content" className="a11y-skip-link">Skip to main content</a>
+        <MotionPreferenceProvider>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+          <BackToTop />
+        </MotionPreferenceProvider>
+        <A11yPanel />
       </body>
     </html>
   );

@@ -257,7 +257,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
 
   if (!project) {
     return (
-      <main data-logo-theme="white" className="min-h-screen bg-white">
+      <main id="main-content" data-logo-theme="white" className="min-h-screen bg-white">
         <Navigation />
         <div className="pt-[200px] pb-[120px] px-6 text-center">
           <h1 className="text-4xl font-medium mb-4">Project not found</h1>
@@ -269,7 +269,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <Navigation />
 
       {/* Project Header */}

@@ -18,7 +18,7 @@ export default function HomePageClient() {
     const secondAboutRef = useRef<HTMLDivElement>(null);
 
     return (
-        <main className="min-h-screen">
+        <main id="main-content" className="min-h-screen">
             <ThemeController />
             <Navigation />
             <div data-theme-section="white" data-logo-theme="white">

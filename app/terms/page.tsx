@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 export default function TermsOfUsePage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main id="main-content" className="min-h-screen bg-white">
             <Navigation />
 
             {/* Hero Header */}

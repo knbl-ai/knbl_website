@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // The dev-tools indicator has no focus styling of its own and reads as a
+  // phantom keyboard-navigation gap; keep it off.
+  devIndicators: false,
   images: {
     remotePatterns: [
       {

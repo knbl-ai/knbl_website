@@ -336,7 +336,7 @@ export default function BlogPostPageClient({ slug }: { slug: string }) {
 
   if (!post) {
     return (
-      <main data-logo-theme="white" className="min-h-screen bg-white">
+      <main id="main-content" data-logo-theme="white" className="min-h-screen bg-white">
         <Navigation />
         <div className="pt-[200px] pb-[120px] px-6 text-center">
           <h1 className="text-4xl font-medium mb-4">Post not found</h1>
@@ -348,7 +348,7 @@ export default function BlogPostPageClient({ slug }: { slug: string }) {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-white">
       <Navigation />
 
       <article className="pt-32 md:pt-48 pb-[120px] px-6 md:px-[120px]">

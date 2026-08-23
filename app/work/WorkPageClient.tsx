@@ -331,7 +331,7 @@ function ProjectCard({ project, height = 'h-[400px]', priority = false }: { proj
 
 export default function WorkPageClient() {
     return (
-        <main data-logo-theme="white" className="min-h-screen bg-white">
+        <main id="main-content" data-logo-theme="white" className="min-h-screen bg-white">
             <Navigation />
 
             <section className="pt-32 md:pt-48 pb-0 px-6 md:px-[120px]">

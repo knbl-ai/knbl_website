@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 
 export default function SubmissionPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main id="main-content" className="min-h-screen bg-white">
             <Navigation />
 
             <section className="pt-48 pb-32 px-6 md:px-[120px] flex flex-col items-center justify-center text-center">

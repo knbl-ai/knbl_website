@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { X } from 'lucide-react';
 import NewsletterModal from './NewsletterModal';
+import { useFocusTrap } from '@/lib/a11y/useFocusTrap';
 
 const menuItems = [
   { label: 'Home', href: '/' },
@@ -23,6 +24,7 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [logoTheme, setLogoTheme] = useState<'white' | 'black' | 'purple'>('white');
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // RAF-based logo theme detection — runs every frame, works with any scroll mechanism
   useEffect(() => {
@@ -97,11 +99,15 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
+  // Mobile menu behaves as a dialog: focus is contained, Escape closes it,
+  // and focus returns to the burger button that opened it.
+  useFocusTrap(mobileMenuRef, isMobileMenuOpen, () => setIsMobileMenuOpen(false));
+
   const effectiveTheme = isMobileMenuOpen ? 'black' : logoTheme;
   const burgerBg = effectiveTheme === 'white' ? 'bg-black' : 'bg-white';
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
+    <nav aria-label="Primary" className={`fixed top-0 left-0 right-0 z-50 ${isMobileMenuOpen ? 'bg-black' : 'bg-transparent'} transition-all duration-300`}>
       <div className="w-full px-6 md:px-24 py-6 md:py-[48px] relative z-[60]">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0">
@@ -157,6 +163,8 @@ export default function Navigation() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden relative z-[60] p-2 -mr-6 h-10 w-10 flex items-center justify-center translate-y-[-2px]"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {/* Burger Stripes */}
             <motion.div
@@ -271,6 +279,11 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
